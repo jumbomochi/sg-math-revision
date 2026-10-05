@@ -2,7 +2,7 @@ H2.addTopic({
   id: "2.1",
   title: "Sequences and Series",
   paper: "Paper 1 / Paper 2A",
-  summary: String.raw`APs, GPs, sigma notation, the method of differences, recurrence relations and convergence — plus the "least $n$" modelling questions that appear every year.`,
+  summary: String.raw`APs and GPs, sigma notation, the method of differences, recurrence relations and convergence.`,
   syllabus: {
     include: [
       String.raw`concepts of sequence and series for finite and infinite cases`,
@@ -55,7 +55,7 @@ $$u_n = ar^{n-1}, \qquad S_n = \frac{a(1 - r^n)}{1 - r} \ (r \ne 1).$$
       title: String.raw`"Least $n$" inequalities`,
       body: String.raw`Typical: find the least $n$ such that $S_n > k$ or $S_\infty - S_n < \varepsilon$.
 
-- With an exponential: take $\ln$ of both sides. Dividing by $\ln r$ where $0 < r < 1$ (so $\ln r < 0$) **reverses** the inequality — the most common lost mark.
+- With an exponential: take $\ln$ of both sides. Dividing by $\ln r$ where $0 < r < 1$ (so $\ln r < 0$) **reverses** the inequality — a common mistake.
 - With a quadratic in $n$ (AP sums): solve the quadratic inequality, then take the least **integer** satisfying it.
 - Using a GC table is acceptable: show the two consecutive rows that straddle the target, e.g. "$n = 23$: $0.0107 > 0.01$; $n = 24$: $0.0080 < 0.01$".
 - In context, read carefully: "at the end of the $n$th year" vs "during the $n$th year", and whether the first term is $n = 0$ or $n = 1$.`,

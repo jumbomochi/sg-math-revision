@@ -2,7 +2,7 @@ H2.addTopic({
   id: "5.4",
   title: "Definite Integrals",
   paper: "Paper 1 / Paper 2A",
-  summary: String.raw`The definite integral as a limit of a sum and as an area, used to find areas between curves and volumes of revolution, exactly or with a GC.`,
+  summary: String.raw`Definite integrals as limits of sums and as areas; areas between curves and volumes of revolution.`,
   syllabus: {
     include: [
       String.raw`concept of definite integral as a limit of sum`,

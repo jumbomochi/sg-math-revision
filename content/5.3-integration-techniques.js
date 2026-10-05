@@ -2,7 +2,7 @@ H2.addTopic({
   id: "5.3",
   title: "Integration Techniques",
   paper: "Paper 1 / Paper 2A",
-  summary: String.raw`Recognising standard forms, using identities and partial fractions, and integrating by substitution and by parts — the toolkit behind every definite integral, area, volume and differential equation.`,
+  summary: String.raw`Standard integrals, trig identities, partial fractions, substitution and integration by parts.`,
   syllabus: {
     include: [
       String.raw`integration of $\mathrm{f}'(x)[\mathrm{f}(x)]^n$ (including $n = -1$) and $\mathrm{f}'(x)\,\ee^{\mathrm{f}(x)}$`,
@@ -206,7 +206,7 @@ $$I = (\text{expression}) - k I \ \Rightarrow\ I = \frac{\text{expression}}{1 + 
     {
       id: "5.3-given-substitution",
       name: String.raw`Integration by a given substitution (exact answers)`,
-      tests: String.raw`Carrying out a stated substitution completely — converting $\dd x$, changing the limits and simplifying — to obtain an exact value or an indefinite integral in terms of $x$. Trigonometric substitutions for $\sqrt{a^2 - x^2}$ and $(1 + x^2)^{-n}$ are favourites.`,
+      tests: String.raw`Carrying out a stated substitution completely — converting $\dd x$, changing the limits and simplifying — to obtain an exact value or an indefinite integral in terms of $x$. Trigonometric substitutions for $\sqrt{a^2 - x^2}$ and $(1 + x^2)^{-n}$ are common.`,
       questions: [
         {
           stem: String.raw`Without using a calculator, use the substitution $x = 2\sin\theta$ to find the exact value of

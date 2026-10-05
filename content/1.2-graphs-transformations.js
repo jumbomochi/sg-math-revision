@@ -2,7 +2,7 @@ H2.addTopic({
   id: "1.2",
   title: "Graphs and Transformations",
   paper: "Paper 1 / Paper 2A",
-  summary: String.raw`Sketching conics and rational curves with their key features, transforming graphs, and working with parametric curves.`,
+  summary: String.raw`Sketching conics and rational curves, transforming graphs, and parametric curves.`,
   syllabus: {
     include: [
       String.raw`use of a graphing calculator or a graphing software to graph a given function`,

@@ -2,7 +2,7 @@ H2.addTopic({
   id: "6.2",
   title: "Discrete Random Variables",
   paper: "Paper 2B",
-  summary: String.raw`Probability distributions, expectation and variance of discrete random variables, and the binomial distribution as a probability model.`,
+  summary: String.raw`Probability distributions, expectation and variance, and the binomial distribution.`,
   syllabus: {
     include: [
       String.raw`concept of discrete random variables, probability distributions, expectations and variances`,

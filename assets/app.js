@@ -110,7 +110,7 @@
     let html = `<section class="hero">
       <p class="eyebrow">Singapore-Cambridge GCE A-Level · Syllabus 9758</p>
       <h1>H2 Mathematics Revision</h1>
-      <p class="lede">Every topic in the syllabus, broken into the key concepts you must know and the question archetypes examiners keep returning to, with original exam-style questions for each.</p>
+      <p class="lede">Key concepts and common question archetypes for every topic, with practice questions.</p>
       <div class="stats">
         <div><strong>${topics.length}</strong><span>sub-topics</span></div>
         <div><strong>${totalArch}</strong><span>archetypes</span></div>
@@ -136,7 +136,7 @@
         </div></div>`;
       }
     }
-    html += `<p class="footnote">Content follows the SEAB 9758 syllabus for examination in 2026 and 2027. All questions are original and written in the style of the A-Level papers. Formulae marked <span class="mf">MF27</span> are given in the List of Formulae.</p>`;
+    html += `<p class="footnote">Follows the SEAB 9758 syllabus (2026 and 2027 exams). All questions are original. Formulae marked <span class="mf">MF27</span> are in the List of Formulae.</p>`;
     return html;
   }
 
@@ -193,7 +193,7 @@
 
   function checklistView() {
     let html = `<header class="topic-head"><p class="eyebrow">Your progress</p><h1>Syllabus checklist</h1>
-      <p class="lede">Tick an archetype once you can do its questions without help. Your ticks are saved in this browser only.</p>
+      <p class="lede">Tick an archetype when you can do its questions without help. Ticks are saved in this browser only.</p>
       ${bar(progressOf(topics), "all")}
       <button class="btn-ghost" id="reset">Clear all ticks</button></header>`;
     for (const g of GROUPS) {

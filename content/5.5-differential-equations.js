@@ -2,7 +2,7 @@ H2.addTopic({
   id: "5.5",
   title: "Differential Equations",
   paper: "Paper 1 / Paper 2A",
-  summary: String.raw`Solving first-order separable equations (directly, or after a given substitution), formulating them from rates of change in real contexts, and interpreting the solutions.`,
+  summary: String.raw`Separable differential equations, given substitutions, and setting up and interpreting models.`,
   syllabus: {
     include: [
       String.raw`solving for the general solutions and particular solutions of differential equations of the form $\dfrac{\dd y}{\dd x} = \mathrm{f}(x)\,\mathrm{g}(y)$, including reducing a given differential equation to this form by means of a given substitution`,

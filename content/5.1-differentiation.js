@@ -2,7 +2,7 @@ H2.addTopic({
   id: "5.1",
   title: "Differentiation",
   paper: "Paper 1 / Paper 2A",
-  summary: String.raw`Implicit and parametric differentiation, tangents and normals, stationary points, and the applied problems — optimisation and connected rates of change — that use them.`,
+  summary: String.raw`Implicit and parametric differentiation, tangents and normals, stationary points, optimisation and rates of change.`,
   syllabus: {
     include: [
       String.raw`graphical interpretation of (i) $\mathrm{f}'(x) > 0$, $\mathrm{f}'(x) = 0$ and $\mathrm{f}'(x) < 0$; (ii) $\mathrm{f}''(x) > 0$ and $\mathrm{f}''(x) < 0$`,

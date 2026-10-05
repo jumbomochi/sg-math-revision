@@ -2,7 +2,7 @@ H2.addTopic({
   id: "5.2",
   title: "Maclaurin Series",
   paper: "Paper 1 / Paper 2A",
-  summary: String.raw`Building polynomial approximations to functions from the MF27 standard series or by repeated differentiation, with their ranges of validity, small angle approximations and numerical use.`,
+  summary: String.raw`Maclaurin series from standard series or by repeated differentiation, ranges of validity, and small angle approximations.`,
   syllabus: {
     include: [
       String.raw`standard series expansion of $(1 + x)^n$ for any rational $n$, $\ee^x$, $\sin x$, $\cos x$ and $\ln(1 + x)$`,

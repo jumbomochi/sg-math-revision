@@ -2,7 +2,7 @@ H2.addTopic({
   id: "6.4",
   title: "Sampling",
   paper: "Paper 2B",
-  summary: String.raw`Random samples, the sampling distribution of $\overline{X}$, the Central Limit Theorem and unbiased estimates — the foundation for hypothesis testing.`,
+  summary: String.raw`Random samples, the distribution of the sample mean, the Central Limit Theorem and unbiased estimates.`,
   syllabus: {
     include: [
       String.raw`concepts of population and simple random sample`,

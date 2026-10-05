@@ -2,7 +2,7 @@ H2.addTopic({
   id: "3.3",
   title: "Lines and Planes",
   paper: "Paper 1 / Paper 2A",
-  summary: String.raw`Equations of lines and planes in three dimensions, and the distances, angles, intersections and reflections between them.`,
+  summary: String.raw`Equations of lines and planes, and the angles, distances, intersections and reflections between them.`,
   syllabus: {
     include: [
       String.raw`vector and cartesian equations of lines and planes`,

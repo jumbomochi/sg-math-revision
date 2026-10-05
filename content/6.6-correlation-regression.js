@@ -2,7 +2,7 @@ H2.addTopic({
   id: "6.6",
   title: "Correlation and Linear Regression",
   paper: "Paper 2B",
-  summary: String.raw`Scatter diagrams, the product moment correlation coefficient, least squares regression lines, transformations to linearity, and judging how reliable an estimate is.`,
+  summary: String.raw`Scatter diagrams, correlation, regression lines, transformations to linearity and how reliable an estimate is.`,
   syllabus: {
     include: [
       String.raw`use of scatter diagram to judge if there is a plausible linear relationship between the two variables`,

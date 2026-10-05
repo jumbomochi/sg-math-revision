@@ -2,7 +2,7 @@ H2.addTopic({
   id: "4.1",
   title: "Complex Numbers",
   paper: "Paper 1 / Paper 2A",
-  summary: String.raw`Complex numbers in cartesian form: arithmetic, equating real and imaginary parts, modulus and argument, conjugate roots of real polynomials, and the Argand diagram.`,
+  summary: String.raw`Complex numbers in cartesian form: arithmetic, modulus and argument, conjugate roots and the Argand diagram.`,
   syllabus: {
     include: [
       String.raw`extension of the number system from real numbers to complex numbers`,

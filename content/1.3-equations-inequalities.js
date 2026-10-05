@@ -2,7 +2,7 @@ H2.addTopic({
   id: "1.3",
   title: "Equations and Inequalities",
   paper: "Paper 1 / Paper 2A",
-  summary: String.raw`Formulating and solving equations, linear systems and inequalities — exactly by algebra, or approximately with the GC.`,
+  summary: String.raw`Setting up and solving equations, linear systems and inequalities, by algebra or with a GC.`,
   syllabus: {
     include: [
       String.raw`formulating an equation, a system of linear equations, or inequalities from a problem situation`,

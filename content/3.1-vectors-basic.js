@@ -2,7 +2,7 @@ H2.addTopic({
   id: "3.1",
   title: "Basic Properties of Vectors",
   paper: "Paper 1 / Paper 2A",
-  summary: String.raw`Vector algebra, position and displacement vectors, magnitude, collinearity and the ratio theorem — the toolkit behind every later vectors question.`,
+  summary: String.raw`Vector algebra, position vectors, magnitude, collinearity and the ratio theorem.`,
   syllabus: {
     include: [
       String.raw`addition and subtraction of vectors, multiplication of a vector by a scalar, and their geometrical interpretations`,

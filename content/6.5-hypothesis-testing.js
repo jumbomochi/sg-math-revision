@@ -2,7 +2,7 @@ H2.addTopic({
   id: "6.5",
   title: "Hypothesis Testing",
   paper: "Paper 2B",
-  summary: String.raw`Testing a claim about a population mean with a $z$-test — from a normal population of known variance or a large sample via the CLT — and interpreting the result in context.`,
+  summary: String.raw`$z$-tests for a population mean, with known variance or a large sample, and interpreting the result.`,
   syllabus: {
     include: [
       String.raw`concepts of null hypothesis $(\mathrm{H}_0)$ and alternative hypothesis $(\mathrm{H}_1)$, test statistic, critical region, critical value, level of significance, and $p$-value`,
@@ -203,7 +203,7 @@ $$\sum x = 25\,472, \qquad \sum x^2 = 10\,140\,124.$$`,
     {
       id: "6.5-interpretation",
       name: String.raw`Interpreting $p$-values, significance levels and conclusions`,
-      tests: String.raw`Explaining, in context, the meaning of a given $p$-value or significance level, and criticising wrongly worded conclusions ("proves", "accepts $\mathrm{H}_0$"). Short 1-mark parts that are frequently lost through vague, context-free answers.`,
+      tests: String.raw`Explaining, in context, the meaning of a given $p$-value or significance level, and criticising wrongly worded conclusions ("proves", "accepts $\mathrm{H}_0$"). Usually 1-mark parts; the answer must refer to the context.`,
       questions: [
         {
           stem: String.raw`A health researcher believes that students in a country sleep more than 6.5 hours per night on average. She records the nightly sleep times of a random sample of 60 students and carries out a test of $\mathrm{H}_0: \mu = 6.5$ against $\mathrm{H}_1: \mu > 6.5$, where $\mu$ hours is the population mean nightly sleep time. The sample mean is 6.8 hours and the $p$-value of the test is 0.0312.`,

@@ -2,7 +2,7 @@ H2.addTopic({
   id: "3.2",
   title: "Scalar and Vector Products",
   paper: "Paper 1 / Paper 2A",
-  summary: String.raw`The scalar product for angles, perpendicularity and projections; the vector product for normals, areas and perpendicular distances.`,
+  summary: String.raw`The scalar product for angles and projections; the vector product for normals, areas and distances.`,
   syllabus: {
     include: [
       String.raw`concepts of scalar product and vector product of vectors and their properties`,
@@ -196,7 +196,7 @@ State the conditions you use (non-zero, non-parallel) — they carry marks.`,
     {
       id: "3.2-geometric-proofs",
       name: String.raw`Geometric proofs using the scalar product`,
-      tests: String.raw`Proving classical geometric results (angle in a semicircle, diagonals of a rhombus, squares) by showing a scalar product is zero, using $\mathbf{a} \cdot \mathbf{a} = |\mathbf{a}|^2$.`,
+      tests: String.raw`Proving geometric results (angle in a semicircle, diagonals of a rhombus, squares) by showing a scalar product is zero, using $\mathbf{a} \cdot \mathbf{a} = |\mathbf{a}|^2$.`,
       questions: [
         {
           stem: String.raw`$O$ is the centre of a circle and $AB$ is a diameter. Relative to $O$, the points $A$ and $B$ have position vectors $\mathbf{a}$ and $-\mathbf{a}$ respectively. The point $P$, distinct from $A$ and $B$, lies on the circle and has position vector $\mathbf{p}$.`,

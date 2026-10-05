@@ -2,7 +2,7 @@ H2.addTopic({
   id: "1.1",
   title: "Functions",
   paper: "Paper 1 / Paper 2A",
-  summary: String.raw`Domain, range, inverse and composite functions — the language used across the whole of Pure Mathematics.`,
+  summary: String.raw`Domain, range, inverse functions and composite functions.`,
   syllabus: {
     include: [
       String.raw`concepts of function, domain and range`,
