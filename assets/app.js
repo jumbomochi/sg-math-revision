@@ -62,6 +62,7 @@
 
   function figure(fig) {
     if (!fig) return "";
+    if (Array.isArray(fig)) return `<div class="figure-row">${fig.map(figure).join("")}</div>`;
     if (typeof fig === "string") return `<figure class="q-figure">${fig}</figure>`;
     if (fig.type === "plot") return `<figure class="q-figure">${H2Plot.render(fig)}${fig.caption ? `<figcaption>${mdi(fig.caption)}</figcaption>` : ""}</figure>`;
     return "";
@@ -168,7 +169,7 @@
 
     <section id="concepts" class="block">
       <h2>Key concepts</h2>
-      <div class="concepts">${t.concepts.map((c) => `<div class="concept"><h3>${mdi(c.title)}</h3><div class="concept-body">${md(c.body)}</div></div>`).join("")}</div>
+      <div class="concepts">${t.concepts.map((c) => `<div class="concept"><h3>${mdi(c.title)}</h3><div class="concept-body">${md(c.body)}</div>${figure(c.figure)}</div>`).join("")}</div>
     </section>
 
     <section id="archetypes" class="block">

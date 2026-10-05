@@ -25,6 +25,29 @@ $$\mathbf{r} = \mathbf{a} + \lambda\mathbf{d},\ \lambda \in \mathbb{R} \qquad\Lo
 - If a component of $\mathbf{d}$ is zero, the cartesian form has that coordinate **constant**, e.g. $\frac{x - 1}{2} = \frac{y + 3}{5},\ z = 4$.
 - Watch signs when converting: $\frac{3 - y}{2} = \frac{y - 3}{-2}$, and $\frac{2x - 1}{4} = \frac{x - \frac{1}{2}}{2}$ (make the coefficient of $x$ equal to 1 first).
 - To check a point lies on a line, find one $\lambda$ that satisfies **all three** components.`,
+      figure: {
+        type: "plot",
+        x: [0, 10],
+        y: [0, 6],
+        equal: true,
+        axes: false,
+        segments: [
+          { from: [0.7, 2.37], to: [9.53, 5.31], tone: "ink", thin: true, label: "l", pos: "n", style: "italic", labelAt: [9.24, 5.21] },
+          { from: [1, 0.8], to: [2.6, 3], arrow: true, label: "a", pos: "w" },
+          { from: [1, 0.8], to: [6.96, 4.45], arrow: true, tone: "good", label: "r", pos: "se" },
+          { from: [2.6, 3], to: [3.93, 3.44], arrow: true, tone: "warn", label: "d", pos: "n", labelAt: [3.26, 3.22] },
+        ],
+        points: [
+          { x: 1, y: 0.8, label: "O", pos: "sw" },
+        ],
+        labels: [
+          { x: 2.6, y: 3, text: "A", pos: "nw" },
+          { x: 6.96, y: 4.45, text: "R", pos: "n" },
+          { x: 5.45, y: 3.95, text: "λd", pos: "nw", style: "bold" },
+        ],
+        caption: String.raw`$\mathbf{r} = \mathbf{a} + \lambda\mathbf{d}$: reach $A$, then move any multiple of $\mathbf{d}$ along $l$`,
+        alt: "Line l through the point A with direction vector d. From the origin O, the position vector a reaches A, and a general point R on the line has position vector r = a + lambda d.",
+      },
     },
     {
       title: String.raw`Two lines: parallel, intersecting or skew`,
@@ -38,6 +61,67 @@ $$\mathbf{r} = \mathbf{a} + \lambda\mathbf{d},\ \lambda \in \mathbb{R} \qquad\Lo
 To test for intersection, equate the two vector equations, solve **two** components for $\lambda$ and $\mu$, then **check the third**. Skew lines need both facts stated: not parallel **and** no common point. Parallel or intersecting lines are coplanar.
 
 Acute angle between lines: $\cos\theta = \dfrac{|\mathbf{d}_1 \cdot \mathbf{d}_2|}{|\mathbf{d}_1||\mathbf{d}_2|}$. (Not in MF27.)`,
+      figure: [
+        {
+          type: "plot",
+          x: [0, 10],
+          y: [0, 5.6],
+          equal: true,
+          axes: false,
+          segments: [
+            { from: [0.6, 1.2], to: [9.4, 4.4], tone: "accent", label: "l₁", pos: "se", style: "italic", labelAt: [8.96, 4.24] },
+            { from: [1.4, 4.9], to: [8.8, 0.7], tone: "good", label: "l₂", pos: "ne", style: "italic", labelAt: [8.58, 0.83] },
+          ],
+          angles: [
+            { at: [5.06, 2.82], from: [8.8, 0.7], to: [9.4, 4.4], r: 1.1, label: "θ" },
+          ],
+          points: [
+            { x: 5.06, y: 2.82, label: "", pos: "c" },
+          ],
+          caption: "Intersecting: one common point",
+          alt: "Two lines crossing at a single point, with the acute angle theta between them.",
+        },
+        {
+          type: "plot",
+          x: [0, 10],
+          y: [0, 5.6],
+          equal: true,
+          axes: false,
+          segments: [
+            { from: [0.8, 1], to: [5.07, 2.42], arrow: true, label: "l₁", pos: "s", style: "italic", labelAt: [8.77, 3.66] },
+            { from: [5.07, 2.42], to: [9.34, 3.85], tone: "accent" },
+            { from: [0.14, 2.99], to: [4.22, 4.35], arrow: true, tone: "good", label: "l₂", pos: "s", style: "italic", labelAt: [7.73, 5.52] },
+            { from: [4.22, 4.35], to: [8.29, 5.71], tone: "good" },
+          ],
+          caption: String.raw`Parallel: $\mathbf{d}_1 = k\mathbf{d}_2$, no common point`,
+          alt: "Two parallel lines with the same direction and no common point.",
+        },
+        {
+          type: "plot",
+          x: [0, 10],
+          y: [0, 5.6],
+          equal: true,
+          axes: false,
+          segments: [
+            { from: [1.6, 0.9], to: [6.8, 0.9], tone: "muted", thin: true },
+            { from: [6.8, 0.9], to: [8.42, 2.7], tone: "muted", thin: true },
+            { from: [1.6, 3.3], to: [6.8, 3.3], tone: "muted", thin: true },
+            { from: [6.8, 3.3], to: [8.42, 5.1], tone: "muted", thin: true },
+            { from: [3.22, 5.1], to: [8.42, 5.1], tone: "muted", thin: true },
+            { from: [1.6, 3.3], to: [3.22, 5.1], tone: "muted", thin: true },
+            { from: [1.6, 0.9], to: [1.6, 3.3], tone: "muted", thin: true },
+            { from: [6.8, 0.9], to: [6.8, 3.3], tone: "muted", thin: true },
+            { from: [8.42, 2.7], to: [8.42, 5.1], tone: "muted", thin: true },
+            { from: [1.6, 0.9], to: [3.22, 2.7], tone: "muted", thin: true, dashed: true },
+            { from: [3.22, 2.7], to: [8.42, 2.7], tone: "muted", thin: true, dashed: true },
+            { from: [3.22, 2.7], to: [3.22, 5.1], tone: "muted", thin: true, dashed: true },
+            { from: [0.2, 0.9], to: [8.4, 0.9], tone: "accent", label: "l₁", pos: "s", style: "italic", labelAt: [8.1, 0.9] },
+            { from: [0.88, 2.5], to: [3.67, 5.6], tone: "good", label: "l₂", pos: "w", style: "italic", labelAt: [3.58, 5.5] },
+          ],
+          caption: "Skew: not parallel **and** no common point (like these two edges of a box)",
+          alt: "A cuboid drawn in 3D. Line l1 runs along a bottom front edge and line l2 runs along a top side edge going back; they are not parallel and never meet.",
+        },
+      ],
     },
     {
       title: String.raw`Point and line: foot, distance, reflection`,
@@ -48,6 +132,60 @@ Acute angle between lines: $\cos\theta = \dfrac{|\mathbf{d}_1 \cdot \mathbf{d}_2
 3. Distance $= |\overrightarrow{PN}|$; reflection of $P$ in $l$: $\overrightarrow{OP'} = 2\overrightarrow{ON} - \overrightarrow{OP}$ (midpoint theorem).
 
 Shortcut for the distance only: $|\overrightarrow{AP} \times \hat{\mathbf{d}}|$, where $A$ is any point on $l$. The length of projection of $\overrightarrow{AP}$ onto $l$ is $|\overrightarrow{AP} \cdot \hat{\mathbf{d}}|$.`,
+      figure: [
+        {
+          type: "plot",
+          x: [0, 10],
+          y: [0, 5.6],
+          equal: true,
+          axes: false,
+          segments: [
+            { from: [0.4, 1.2], to: [9.6, 1.2], tone: "ink", label: "l", pos: "n", style: "italic", labelAt: [9.4, 1.2] },
+            { from: [1.4, 1.2], to: [3.1, 1.2], arrow: true, label: "d", pos: "s", labelAt: [2.25, 1.2] },
+            { from: [1.4, 1.2], to: [6.2, 4.6], tone: "muted" },
+            { from: [6.2, 4.6], to: [6.2, 1.2], dashed: true, tone: "ink" },
+            { from: [1.4, 0.6], to: [6.2, 0.6], tone: "good", thin: true, arrow: true, arrowStart: true, label: "|AP · d̂|", pos: "s", style: "plain" },
+            { from: [6.65, 4.6], to: [6.65, 1.2], tone: "warn", thin: true, arrow: true, arrowStart: true, label: "|AP × d̂|", pos: "e", style: "plain" },
+          ],
+          rightAngles: [
+            { at: [6.2, 1.2], a: [0, 1], b: [-1, 0], size: 0.32 },
+          ],
+          angles: [
+            { at: [1.4, 1.2], from: [6.2, 1.2], to: [6.2, 4.6], r: 1.1, label: "θ" },
+          ],
+          points: [
+            { x: 1.4, y: 1.2, label: "A", pos: "nw" },
+            { x: 6.2, y: 4.6, label: "P", pos: "n" },
+            { x: 6.2, y: 1.2, label: "N", pos: "se" },
+          ],
+          caption: String.raw`Distance $PN = |\overrightarrow{AP} \times \hat{\mathbf{d}}|$; projection $AN = |\overrightarrow{AP} \cdot \hat{\mathbf{d}}|$`,
+          alt: "Point P above line l, with A a point on l and d its direction. The foot of the perpendicular from P is N. AN is the projection |AP dot d-hat| and PN is the perpendicular distance |AP cross d-hat|.",
+        },
+        {
+          type: "plot",
+          x: [0, 10],
+          y: [0, 5.6],
+          equal: true,
+          axes: false,
+          segments: [
+            { from: [0.4, 2.8], to: [9.6, 2.8], tone: "ink", label: "l", pos: "n", style: "italic", labelAt: [9.4, 2.8] },
+            { from: [5, 5.2], to: [5, 2.8], tone: "accent" },
+            { from: [5, 2.8], to: [5, 0.4], tone: "accent", dashed: true },
+            { from: [5.2, 4], to: [4.8, 4], tone: "ink", thin: true },
+            { from: [5.2, 1.6], to: [4.8, 1.6], tone: "ink", thin: true },
+          ],
+          rightAngles: [
+            { at: [5, 2.8], a: [0, 1], b: [1, 0], size: 0.32 },
+          ],
+          points: [
+            { x: 5, y: 5.2, label: "P", pos: "n" },
+            { x: 5, y: 2.8, label: "N", pos: "se" },
+            { x: 5, y: 0.4, label: "P′", pos: "s" },
+          ],
+          caption: String.raw`Reflection: $N$ is the midpoint of $PP'$, so $\overrightarrow{OP'} = 2\overrightarrow{ON} - \overrightarrow{OP}$`,
+          alt: "Point P, its foot of perpendicular N on line l, and its reflection P prime on the other side, with PN equal to NP prime.",
+        },
+      ],
     },
     {
       title: String.raw`Equations of a plane`,
@@ -61,6 +199,84 @@ Shortcut for the distance only: $|\overrightarrow{AP} \times \hat{\mathbf{d}}|$,
 - Plane through $A$, $B$, $C$: $\mathbf{n} = \overrightarrow{AB} \times \overrightarrow{AC}$, then $D = \mathbf{a} \cdot \mathbf{n}$. Check with the other two points.
 - Plane containing a line $l$ and a point $P$ not on $l$: use $\mathbf{d}$ and $\overrightarrow{AP}$ as the two directions.
 - Perpendicular distance from $O$ to $\mathbf{r} \cdot \hat{\mathbf{n}} = d$ is $|d|$ — normalise first.`,
+      figure: [
+        {
+          type: "plot",
+          x: [0, 10],
+          y: [0, 5.6],
+          equal: true,
+          axes: false,
+          polygons: [
+            { points: [[0.3, 1.2], [7.7, 1.2], [9.54, 3.5], [2.14, 3.5]], fill: true, tone: "muted" },
+          ],
+          segments: [
+            { from: [6.26, 1.84], to: [8.05, 3.22], dashed: true, tone: "muted", thin: true },
+            { from: [3.89, 3.08], to: [8.05, 3.22], dashed: true, tone: "muted", thin: true },
+            { from: [2.1, 1.7], to: [6.26, 1.84], dashed: true, tone: "muted", thin: true },
+            { from: [2.1, 1.7], to: [3.89, 3.08], dashed: true, tone: "muted", thin: true },
+            { from: [2.1, 1.7], to: [5.18, 1.8], arrow: true, label: "b", pos: "s" },
+            { from: [2.1, 1.7], to: [3.66, 2.9], arrow: true, label: "c", pos: "w" },
+          ],
+          points: [
+            { x: 2.1, y: 1.7, label: "A", pos: "sw" },
+            { x: 8.05, y: 3.22, label: "R", pos: "e" },
+          ],
+          labels: [
+            { x: 7.9, y: 4.06, text: "r = a + λb + μc", pos: "c", style: "bold" },
+          ],
+          caption: String.raw`Parametric: from $A$, move along two non-parallel directions $\mathbf{b}$, $\mathbf{c}$ in the plane`,
+          alt: "A plane containing the point A and two non-parallel direction vectors b and c; a general point R is reached from A by lambda b plus mu c.",
+        },
+        {
+          type: "plot",
+          x: [0, 10],
+          y: [0, 5.6],
+          equal: true,
+          axes: false,
+          polygons: [
+            { points: [[0.3, 1.2], [7.7, 1.2], [9.54, 3.5], [2.14, 3.5]], fill: true, tone: "muted" },
+          ],
+          segments: [
+            { from: [3.06, 1.9], to: [7.42, 2.6], arrow: true, tone: "good", label: "r − a", pos: "se", labelAt: [5.46, 2.28] },
+            { from: [3.06, 1.9], to: [3.06, 4.5], arrow: true, label: "n", pos: "e", labelAt: [3.06, 4.11] },
+          ],
+          rightAngles: [
+            { at: [3.06, 1.9], a: [0, 1], b: [4.36, 0.7], size: 0.42 },
+          ],
+          points: [
+            { x: 3.06, y: 1.9, label: "A", pos: "w" },
+            { x: 7.42, y: 2.6, label: "R", pos: "e" },
+          ],
+          caption: String.raw`$(\mathbf{r} - \mathbf{a}) \cdot \mathbf{n} = 0$, i.e. $\mathbf{r} \cdot \mathbf{n} = \mathbf{a} \cdot \mathbf{n}$`,
+          alt: "A plane with normal vector n at the point A. For any point R in the plane, the vector r minus a lies in the plane and is perpendicular to n.",
+        },
+        {
+          type: "plot",
+          x: [0, 10],
+          y: [0, 5.6],
+          equal: true,
+          axes: false,
+          polygons: [
+            { points: [[0.3, 2.4], [7.7, 2.4], [9.22, 4.3], [1.82, 4.3]], fill: true, tone: "muted" },
+          ],
+          segments: [
+            { from: [4.26, 0.85], to: [4.26, 2.85], dashed: true, tone: "warn", label: "|D| / |n|", pos: "e", style: "plain" },
+            { from: [4.26, 2.85], to: [4.26, 4.35], arrow: true, label: "n", pos: "e", labelAt: [4.26, 4.05] },
+          ],
+          rightAngles: [
+            { at: [4.26, 2.85], a: [0, 1], b: [1, 0], size: 0.36 },
+          ],
+          points: [
+            { x: 4.26, y: 0.85, label: "O", pos: "s" },
+            { x: 4.26, y: 2.85, label: "F", pos: "w" },
+          ],
+          labels: [
+            { x: 8.18, y: 4, text: "r · n = D", pos: "c", style: "bold" },
+          ],
+          caption: String.raw`Distance from $O$ to $\mathbf{r} \cdot \mathbf{n} = D$ is $\dfrac{|D|}{|\mathbf{n}|}$ (just $|d|$ if the equation is $\mathbf{r} \cdot \hat{\mathbf{n}} = d$)`,
+          alt: "The origin O below a plane r dot n = D, with F the foot of the perpendicular from O. The distance OF is |D| divided by |n|.",
+        },
+      ],
     },
     {
       title: String.raw`Line and plane`,
@@ -71,6 +287,81 @@ Shortcut for the distance only: $|\overrightarrow{AP} \times \hat{\mathbf{d}}|$,
 - $\mathbf{d} \cdot \mathbf{n} = 0$ and $\mathbf{a} \cdot \mathbf{n} \ne D$: the line is **parallel** to the plane, with no common point.
 
 Acute angle between line and plane: $\sin\theta = \dfrac{|\mathbf{d} \cdot \mathbf{n}|}{|\mathbf{d}||\mathbf{n}|}$ — **sine**, because $\mathbf{n}$ is perpendicular to the plane. Using cosine gives the complement, a very common error.`,
+      figure: [
+        {
+          type: "plot",
+          x: [0, 10],
+          y: [0, 5.8],
+          equal: true,
+          axes: false,
+          polygons: [
+            { points: [[0.3, 0.9], [7.7, 0.9], [9.54, 3.2], [2.14, 3.2]], fill: true, tone: "muted" },
+          ],
+          segments: [
+            { from: [1.42, 0.9], to: [2.74, 1.7], dashed: true, tone: "accent" },
+            { from: [2.74, 1.7], to: [6.86, 2.1], dashed: true, tone: "muted" },
+            { from: [6.86, 4.2], to: [6.86, 2.1], dashed: true, tone: "muted" },
+            { from: [2.74, 1.7], to: [8.01, 4.9], tone: "accent", label: "l", pos: "nw", style: "italic", labelAt: [7.59, 4.64] },
+            { from: [2.74, 1.7], to: [2.74, 4.8], arrow: true, tone: "ink", label: "n", pos: "w", labelAt: [2.74, 4.49] },
+          ],
+          rightAngles: [
+            { at: [6.86, 2.1], a: [0, 1], b: [-4.12, -0.4], size: 0.3 },
+          ],
+          angles: [
+            { at: [2.74, 1.7], from: [6.86, 2.1], to: [6.86, 4.2], r: 1.3, label: "θ" },
+            { at: [2.74, 1.7], from: [6.86, 4.2], to: [2.74, 4.8], r: 1.9 },
+          ],
+          points: [
+            { x: 2.74, y: 1.7, label: "B", pos: "s" },
+          ],
+          labels: [
+            { x: 3.82, y: 3.73, text: "90° − θ", pos: "c", style: "small" },
+          ],
+          caption: String.raw`Angle with the plane: $\sin\theta = \dfrac{|\mathbf{d} \cdot \mathbf{n}|}{|\mathbf{d}||\mathbf{n}|}$, as $\mathbf{d}$ makes $90^\circ - \theta$ with $\mathbf{n}$`,
+          alt: "A line l meeting a plane at B, drawn dashed below the plane. The angle theta is between l and its projection onto the plane; the normal n at B makes angle 90 degrees minus theta with l.",
+        },
+        {
+          type: "plot",
+          x: [0, 10],
+          y: [0, 5.8],
+          equal: true,
+          axes: false,
+          polygons: [
+            { points: [[0.3, 0.9], [7.7, 0.9], [9.54, 3.2], [2.14, 3.2]], fill: true, tone: "muted" },
+          ],
+          segments: [
+            { from: [1.7, 3.55], to: [7.86, 4.25], tone: "accent", label: "l", pos: "n", style: "italic", labelAt: [7.55, 4.22] },
+            { from: [1.7, 3.55], to: [3.24, 3.72], arrow: true, tone: "accent", label: "d", pos: "n", labelAt: [2.47, 3.64] },
+            { from: [6.32, 4.07], to: [6.32, 2.17], dashed: true, tone: "ink" },
+            { from: [2.66, 1.35], to: [2.66, 2.55], arrow: true, tone: "ink", label: "n", pos: "e", labelAt: [2.66, 2.35] },
+          ],
+          rightAngles: [
+            { at: [6.32, 2.17], a: [0, 1], b: [-1, 0], size: 0.3 },
+          ],
+          caption: String.raw`$\mathbf{d} \cdot \mathbf{n} = 0$ but $\mathbf{a} \cdot \mathbf{n} \ne D$: parallel, no common point`,
+          alt: "A line l above a plane and parallel to it; its direction d is perpendicular to the normal n, and the line never meets the plane.",
+        },
+        {
+          type: "plot",
+          x: [0, 10],
+          y: [0, 5.8],
+          equal: true,
+          axes: false,
+          polygons: [
+            { points: [[0.3, 0.9], [7.7, 0.9], [9.54, 3.2], [2.14, 3.2]], fill: true, tone: "muted" },
+          ],
+          segments: [
+            { from: [1.74, 1.7], to: [8.34, 2.45], tone: "accent", label: "l", pos: "s", style: "italic", labelAt: [8.01, 2.41] },
+            { from: [1.74, 1.7], to: [3.28, 1.88], arrow: true, tone: "accent", label: "d", pos: "s", labelAt: [2.51, 1.79] },
+            { from: [5.48, 2.13], to: [5.48, 4.53], arrow: true, tone: "ink", label: "n", pos: "e", labelAt: [5.48, 4.22] },
+          ],
+          rightAngles: [
+            { at: [5.48, 2.13], a: [0, 1], b: [1.1, 0.13], size: 0.36 },
+          ],
+          caption: String.raw`$\mathbf{d} \cdot \mathbf{n} = 0$ and $\mathbf{a} \cdot \mathbf{n} = D$: the line lies in the plane`,
+          alt: "A line l drawn in a plane, with the normal n perpendicular to the line's direction d.",
+        },
+      ],
     },
     {
       title: String.raw`Point and plane: foot, distance, reflection`,
@@ -81,6 +372,66 @@ Acute angle between line and plane: $\sin\theta = \dfrac{|\mathbf{d} \cdot \math
 - Reflection of $P$ in $\pi$: $\overrightarrow{OP'} = 2\overrightarrow{ON} - \overrightarrow{OP}$.
 - **Reflection of a line** $l$ in $\pi$ (when $l$ meets $\pi$ at $B$): reflect any other point $P$ of $l$ to $P'$; the image line passes through $B$ and $P'$. If $l$ is parallel to $\pi$, the image is parallel to $l$ through $P'$.
 - Planes $\mathbf{r} \cdot \mathbf{n} = D_1$ and $\mathbf{r} \cdot \mathbf{n} = D_2$ (same $\mathbf{n}$) are parallel, a distance $|D_1 - D_2| / |\mathbf{n}|$ apart.`,
+      figure: [
+        {
+          type: "plot",
+          x: [0, 10],
+          y: [0, 5.8],
+          equal: true,
+          axes: false,
+          polygons: [
+            { points: [[0.3, 0.9], [7.7, 0.9], [9.54, 3.2], [2.14, 3.2]], fill: true, tone: "muted" },
+          ],
+          segments: [
+            { from: [2.34, 1.7], to: [6.06, 2.1], tone: "muted", thin: true },
+            { from: [2.34, 1.7], to: [6.06, 5.4], arrow: true, tone: "good", label: "AP", pos: "nw", style: "plain" },
+            { from: [6.06, 3.35], to: [6.06, 5.4], dashed: true, tone: "ink" },
+            { from: [6.06, 2.1], to: [6.06, 3.35], arrow: true, tone: "accent", label: "n̂", pos: "w", labelAt: [6.06, 2.98] },
+            { from: [6.56, 5.4], to: [6.56, 2.1], tone: "warn", thin: true, arrow: true, arrowStart: true, label: "|AP · n̂|", pos: "e", style: "plain" },
+          ],
+          rightAngles: [
+            { at: [6.06, 2.1], a: [0, 1], b: [-3.72, -0.4], size: 0.36 },
+          ],
+          points: [
+            { x: 2.34, y: 1.7, label: "A", pos: "sw" },
+            { x: 6.06, y: 2.1, label: "N", pos: "se" },
+          ],
+          labels: [
+            { x: 6.06, y: 5.4, text: "P", pos: "n" },
+          ],
+          caption: String.raw`Distance $PN = |\overrightarrow{AP} \cdot \hat{\mathbf{n}}| = \dfrac{|\mathbf{p} \cdot \mathbf{n} - D|}{|\mathbf{n}|}$ for any $A$ in the plane`,
+          alt: "Point P above a plane, A any point in the plane, and N the foot of the perpendicular from P. The distance PN is the projection of AP onto the unit normal n-hat.",
+        },
+        {
+          type: "plot",
+          x: [0, 10],
+          y: [0, 6.2],
+          equal: true,
+          axes: false,
+          polygons: [
+            { points: [[0.3, 2.3], [7.7, 2.3], [9.22, 4.2], [1.82, 4.2]], fill: true, tone: "muted" },
+          ],
+          segments: [
+            { from: [2.74, 3.6], to: [6.3, 4.97], tone: "accent", label: "l", pos: "se", style: "italic", labelAt: [6.2, 4.92] },
+            { from: [2.74, 3.6], to: [5.97, 0.12], tone: "good", dashed: true, label: "l′", pos: "sw", style: "italic", labelAt: [5.84, 0.26] },
+            { from: [5.48, 4.65], to: [5.48, 2.65], tone: "ink", thin: true },
+            { from: [5.48, 2.65], to: [5.48, 0.65], tone: "ink", thin: true, dashed: true },
+            { from: [5.66, 3.65], to: [5.3, 3.65], tone: "ink", thin: true },
+            { from: [5.66, 1.65], to: [5.3, 1.65], tone: "ink", thin: true },
+          ],
+          rightAngles: [
+            { at: [5.48, 2.65], a: [0, 1], b: [-1, 0], size: 0.3 },
+          ],
+          points: [
+            { x: 2.74, y: 3.6, label: "B", pos: "w" },
+            { x: 5.48, y: 4.65, label: "P", pos: "nw" },
+            { x: 5.48, y: 2.65, label: "N", pos: "e" },
+            { x: 5.48, y: 0.65, label: "P′", pos: "e" },
+          ],
+          caption: "Reflect $P$ to $P'$ using the foot $N$; the image of $l$ is the line $l'$ through $B$ and $P'$",
+          alt: "Line l meets a plane at B. A point P on l has foot N on the plane and reflection P prime below the plane, with PN equal to NP prime. The reflected line l prime passes through B and P prime.",
+        },
+      ],
     },
     {
       title: String.raw`Two planes: angle and line of intersection`,
@@ -88,6 +439,48 @@ Acute angle between line and plane: $\sin\theta = \dfrac{|\mathbf{d} \cdot \math
 - Non-parallel planes meet in a line with direction $\mathbf{n}_1 \times \mathbf{n}_2$. Find a point by setting one coordinate (e.g. $z = 0$) and solving the other two equations.
 - With a GC: solve the two cartesian equations as a system; the GC returns, e.g., $x = 1 - \frac{2}{5}z$, $y = 2 + z$; let $z = \lambda$ to write $\mathbf{r} = \mathbf{a} + \lambda\mathbf{d}$. Show this working step.
 - Parallel planes: $\mathbf{n}_1 \parallel \mathbf{n}_2$ (coincident if the equations are multiples of each other).`,
+      figure: [
+        {
+          type: "plot",
+          x: [0, 10],
+          y: [0, 5.2],
+          equal: true,
+          axes: false,
+          segments: [
+            { from: [0.4, 1.6], to: [9.6, 1.6], tone: "ink", label: "Π₁", pos: "n", style: "italic", labelAt: [9.3, 1.6] },
+            { from: [0.81, -0.35], to: [8.68, 5.16], tone: "ink", label: "Π₂", pos: "nw", style: "italic", labelAt: [8.42, 4.98] },
+            { from: [3.6, 1.6], to: [3.6, 4], arrow: true, label: "n₁", pos: "n", labelAt: [3.6, 4] },
+            { from: [3.6, 1.6], to: [2.22, 3.57], arrow: true, tone: "good", label: "n₂", pos: "nw", labelAt: [2.22, 3.57] },
+          ],
+          angles: [
+            { at: [3.6, 1.6], from: [9.6, 1.6], to: [8.68, 5.16], r: 2, label: "θ" },
+            { at: [3.6, 1.6], from: [3.6, 4], to: [2.22, 3.57], r: 1.2, label: "θ" },
+          ],
+          points: [
+            { x: 3.6, y: 1.6, label: "", pos: "c" },
+          ],
+          caption: "Edge-on view: the angle between the normals equals the angle between the planes",
+          alt: "Two planes seen edge-on as lines meeting at angle theta. Their normals n1 and n2, drawn from the same point, also meet at angle theta.",
+        },
+        {
+          type: "plot",
+          x: [0, 10],
+          y: [0, 5.8],
+          equal: true,
+          axes: false,
+          polygons: [
+            { points: [[1.29, 0.66], [8.09, 0.66], [8.58, 2.3], [1.78, 2.3]], tone: "good", dashed: true },
+            { points: [[0.3, 1.2], [8.3, 1.2], [10.06, 3.4], [2.06, 3.4]], fill: true, tone: "muted" },
+            { points: [[1.78, 2.3], [8.58, 2.3], [9.5, 5.38], [2.7, 5.38]], fill: true, tone: "good" },
+          ],
+          segments: [
+            { from: [0.88, 2.3], to: [9.58, 2.3], tone: "accent", label: "l", pos: "s", style: "italic", labelAt: [1.05, 2.3] },
+            { from: [3.78, 2.3], to: [5.28, 2.3], arrow: true, label: "n₁ × n₂", pos: "s", labelAt: [4.53, 2.3] },
+          ],
+          caption: String.raw`The line of intersection is perpendicular to both normals, so it has direction $\mathbf{n}_1 \times \mathbf{n}_2$`,
+          alt: "A horizontal plane and an inclined plane meeting in a line l. The direction of l is n1 cross n2, perpendicular to both normals.",
+        },
+      ],
     },
     {
       title: String.raw`Exam technique`,
@@ -302,7 +695,38 @@ $$l_1: \frac{x - 1}{2} = \frac{y + 1}{-1} = \frac{z - 3}{2}, \qquad l_2: \mathbf
           ],
         },
         {
-          stem: String.raw`The roof of a shed consists of two rectangular faces $ABFE$ and $EFCD$ meeting along a horizontal ridge $EF$. Relative to an origin $O$ on the horizontal ground $z = 0$, the corners have coordinates $A(0, 0, 6)$, $B(10, 0, 6)$, $C(10, 8, 6)$, $D(0, 8, 6)$, $E(0, 4, 9)$ and $F(10, 4, 9)$, where units are in metres.`,
+          stem: String.raw`The diagram shows a shed. Its roof consists of two rectangular faces $ABFE$ and $EFCD$ meeting along a horizontal ridge $EF$. Relative to an origin $O$ on the horizontal ground $z = 0$, the corners have coordinates $A(0, 0, 6)$, $B(10, 0, 6)$, $C(10, 8, 6)$, $D(0, 8, 6)$, $E(0, 4, 9)$ and $F(10, 4, 9)$, where units are in metres.`,
+          figure: {
+            type: "plot",
+            x: [-0.8, 17.4],
+            y: [-0.4, 12.2],
+            equal: true,
+            axes: false,
+            polygons: [
+              { points: [[0.6, 0.6], [10.6, 0.6], [10.6, 6.6], [0.6, 6.6]], fill: true, tone: "muted" },
+              { points: [[10.6, 0.6], [16.2, 3.4], [16.2, 9.4], [13.4, 11], [10.6, 6.6]], fill: true, tone: "muted" },
+              { points: [[0.6, 6.6], [10.6, 6.6], [13.4, 11], [3.4, 11]], fill: true, tone: "accent" },
+            ],
+            segments: [
+              { from: [0.6, 0.6], to: [6.2, 3.4], dashed: true, tone: "muted", thin: true },
+              { from: [6.2, 3.4], to: [16.2, 3.4], dashed: true, tone: "muted", thin: true },
+              { from: [6.2, 3.4], to: [6.2, 9.4], dashed: true, tone: "muted", thin: true },
+              { from: [3.4, 11], to: [6.2, 9.4], dashed: true, tone: "muted", thin: true },
+              { from: [6.2, 9.4], to: [16.2, 9.4], dashed: true, tone: "muted", thin: true },
+            ],
+            points: [
+              { x: 0.6, y: 0.6, label: "O", pos: "sw" },
+            ],
+            labels: [
+              { x: 0.6, y: 6.6, text: "A", pos: "w" },
+              { x: 10.6, y: 6.6, text: "B", pos: "se" },
+              { x: 16.2, y: 9.4, text: "C", pos: "e" },
+              { x: 6.2, y: 9.4, text: "D", pos: "sw" },
+              { x: 3.4, y: 11, text: "E", pos: "nw" },
+              { x: 13.4, y: 11, text: "F", pos: "ne" },
+            ],
+            alt: "A shed drawn in 3D: rectangular walls on horizontal ground with O at a bottom corner, and a roof made of two rectangular faces ABFE and EFCD meeting along the horizontal ridge EF.",
+          },
           parts: [
             { label: "(i)", text: String.raw`Show that the face $ABFE$ lies in the plane with cartesian equation $-3y + 4z = 24$.`, marks: 3 },
             { label: "(ii)", text: String.raw`The face $EFCD$ lies in the plane $3y + 4z = 48$. Find the angle between the two faces of the roof, measured inside the shed.`, marks: 3 },

@@ -37,6 +37,32 @@ $r$ measures how well a **linear** model fits the data. Obtain it from the GC (L
 - $r$ close to $1$ ($-1$): strong positive (negative) **linear** correlation; points lie close to a line with positive (negative) gradient.
 - $r$ close to $0$: little or no **linear** correlation — there may still be a strong **non-linear** relationship (e.g. points on a curve with a turning point).
 - $r$ is unchanged by swapping $x$ and $y$, or by changes of units of the form $x \mapsto px + q$ with $p > 0$ (the sign of $r$ flips if $p < 0$).`,
+      figure: [
+        {
+          type: "plot", x: [0, 11], y: [0, 10.5], height: 190, axisLabels: ["x", "y"],
+          scatter: [[1, 1.8], [2, 1.8], [3, 3.6], [4, 4.6], [5, 4.4], [6, 5.9], [7, 6], [8, 7.9], [9, 8], [10, 9.2]],
+          caption: String.raw`$r = 0.98$: strong positive linear correlation`,
+          alt: "Scatter diagram with points lying close to a straight line of positive gradient.",
+        },
+        {
+          type: "plot", x: [0, 11], y: [0, 10.5], height: 190, axisLabels: ["x", "y"],
+          scatter: [[1, 8.6], [2, 8.4], [3, 6.6], [4, 6.5], [5, 5.9], [6, 4], [7, 3.8], [8, 2.5], [9, 2.4], [10, 0.7]],
+          caption: String.raw`$r = -0.99$: strong negative linear correlation`,
+          alt: "Scatter diagram with points lying close to a straight line of negative gradient.",
+        },
+        {
+          type: "plot", x: [0, 11], y: [0, 10.5], height: 190, axisLabels: ["x", "y"],
+          scatter: [[1.2, 6.5], [2, 3.1], [2.6, 8], [3.5, 4.6], [4.1, 2.2], [4.8, 7.1], [5.5, 5], [6.2, 4.4], [6.9, 2.8], [7.6, 6], [8.4, 4], [9.1, 7.6], [9.8, 6.8], [3, 1.8], [5.9, 1.5], [8, 2.9], [1.6, 7.8], [9.4, 5.5]],
+          caption: String.raw`$r \approx 0$: no relationship`,
+          alt: "Scatter diagram with points spread randomly over the whole region, showing no pattern.",
+        },
+        {
+          type: "plot", x: [0, 11], y: [0, 10.5], height: 190, axisLabels: ["x", "y"],
+          scatter: [[1, 1.9], [2, 4.4], [3, 6.9], [4, 8.1], [5, 9.1], [6, 8.7], [7, 8.3], [8, 6.6], [9, 4.8], [10, 1.5]],
+          caption: String.raw`$r \approx 0$, yet a strong non-linear relationship`,
+          alt: "Scatter diagram with points lying close to an upside-down U-shaped curve: a strong relationship that is not linear.",
+        },
+      ],
     },
     {
       title: String.raw`Correlation is not causation`,
@@ -50,6 +76,26 @@ $$y - \bar{y} = b(x - \bar{x}), \qquad b = \frac{\sum (x - \bar{x})(y - \bar{y})
 - The line of $x$ on $y$ minimises the sum of squares of the **horizontal** distances; it is a different line unless $|r| = 1$.
 - **Both lines pass through $(\bar{x}, \bar{y})$** — use this to find a missing data value when the equation of a regression line is given.
 - Write the equation in context with the actual variable names, coefficients to 3 s.f., and keep full GC values for any estimate.`,
+      figure: [
+        {
+          type: "plot", x: [0, 10], y: [0, 9], height: 210, axisLabels: ["x", "y"],
+          curves: [{ fn: "x => 1.78889 + 0.64667*x", domain: [0.3, 9.7] }],
+          segments: [{ from: [1, 2.6], to: [1, 2.436], tone: "warn", thin: true }, { from: [2, 2.4], to: [2, 3.082], tone: "warn", thin: true }, { from: [3, 4.6], to: [3, 3.729], tone: "warn", thin: true }, { from: [4, 3.6], to: [4, 4.376], tone: "warn", thin: true }, { from: [5, 5.8], to: [5, 5.022], tone: "warn", thin: true }, { from: [6, 4.9], to: [6, 5.669], tone: "warn", thin: true }, { from: [7, 7.4], to: [7, 6.316], tone: "warn", thin: true }, { from: [8, 6.1], to: [8, 6.962], tone: "warn", thin: true }, { from: [9, 7.8], to: [9, 7.609], tone: "warn", thin: true }],
+          scatter: [[1, 2.6], [2, 2.4], [3, 4.6], [4, 3.6], [5, 5.8], [6, 4.9], [7, 7.4], [8, 6.1], [9, 7.8]],
+          points: [{ x: 5, y: 5.0222, label: "(x̄, ȳ)", pos: "se" }],
+          caption: String.raw`$y$ on $x$: minimises the sum of squared **vertical** distances`,
+          alt: "Scatter diagram with the regression line of y on x; each point is joined to the line by a short vertical segment (its residual). The line passes through the mean point.",
+        },
+        {
+          type: "plot", x: [0, 10], y: [0, 9], height: 210, axisLabels: ["x", "y"],
+          curves: [{ fn: "x => 1.14393 + 0.77566*x", domain: [0.3, 9.7], tone: "good" }],
+          segments: [{ from: [1, 2.6], to: [1.877, 2.6], tone: "warn", thin: true }, { from: [2, 2.4], to: [1.619, 2.4], tone: "warn", thin: true }, { from: [3, 4.6], to: [4.456, 4.6], tone: "warn", thin: true }, { from: [4, 3.6], to: [3.166, 3.6], tone: "warn", thin: true }, { from: [5, 5.8], to: [6.003, 5.8], tone: "warn", thin: true }, { from: [6, 4.9], to: [4.842, 4.9], tone: "warn", thin: true }, { from: [7, 7.4], to: [8.065, 7.4], tone: "warn", thin: true }, { from: [8, 6.1], to: [6.390, 6.1], tone: "warn", thin: true }, { from: [9, 7.8], to: [8.581, 7.8], tone: "warn", thin: true }],
+          scatter: [[1, 2.6], [2, 2.4], [3, 4.6], [4, 3.6], [5, 5.8], [6, 4.9], [7, 7.4], [8, 6.1], [9, 7.8]],
+          points: [{ x: 5, y: 5.0222, label: "(x̄, ȳ)", pos: "se" }],
+          caption: String.raw`$x$ on $y$: minimises the sum of squared **horizontal** distances`,
+          alt: "The same scatter diagram with the regression line of x on y, which is steeper; each point is joined to the line by a short horizontal segment. This line also passes through the mean point.",
+        },
+      ],
     },
     {
       title: String.raw`Choosing the appropriate line`,
@@ -65,6 +111,24 @@ $$y - \bar{y} = b(x - \bar{x}), \qquad b = \frac{\sum (x - \bar{x})(y - \bar{y})
 2. $|r|$ is close to $1$ (strong linear correlation) and the appropriate line is used.
 
 **Extrapolation** (outside the data range) is unreliable because the linear relationship may not continue beyond the data. Look also for contextual impossibilities (a negative mass, a percentage above 100) as evidence that a linear model breaks down.`,
+      figure: {
+        type: "plot", x: [0, 16], y: [0, 18], height: 240, axisLabels: ["x", "y"],
+        shade: [{ upper: "x => 18", lower: "x => 0", from: 2, to: 8, tone: "muted" }],
+        curves: [
+          { fn: "x => 12*(1 - Math.exp(-x/5))", domain: [0, 16], dashed: true, tone: "muted" },
+          { fn: "x => 2.6750 + 0.91071*x", domain: [2, 8] },
+          { fn: "x => 2.6750 + 0.91071*x", domain: [8, 16], dashed: true },
+          { fn: "x => 2.6750 + 0.91071*x", domain: [0, 2], dashed: true },
+        ],
+        scatter: [[2, 4.1], [3, 5.2], [4, 6.7], [5, 7.8], [6, 8.2], [7, 9.1], [8, 9.5]],
+        labels: [
+          { x: 5, y: 16.6, text: "interpolation", style: "small" },
+          { x: 12, y: 16.6, text: "extrapolation", style: "small", tone: "warn" },
+          { x: 13, y: 9.6, text: "trend may change", style: "small", tone: "muted" },
+        ],
+        caption: String.raw`Estimates within the data range (shaded) are reliable; beyond it the linear pattern may not continue.`,
+        alt: "Scatter diagram with data for x from 2 to 8 in a shaded band labelled interpolation, and a regression line that continues dashed beyond the band into a region labelled extrapolation, where a possible true curve levels off below the line.",
+      },
     },
     {
       title: String.raw`Transformations to linearity`,
@@ -75,12 +139,42 @@ $$y - \bar{y} = b(x - \bar{x}), \qquad b = \frac{\sum (x - \bar{x})(y - \bar{y})
 | $\ln y = a + bx$ (i.e. $y = \ee^{a}\ee^{bx}$) | $\ln y$ against $x$ | exponential growth or decay, $y > 0$ |
 
 To choose a model: (i) rule out a model whose shape does not match the scatter diagram (e.g. $y = a + bx^2$ with $b < 0$ is concave, so it cannot fit points that curve upwards); (ii) among the rest, choose the one whose transformed data give $|r|$ **closest to 1**. Then find the regression line on the transformed variables and convert back.`,
+      figure: [
+        {
+          type: "plot", x: [0, 9], y: [0, 46], height: 200, axisLabels: ["x", "y"],
+          scatter: [[1, 2.4], [2, 3.3], [3, 5.4], [4, 7.8], [5, 12.9], [6, 17.9], [7, 28.9], [8, 42.3]],
+          caption: String.raw`$y$ against $x$: clearly curved, even though $r = 0.931$`,
+          alt: "Scatter diagram of y against x: the points curve upwards ever more steeply, like exponential growth.",
+        },
+        {
+          type: "plot", x: [0, 9], y: [0, 4.3], height: 200, axisLabels: ["x", "ln y"],
+          curves: [{ fn: "x => 0.4183 + 0.41706*x", domain: [0.4, 8.6] }],
+          scatter: [[1, 0.875], [2, 1.194], [3, 1.686], [4, 2.054], [5, 2.557], [6, 2.885], [7, 3.364], [8, 3.745]],
+          caption: String.raw`$\ln y$ against $x$: linear, $r = 0.999$, so $\ln y = a + bx$ is a good model`,
+          alt: "Scatter diagram of ln y against x for the same data: the points now lie very close to a straight line.",
+        },
+      ],
     },
     {
       title: String.raw`Changing data and outliers`,
       body: String.raw`- Removing an outlier that lies far from the trend usually makes $|r|$ closer to 1 and can change the gradient markedly; say whether the outlier should be excluded (e.g. a recording error, or an abnormal condition stated in the question).
 - Adding the point $(\bar{x}, \bar{y})$ leaves $\bar{x}$, $\bar{y}$, $\sum (x-\bar{x})(y-\bar{y})$, $\sum (x-\bar{x})^2$ and $\sum (y-\bar{y})^2$ unchanged, so **neither the regression line nor $r$ changes**.
 - If a value is corrected, recompute $r$ and the line on the GC with the corrected list rather than adjusting by hand.`,
+      figure: {
+        type: "plot", x: [0, 10], y: [0, 10.5], height: 220, axisLabels: ["x", "y"],
+        curves: [
+          { fn: "x => 1.6000 + 0.70000*x", domain: [0.4, 9.6], dashed: true, tone: "muted" },
+          { fn: "x => 1.7401 + 0.78408*x", domain: [0.4, 9.6] },
+        ],
+        scatter: [[1, 2.4], [2, 3.5], [3, 3.9], [4, 5.1], [5, 5.6], [7, 7.3], [8, 7.8], [9, 8.9]],
+        points: [{ x: 6, y: 1.4, label: "outlier", pos: "e", style: "small" }],
+        labels: [
+          { x: 8.3, y: 9.6, text: "without outlier", style: "small", tone: "accent", pos: "w" },
+          { x: 9.6, y: 6.4, text: "with outlier", style: "small", tone: "muted", pos: "n" },
+        ],
+        caption: String.raw`One outlier lowers $r$ from $0.997$ to $0.753$ and pulls the regression line towards it.`,
+        alt: "Scatter diagram of points close to a straight line, plus one outlier far below. The regression line with the outlier (dashed) is flatter than the line without it (solid).",
+      },
     },
   ],
   archetypes: [

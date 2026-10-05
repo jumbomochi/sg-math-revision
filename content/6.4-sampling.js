@@ -29,6 +29,23 @@ $$\E(\overline{X}) = \mu, \qquad \Var(\overline{X}) = \frac{\sigma^2}{n}.$$
 
 - The spread of $\overline{X}$ shrinks as $n$ grows: a sample mean is far less likely to be extreme than a single observation.
 - Do not confuse $\overline{X}$ with the **total** $X_1 + \cdots + X_n$, which has mean $n\mu$ and variance $n\sigma^2$, or with $nX$ (variance $n^2\sigma^2$).`,
+      figure: {
+        type: "plot", x: [-3.6, 3.6], y: [-0.06, 1.75], height: 240, axisLabels: ["x", null],
+        curves: [
+          { fn: "x => Math.exp(-0.5*((x-(0))/1)**2)/(1*Math.sqrt(2*Math.PI))", tone: "muted" },
+          { fn: "x => Math.exp(-0.5*((x-(0))/0.5)**2)/(0.5*Math.sqrt(2*Math.PI))", tone: "good" },
+          { fn: "x => Math.exp(-0.5*((x-(0))/0.25)**2)/(0.25*Math.sqrt(2*Math.PI))" },
+        ],
+        lines: [{ x: 0 }],
+        xTicks: [{ x: 0, label: "μ" }],
+        labels: [
+          { x: 0.42, y: 1.45, text: "X̄, n = 16", pos: "e", style: "italic", tone: "accent" },
+          { x: 0.75, y: 0.62, text: "X̄, n = 4", pos: "e", style: "italic", tone: "good" },
+          { x: 1.55, y: 0.2, text: "X", pos: "e", style: "italic", tone: "muted" },
+        ],
+        caption: String.raw`Same centre $\mu$; the spread $\sigma/\sqrt{n}$ shrinks as $n$ grows.`,
+        alt: "Three normal curves centred at mu: the distribution of X is widest, the distribution of the sample mean for n = 4 is narrower and taller, and for n = 16 narrower and taller still.",
+      },
     },
     {
       title: String.raw`Sampling from a normal population`,
@@ -36,6 +53,30 @@ $$\E(\overline{X}) = \mu, \qquad \Var(\overline{X}) = \frac{\sigma^2}{n}.$$
 $$\overline{X} \sim \N\!\left(\mu, \frac{\sigma^2}{n}\right) \quad \text{exactly}.$$
 
 No Central Limit Theorem is needed — say so when asked. Typical comparison: $\P(X > k)$ for one item versus $\P(\overline{X} > k)$ for the mean of $n$ items; explain the difference via the smaller variance of $\overline{X}$.`,
+      figure: [
+        {
+          type: "plot", x: [-3.4, 3.4], y: [-0.04, 0.85], height: 190, axisLabels: ["x", null],
+          curves: [{ fn: "x => Math.exp(-0.5*((x-(0))/1)**2)/(1*Math.sqrt(2*Math.PI))" }],
+          shade: [{ upper: "x => Math.exp(-0.5*((x-(0))/1)**2)/(1*Math.sqrt(2*Math.PI))", from: 0.75, to: 3.4, tone: "warn" }],
+          lines: [{ x: 0 }],
+          xTicks: [{ x: 0, label: "μ" }, { x: 0.75, label: "k" }],
+          segments: [{ from: [1.45, 0.2], to: [1.15, 0.13], tone: "warn", thin: true }],
+          labels: [{ x: 1.45, y: 0.2, text: "P(X > k)", pos: "e", style: "italic", tone: "warn" }],
+          caption: String.raw`One item: $X \sim \N(\mu, \sigma^2)$`,
+          alt: "Normal curve of X with the tail to the right of k shaded; the shaded area is fairly large.",
+        },
+        {
+          type: "plot", x: [-3.4, 3.4], y: [-0.04, 0.85], height: 190, axisLabels: ["x̄", null],
+          curves: [{ fn: "x => Math.exp(-0.5*((x-(0))/0.5)**2)/(0.5*Math.sqrt(2*Math.PI))" }],
+          shade: [{ upper: "x => Math.exp(-0.5*((x-(0))/0.5)**2)/(0.5*Math.sqrt(2*Math.PI))", from: 0.75, to: 3.4, tone: "warn" }],
+          lines: [{ x: 0 }],
+          xTicks: [{ x: 0, label: "μ" }, { x: 0.75, label: "k" }],
+          segments: [{ from: [1.45, 0.2], to: [0.95, 0.06], tone: "warn", thin: true }],
+          labels: [{ x: 1.45, y: 0.2, text: "P(X̄ > k)", pos: "e", style: "italic", tone: "warn" }],
+          caption: String.raw`Mean of 4 items: $\overline{X} \sim \N\!\left(\mu, \frac{\sigma^2}{4}\right)$`,
+          alt: "Narrower normal curve of the sample mean on the same scale, with the much smaller tail to the right of k shaded.",
+        },
+      ],
     },
     {
       title: String.raw`The Central Limit Theorem (CLT)`,
@@ -46,6 +87,33 @@ $$\overline{X} \sim \N\!\left(\mu, \frac{\sigma^2}{n}\right) \quad \textbf{appro
 - The CLT is about the distribution of $\overline{X}$, **not** of $X$: a large sample does *not* make the population normal. A common wrong statement is "since $n$ is large, $X$ is normally distributed".
 - With a small sample from a non-normal population, $\P(\overline{X} > k)$ cannot be found using a normal distribution.
 - Always write "approximately" (or $\overset{\text{approx}}{\sim}$) when the CLT is used. No continuity correction is applied to $\overline{X}$.`,
+      figure: [
+        {
+          type: "plot", x: [-0.6, 4.6], y: [0, 0.46], height: 180, axisLabels: ["x", null],
+          bars: [[0, 0.4], [1, 0.3], [2, 0.15], [3, 0.1], [4, 0.05]], barWidth: 0.55,
+          lines: [{ x: 1.1, label: "μ" }],
+          xTicks: [0, 1, 2, 3, 4].map((k) => ({ x: k, label: String(k) })),
+          caption: String.raw`Population $X$: discrete and skewed`,
+          alt: "Bar chart of a skewed discrete population: P(X = x) is 0.4, 0.3, 0.15, 0.1, 0.05 for x = 0 to 4, with mean 1.1 marked.",
+        },
+        {
+          type: "plot", x: [-0.6, 4.6], y: [0, 0.215], height: 180, axisLabels: ["x̄", null],
+          bars: [[0.0, 0.0256], [0.25, 0.0768], [0.5, 0.1248], [0.75, 0.1552], [1.0, 0.1649], [1.25, 0.1494], [1.5, 0.1172], [1.75, 0.082], [2.0, 0.0515], [2.25, 0.0286], [2.5, 0.0142], [2.75, 0.0063], [3.0, 0.0024], [3.25, 0.0008], [3.5, 0.0002], [3.75, 0.0001]], barWidth: 0.19,
+          lines: [{ x: 1.1, label: "μ" }],
+          xTicks: [0, 1, 2, 3, 4].map((k) => ({ x: k, label: String(k) })),
+          caption: String.raw`$\overline{X}$ for $n = 4$: still skewed`,
+          alt: "Exact distribution of the sample mean of 4 observations from the same population: bars at multiples of 0.25, less skewed and more concentrated around 1.1.",
+        },
+        {
+          type: "plot", x: [-0.6, 4.6], y: [0, 2.6], height: 180, axisLabels: ["x̄", null],
+          curves: [{ fn: "x => Math.exp(-0.5*((x-(1.1))/0.21525)**2)/(0.21525*Math.sqrt(2*Math.PI))", samples: 1200 }],
+          shade: [{ upper: "x => Math.exp(-0.5*((x-(1.1))/0.21525)**2)/(0.21525*Math.sqrt(2*Math.PI))", from: 0.2, to: 2.0 }],
+          lines: [{ x: 1.1, label: "μ" }],
+          xTicks: [0, 1, 2, 3, 4].map((k) => ({ x: k, label: String(k) })),
+          caption: String.raw`$\overline{X}$ for $n = 30$: approximately $\N\!\left(\mu, \frac{\sigma^2}{30}\right)$`,
+          alt: "Distribution of the sample mean of 30 observations: a narrow, symmetric bell-shaped curve centred at 1.1.",
+        },
+      ],
     },
     {
       title: String.raw`Unbiased estimates of $\mu$ and $\sigma^2$ ($s^2$ in MF27)`,
@@ -80,6 +148,15 @@ When population parameters are unknown, replace $\mu$ and $\sigma^2$ by the unbi
 - Solve for $\sqrt{n}$ and square, taking care with the direction of the inequality when dividing by a negative number; or tabulate $\P(\overline{X} > k)$ against $n$ on the GC and show the two values either side of the boundary.
 - $n$ is an integer: round **up** to the least $n$ satisfying the condition, and quote the GC values that justify it.
 - If the population is not normal, check the final $n$ is large enough for the CLT to apply.`,
+      figure: {
+        type: "plot", x: [-3.6, 3.6], y: [-0.02, 0.46], height: 210, axisLabels: ["x̄", null],
+        curves: [{ fn: "x => Math.exp(-0.5*((x-(0))/1)**2)/(1*Math.sqrt(2*Math.PI))" }],
+        shade: [{ upper: "x => Math.exp(-0.5*((x-(0))/1)**2)/(1*Math.sqrt(2*Math.PI))", from: -2.0537, to: 3.6 }, { upper: "x => Math.exp(-0.5*((x-(0))/1)**2)/(1*Math.sqrt(2*Math.PI))", from: -3.6, to: -2.0537, tone: "warn" }],
+        xTicks: [{ x: -2.0537, label: "k" }, { x: 0, label: "μ" }],
+        labels: [{ x: 0, y: 0.17, text: "0.98", style: "plain" }, { x: -2.75, y: 0.1, text: "0.02", style: "small", tone: "warn" }],
+        caption: String.raw`$\P(\overline{X} > k) = 0.98$ exactly when $k$ is $2.0537$ standard deviations $\sigma/\sqrt{n}$ below $\mu$.`,
+        alt: "Distribution of the sample mean with value k marked below mu; area 0.98 to the right of k and 0.02 to the left.",
+      },
     },
   ],
   archetypes: [

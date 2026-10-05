@@ -27,6 +27,18 @@ H2.addTopic({
 
 - To solve an equation involving $z$ and $z^*$, substitute $z = x + \ii y$, $z^* = x - \ii y$, expand, and compare real and imaginary parts.
 - $z$ is **real** $\iff \Im(z) = 0 \iff z = z^*$; $z$ is **purely imaginary** $\iff \Re(z) = 0$.`,
+      figure: {
+        type: "plot", x: [-0.8, 4.8], y: [-0.8, 3], equal: true, axisLabels: ["Re", "Im"],
+        segments: [
+          { from: [3, 0], to: [3, 2], tone: "muted", thin: true, dashed: true },
+          { from: [0, 2], to: [3, 2], tone: "muted", thin: true, dashed: true },
+        ],
+        points: [{ x: 3, y: 2, label: "z = x + iy", pos: "ne", style: "italic" }],
+        xTicks: [{ x: 3, label: "x" }],
+        yTicks: [{ y: 2, label: "y" }],
+        caption: String.raw`In the Argand diagram, $z = x + \ii y$ is the point $(x, y)$: $\Re(z)$ across, $\Im(z)$ up.`,
+        alt: "Argand diagram with the point z = x + iy plotted at (x, y), with dashed lines to x on the real axis and y on the imaginary axis.",
+      },
     },
     {
       title: String.raw`The four operations and the conjugate`,
@@ -61,6 +73,52 @@ a conjugate pair. If the coefficients are **not** all real, the formula still wo
 - $\arg 0$ is undefined; on the axes, $\arg z \in \{0, \frac{\pi}{2}, \pi, -\frac{\pi}{2}\}$.
 - Give exact values ($\frac{\pi}{6}$, $\frac{2\pi}{3}$, …) when the numbers allow; otherwise radians to 3 d.p. Set the GC to **radians**.
 - Only cartesian form is in the syllabus: no polar or exponential form, and no de Moivre's theorem.`,
+      figure: [
+        {
+          type: "plot", x: [-4, 4], y: [-3, 3], equal: true, axisLabels: ["Re", "Im"], originLabel: "sw",
+          segments: [
+            { from: [0, 0], to: [2.6, 1.8], tone: "accent", label: "|z|", pos: "nw", style: "italic" },
+            { from: [2.6, 1.8], to: [2.6, 0], tone: "muted", thin: true, dashed: true },
+          ],
+          angles: [{ at: [0, 0], from: [1, 0], to: [2.6, 1.8], r: 0.9, label: "α" }],
+          points: [{ x: 2.6, y: 1.8, label: "z", pos: "ne", style: "italic" }],
+          caption: String.raw`1st quadrant: $\arg z = \alpha$, measured anticlockwise`,
+          alt: "Argand diagram with z in the first quadrant joined to O; arg z is the angle alpha measured anticlockwise from the positive real axis.",
+        },
+        {
+          type: "plot", x: [-4, 4], y: [-3, 3], equal: true, axisLabels: ["Re", "Im"], originLabel: "se",
+          segments: [
+            { from: [0, 0], to: [-2.6, 1.8], tone: "accent", label: "|z|", pos: "ne", style: "italic" },
+            { from: [-2.6, 1.8], to: [-2.6, 0], tone: "muted", thin: true, dashed: true },
+          ],
+          angles: [{ at: [0, 0], from: [1, 0], to: [-2.6, 1.8], r: 0.8, label: "π − α" }, { at: [0, 0], from: [-2.6, 1.8], to: [-1, 0], r: 1.55, label: "α" }],
+          points: [{ x: -2.6, y: 1.8, label: "z", pos: "nw", style: "italic" }],
+          caption: String.raw`2nd quadrant: $\arg z = \pi - \alpha$, measured anticlockwise`,
+          alt: "Argand diagram with z in the second quadrant; the basic angle alpha is between Oz and the negative real axis, and arg z, measured anticlockwise from the positive real axis, is pi minus alpha.",
+        },
+        {
+          type: "plot", x: [-4, 4], y: [-3, 3], equal: true, axisLabels: ["Re", "Im"], originLabel: "ne",
+          segments: [
+            { from: [0, 0], to: [-2.6, -1.8], tone: "accent", label: "|z|", pos: "se", style: "italic" },
+            { from: [-2.6, -1.8], to: [-2.6, 0], tone: "muted", thin: true, dashed: true },
+          ],
+          angles: [{ at: [0, 0], from: [-2.6, -1.8], to: [1, 0], r: 0.8, label: "π − α" }, { at: [0, 0], from: [-1, 0], to: [-2.6, -1.8], r: 1.55, label: "α" }],
+          points: [{ x: -2.6, y: -1.8, label: "z", pos: "sw", style: "italic" }],
+          caption: String.raw`3rd quadrant: $\arg z = -(\pi - \alpha)$, measured clockwise`,
+          alt: "Argand diagram with z in the third quadrant; the basic angle alpha is between Oz and the negative real axis, and arg z is minus (pi minus alpha), measured clockwise from the positive real axis.",
+        },
+        {
+          type: "plot", x: [-4, 4], y: [-3, 3], equal: true, axisLabels: ["Re", "Im"], originLabel: "nw",
+          segments: [
+            { from: [0, 0], to: [2.6, -1.8], tone: "accent", label: "|z|", pos: "sw", style: "italic" },
+            { from: [2.6, -1.8], to: [2.6, 0], tone: "muted", thin: true, dashed: true },
+          ],
+          angles: [{ at: [0, 0], from: [2.6, -1.8], to: [1, 0], r: 0.9, label: "α" }],
+          points: [{ x: 2.6, y: -1.8, label: "z", pos: "se", style: "italic" }],
+          caption: String.raw`4th quadrant: $\arg z = -\alpha$, measured clockwise`,
+          alt: "Argand diagram with z in the fourth quadrant; arg z is minus alpha, the angle alpha being measured clockwise from the positive real axis.",
+        },
+      ],
     },
     {
       title: String.raw`Conjugate root theorem`,
@@ -72,6 +130,18 @@ a **real** quadratic factor. Find the remaining factor by comparing coefficients
 
 - To find unknown real coefficients, substitute $z = \alpha$ and equate real and imaginary parts, *or* use the real quadratic factor.
 - A real polynomial of odd degree always has at least one real root.`,
+      figure: {
+        type: "plot", x: [-2.4, 3.6], y: [-2.7, 2.7], equal: true, axisLabels: ["Re", "Im"],
+        segments: [{ from: [1, 2], to: [1, -2], tone: "muted", thin: true, dashed: true }],
+        rightAngles: [{ at: [1, 0], a: [0, 1], b: [1, 0], size: 0.22 }],
+        points: [
+          { x: 1, y: 2, label: "α = 1 + 2i", pos: "e", style: "italic" },
+          { x: 1, y: -2, label: "α* = 1 − 2i", pos: "e", style: "italic" },
+          { x: -1, y: 0, label: "−1", pos: "n" },
+        ],
+        caption: String.raw`Roots of $z^3 - z^2 + 3z + 5 = 0$ (real coefficients): the non-real roots form a conjugate pair, mirror images in the real axis.`,
+        alt: "Argand diagram of the roots of a real cubic: a real root at -1 on the real axis, and the conjugate pair 1 + 2i and 1 - 2i placed symmetrically above and below the real axis, joined by a dashed line perpendicular to it.",
+      },
     },
     {
       title: String.raw`Polynomials with non-real coefficients`,
@@ -91,6 +161,59 @@ Substitutions such as $w = 1/z$, $w = 2z$ or $w = \ii z$ turn a solved equation 
 | $\ii z$ | rotation through $\frac{\pi}{2}$ anticlockwise about $O$ |
 
 So for a square $ABCD$ (labelled anticlockwise), $c - b = \ii(b - a)$ and $d - a = \ii(b - a)$.`,
+      figure: [
+        {
+          type: "plot", x: [-3, 3], y: [-1.6, 1.6], equal: true, axisLabels: ["Re", "Im"],
+          segments: [
+            { from: [2.2, 0.75], to: [2.2, -0.75], tone: "muted", thin: true, dashed: true },
+            { from: [0, 0], to: [2.2, 0.75], arrow: true, label: "z", pos: "ne", labelAt: [2.2, 0.75], style: "italic" },
+            { from: [0, 0], to: [2.2, -0.75], arrow: true, tone: "good", label: "z*", pos: "se", labelAt: [2.2, -0.75], style: "italic" },
+            { from: [0, 0], to: [-2.2, -0.75], arrow: true, tone: "good", label: "−z", pos: "sw", labelAt: [-2.2, -0.75], style: "italic" },
+          ],
+          caption: String.raw`$z^*$: reflection in the real axis. $-z$: half-turn about $O$.`,
+          alt: "Argand diagram showing z, its conjugate z* as the reflection of z in the real axis, and -z as the half-turn of z about the origin.",
+        },
+        {
+          type: "plot", x: [-2, 3], y: [-0.8, 2.6], equal: true, axisLabels: ["Re", "Im"],
+          segments: [
+            { from: [0, 0], to: [2, 1], arrow: true, label: "z", pos: "e", labelAt: [2, 1], style: "italic" },
+            { from: [0, 0], to: [-1, 2], arrow: true, tone: "good", label: "iz", pos: "nw", labelAt: [-1, 2], style: "italic" },
+          ],
+          angles: [{ at: [0, 0], from: [2, 1], to: [-1, 2], r: 0.55, label: "π/2" }],
+          caption: String.raw`$\ii z$: rotation through $\frac{\pi}{2}$ anticlockwise about $O$; $|\ii z| = |z|$.`,
+          alt: "Argand diagram showing z and iz: iz is z rotated a quarter-turn anticlockwise about the origin, with the right angle between them marked pi/2.",
+        },
+        {
+          type: "plot", x: [-0.7, 5.4], y: [-1.3, 3.7], equal: true, axisLabels: ["Re", "Im"],
+          polygons: [{ points: [[0, 0], [3.4, 1.2], [4.4, 3.2], [1, 2]], fill: true, tone: "muted" }],
+          segments: [
+            { from: [0, 0], to: [3.4, 1.2], arrow: true, label: "z", pos: "se", style: "italic" },
+            { from: [0, 0], to: [1, 2], arrow: true, tone: "good", label: "w", pos: "nw", style: "italic" },
+            { from: [0, 0], to: [4.4, 3.2], arrow: true, tone: "ink", label: "z + w", pos: "e", labelAt: [4.4, 3.2], style: "italic" },
+            { from: [1, 2], to: [3.4, 1.2], arrow: true, tone: "warn", label: "z − w", pos: "ne", labelAt: [2.4, 1.55], style: "italic" },
+            { from: [0, 0], to: [2.4, -0.8], arrow: true, dashed: true, tone: "warn", label: "z − w", pos: "e", labelAt: [2.4, -0.8], style: "italic" },
+          ],
+          points: [{ x: 3.4, y: 1.2, label: "Z", pos: "e" }, { x: 1, y: 2, label: "W", pos: "w" }],
+          caption: String.raw`$z + w$: diagonal of the parallelogram. $z - w = \overrightarrow{WZ}$, so $|z - w| = WZ$.`,
+          alt: "Parallelogram with vertices O, Z, Z + W and W. The diagonal from O is z + w; the vector from W to Z is z - w, drawn again from the origin as a dashed arrow.",
+        },
+        {
+          type: "plot", x: [-1.4, 4.4], y: [0, 4.4], equal: true, axes: false,
+          polygons: [{ points: [[0.5, 0.5], [3, 1.3], [2.2, 3.8], [-0.3, 3]], fill: true, tone: "muted" }],
+          segments: [
+            { from: [0.5, 0.5], to: [3, 1.3], arrow: true, label: "b − a", pos: "s", style: "italic" },
+            { from: [3, 1.3], to: [2.2, 3.8], arrow: true, tone: "good", label: "i(b − a)", pos: "e", style: "italic" },
+            { from: [0.5, 0.5], to: [-0.3, 3], arrow: true, tone: "good", label: "i(b − a)", pos: "w", style: "italic" },
+          ],
+          rightAngles: [{ at: [0.5, 0.5], a: [2.5, 0.8], b: [-0.8, 2.5], size: 0.3 }],
+          points: [
+            { x: 0.5, y: 0.5, label: "A", pos: "sw" }, { x: 3, y: 1.3, label: "B", pos: "se" },
+            { x: 2.2, y: 3.8, label: "C", pos: "ne" }, { x: -0.3, y: 3, label: "D", pos: "nw" },
+          ],
+          caption: String.raw`Square $ABCD$ (anticlockwise): $c - b = d - a = \ii(b - a)$.`,
+          alt: "Square ABCD labelled anticlockwise. The side AB is the vector b - a; the sides BC and AD are both i(b - a), the quarter-turn of AB.",
+        },
+      ],
     },
     {
       title: String.raw`Calculator use and showing working`,

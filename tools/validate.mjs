@@ -30,6 +30,8 @@ function checkText(file, where, s, required = true) {
 
 function checkFigure(file, where, fig) {
   if (!fig) return;
+  if (Array.isArray(fig)) { fig.forEach((g, i) => checkFigure(file, `${where}[${i}]`, g)); return; }
+  if (fig.caption) checkText(file, where + ".caption", fig.caption);
   if (typeof fig === "string") { if (!fig.trim().startsWith("<svg")) err(file, where, "figure string must be inline <svg>"); return; }
   if (fig.type !== "plot") { err(file, where, "figure.type must be 'plot'"); return; }
   try { const svg = Plot.render(fig); if (/NaN/.test(svg)) err(file, where, "plot produced NaN coordinates"); } catch (e) { err(file, where, "plot error: " + e.message); }
@@ -71,7 +73,7 @@ for (const file of files) {
   else t.syllabus.include.forEach((s, i) => checkText(file, `syllabus.include[${i}]`, s));
   (t.syllabus && t.syllabus.exclude || []).forEach((s, i) => checkText(file, `syllabus.exclude[${i}]`, s));
   if (!Array.isArray(t.concepts) || t.concepts.length < 3) err(file, "concepts", "need at least 3 concepts");
-  (t.concepts || []).forEach((c, i) => { checkText(file, `concepts[${i}].title`, c.title); checkText(file, `concepts[${i}].body`, c.body); });
+  (t.concepts || []).forEach((c, i) => { checkText(file, `concepts[${i}].title`, c.title); checkText(file, `concepts[${i}].body`, c.body); checkFigure(file, `concepts[${i}].figure`, c.figure); });
   if (!Array.isArray(t.archetypes) || t.archetypes.length < 3) err(file, "archetypes", "need at least 3 archetypes");
   let nq = 0;
   (t.archetypes || []).forEach((a, i) => {

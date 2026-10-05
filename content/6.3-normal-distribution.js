@@ -30,6 +30,56 @@ $X \sim \N(\mu, \sigma^2)$ has a bell-shaped curve that is
 - with about 68%, 95% and 99.7% of the area within $1\sigma$, $2\sigma$ and $3\sigma$ of $\mu$.
 
 Note that the second parameter is the **variance**: $\N(50, 16)$ has $\sigma = 4$.`,
+      figure: [
+        {
+          type: "plot", x: [-3.6, 3.6], y: [-0.02, 0.46], height: 210, axisLabels: ["x", null],
+          curves: [{ fn: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)" }],
+          lines: [{ x: 0 }],
+          segments: [{ from: [0, 0.242], to: [1, 0.242], tone: "warn", thin: true, arrow: true, arrowStart: true, label: "σ", pos: "n", style: "italic" }],
+          points: [{ x: -1, y: 0.242 }, { x: 1, y: 0.242, label: "point of inflexion", pos: "e", style: "small" }],
+          xTicks: [{ x: -1, label: "μ − σ" }, { x: 0, label: "μ" }, { x: 1, label: "μ + σ" }],
+          caption: String.raw`Symmetric about $x = \mu$; the curve changes concavity at $\mu \pm \sigma$.`,
+          alt: "Normal curve symmetric about the dashed line x = mu, with the points of inflexion marked at mu minus sigma and mu plus sigma; the horizontal distance from mu to a point of inflexion is sigma.",
+        },
+        {
+          type: "plot", x: [-3.6, 3.6], y: [-0.19, 0.44], height: 260, axisLabels: ["x", null],
+          curves: [{ fn: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)" }],
+          shade: [
+            { upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: -3, to: 3 },
+            { upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: -2, to: 2 },
+            { upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: -1, to: 1 },
+          ],
+          segments: [
+            { from: [-1, -0.09], to: [1, -0.09], thin: true, arrow: true, arrowStart: true, label: "68%", labelAt: [1, -0.09], pos: "e", style: "small" },
+            { from: [-2, -0.13], to: [2, -0.13], thin: true, arrow: true, arrowStart: true, label: "95%", labelAt: [2, -0.13], pos: "e", style: "small" },
+            { from: [-3, -0.17], to: [3, -0.17], thin: true, arrow: true, arrowStart: true, label: "99.7%", labelAt: [3, -0.17], pos: "e", style: "small" },
+          ],
+          xTicks: [{ x: -3, label: "μ−3σ" }, { x: -2, label: "μ−2σ" }, { x: -1, label: "μ−σ" }, { x: 0, label: "μ" }, { x: 1, label: "μ+σ" }, { x: 2, label: "μ+2σ" }, { x: 3, label: "μ+3σ" }],
+          caption: String.raw`About 68%, 95% and 99.7% of the area lies within $1\sigma$, $2\sigma$ and $3\sigma$ of $\mu$.`,
+          alt: "Normal curve with nested shaded regions within one, two and three standard deviations of the mean, containing about 68%, 95% and 99.7% of the area.",
+        },
+        {
+          type: "plot", x: [-3.2, 5.7], y: [-0.02, 0.46], height: 210, axisLabels: ["x", null],
+          curves: [
+            { fn: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)" },
+            { fn: "x => Math.exp(-(x-2.5)*(x-2.5)/2)/Math.sqrt(2*Math.PI)", tone: "good" },
+          ],
+          lines: [{ x: 0 }, { x: 2.5 }],
+          xTicks: [{ x: 0, label: "μ₁" }, { x: 2.5, label: "μ₂" }],
+          caption: String.raw`Same $\sigma$, different $\mu$: the curve slides along without changing shape.`,
+          alt: "Two normal curves of identical shape, one centred at mu one and the other centred further right at mu two.",
+        },
+        {
+          type: "plot", x: [-5, 5], y: [-0.02, 0.46], height: 210, axisLabels: ["x", null],
+          curves: [
+            { fn: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", label: "σ = 1", labelAt: 0.9 },
+            { fn: "x => Math.exp(-x*x/8)/(2*Math.sqrt(2*Math.PI))", tone: "good", label: "σ = 2", labelAt: 2.4 },
+          ],
+          xTicks: [{ x: 0, label: "μ" }],
+          caption: String.raw`Same $\mu$, larger $\sigma$: wider and flatter, but the total area is still 1.`,
+          alt: "Two normal curves with the same mean; the one with sigma equal to 2 is twice as wide and half as tall as the one with sigma equal to 1.",
+        },
+      ],
     },
     {
       title: String.raw`Standardising and GC probabilities`,
@@ -39,6 +89,55 @@ $$Z = \frac{X - \mu}{\sigma} \sim \N(0, 1).$$
 - GC: normalcdf(lower, upper, $\mu$, $\sigma$) — enter $\sigma$, **not** $\sigma^2$. Use a large bound such as $10^{99}$ for an open tail.
 - Always write the probability statement, e.g. "$\P(X > 350) = 0.115$", and sketch the curve with the region shaded when the question is unfamiliar.
 - Give probabilities to 3 significant figures, but keep more figures in intermediate working.`,
+      figure: [
+        {
+          type: "plot", x: [-3.6, 3.6], y: [-0.02, 0.46], height: 190, axisLabels: ["x", null],
+          curves: [{ fn: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)" }],
+          shade: [{ upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: -3.6, to: 0.8, tone: "warn" }],
+          xTicks: [{ x: 0, label: "μ" }, { x: 0.8, label: "a" }],
+          labels: [{ x: -0.55, y: 0.14, text: "P(X < a)", style: "italic" }],
+          caption: String.raw`$\P(X < a)$ = normalcdf$(-10^{99}, a, \mu, \sigma)$`,
+          alt: "Normal curve with the area to the left of a, which is just above the mean, shaded.",
+        },
+        {
+          type: "plot", x: [-3.6, 3.6], y: [-0.02, 0.46], height: 190, axisLabels: ["x", null],
+          curves: [{ fn: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)" }],
+          shade: [{ upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: 0.8, to: 3.6, tone: "warn" }],
+          xTicks: [{ x: 0, label: "μ" }, { x: 0.8, label: "a" }],
+          labels: [{ x: 2.35, y: 0.16, text: "P(X > a)", style: "italic" }],
+          segments: [{ from: [2.0, 0.135], to: [1.45, 0.06], tone: "muted", thin: true }],
+          caption: String.raw`$\P(X > a)$ = normalcdf$(a, 10^{99}, \mu, \sigma)$`,
+          alt: "Normal curve with the area to the right of a shaded.",
+        },
+        {
+          type: "plot", x: [-3.6, 3.6], y: [-0.02, 0.46], height: 190, axisLabels: ["x", null],
+          curves: [{ fn: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)" }],
+          shade: [{ upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: -0.7, to: 1.4, tone: "warn" }],
+          xTicks: [{ x: -0.7, label: "a" }, { x: 0, label: "μ" }, { x: 1.4, label: "b" }],
+          labels: [{ x: 0.35, y: 0.14, text: "P(a < X < b)", style: "italic" }],
+          caption: String.raw`$\P(a < X < b)$ = normalcdf$(a, b, \mu, \sigma)$`,
+          alt: "Normal curve with the area between a, below the mean, and b, above the mean, shaded.",
+        },
+        {
+          type: "plot", x: [35, 65], y: [-0.062, 0.112], height: 250, axisLabels: ["x", null],
+          curves: [{ fn: "x => Math.exp(-((x-50)/4)*((x-50)/4)/2)/(4*Math.sqrt(2*Math.PI))" }],
+          shade: [{ upper: "x => Math.exp(-((x-50)/4)*((x-50)/4)/2)/(4*Math.sqrt(2*Math.PI))", from: 35, to: 56, tone: "warn" }],
+          xTicks: [38, 42, 46, 50, 54, 58, 62].map((v) => ({ x: v, label: String(v) })),
+          segments: [
+            { from: [35.5, -0.042], to: [64.3, -0.042], tone: "ink", thin: true, arrow: true },
+            ...[-3, -2, -1, 0, 1, 2, 3].map((k) => ({ from: [50 + 4 * k, -0.0445], to: [50 + 4 * k, -0.0395], tone: "ink", thin: true })),
+            { from: [56, 0.0324], to: [56, -0.042], tone: "muted", thin: true, dashed: true },
+          ],
+          labels: [
+            ...[-3, -2, -1, 0, 1, 2, 3].map((k) => ({ x: 50 + 4 * k, y: -0.042, text: k < 0 ? "−" + -k : String(k), pos: "s", style: "small" })),
+            { x: 64.6, y: -0.042, text: "z", pos: "se", style: "italic" },
+            { x: 56, y: -0.042, text: "1.5", pos: "s", style: "small" },
+            { x: 35.6, y: 0.085, text: "P(X < 56) = P(Z < 1.5)", pos: "e", style: "small", tone: "warn" },
+          ],
+          caption: String.raw`$X \sim \N(50, 4^2)$: $z = \dfrac{x - 50}{4}$, so $x = 56$ corresponds to $z = 1.5$.`,
+          alt: "Normal curve for X with mean 50 and standard deviation 4, with a second scale for z underneath: x = 38, 42, ..., 62 line up with z = -3, -2, ..., 3. The area to the left of x = 56, which is z = 1.5, is shaded.",
+        },
+      ],
     },
     {
       title: String.raw`Inverse problems: finding $a$`,
@@ -48,6 +147,26 @@ $$Z = \frac{X - \mu}{\sigma} \sim \N(0, 1).$$
 - Symmetric interval containing a proportion $p$: $\mu \pm z\sigma$, where $\P(Z < z) = \frac{1 + p}{2}$.
 
 Interpret the answer in context (e.g. "the least mean volume is 508.2 ml").`,
+      figure: [
+        {
+          type: "plot", x: [-3.6, 3.6], y: [-0.02, 0.46], height: 190, axisLabels: ["x", null],
+          curves: [{ fn: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)" }],
+          shade: [{ upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: 0.8416, to: 3.6, tone: "warn" }],
+          xTicks: [{ x: 0, label: "μ" }, { x: 0.8416, label: "a" }],
+          labels: [{ x: -0.4, y: 0.15, text: "0.8", style: "small" }, { x: 1.42, y: 0.055, text: "0.2", style: "small" }],
+          caption: String.raw`$\P(X > a) = 0.2 \Rightarrow \P(X < a) = 0.8$, so $a = $ invNorm$(0.8, \mu, \sigma)$.`,
+          alt: "Normal curve with an unknown value a above the mean; the right tail beyond a has area 0.2 and the area to the left of a is 0.8.",
+        },
+        {
+          type: "plot", x: [-3.6, 3.6], y: [-0.02, 0.46], height: 190, axisLabels: ["x", null],
+          curves: [{ fn: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)" }],
+          shade: [{ upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: -1.96, to: 1.96, tone: "warn" }],
+          xTicks: [{ x: -1.96, label: "μ − zσ" }, { x: 0, label: "μ" }, { x: 1.96, label: "μ + zσ" }],
+          labels: [{ x: 0, y: 0.15, text: "0.95", style: "small" }, { x: -2.75, y: 0.06, text: "0.025", style: "small" }, { x: 2.75, y: 0.06, text: "0.025", style: "small" }],
+          caption: String.raw`Middle 95%: each tail is 0.025, so $\P(Z < z) = 0.975$ and $z = 1.960$.`,
+          alt: "Normal curve with the central 95% of the area shaded between mu minus z sigma and mu plus z sigma, leaving 0.025 in each tail.",
+        },
+      ],
     },
     {
       title: String.raw`Finding unknown $\mu$ and $\sigma$`,
@@ -57,6 +176,20 @@ $$\P(X < x_1) = p \;\Rightarrow\; \frac{x_1 - \mu}{\sigma} = z_p, \quad \P(Z < z
 - One unknown: solve directly. Two unknowns: two such equations, solved simultaneously.
 - Check signs: if $x_1 < \mu$ then $z_p < 0$.
 - Keep $z$-values to at least 4 decimal places (e.g. $-1.2816$, $0.8416$) to avoid accumulated rounding errors.`,
+      figure: {
+        type: "plot", x: [-3.6, 3.6], y: [-0.02, 0.46], height: 200, axisLabels: ["x", null],
+        curves: [{ fn: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)" }],
+        shade: [
+          { upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: -3.6, to: -1.6449, tone: "warn" },
+          { upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: 0.5244, to: 3.6, tone: "warn" },
+        ],
+        lines: [{ x: 0 }],
+        xTicks: [{ x: -1.6449, label: "x₁" }, { x: 0, label: "μ" }, { x: 0.5244, label: "x₂" }],
+        labels: [{ x: -2.6, y: 0.1, text: "0.05", style: "small", tone: "warn" }, { x: 1.15, y: 0.08, text: "0.3", style: "small" }],
+        segments: [{ from: [-2.45, 0.085], to: [-1.95, 0.03], tone: "muted", thin: true }],
+        caption: String.raw`$\dfrac{x_1 - \mu}{\sigma} = -1.6449$ (negative, as $x_1 < \mu$) and $\dfrac{x_2 - \mu}{\sigma} = 0.5244$.`,
+        alt: "Normal curve with unknown mean mu. The left tail below x1 has area 0.05 and the right tail above x2 has area 0.3; x1 lies below mu and x2 above it.",
+      },
     },
     {
       title: String.raw`Symmetry arguments`,
@@ -65,12 +198,55 @@ $$\P(X < x_1) = p \;\Rightarrow\; \frac{x_1 - \mu}{\sigma} = z_p, \quad \P(Z < z
 - $\P(\mu - a < X < \mu + a) = 1 - 2\P(X > \mu + a) = 2\P(X < \mu + a) - 1$.
 
 These are used in "without using a calculator" questions — a clearly labelled sketch is the best justification.`,
+      figure: [
+        {
+          type: "plot", x: [-3.6, 3.6], y: [-0.02, 0.46], height: 200, axisLabels: ["x", null],
+          curves: [{ fn: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)" }],
+          shade: [
+            { upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: -3.6, to: -1.2, tone: "warn" },
+            { upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: 1.2, to: 3.6, tone: "warn" },
+          ],
+          lines: [{ x: 0 }],
+          segments: [
+            { from: [-1.2, 0.06], to: [0, 0.06], thin: true, arrow: true, arrowStart: true, tone: "ink", label: "a", pos: "n", style: "italic" },
+            { from: [0, 0.06], to: [1.2, 0.06], thin: true, arrow: true, arrowStart: true, tone: "ink", label: "a", pos: "n", style: "italic" },
+          ],
+          xTicks: [{ x: -1.2, label: "μ − a" }, { x: 0, label: "μ" }, { x: 1.2, label: "μ + a" }],
+          caption: String.raw`The two shaded tails are equal: $\P(X < \mu - a) = \P(X > \mu + a)$.`,
+          alt: "Normal curve with both tails shaded, below mu minus a and above mu plus a; the tails are mirror images in the line x = mu.",
+        },
+        {
+          type: "plot", x: [-3.6, 3.6], y: [-0.02, 0.46], height: 200, axisLabels: ["x", null],
+          curves: [{ fn: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)" }],
+          shade: [
+            { upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: -3.6, to: -1.5, tone: "warn" },
+            { upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: 1.5, to: 3.6, tone: "warn" },
+          ],
+          lines: [{ x: 0 }],
+          xTicks: [{ x: -1.5, label: "c" }, { x: 0, label: "μ = ½(c + d)" }, { x: 1.5, label: "d" }],
+          labels: [{ x: -2.55, y: 0.11, text: "p", style: "italic", tone: "warn" }, { x: 2.55, y: 0.11, text: "p", style: "italic", tone: "warn" }],
+          segments: [{ from: [-2.45, 0.095], to: [-1.95, 0.03], tone: "muted", thin: true }, { from: [2.45, 0.095], to: [1.95, 0.03], tone: "muted", thin: true }],
+          caption: String.raw`If $\P(X < c) = \P(X > d)$, then $c$ and $d$ are equidistant from $\mu$.`,
+          alt: "Normal curve with equal tail areas p below c and above d; the mean lies exactly halfway between c and d.",
+        },
+      ],
     },
     {
       title: String.raw`Linear transformations: $aX + b$`,
       body: String.raw`For any random variable $X$ and constants $a$, $b$:
 $$\E(aX + b) = a\E(X) + b, \qquad \Var(aX + b) = a^2\Var(X).$$
 If $X$ is normal then so is $aX + b$: $aX + b \sim \N(a\mu + b,\ a^2\sigma^2)$. Typical uses: unit conversions (°C to °F), fares and costs ("fixed charge + rate × distance"), scaling of marks. Adding a constant does not change the variance.`,
+      figure: {
+        type: "plot", x: [2, 42], y: [-0.012, 0.23], height: 200, axisLabels: ["x", null],
+        curves: [
+          { fn: "x => Math.exp(-((x-10)/2)*((x-10)/2)/2)/(2*Math.sqrt(2*Math.PI))", label: "X", labelAt: 11.6 },
+          { fn: "x => Math.exp(-((x-25)/4)*((x-25)/4)/2)/(4*Math.sqrt(2*Math.PI))", tone: "good", label: "2X + 5", labelAt: 28.6 },
+        ],
+        lines: [{ x: 10 }, { x: 25 }],
+        xTicks: [{ x: 10, label: "10" }, { x: 25, label: "25" }],
+        caption: String.raw`$X \sim \N(10, 2^2)$ and $2X + 5 \sim \N(25, 4^2)$: the mean becomes $2(10) + 5$, the s.d. is only doubled.`,
+        alt: "Normal curve of X centred at 10 with standard deviation 2, and a curve of 2X + 5 centred at 25 that is twice as wide and half as tall.",
+      },
     },
     {
       title: String.raw`Linear combinations of independent normals`,
@@ -81,6 +257,28 @@ and if $X$ and $Y$ are normal, $aX + bY$ is normal.
 - Variances **add** even for a difference: $\Var(X - Y) = \Var(X) + \Var(Y)$.
 - Turn comparisons into a single variable: $\P(X > 2Y) = \P(X - 2Y > 0)$; $\P(|X - Y| < 5) = \P(-5 < X - Y < 5)$.
 - State the distribution in full, e.g. "$X - 2Y \sim \N(2, 8)$", before computing.`,
+      figure: [
+        {
+          type: "plot", x: [12, 44], y: [-0.012, 0.155], height: 200, axisLabels: ["x", null],
+          curves: [
+            { fn: "x => Math.exp(-((x-30)/3)*((x-30)/3)/2)/(3*Math.sqrt(2*Math.PI))", label: "X", labelAt: 32.3 },
+            { fn: "x => Math.exp(-((x-26)/4)*((x-26)/4)/2)/(4*Math.sqrt(2*Math.PI))", tone: "good" },
+          ],
+          labels: [{ x: 21, y: 0.065, text: "Y", pos: "w", style: "italic", tone: "good" }],
+          xTicks: [{ x: 26, label: "26" }, { x: 30, label: "30" }],
+          caption: String.raw`$X \sim \N(30, 3^2)$ and $Y \sim \N(26, 4^2)$ overlap: $\P(X > Y)$ is not an area on either curve…`,
+          alt: "Two overlapping normal curves: X centred at 30 with standard deviation 3, and Y centred at 26 with standard deviation 4.",
+        },
+        {
+          type: "plot", x: [-14, 22], y: [-0.006, 0.092], height: 200, axisLabels: ["d", null],
+          curves: [{ fn: "x => Math.exp(-((x-4)/5)*((x-4)/5)/2)/(5*Math.sqrt(2*Math.PI))" }],
+          shade: [{ upper: "x => Math.exp(-((x-4)/5)*((x-4)/5)/2)/(5*Math.sqrt(2*Math.PI))", from: 0, to: 22, tone: "warn" }],
+          xTicks: [{ x: 0, label: "0" }, { x: 4, label: "4" }],
+          labels: [{ x: 5, y: 0.03, text: "P(X − Y > 0)", style: "plain" }],
+          caption: String.raw`…but it is one area for $D = X - Y \sim \N(4, 3^2 + 4^2)$.`,
+          alt: "Normal curve of D = X minus Y, centred at 4 with standard deviation 5, with the area to the right of 0 shaded.",
+        },
+      ],
     },
     {
       title: String.raw`Totals: $X_1 + X_2$ versus $2X$`,
@@ -90,12 +288,34 @@ and if $X$ and $Y$ are normal, $aX + bY$ is normal.
 Decide which one the context describes: "the total mass of 4 apples" is $A_1 + A_2 + A_3 + A_4$; "twice the mass of an apple" is $2A$. The two have the same mean but different spreads, so different probabilities.
 
 A "box containing 12 items" has total mass $B + X_1 + \cdots + X_{12}$, where $B$ is the box's own mass.`,
+      figure: {
+        type: "plot", x: [62, 138], y: [-0.004, 0.064], height: 210, axisLabels: ["x", null],
+        curves: [
+          { fn: "x => Math.exp(-(x-100)*(x-100)/100)/(Math.sqrt(50)*Math.sqrt(2*Math.PI))", label: "X₁ + X₂", labelAt: 106.5 },
+          { fn: "x => Math.exp(-((x-100)/10)*((x-100)/10)/2)/(10*Math.sqrt(2*Math.PI))", tone: "good", label: "2X", labelAt: 113 },
+        ],
+        lines: [{ x: 100 }],
+        xTicks: [{ x: 100, label: "100" }],
+        caption: String.raw`$X \sim \N(50, 5^2)$: $X_1 + X_2 \sim \N(100, 50)$ but $2X \sim \N(100, 100)$ — same mean, $2X$ more spread out.`,
+        alt: "Two normal curves both centred at 100: X1 + X2 with variance 50 is taller and narrower; 2X with variance 100 is lower and wider.",
+      },
     },
     {
       title: String.raw`Modelling: assumptions and suitability`,
       body: String.raw`- A normal model is doubtful when the variable cannot be negative but $\P(X < 0)$ is not negligible (mean less than about $2\sigma$ above 0), or when the data are clearly skewed.
 - When combining variables, state the **independence** assumption in context (e.g. "the service times of different customers are independent").
 - Questions often combine a normal probability with a binomial count: first find $p = \P(\text{one item satisfies the condition})$, then use $\B(n, p)$.`,
+      figure: {
+        type: "plot", x: [-7, 15], y: [-0.01, 0.15], height: 190, axisLabels: ["x", null],
+        curves: [{ fn: "x => Math.exp(-((x-4)/3)*((x-4)/3)/2)/(3*Math.sqrt(2*Math.PI))" }],
+        shade: [{ upper: "x => Math.exp(-((x-4)/3)*((x-4)/3)/2)/(3*Math.sqrt(2*Math.PI))", from: -7, to: 0, tone: "warn" }],
+        lines: [{ x: 0 }],
+        xTicks: [{ x: 0, label: "0" }, { x: 4, label: "4" }],
+        labels: [{ x: -1.3, y: 0.075, text: "P(X < 0) ≈ 0.09", pos: "w", style: "small", tone: "warn" }],
+        segments: [{ from: [-1.6, 0.068], to: [-0.6, 0.012], tone: "muted", thin: true }],
+        caption: String.raw`A time with mean 4 and s.d. 3 cannot be normal: the model gives about 9% of times below 0.`,
+        alt: "Normal curve with mean 4 and standard deviation 3; the part of the curve to the left of 0, about 9% of the area, is shaded to show impossible negative values.",
+      },
     },
   ],
   archetypes: [

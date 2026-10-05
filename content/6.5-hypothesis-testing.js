@@ -27,6 +27,22 @@ H2.addTopic({
 - **$p$-value**: the probability, assuming $\mathrm{H}_0$ is true, of obtaining a value of the test statistic at least as extreme as the one observed.
 
 Always define $\mu$ in context: "Let $\mu$ be the population mean mass, in grams, of a packet of rice."`,
+      figure: {
+        type: "plot", x: [-3.6, 3.6], y: [-0.02, 0.46], height: 220, axisLabels: ["z", null],
+        curves: [{ fn: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)" }],
+        shade: [{ upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: 1.645, to: 3.6, tone: "warn" }],
+        xTicks: [{ x: 0, label: "0" }, { x: 1.645, label: "1.645" }],
+        segments: [{ from: [2.2, 0.3], to: [1.7, 0.125], tone: "muted", thin: true, arrow: true }, { from: [2.45, 0.075], to: [2.1, 0.02], tone: "warn", thin: true }],
+        labels: [
+          { x: -0.3, y: 0.16, text: "Do not reject H₀", style: "small" },
+          { x: 2.2, y: 0.3, text: "critical value", pos: "n", style: "small", tone: "muted" },
+          { x: 2.85, y: 0.19, text: "critical region", style: "small", tone: "warn" },
+          { x: 2.85, y: 0.145, text: "(reject H₀)", style: "small", tone: "warn" },
+          { x: 2.85, y: 0.09, text: "area α = 5%", style: "small", tone: "warn" },
+        ],
+        caption: String.raw`Distribution of $Z$ under $\mathrm{H}_0$ for $\mathrm{H}_1: \mu > \mu_0$ at the 5% level: the shaded area is the significance level.`,
+        alt: "Standard normal curve of the test statistic under H0, with the right tail beyond the critical value 1.645 shaded as the critical region of area 5 percent; the rest is the do-not-reject region.",
+      },
     },
     {
       title: String.raw`Which test statistic?`,
@@ -45,6 +61,30 @@ In the large-sample case, compute the unbiased estimate $s^2$ first (see 6.4) an
 5. **Conclusion in context**: "There is sufficient evidence at the 5% level of significance to conclude that the mean mass of a packet is less than 500 g." Or "insufficient evidence … to conclude that …".
 
 Never write "accept $\mathrm{H}_0$" or "$\mathrm{H}_0$ is proved true" — not rejecting $\mathrm{H}_0$ only means there is not enough evidence against it.`,
+      figure: [
+        {
+          type: "plot", x: [-3.6, 3.6], y: [-0.02, 0.46], height: 200, axisLabels: ["z", null],
+          curves: [{ fn: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)" }],
+          shade: [{ upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: 2.2, to: 3.6 }],
+          lines: [{ x: 1.645, label: "1.645" }],
+          xTicks: [{ x: 0, label: "0" }, { x: 2.2, label: "z = 2.2" }],
+          segments: [{ from: [2.6, 0.25], to: [2.55, 0.02], tone: "accent", thin: true }],
+          labels: [{ x: 2.6, y: 0.25, text: "p-value = 0.014", pos: "n", style: "small", tone: "accent" }],
+          caption: String.raw`$z$ in the critical region: $p$-value $< 0.05$, reject $\mathrm{H}_0$`,
+          alt: "Right-tailed test at 5 percent: observed z = 2.2 lies beyond the critical value 1.645, and the shaded p-value area beyond it is 0.014, smaller than 0.05.",
+        },
+        {
+          type: "plot", x: [-3.6, 3.6], y: [-0.02, 0.46], height: 200, axisLabels: ["z", null],
+          curves: [{ fn: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)" }],
+          shade: [{ upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: 1.3, to: 3.6 }],
+          lines: [{ x: 1.645, label: "1.645" }],
+          xTicks: [{ x: 0, label: "0" }, { x: 1.3, label: "z = 1.3" }],
+          segments: [{ from: [2.75, 0.2], to: [1.85, 0.03], tone: "accent", thin: true }],
+          labels: [{ x: 2.75, y: 0.2, text: "p-value = 0.097", pos: "n", style: "small", tone: "accent" }],
+          caption: String.raw`$z$ not in the critical region: $p$-value $> 0.05$, do not reject $\mathrm{H}_0$`,
+          alt: "Right-tailed test at 5 percent: observed z = 1.3 lies before the critical value 1.645, and the shaded p-value area beyond it is 0.097, larger than 0.05.",
+        },
+      ],
     },
     {
       title: String.raw`Critical values to know`,
@@ -55,6 +95,45 @@ Never write "accept $\mathrm{H}_0$" or "$\mathrm{H}_0$ is proved true" — not r
 | 1% | $2.326$ | $\pm 2.576$ |
 
 These come from invNorm on the GC (not MF27). For a critical region in terms of $\bar{x}$, rearrange, e.g. for $\mathrm{H}_1: \mu > \mu_0$ at 5%: reject $\mathrm{H}_0$ if $\bar{x} \ge \mu_0 + 1.645\dfrac{\sigma}{\sqrt{n}}$.`,
+      figure: [
+        {
+          type: "plot", x: [-3.6, 3.6], y: [-0.02, 0.46], height: 190, axisLabels: ["z", null],
+          curves: [{ fn: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)" }],
+          shade: [{ upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: -3.6, to: -1.645, tone: "warn" }],
+          xTicks: [{ x: -1.645, label: "−1.645" }, { x: 0, label: "0" }],
+          labels: [{ x: -2.75, y: 0.15, text: "Reject H₀", style: "small", tone: "warn" }, { x: -2.65, y: 0.075, text: "5%", style: "small", tone: "warn" }],
+          caption: String.raw`$\mathrm{H}_1: \mu < \mu_0$ (1-tail, 5%): reject if $z \le -1.645$`,
+          alt: "Standard normal curve with the left tail below -1.645 shaded: area 5 percent, reject H0.",
+        },
+        {
+          type: "plot", x: [-3.6, 3.6], y: [-0.02, 0.46], height: 190, axisLabels: ["z", null],
+          curves: [{ fn: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)" }],
+          shade: [{ upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: 1.645, to: 3.6, tone: "warn" }],
+          xTicks: [{ x: 0, label: "0" }, { x: 1.645, label: "1.645" }],
+          labels: [{ x: 2.75, y: 0.15, text: "Reject H₀", style: "small", tone: "warn" }, { x: 2.65, y: 0.075, text: "5%", style: "small", tone: "warn" }],
+          caption: String.raw`$\mathrm{H}_1: \mu > \mu_0$ (1-tail, 5%): reject if $z \ge 1.645$`,
+          alt: "Standard normal curve with the right tail above 1.645 shaded: area 5 percent, reject H0.",
+        },
+        {
+          type: "plot", x: [-3.6, 3.6], y: [-0.02, 0.46], height: 190, axisLabels: ["z", null],
+          curves: [{ fn: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)" }],
+          shade: [{ upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: -3.6, to: -1.96, tone: "warn" }, { upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: 1.96, to: 3.6, tone: "warn" }],
+          xTicks: [{ x: -1.96, label: "−1.960" }, { x: 0, label: "0" }, { x: 1.96, label: "1.960" }],
+          labels: [{ x: -2.75, y: 0.15, text: "Reject H₀", style: "small", tone: "warn" }, { x: 2.75, y: 0.15, text: "Reject H₀", style: "small", tone: "warn" }, { x: -2.7, y: 0.075, text: "2.5%", style: "small", tone: "warn" }, { x: 2.7, y: 0.075, text: "2.5%", style: "small", tone: "warn" }],
+          caption: String.raw`$\mathrm{H}_1: \mu \ne \mu_0$ (2-tail, 5%): reject if $|z| \ge 1.960$`,
+          alt: "Standard normal curve with both tails beyond -1.960 and 1.960 shaded, 2.5 percent each: reject H0.",
+        },
+        {
+          type: "plot", x: [-3.6, 3.6], y: [-0.02, 0.46], height: 190, axisLabels: ["x̄", null],
+          curves: [{ fn: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)" }],
+          shade: [{ upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: 1.645, to: 3.6, tone: "warn" }],
+          lines: [{ x: 0 }],
+          xTicks: [{ x: 0, label: "μ₀" }, { x: 1.645, label: "μ₀ + 1.645σ/√n" }],
+          labels: [{ x: 2.75, y: 0.15, text: "Reject H₀", style: "small", tone: "warn" }, { x: 2.65, y: 0.075, text: "5%", style: "small", tone: "warn" }],
+          caption: String.raw`The same right-tailed test in terms of $\bar{x}$: $\overline{X} \sim \N\!\left(\mu_0, \frac{\sigma^2}{n}\right)$ under $\mathrm{H}_0$`,
+          alt: "Distribution of the sample mean under H0, centred at mu0, with the region above mu0 + 1.645 sigma over root n shaded as the critical region.",
+        },
+      ],
     },
     {
       title: String.raw`Interpreting the $p$-value and the significance level`,
@@ -63,6 +142,17 @@ These come from invNorm on the GC (not MF27). For a critical region in terms of 
 - "$p$-value $= 0.0312$" means: assuming the population mean sleep time is 6.5 hours, the probability of obtaining a sample mean of 6.8 hours or more is 0.0312.
 - "5% significance level" means: there is a probability of 0.05 that the test concludes the mean sleep time is more than 6.5 hours when it is in fact 6.5 hours.
 - The $p$-value is the **smallest** significance level at which $\mathrm{H}_0$ would be rejected — useful for "find the range of values of $\alpha$" questions.`,
+      figure: {
+        type: "plot", x: [5.92, 7.08], y: [-0.1, 2.85], height: 210, axisLabels: ["x̄", null],
+        curves: [{ fn: "x => Math.exp(-0.5*((x-(6.5))/0.16099)**2)/(0.16099*Math.sqrt(2*Math.PI))" }],
+        shade: [{ upper: "x => Math.exp(-0.5*((x-(6.5))/0.16099)**2)/(0.16099*Math.sqrt(2*Math.PI))", from: 6.8, to: 7.08 }],
+        lines: [{ x: 6.5 }],
+        xTicks: [{ x: 6.5, label: "6.5" }, { x: 6.8, label: "6.8" }],
+        segments: [{ from: [6.9, 0.95], to: [6.84, 0.12], tone: "accent", thin: true }],
+        labels: [{ x: 6.9, y: 0.95, text: "p-value = 0.0312", pos: "n", style: "small", tone: "accent" }],
+        caption: String.raw`Assuming $\mathrm{H}_0$ ($\mu = 6.5$), the $p$-value is $\P(\overline{X} \ge 6.8) = 0.0312$, the area beyond the observed $\bar{x}$.`,
+        alt: "Distribution of the sample mean sleep time under H0, centred at 6.5 hours, with the small right tail beyond the observed sample mean 6.8 shaded: the p-value 0.0312.",
+      },
     },
     {
       title: String.raw`When (and why) the CLT is needed`,
@@ -80,6 +170,28 @@ These come from invNorm on the GC (not MF27). For a critical region in terms of 
 - Hence it is possible for a 1-tail test at 5% to reject $\mathrm{H}_0$ while a 2-tail test at 5% does not: the 1-tail test places the whole 5% in one tail, so its critical value is less extreme.
 - If $\bar{x} > \mu_0$, a test against $\mathrm{H}_1: \mu < \mu_0$ can never reject $\mathrm{H}_0$ at any sensible level.
 - Choose the tail from the **wording of the suspicion**, never from the data.`,
+      figure: [
+        {
+          type: "plot", x: [-3.6, 3.6], y: [-0.02, 0.46], height: 200, axisLabels: ["z", null],
+          curves: [{ fn: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)" }],
+          shade: [{ upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: 1.645, to: 3.6, tone: "warn" }],
+          xTicks: [{ x: 0, label: "0" }, { x: 1.645, label: "1.645" }],
+          segments: [{ from: [1.75, 0], to: [1.75, 0.27], tone: "accent" }],
+          labels: [{ x: 1.75, y: 0.27, text: "z = 1.75", pos: "n", style: "small", tone: "accent" }, { x: 2.9, y: 0.16, text: "5%", style: "small", tone: "warn" }],
+          caption: String.raw`1-tail at 5%: $1.75 > 1.645$, so $\mathrm{H}_0$ is rejected ($p = 0.040$)`,
+          alt: "Right-tailed test at 5 percent: the whole 5 percent is in the right tail beyond 1.645, and the observed z = 1.75 falls inside the critical region.",
+        },
+        {
+          type: "plot", x: [-3.6, 3.6], y: [-0.02, 0.46], height: 200, axisLabels: ["z", null],
+          curves: [{ fn: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)" }],
+          shade: [{ upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: -3.6, to: -1.96, tone: "warn" }, { upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: 1.96, to: 3.6, tone: "warn" }],
+          xTicks: [{ x: -1.96, label: "−1.960" }, { x: 0, label: "0" }, { x: 1.96, label: "1.960" }],
+          segments: [{ from: [1.75, 0], to: [1.75, 0.27], tone: "accent" }],
+          labels: [{ x: 1.75, y: 0.27, text: "z = 1.75", pos: "n", style: "small", tone: "accent" }, { x: -2.9, y: 0.16, text: "2.5%", style: "small", tone: "warn" }, { x: 2.9, y: 0.16, text: "2.5%", style: "small", tone: "warn" }],
+          caption: String.raw`2-tail at 5%: $1.75 < 1.960$, so $\mathrm{H}_0$ is not rejected ($p = 0.080$)`,
+          alt: "Two-tailed test at 5 percent: 2.5 percent in each tail beyond plus and minus 1.960; the same observed z = 1.75 falls just short of the right critical region.",
+        },
+      ],
     },
     {
       title: String.raw`Unknown $n$, $\alpha$, $\mu_0$ or $\bar{x}$`,
@@ -89,6 +201,30 @@ These come from invNorm on the GC (not MF27). For a critical region in terms of 
 - $n$ must be an integer — round in the direction that keeps the condition satisfied.
 - "$\mathrm{H}_0$ is **not** rejected" gives the complementary (strict) inequality.
 - For an unknown significance level: $\mathrm{H}_0$ is rejected $\iff \alpha \ge p$-value.`,
+      figure: [
+        {
+          type: "plot", x: [-2.4, 2.4], y: [-0.06, 1.3], height: 200, axisLabels: ["x̄", null],
+          curves: [{ fn: "x => Math.exp(-0.5*((x-(0))/0.6)**2)/(0.6*Math.sqrt(2*Math.PI))" }],
+          shade: [{ upper: "x => Math.exp(-0.5*((x-(0))/0.6)**2)/(0.6*Math.sqrt(2*Math.PI))", from: -2.4, to: -0.987, tone: "warn" }],
+          lines: [{ x: 0 }],
+          xTicks: [{ x: -0.7, label: "x̄" }, { x: 0, label: "μ₀" }],
+          points: [{ x: -0.7, y: 0 }],
+          labels: [{ x: -1.75, y: 0.3, text: "Reject H₀", style: "small", tone: "warn" }],
+          caption: String.raw`Smaller $n$: the observed $\bar{x}$ is not in the critical region`,
+          alt: "Left-tailed test: a wide distribution of the sample mean under H0 with critical region below mu0 minus 1.645 sigma over root n; the observed sample mean lies outside it.",
+        },
+        {
+          type: "plot", x: [-2.4, 2.4], y: [-0.06, 1.3], height: 200, axisLabels: ["x̄", null],
+          curves: [{ fn: "x => Math.exp(-0.5*((x-(0))/0.35)**2)/(0.35*Math.sqrt(2*Math.PI))" }],
+          shade: [{ upper: "x => Math.exp(-0.5*((x-(0))/0.35)**2)/(0.35*Math.sqrt(2*Math.PI))", from: -2.4, to: -0.5758, tone: "warn" }],
+          lines: [{ x: 0 }],
+          xTicks: [{ x: -0.7, label: "x̄" }, { x: 0, label: "μ₀" }],
+          points: [{ x: -0.7, y: 0 }],
+          labels: [{ x: -1.75, y: 0.3, text: "Reject H₀", style: "small", tone: "warn" }],
+          caption: String.raw`Larger $n$: smaller $\sigma/\sqrt{n}$ moves the critical value towards $\mu_0$, and the same $\bar{x}$ is now in the critical region`,
+          alt: "Left-tailed test with a larger sample: a narrower distribution of the sample mean, critical value closer to mu0, and the same observed sample mean now lies inside the critical region.",
+        },
+      ],
     },
   ],
   archetypes: [

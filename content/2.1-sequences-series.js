@@ -39,6 +39,19 @@ $$u_n = a + (n-1)d, \qquad S_n = \frac{n}{2}\big[2a + (n-1)d\big] = \frac{n}{2}(
 
 - To **prove** a sequence is an AP, show $u_n - u_{n-1}$ is a constant independent of $n$. Checking the first three terms is not a proof.
 - These formulae are **not** in MF27 — memorise them.`,
+      figure: {
+        type: "plot", x: [-0.4, 8], y: [-1, 12.5], height: 220, axisLabels: ["n", "uₙ"],
+        curves: [{ fn: "x => 2 + 1.5*(x - 1)", domain: [0.6, 7.6], dashed: true, tone: "muted" }],
+        points: Array.from({ length: 7 }, (_, i) => ({ x: i + 1, y: 2 + 1.5 * i })),
+        segments: [
+          { from: [4, 6.5], to: [5, 6.5], tone: "muted", thin: true },
+          { from: [5, 6.5], to: [5, 8], tone: "warn", label: "d", pos: "e", style: "italic" },
+        ],
+        xTicks: [1, 2, 3, 4, 5, 6, 7].map((n) => ({ x: n, label: String(n) })),
+        yTicks: [{ y: 2, label: "a" }],
+        caption: String.raw`The terms of an AP lie on a straight line: each step from $n$ to $n + 1$ adds $d$.`,
+        alt: "Terms of an arithmetic progression plotted against n: the points lie on a straight line starting at height a, rising by d for each unit step in n.",
+      },
     },
     {
       title: String.raw`Geometric progressions and the sum to infinity (memorise)`,
@@ -50,6 +63,36 @@ $$u_n = ar^{n-1}, \qquad S_n = \frac{a(1 - r^n)}{1 - r} \ (r \ne 1).$$
 - The GP **converges** $\iff |r| < 1$, and then $S_\infty = \dfrac{a}{1 - r}$. State the condition explicitly ("since $|r| < 1$, $r^n \to 0$ as $n \to \infty$").
 - If $r$ is an expression in $x$, solve $|r| < 1$ as an inequality (square both sides or use $-1 < r < 1$) — don't forget the case where the denominator is negative.
 - The terms in odd positions $u_1, u_3, u_5, \dots$ form a GP with ratio $r^2$.`,
+      figure: [
+      {
+        type: "plot", x: [-0.4, 10.8], y: [-1, 9], height: 170, axisLabels: ["n", "uₙ"],
+        segments: Array.from({ length: 9 }, (_, i) => ({ from: [i + 1, 8 * Math.pow(0.7, i)], to: [i + 2, 8 * Math.pow(0.7, i + 1)], tone: "muted", thin: true })),
+        points: Array.from({ length: 10 }, (_, i) => ({ x: i + 1, y: 8 * Math.pow(0.7, i) })),
+        caption: String.raw`$0 < r < 1$: terms decrease towards 0`,
+        alt: "Terms of a GP with r = 0.7 plotted against n, decreasing steadily towards 0.",
+      },
+      {
+        type: "plot", x: [-0.4, 10.8], y: [-6.6, 9], height: 170, axisLabels: ["n", "uₙ"],
+        segments: Array.from({ length: 9 }, (_, i) => ({ from: [i + 1, 8 * Math.pow(-0.7, i)], to: [i + 2, 8 * Math.pow(-0.7, i + 1)], tone: "muted", thin: true })),
+        points: Array.from({ length: 10 }, (_, i) => ({ x: i + 1, y: 8 * Math.pow(-0.7, i) })),
+        caption: String.raw`$-1 < r < 0$: terms alternate in sign and tend to 0`,
+        alt: "Terms of a GP with r = -0.7 plotted against n, alternating above and below the axis and shrinking towards 0.",
+      },
+      {
+        type: "plot", x: [-0.4, 8.8], y: [-3, 42], height: 170, axisLabels: ["n", "uₙ"],
+        segments: Array.from({ length: 7 }, (_, i) => ({ from: [i + 1, 8 * Math.pow(1.25, i)], to: [i + 2, 8 * Math.pow(1.25, i + 1)], tone: "muted", thin: true })),
+        points: Array.from({ length: 8 }, (_, i) => ({ x: i + 1, y: 8 * Math.pow(1.25, i) })),
+        caption: String.raw`$r > 1$: terms grow without bound`,
+        alt: "Terms of a GP with r = 1.25 plotted against n, increasing ever faster.",
+      },
+      {
+        type: "plot", x: [-0.4, 8.8], y: [-42, 34], height: 170, axisLabels: ["n", "uₙ"],
+        segments: Array.from({ length: 7 }, (_, i) => ({ from: [i + 1, 8 * Math.pow(-1.25, i)], to: [i + 2, 8 * Math.pow(-1.25, i + 1)], tone: "muted", thin: true })),
+        points: Array.from({ length: 8 }, (_, i) => ({ x: i + 1, y: 8 * Math.pow(-1.25, i) })),
+        caption: String.raw`$r < -1$: terms alternate and grow in size`,
+        alt: "Terms of a GP with r = -1.25 plotted against n, alternating in sign with increasing size.",
+      },
+      ],
     },
     {
       title: String.raw`"Least $n$" inequalities`,
@@ -59,6 +102,15 @@ $$u_n = ar^{n-1}, \qquad S_n = \frac{a(1 - r^n)}{1 - r} \ (r \ne 1).$$
 - With a quadratic in $n$ (AP sums): solve the quadratic inequality, then take the least **integer** satisfying it.
 - Using a GC table is acceptable: show the two consecutive rows that straddle the target, e.g. "$n = 23$: $0.0107 > 0.01$; $n = 24$: $0.0080 < 0.01$".
 - In context, read carefully: "at the end of the $n$th year" vs "during the $n$th year", and whether the first term is $n = 0$ or $n = 1$.`,
+      figure: {
+        type: "plot", x: [-0.4, 13], y: [-1, 17.5], height: 220, axisLabels: ["n", "Sₙ"],
+        lines: [{ y: 15, label: "S∞" }],
+        points: Array.from({ length: 12 }, (_, i) => ({ x: i + 1, y: 15 * (1 - Math.pow(0.6, i + 1)) })),
+        segments: [{ from: [3, 11.76], to: [3, 15], tone: "warn", thin: true, arrow: true, arrowStart: true, label: "S∞ − Sₙ", pos: "w", style: "plain", labelAt: [2.9, 13.4] }],
+        xTicks: [{ x: 3, label: "n" }],
+        caption: String.raw`For a convergent GP, $S_n$ approaches $S_\infty$ from below (when $a, r > 0$); "least $n$" questions ask when the gap $S_\infty - S_n$ first drops below a target.`,
+        alt: "Partial sums S_n of a convergent geometric series plotted against n, rising towards the horizontal line y = S-infinity; a vertical arrow at one value of n marks the gap S-infinity minus S_n.",
+      },
     },
     {
       title: String.raw`Sigma notation and standard results`,
@@ -85,6 +137,43 @@ $$\sum_{r=1}^{n} u_r = \mathrm{f}(1) - \mathrm{f}(n+1).$$
 - Behaviour may depend on $u_1$: converging to one fixed point, staying constant, or diverging. Describe what the GC shows in words ("decreases and converges to 2").
 - The sign of $u_{n+1} - u_n$ tells you whether the sequence is increasing or decreasing; factorise it in terms of $u_n$.
 - Linear models $u_{n+1} = a u_n + b$ (loans, drug doses) have limit $\dfrac{b}{1-a}$ when $|a| < 1$; the closed form comes from summing a GP.`,
+      figure: [
+        {
+          type: "plot", x: [-0.3, 5.2], y: [-0.3, 5], equal: true,
+          curves: [{ fn: "x => 2*Math.sqrt(x)", domain: [0, 5.2] }],
+          labels: [{ x: 1.75, y: 3.2, text: "y = f(x)", style: "italic", tone: "accent" }],
+          lines: [{ fn: "x => x", label: "y = x", labelAt: 4.55 }],
+          segments: [
+            { from: [0.5, 0], to: [0.5, 1.414], tone: "warn", thin: true },
+            { from: [0.5, 1.414], to: [1.414, 1.414], tone: "warn", thin: true },
+            { from: [1.414, 1.414], to: [1.414, 2.378], tone: "warn", thin: true },
+            { from: [1.414, 2.378], to: [2.378, 2.378], tone: "warn", thin: true },
+            { from: [2.378, 2.378], to: [2.378, 3.084], tone: "warn", thin: true },
+            { from: [2.378, 3.084], to: [3.084, 3.084], tone: "warn", thin: true },
+            { from: [3.084, 3.084], to: [3.084, 3.513], tone: "warn", thin: true },
+            { from: [3.084, 3.513], to: [3.513, 3.513], tone: "warn", thin: true },
+            { from: [3.513, 3.513], to: [3.513, 3.748], tone: "warn", thin: true },
+            { from: [3.513, 3.748], to: [3.748, 3.748], tone: "warn", thin: true },
+            { from: [3.748, 3.748], to: [3.748, 3.872], tone: "warn", thin: true },
+            { from: [3.748, 3.872], to: [3.872, 3.872], tone: "warn", thin: true },
+            { from: [1.414, 0], to: [1.414, 1.414], tone: "muted", thin: true, dashed: true },
+            { from: [2.378, 0], to: [2.378, 2.378], tone: "muted", thin: true, dashed: true },
+            { from: [3.084, 0], to: [3.084, 3.084], tone: "muted", thin: true, dashed: true },
+            { from: [4, 0], to: [4, 4], tone: "muted", thin: true, dashed: true },
+          ],
+          points: [{ x: 4, y: 4 }],
+          xTicks: [{ x: 0.5, label: "u₁" }, { x: 1.414, label: "u₂" }, { x: 2.378, label: "u₃" }, { x: 3.084, label: "u₄" }, { x: 4, label: "L" }],
+          caption: String.raw`Cobweb diagram: go up to $y = \mathrm{f}(x)$, across to $y = x$, repeat. The limit $L$ is where the curve meets $y = x$.`,
+          alt: "Cobweb diagram for u_{n+1} = f(u_n) with f(x) = 2 times the square root of x: a staircase of vertical and horizontal steps between the curve y = f(x) and the line y = x, starting at u_1 and closing in on the intersection at x = L.",
+        },
+        {
+          type: "plot", x: [-0.4, 10.8], y: [-0.3, 5], height: 200, axisLabels: ["n", "uₙ"],
+          lines: [{ y: 4, label: "L" }],
+          points: Array.from({ length: 10 }, (_, i) => ({ x: i + 1, y: Array.from({ length: i }).reduce((u) => 2 * Math.sqrt(u), 0.5) })),
+          caption: String.raw`The same sequence plotted against $n$: increasing and converging to $L$, where $L = \mathrm{f}(L)$.`,
+          alt: "Terms of the same recurrence plotted against n, increasing and levelling off just below the horizontal line at height L.",
+        },
+      ],
     },
     {
       title: String.raw`Sum and difference of two series`,
@@ -190,7 +279,14 @@ No interest is earned on the savings.`,
           ],
         },
         {
-          stem: String.raw`A ball is dropped from a height of 10 m above horizontal ground. Each time it hits the ground, it rebounds vertically to a height that is $\frac{3}{5}$ of the height from which it last fell.`,
+          stem: String.raw`A ball is dropped from a height of 10 m above horizontal ground. Each time it hits the ground, it rebounds vertically to a height that is $\frac{3}{5}$ of the height from which it last fell. The diagram shows how the height of the ball varies with time for the first few bounces.`,
+          figure: {
+            type: "plot", x: [-0.6, 22], y: [-0.6, 11.5], height: 190, axisLabels: ["t", "h"],
+            curves: [{ fn: "x => { if (x <= Math.sqrt(10)) return 10 - x*x; let t = Math.sqrt(10), h = 10; for (let k = 0; k < 12; k++) { h *= 0.6; const d = 2*Math.sqrt(h); if (x <= t + d) return h - (x - t - d/2)*(x - t - d/2); t += d; } return 0; }", domain: [0, 21.26], samples: 1600 }],
+            segments: [{ from: [0, 10], to: [1.6, 10], tone: "muted", thin: true, dashed: true }],
+            labels: [{ x: 1.6, y: 10, text: "10 m", pos: "e", style: "plain" }],
+            alt: "Graph of the height h of the ball against time t: a half-parabola falling from 10 m, followed by a sequence of parabolic arcs, each lower and shorter than the one before.",
+          },
           parts: [
             { label: "(i)", text: String.raw`Find the height to which the ball rises after it hits the ground for the 4th time.`, marks: 1 },
             { label: "(ii)", text: String.raw`Find the total distance travelled by the ball from the moment it is dropped until it hits the ground for the 8th time, giving your answer correct to 2 decimal places.`, marks: 3 },

@@ -40,6 +40,24 @@ $$\int \mathrm{f}'(x)[\mathrm{f}(x)]^n \,\dd x = \frac{[\mathrm{f}(x)]^{n+1}}{n+
 - $\cos^4 x$: square $\frac{1}{2}(1 + \cos 2x)$, then use the identity again on $\cos^2 2x$.
 - Odd powers such as $\sin^3 x$ or $\sin x \cos^4 x$: peel off one factor and use $\mathrm{f}'(x)[\mathrm{f}(x)]^n$, e.g. $\sin^3 x = \sin x - \sin x \cos^2 x$.
 - Work in **radians**; $\int \cos kx \,\dd x = \frac{1}{k}\sin kx + C$ — the $\frac{1}{k}$ is the most common slip.`,
+      figure: {
+        type: "plot",
+        x: [-0.4, 7.2], y: [-0.35, 1.4],
+        height: 210,
+        curves: [
+          { fn: "x => Math.sin(x)**2", domain: [0, 6.9] },
+          { fn: "x => Math.cos(x)**2", domain: [0, 6.9], tone: "good", dashed: true },
+        ],
+        lines: [{ y: 0.5 }],
+        xTicks: [{ x: 1.5708, label: "π/2" }, { x: 3.1416, label: "π" }, { x: 4.7124, label: "3π/2" }, { x: 6.2832, label: "2π" }],
+        yTicks: [{ y: 0.5, label: "½" }, { y: 1, label: "1" }],
+        labels: [
+          { x: 1.5708, y: 1, text: "y = sin²x", pos: "n", style: "italic", tone: "accent" },
+          { x: 3.1416, y: 1, text: "y = cos²x", pos: "n", style: "italic", tone: "good" },
+        ],
+        caption: String.raw`$\sin^2 x = \frac{1}{2}(1 - \cos 2x)$ and $\cos^2 x = \frac{1}{2}(1 + \cos 2x)$: cosine waves of period $\pi$ about $y = \frac{1}{2}$`,
+        alt: "Graphs of y = sin squared x and y = cos squared x, each oscillating between 0 and 1 about the line y = 1/2 with period pi",
+      },
     },
     {
       title: String.raw`Standard forms with $a^2 \pm x^2$ (MF27)`,

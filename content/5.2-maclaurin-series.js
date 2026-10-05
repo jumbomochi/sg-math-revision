@@ -24,6 +24,18 @@ H2.addTopic({
 $$\mathrm{f}(x) = \mathrm{f}(0) + x\,\mathrm{f}'(0) + \frac{x^2}{2!}\mathrm{f}''(0) + \cdots + \frac{x^r}{r!}\mathrm{f}^{(r)}(0) + \cdots$$
 
 The series is a polynomial that matches f and its derivatives at $x = 0$, so it approximates $\mathrm{f}(x)$ **well for $x$ close to 0** and generally worse further away. "Up to and including the term in $x^3$" means the term in $x^3$ must be found even if its coefficient is zero — say so.`,
+      figure: {
+        type: "plot", x: [-6.6, 6.6], y: [-2.6, 2.2], height: 240,
+        caption: String.raw`$\cos x$ with its Maclaurin polynomials $P_2$ and $P_4$: close near $x = 0$, poor further away.`,
+        alt: "y = cos x together with P2 = 1 - x squared over 2 and P4 = 1 - x squared over 2 + x to the 4 over 24. Both match cos x closely near x = 0; P4 stays close over a wider interval; both move away from cos x for larger |x|.",
+        xTicks: [ { x: -6.2832, label: "−2π" }, { x: 6.2832, label: "2π" } ],
+        curves: [
+          { fn: "x => Math.cos(x)", label: "y = cos x", labelAt: 5.2 },
+          { fn: "x => 1 - x*x/2", dashed: true, tone: "warn", label: "P₂", labelAt: -2.55 },
+          { fn: "x => 1 - x*x/2 + x*x*x*x/24", dashed: true, tone: "good" },
+        ],
+        labels: [ { x: 3.85, y: 1.6, text: "P₄", pos: "e", style: "italic", tone: "good" } ],
+      },
     },
     {
       title: String.raw`Standard series and their validity`,
@@ -38,6 +50,23 @@ The series is a polynomial that matches f and its derivatives at $x = 0$, so it 
 | $\ln(1 + x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \cdots$ | $-1 < x \le 1$ |
 
 $x$ is in **radians** throughout.`,
+      figure: {
+        type: "plot", x: [-1.6, 2.4], y: [-3.2, 2.6], height: 260,
+        caption: String.raw`$\ln(1 + x)$ and its Maclaurin polynomials of degrees 7 and 8: they agree for $-1 < x \le 1$ but fly apart for $x > 1$.`,
+        alt: "y = ln(1 + x) with its Maclaurin polynomials of degree 7 and 8. Between x = -1 and x = 1 the polynomials follow the curve; beyond x = 1 one shoots up and the other down. The line x = -1 is a vertical asymptote of ln(1 + x).",
+        shade: [ { upper: "x => 2.6", lower: "x => -3.2", from: -1, to: 1, tone: "muted" } ],
+        lines: [ { x: -1, label: "x = −1" }, { x: 1, label: "x = 1" } ],
+        curves: [
+          { fn: "x => Math.log(1 + x)", domain: [-0.999, 2.4] },
+          { fn: "x => { let s = 0; for (let k = 1; k <= 7; k++) s += (k % 2 ? 1 : -1)*Math.pow(x, k)/k; return s; }", dashed: true, tone: "good" },
+          { fn: "x => { let s = 0; for (let k = 1; k <= 8; k++) s += (k % 2 ? 1 : -1)*Math.pow(x, k)/k; return s; }", dashed: true, tone: "warn" },
+        ],
+        labels: [
+          { x: 1.32, y: 1.45, text: "P₇", pos: "w", style: "italic", tone: "good" },
+          { x: 1.42, y: -0.4, text: "P₈", pos: "e", style: "italic", tone: "warn" },
+          { x: 1.95, y: 0.72, text: "y = ln(1 + x)", pos: "c", style: "italic", tone: "accent" },
+        ],
+      },
     },
     {
       title: String.raw`Adapting the binomial series`,
@@ -81,6 +110,44 @@ Memorise these (they follow from MF27).
 - For angles like $\frac{\pi}{3} + \theta$, use the **addition formulae** (MF27) first, then approximate $\sin\theta$ and $\cos\theta$.
 - In triangles, small angle questions usually go through the cosine rule or sine rule, then a binomial expansion of a square root or reciprocal.
 - Keep terms only up to the order requested ("neglect $\theta^3$ and higher powers").`,
+      figure: [
+        {
+          type: "plot", x: [-1.6, 1.6], y: [-1.6, 1.6], height: 200,
+          caption: String.raw`$\sin x \approx x$`,
+          alt: "y = sin x and the line y = x, which are very close for small x and separate as |x| grows.",
+          curves: [
+            { fn: "x => Math.sin(x)", domain: [-1.5, 1.5] },
+            { fn: "x => x", domain: [-1.5, 1.5], dashed: true, tone: "warn" },
+          ],
+          labels: [
+            { x: 0.75, y: 1.2, text: "y = x", pos: "c", style: "italic", tone: "warn" },
+            { x: 1.15, y: 0.55, text: "y = sin x", pos: "c", style: "italic", tone: "accent" },
+          ],
+        },
+        {
+          type: "plot", x: [-1.6, 1.6], y: [-0.3, 1.3], height: 200,
+          caption: String.raw`$\cos x \approx 1 - \frac{1}{2}x^2$`,
+          alt: "y = cos x and y = 1 - x squared over 2, which are very close for small x and separate as |x| grows.",
+          curves: [
+            { fn: "x => Math.cos(x)", domain: [-1.5, 1.5], label: "y = cos x", labelAt: 1.1 },
+            { fn: "x => 1 - x*x/2", domain: [-1.5, 1.5], dashed: true, tone: "warn" },
+          ],
+          labels: [ { x: 0.2, y: -0.17, text: "y = 1 − x²/2", pos: "e", style: "italic", tone: "warn" } ],
+        },
+        {
+          type: "plot", x: [-1.6, 1.6], y: [-1.6, 1.6], height: 200,
+          caption: String.raw`$\tan x \approx x$`,
+          alt: "y = tan x and the line y = x, which are very close for small x and separate as |x| grows.",
+          curves: [
+            { fn: "x => Math.tan(x)", domain: [-1.5, 1.5] },
+            { fn: "x => x", domain: [-1.5, 1.5], dashed: true, tone: "warn" },
+          ],
+          labels: [
+            { x: 0.5, y: 1.2, text: "y = tan x", pos: "c", style: "italic", tone: "accent" },
+            { x: 1.2, y: 0.8, text: "y = x", pos: "c", style: "italic", tone: "warn" },
+          ],
+        },
+      ],
     },
     {
       title: String.raw`Series as approximations`,
@@ -262,7 +329,20 @@ Memorise these (they follow from MF27).
           ],
         },
         {
-          stem: String.raw`In triangle $PQR$, $PQ = 2$ cm, $PR = 1$ cm and angle $QPR = \left(\frac{\pi}{3} + \theta\right)$ radians, where $\theta$ is a small angle.`,
+          stem: String.raw`The diagram shows triangle $PQR$, in which $PQ = 2$ cm, $PR = 1$ cm and angle $QPR = \left(\frac{\pi}{3} + \theta\right)$ radians, where $\theta$ is a small angle.`,
+          figure: {
+            type: "plot", x: [-0.4, 2.4], y: [-0.35, 1.15], equal: true, axes: false,
+            alt: "Triangle PQR with PQ = 2 cm along the base, PR = 1 cm, and the angle at P equal to pi/3 + theta.",
+            polygons: [ { points: [[0, 0], [2, 0], [0.365, 0.931]], fill: true, tone: "muted" } ],
+            segments: [
+              { from: [0, 0], to: [2, 0], tone: "ink", label: "2 cm", pos: "s", style: "plain" },
+              { from: [0, 0], to: [0.365, 0.931], tone: "ink", label: "1 cm", pos: "w", style: "plain" },
+              { from: [2, 0], to: [0.365, 0.931], tone: "ink" },
+            ],
+            angles: [ { at: [0, 0], from: [2, 0], to: [0.365, 0.931], r: 0.2 } ],
+            labels: [ { x: 0.2, y: 0.12, text: "π/3 + θ", pos: "e", style: "italic" } ],
+            points: [ { x: 0, y: 0, label: "P", pos: "sw" }, { x: 2, y: 0, label: "Q", pos: "se" }, { x: 0.365, y: 0.931, label: "R", pos: "n" } ],
+          },
           parts: [
             { label: "(i)", text: String.raw`Show that $QR^2 \approx 3 + 2\sqrt{3}\,\theta + \theta^2$.`, marks: 4 },
             { label: "(ii)", text: String.raw`Hence find an approximation for $QR$ in the form $a + b\theta$, where $a$ and $b$ are exact constants to be determined.`, marks: 3 },

@@ -63,6 +63,39 @@ The new equation in $u$ and $x$ (or $z$ and $x$) should be separable — a "show
 - Linked quantities (volume and radius) need the chain rule: $\dfrac{\dd V}{\dd t} = \dfrac{\dd V}{\dd r}\cdot\dfrac{\dd r}{\dd t}$.
 
 Unknown constants (the constant of integration and $k$) need **two** conditions; a rate given at a particular value ("when $x = 20$ it is increasing at 2 mg per hour") fixes $k$ directly from the differential equation.`,
+      figure: [
+        {
+          type: "plot",
+          x: [-0.5, 8.5], y: [-0.5, 5.8],
+          height: 220,
+          axisLabels: ["t", "θ"],
+          curves: [
+            { fn: "x => 2 + 3*Math.exp(-0.5*x)", domain: [0, 8.3] },
+            { fn: "x => 2 - 1.4*Math.exp(-0.5*x)", domain: [0, 8.3], tone: "good" },
+          ],
+          segments: [{ from: [0, 2], to: [8.3, 2], dashed: true, tone: "muted" }],
+          labels: [
+            { x: 1.9, y: 3.3, text: "starts hotter: cools", pos: "e", style: "small", tone: "accent" },
+            { x: 1.9, y: 0.9, text: "starts colder: warms", pos: "e", style: "small", tone: "good" },
+            { x: 0.25, y: 2, text: "room temperature", pos: "ne", style: "small" },
+          ],
+          caption: String.raw`Newton's law of cooling: $\theta \to \theta_\text{room}$ as $t \to \infty$`,
+          alt: "Two temperature curves against time approaching the dashed room-temperature line, one falling from above and one rising from below",
+        },
+        {
+          type: "plot",
+          x: [-0.5, 9], y: [-0.4, 5],
+          height: 220,
+          axisLabels: ["t", "P"],
+          curves: [{ fn: "x => 4/(1 + 9*Math.exp(-x))", domain: [0, 8.8] }],
+          segments: [{ from: [0, 4], to: [8.8, 4], dashed: true, tone: "muted" }],
+          points: [{ x: 2.1972, y: 2, label: "fastest growth", pos: "se" }],
+          yTicks: [{ y: 4, label: "N" }, { y: 2, label: "N/2" }],
+          labels: [{ x: 8.6, y: 4, text: "carrying capacity", pos: "nw", style: "small" }],
+          caption: String.raw`Logistic growth $\dfrac{\dd P}{\dd t} = kP(N - P)$: an S-curve levelling off at $N$`,
+          alt: "S-shaped logistic curve rising from a small initial value, steepest at P = N/2, and levelling off at the carrying capacity N",
+        },
+      ],
     },
     {
       title: String.raw`Interpreting the equation and its solution`,
@@ -72,6 +105,40 @@ Unknown constants (the constant of integration and $k$) need **two** conditions;
 - **Meaning of terms**: say what each term represents in context (birth rate, harvesting rate, leak rate).
 - **Validity**: a model may predict negative mass or never reaching zero — comment on its limitations when asked.
 - Sketch the solution against $t$ with intercept, asymptote and the correct shape (concave up/down).`,
+      figure: [
+        {
+          type: "plot",
+          x: [-0.8, 5.8], y: [-1.6, 2.6],
+          height: 220,
+          axisLabels: ["P", "dP/dt"],
+          curves: [{ fn: "x => 0.5*x*(4 - x)", domain: [-0.45, 5.15] }],
+          segments: [
+            { from: [1.3, 0], to: [2.7, 0], arrow: true, tone: "warn" },
+            { from: [5.5, 0], to: [4.5, 0], arrow: true, tone: "warn" },
+          ],
+          points: [{ x: 4, y: 0, label: "N", pos: "sw", style: "italic" }],
+          labels: [
+            { x: 2, y: 0.9, text: "dP/dt > 0: P increases", style: "small" },
+            { x: 4.85, y: 0.45, text: "P decreases", style: "small" },
+          ],
+          caption: String.raw`Sign of $\dfrac{\dd P}{\dd t}$ either side of the equilibria $P = 0$ and $P = N$`,
+          alt: "Graph of dP/dt = kP(N − P) against P, an upside-down parabola through 0 and N; arrows on the P-axis point right between 0 and N and left beyond N, towards N",
+        },
+        {
+          type: "plot",
+          x: [-0.4, 8], y: [-0.4, 6.6],
+          height: 220,
+          axisLabels: ["t", "P"],
+          curves: [
+            { fn: "x => 4/(1 + (37/3)*Math.exp(-x))", domain: [0, 7.8] },
+            { fn: "x => 4/(1 + 2.3333*Math.exp(-x))", domain: [0, 7.8] },
+            { fn: "x => 4/(1 - Math.exp(-x)/3)", domain: [0, 7.8] },
+          ],
+          lines: [{ y: 4, label: "P = N" }],
+          caption: String.raw`Every solution with $P_0 > 0$ tends to $N$: $P = N$ is stable, $P = 0$ is unstable`,
+          alt: "Solution curves of the logistic equation starting below N and above N, all approaching the dashed line P = N",
+        },
+      ],
     },
     {
       title: String.raw`Families of solution curves`,
@@ -82,6 +149,27 @@ Unknown constants (the constant of integration and $k$) need **two** conditions;
 - show common features: asymptotes (e.g. all approach $y = 1$), intercepts, symmetry, and that members do not cross each other.
 
 A particular solution is the single member through a given point.`,
+      figure: {
+        type: "plot",
+        x: [-3.3, 3.3], y: [-2.5, 2.7],
+        height: 240,
+        curves: [
+          { fn: "x => 2*Math.exp(-x*x/2)" },
+          { fn: "x => Math.exp(-x*x/2)", tone: "warn" },
+          { fn: "x => -Math.exp(-x*x/2)" },
+          { fn: "x => -2*Math.exp(-x*x/2)" },
+        ],
+        points: [{ x: 0, y: 1, label: "(0, 1)", pos: "nw" }],
+        labels: [
+          { x: -1.05, y: 1.25, text: "A = 2", pos: "w", style: "small" },
+          { x: 0.2, y: 0.4, text: "A = 1", pos: "e", style: "small", tone: "warn" },
+          { x: 2.7, y: 0, text: "A = 0", pos: "n", style: "small" },
+          { x: 0.2, y: -0.4, text: "A = −1", pos: "e", style: "small" },
+          { x: -1.05, y: -1.25, text: "A = −2", pos: "w", style: "small" },
+        ],
+        caption: String.raw`$\dfrac{\dd y}{\dd x} = -xy$ has general solution $y = A\ee^{-x^2/2}$; the member through $(0, 1)$ has $A = 1$`,
+        alt: "Five members of the family y = A e^(−x²/2) for A = 2, 1, 0, −1, −2: bell-shaped curves above and below the x-axis that never cross and all approach y = 0; the member through (0, 1) is highlighted",
+      },
     },
   ],
   archetypes: [

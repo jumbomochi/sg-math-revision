@@ -44,7 +44,15 @@ A question looks like:
 }
 ```
 
-Graph figures are declared, not drawn — see the comment at the top of `assets/plot.js`.
+Figures (graphs, normal curves, vector diagrams, Venn and tree diagrams, bar charts) are declared, not drawn — see the comment at the top of `assets/plot.js`. A figure can go on a question, a part, or a key concept (`figure: {...}`, or an array to show several side by side).
+
+To check figures visually:
+
+```sh
+node tools/preview-figures.mjs content/6.3-normal-distribution.js --out /tmp/figs   # add --dark for dark mode
+```
+
+This renders every figure in the file to a PNG using headless Chrome.
 
 Archetype `id`s (e.g. `5.3-by-parts`) are the keys for students' saved checklist ticks, so don't rename them once the site is in use.
 
