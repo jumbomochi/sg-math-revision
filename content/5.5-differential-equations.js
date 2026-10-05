@@ -14,10 +14,10 @@ H2.addTopic({
   concepts: [
     {
       title: String.raw`General and particular solutions`,
-      body: String.raw`- The **general solution** contains arbitrary constant(s): one for a first-order equation, two for $\dfrac{\dd^2 y}{\dd x^2} = \mathrm{f}(x)$.
+      body: String.raw`- The **general solution** contains arbitrary constant(s): one for each first-order equation in this syllabus.
 - A **particular solution** uses given conditions (e.g. $y = 1$ when $x = 0$) to fix the constants.
 - $\dfrac{\dd y}{\dd x} = \mathrm{f}(x)$: integrate once, $y = \int \mathrm{f}(x)\,\dd x$.
-- $\dfrac{\dd^2 y}{\dd x^2} = \mathrm{f}(x)$: integrate twice, introducing a new constant **each time**: $\dfrac{\dd y}{\dd x} = \mathrm{F}(x) + A$, then $y = \int \mathrm{F}(x)\,\dd x + Ax + B$. Use a condition on $\dfrac{\dd y}{\dd x}$ to find $A$ before integrating again.`,
+- In context, $\dfrac{\dd V}{\dd t} = \mathrm{f}(t)$ gives the amount $V$ from its rate of change; the initial amount fixes the constant.`,
     },
     {
       title: String.raw`Separating the variables`,
@@ -87,14 +87,16 @@ A particular solution is the single member through a given point.`,
   archetypes: [
     {
       id: "5.5-direct-integration",
-      name: String.raw`Direct integration: $\frac{\dd y}{\dd x} = \mathrm{f}(x)$ and $\frac{\dd^2 y}{\dd x^2} = \mathrm{f}(x)$`,
-      tests: String.raw`Integrating once or twice with the correct number of arbitrary constants, then using the given conditions (often one on $y$ and one on $\dfrac{\dd y}{\dd x}$) to obtain a particular solution.`,
+      name: String.raw`Direct integration: $\frac{\dd y}{\dd x} = \mathrm{f}(x)$`,
+      tests: String.raw`Integrating a rate that depends only on the independent variable, using a given condition to obtain a particular solution, and interpreting the result (long-term behaviour, time to reach a value).`,
       questions: [
         {
-          stem: String.raw`It is given that $\dfrac{\dd^2 y}{\dd x^2} = 4\sin 2x$.`,
+          stem: String.raw`An empty tank is being filled with water. At time $t$ minutes after filling starts, the volume of water in the tank is $V$ litres, where
+$$\frac{\dd V}{\dd t} = 30 - 20\ee^{-0.1t}.$$`,
           parts: [
-            { label: "(i)", text: String.raw`Find the general solution of the differential equation.`, marks: 3 },
-            { label: "(ii)", text: String.raw`Find the particular solution for which $y = 1$ and $\dfrac{\dd y}{\dd x} = 0$ when $x = 0$.`, marks: 2 },
+            { label: "(i)", text: String.raw`Find $V$ in terms of $t$.`, marks: 3 },
+            { label: "(ii)", text: String.raw`Find the time taken for the tank to contain 500 litres of water.`, marks: 2 },
+            { label: "(iii)", text: String.raw`Describe how the rate at which the tank fills changes as $t$ increases.`, marks: 1 },
           ],
         },
         {

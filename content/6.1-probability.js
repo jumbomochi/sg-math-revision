@@ -1,7 +1,7 @@
 H2.addTopic({
   id: "6.1",
-  title: "Probability (incl. Permutations & Combinations)",
-  paper: "Paper 2 Section B",
+  title: "Probability",
+  paper: "Paper 2B",
   summary: String.raw`Counting arrangements and selections, then turning counts, Venn diagrams and tree diagrams into probabilities — including conditional probability and independence.`,
   syllabus: {
     include: [

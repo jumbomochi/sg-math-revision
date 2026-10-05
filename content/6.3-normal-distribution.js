@@ -1,7 +1,7 @@
 H2.addTopic({
   id: "6.3",
   title: "Normal Distribution",
-  paper: "Paper 2 Section B",
+  paper: "Paper 2B",
   summary: String.raw`The normal distribution as a continuous probability model: standardising, inverse problems, symmetry, and linear combinations of independent normal variables.`,
   syllabus: {
     include: [

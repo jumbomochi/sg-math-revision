@@ -38,7 +38,7 @@ H2.addTopic({
 3. Mark the critical values on a number line and use a **sign diagram** (or multiply through by $\mathrm{g}(x)^2 > 0$).
 4. Values that make the **denominator zero are always excluded**, even for $\ge$ or $\le$.
 
-A quadratic factor with negative discriminant (show this, or complete the square, e.g. $x^2 + 2x + 5 = (x + 1)^2 + 4 > 0$) is always positive and can be divided out without changing the inequality sign.`,
+A quadratic factor with positive leading coefficient and negative discriminant (show this, or complete the square, e.g. $x^2 + 2x + 5 = (x + 1)^2 + 4 > 0$) is always positive and can be divided out without changing the inequality sign.`,
     },
     {
       title: String.raw`Modulus`,

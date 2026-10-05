@@ -1,7 +1,7 @@
 H2.addTopic({
   id: "6.2",
   title: "Discrete Random Variables",
-  paper: "Paper 2 Section B",
+  paper: "Paper 2B",
   summary: String.raw`Probability distributions, expectation and variance of discrete random variables, and the binomial distribution as a probability model.`,
   syllabus: {
     include: [
@@ -217,7 +217,7 @@ It is given that $\E(X) = 2.6$.`,
           stem: String.raw`The probability that a randomly chosen light bulb from a factory is faulty is 0.08, independently of other bulbs.`,
           parts: [
             { label: "(i)", text: String.raw`Find the least number of bulbs that must be tested for the probability that at least one faulty bulb is found to exceed 0.95.`, marks: 3 },
-            { label: "(ii)", text: String.raw`The factory improves its process so that the probability that a bulb is faulty is $p$. In a random sample of 15 bulbs, the probability that at most one is faulty is 0.5. Find $p$.`, marks: 3 },
+            { label: "(ii)", text: String.raw`The factory improves its process so that the probability that a bulb is faulty is $p$. In a random sample of 15 bulbs, the probability that at most one is faulty is 0.8. Find $p$.`, marks: 3 },
           ],
         },
         {
