@@ -90,18 +90,6 @@ Acute angle between line and plane: $\sin\theta = \dfrac{|\mathbf{d} \cdot \math
 - Parallel planes: $\mathbf{n}_1 \parallel \mathbf{n}_2$ (coincident if the equations are multiples of each other).`,
     },
     {
-      title: String.raw`Three planes`,
-      body: String.raw`Solving three cartesian equations simultaneously gives one of:
-
-| Solution of the system | Geometry |
-| --- | --- |
-| Unique solution | Planes meet at a single point |
-| Infinitely many (one parameter) | Planes share a common line (sheaf) |
-| No solution | No common point (triangular prism, or two or more parallel planes) |
-
-If the third plane is to contain the line of intersection of the first two, its normal must be perpendicular to that line's direction **and** a point on the line must satisfy its equation — two conditions for two unknowns. A GC (rref or simultaneous-equation solver) is useful once the constants are known.`,
-    },
-    {
       title: String.raw`Exam technique`,
       body: String.raw`- "Acute angle" means take the modulus of the dot product; give angles to $0.1^\circ$ unless told otherwise.
 - None of the line and plane formulae are in MF27 — memorise them, and the sine/cosine distinction above.
@@ -294,33 +282,6 @@ $$l_1: \frac{x - 1}{2} = \frac{y + 1}{-1} = \frac{z - 3}{2}, \qquad l_2: \mathbf
             { label: "(i)", text: String.raw`Given that the acute angle between $p_1$ and $p_2$ is $60^\circ$, find the possible values of $k$.`, marks: 3 },
             { label: "(ii)", text: String.raw`For the positive value of $k$, find a vector equation of the line of intersection, $l$, of $p_1$ and $p_2$.`, marks: 3 },
             { label: "(iii)", text: String.raw`Find the acute angle between $l$ and the $x$-$y$ plane.`, marks: 2 },
-          ],
-        },
-      ],
-    },
-    {
-      id: "3.3-three-planes",
-      name: String.raw`Three planes: common point, common line or no common point`,
-      tests: String.raw`Interpreting a system of three linear equations geometrically, finding conditions on constants for the planes to share a line, and finding a unique point of intersection (GC allowed).`,
-      questions: [
-        {
-          stem: String.raw`The planes $p_1$, $p_2$ and $p_3$ have equations
-$$p_1: x + 2y - z = 3, \qquad p_2: 2x - y + z = 4, \qquad p_3: 3x + y + az = b,$$
-where $a$ and $b$ are constants.`,
-          parts: [
-            { label: "(i)", text: String.raw`Show that the line of intersection of $p_1$ and $p_2$ has equation $\mathbf{r} = \begin{pmatrix}2\\1\\1\end{pmatrix} + \lambda\begin{pmatrix}1\\-3\\-5\end{pmatrix}$, $\lambda \in \mathbb{R}$.`, marks: 3 },
-            { label: "(ii)", text: String.raw`Given that the three planes have a common line of intersection, find the values of $a$ and $b$.`, marks: 3 },
-            { label: "(iii)", text: String.raw`Given instead that $a = 1$ and $b = 3$, find the coordinates of the point common to all three planes.`, marks: 2 },
-          ],
-        },
-        {
-          stem: String.raw`The planes $p_1$, $p_2$ and $p_3$ have equations
-$$p_1: x + y + z = 6, \qquad p_2: x - y + 2z = 5, \qquad p_3: 2x + 3z = k,$$
-where $k$ is a constant.`,
-          parts: [
-            { label: "(i)", text: String.raw`Show that the three planes do not meet at a single point, for any value of $k$.`, marks: 2 },
-            { label: "(ii)", text: String.raw`Find the value of $k$ for which the three planes meet in a line, and find a vector equation of this line.`, marks: 4 },
-            { label: "(iii)", text: String.raw`Describe the geometrical arrangement of the three planes when $k$ does not take the value found in part (ii).`, marks: 1 },
           ],
         },
       ],
