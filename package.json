@@ -1,0 +1,12 @@
+{
+  "name": "h2math-rev",
+  "private": true,
+  "description": "H2 Mathematics (9758) revision site",
+  "scripts": {
+    "validate": "node tools/validate.mjs",
+    "serve": "python3 -m http.server 8000"
+  },
+  "devDependencies": {
+    "katex": "0.16.21"
+  }
+}
