@@ -74,6 +74,21 @@ h1, h2, h3, h4 { line-height: 1.25; margin: 0; }
 .nav-link.active .nav-id { color: inherit; }
 .nav-check { font-weight: 600; color: var(--good); }
 
+.nav-level { padding: 0 8px 14px; margin-bottom: 14px; border-bottom: 1px solid var(--line); }
+.nav-back { font-size: 13px; color: var(--ink-3); }
+.nav-level-name { font-weight: 700; font-size: 15px; margin-top: 4px; }
+
+/* tags and levels */
+.tags { display: inline-flex; gap: 4px; margin-left: 6px; vertical-align: middle; }
+.tag { display: inline-block; font: 700 10.5px/1.6 var(--sans); letter-spacing: 0.04em; padding: 0 6px; border-radius: 4px; background: var(--good-soft); color: var(--good); text-transform: uppercase; }
+.topic-head > .tags { margin: 8px 0 0; }
+.tag-legend { margin-top: 28px; font-size: 14px; color: var(--ink-2); }
+.tag-legend p { margin: 4px 0; }
+.levels { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); margin-top: 8px; }
+.level-card .card-title { font-size: 18px; }
+.level-card.is-soon { opacity: 0.6; }
+.loading { color: var(--ink-3); }
+
 /* shared bits */
 .eyebrow { margin: 0 0 6px; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); }
 .lede { color: var(--ink-2); font-size: 17px; margin: 10px 0 0; max-width: 680px; }

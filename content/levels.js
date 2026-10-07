@@ -1,0 +1,87 @@
+/*
+ * Levels on the site. Each level's topic files live in content/<id>/ and are listed in `files`
+ * (without ".js"). Topic ids are "1.3" style (group = part before the dot) or "N3" style
+ * (group = the letters). `groups` sets the order and headings; `sections` group the groups.
+ */
+H2.setLevels([
+  {
+    id: "h2",
+    name: "H2 Mathematics",
+    short: "H2 Math",
+    stage: "A-Level · JC",
+    code: "9758",
+    eyebrow: "Singapore-Cambridge GCE A-Level · Syllabus 9758",
+    summary: "Functions, sequences, vectors, complex numbers, calculus, and probability and statistics.",
+    storeKey: "h2math:confident:v1",
+    noCalcLabel: "No GC",
+    papers: [
+      { title: "Paper 1 · 3 h · 100 marks", text: "10–12 questions on Pure Mathematics, including one application question in a real-world context (at least 12 marks)." },
+      { title: "Paper 2 · 3 h · 100 marks", text: "Section A: Pure Mathematics (40 marks, 4–5 questions). Section B: Probability and Statistics (60 marks, 6–8 questions), including one application question." },
+    ],
+    sections: [
+      { id: "A", title: "Section A · Pure Mathematics" },
+      { id: "B", title: "Section B · Probability and Statistics" },
+    ],
+    groups: [
+      { id: "1", title: "Functions and Graphs", section: "A" },
+      { id: "2", title: "Sequences and Series", section: "A" },
+      { id: "3", title: "Vectors", section: "A" },
+      { id: "4", title: "Introduction to Complex Numbers", section: "A" },
+      { id: "5", title: "Calculus", section: "A" },
+      { id: "6", title: "Probability and Statistics", section: "B" },
+    ],
+    footnote: String.raw`Follows the SEAB 9758 syllabus (2026 and 2027 exams). All questions are original. Formulae marked <span class="mf">MF27</span> are in the List of Formulae.`,
+    files: [
+      "1.1-functions", "1.2-graphs-transformations", "1.3-equations-inequalities",
+      "2.1-sequences-series",
+      "3.1-vectors-basic", "3.2-scalar-vector-products", "3.3-lines-planes",
+      "4.1-complex-numbers",
+      "5.1-differentiation", "5.2-maclaurin-series", "5.3-integration-techniques", "5.4-definite-integrals", "5.5-differential-equations",
+      "6.1-probability", "6.2-discrete-random-variables", "6.3-normal-distribution", "6.4-sampling", "6.5-hypothesis-testing", "6.6-correlation-regression",
+    ],
+  },
+  {
+    id: "emath",
+    name: "Mathematics (E-Math)",
+    short: "E-Math",
+    stage: "Secondary · O-Level / SEC",
+    code: "K310",
+    eyebrow: "SEC G3 Mathematics · Syllabus K310 (O-Level 4052)",
+    summary: "Number and algebra, geometry and measurement, and statistics and probability.",
+    noCalcLabel: "No calculator",
+    papers: [
+      { title: "Paper 1 · 2 h 15 min · 90 marks", text: "About 26 short-answer questions. Calculator allowed." },
+      { title: "Paper 2 · 2 h 15 min · 90 marks", text: "9–10 longer questions. The last question applies mathematics to a real-world scenario. Calculator allowed." },
+    ],
+    sections: [{ id: "all", title: "" }],
+    groups: [
+      { id: "N", title: "Number and Algebra", section: "all" },
+      { id: "G", title: "Geometry and Measurement", section: "all" },
+      { id: "S", title: "Statistics and Probability", section: "all" },
+    ],
+    footnote: String.raw`Follows the SEAB SEC G3 Mathematics syllabus K310 (first exam 2027), which has the same content as O-Level 4052. All questions are original. Formulae marked <span class="mf">Given</span> are on the formula sheet in the exam paper.`,
+    files: [],
+  },
+  {
+    id: "amath",
+    name: "Additional Mathematics (A-Math)",
+    short: "A-Math",
+    stage: "Secondary · O-Level / SEC",
+    code: "K341",
+    eyebrow: "SEC G3 Additional Mathematics · Syllabus K341 (O-Level 4049)",
+    summary: "Algebra, geometry and trigonometry, and calculus. Assumes E-Math.",
+    noCalcLabel: "No calculator",
+    papers: [
+      { title: "Paper 1 · 2 h 15 min · 90 marks", text: "12–14 questions, up to 10 marks each. Calculator allowed." },
+      { title: "Paper 2 · 2 h 15 min · 90 marks", text: "9–11 questions, up to 12 marks each. Calculator allowed." },
+    ],
+    sections: [{ id: "all", title: "" }],
+    groups: [
+      { id: "A", title: "Algebra", section: "all" },
+      { id: "G", title: "Geometry and Trigonometry", section: "all" },
+      { id: "C", title: "Calculus", section: "all" },
+    ],
+    footnote: String.raw`Follows the SEAB SEC G3 Additional Mathematics syllabus K341 (first exam 2027), which has the same content as O-Level 4049. All questions are original. Formulae marked <span class="mf">Given</span> are on the formula sheet in the exam paper.`,
+    files: [],
+  },
+]);

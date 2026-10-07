@@ -1,5 +1,5 @@
 // Validates every content file: schema, unique ids, KaTeX parse of all maths, plot specs.
-// Usage: node tools/validate.mjs [content/5.3-integration-techniques.js ...]
+// Usage: node tools/validate.mjs [content/h2/5.3-integration-techniques.js ...]
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -11,14 +11,22 @@ const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..")
 const Markup = require(path.join(root, "assets/markup.js"))(katex);
 const Plot = require(path.join(root, "assets/plot.js"));
 
-const index = fs.readFileSync(path.join(root, "index.html"), "utf8");
-const listed = [...index.matchAll(/src="(content\/[^"]+\.js)"/g)].map((m) => m[1]);
+const levels = [];
+vm.runInNewContext(fs.readFileSync(path.join(root, "content/levels.js"), "utf8"), { H2: { setLevels: (ls) => levels.push(...ls) }, String });
+const levelOfFile = {};
+const listed = levels.flatMap((L) => L.files.map((f) => { const p = `content/${L.id}/${f}.js`; levelOfFile[p] = L; return p; }));
 const files = process.argv.slice(2).length ? process.argv.slice(2).map((f) => path.relative(root, path.resolve(f))) : listed;
+for (const L of levels) {
+  for (const k of ["id", "name", "short", "stage", "code", "eyebrow", "summary", "papers", "sections", "groups", "footnote", "files"]) if (L[k] == null) console.log(`✗ content/levels.js ${L.id || "?"}: missing ${k}`);
+  for (const f of fs.existsSync(path.join(root, "content", L.id)) ? fs.readdirSync(path.join(root, "content", L.id)) : []) {
+    if (f.endsWith(".js") && !L.files.includes(f.slice(0, -3))) console.log(`✗ content/${L.id}/${f}: not listed in content/levels.js`);
+  }
+}
 
 let errors = 0;
 const err = (file, where, msg) => { errors++; console.log(`✗ ${file} ${where}: ${msg}`); };
-const seenArch = new Set();
-const seenTopic = new Set();
+const seenArch = {};
+const seenTopic = {};
 const summary = [];
 
 function checkText(file, where, s, required = true) {
@@ -57,16 +65,21 @@ function checkParts(file, where, parts) {
 for (const file of files) {
   const abs = path.join(root, file);
   if (!fs.existsSync(abs)) { err(file, "", "file missing"); continue; }
-  if (!listed.includes(file)) err(file, "", "not referenced by a <script> tag in index.html");
+  if (!listed.includes(file)) err(file, "", "not listed in content/levels.js");
+  const L = levelOfFile[file] || { id: "?", groups: [] };
+  const seenA = (seenArch[L.id] ||= new Set()), seenT = (seenTopic[L.id] ||= new Set());
   const got = [];
   try {
     vm.runInNewContext(fs.readFileSync(abs, "utf8"), { H2: { addTopic: (t) => got.push(t) }, String, Math }, { filename: file });
   } catch (e) { err(file, "", "JS error: " + e.message); continue; }
   if (got.length !== 1) { err(file, "", `expected exactly one H2.addTopic call, got ${got.length}`); continue; }
   const t = got[0];
-  if (!/^\d\.\d$/.test(t.id || "")) err(file, "id", "must look like '5.3'");
+  if (!/^(\d+\.\d+|[A-Z]+\d+)$/.test(t.id || "")) err(file, "id", "must look like '5.3' or 'N3'");
+  const grp = String(t.id).includes(".") ? String(t.id).split(".")[0] : String(t.id).replace(/\d.*$/, "");
+  if (!L.groups.some((g) => g.id === grp)) err(file, "id", `group '${grp}' is not one of this level's groups`);
+  if (t.tags && !(Array.isArray(t.tags) && t.tags.every((x) => typeof x === "string"))) err(file, "tags", "must be an array of strings");
   if (!path.basename(file).startsWith(t.id + "-")) err(file, "id", `file name should start with '${t.id}-'`);
-  if (seenTopic.has(t.id)) err(file, "id", "duplicate topic id"); seenTopic.add(t.id);
+  if (seenT.has(t.id)) err(file, "id", "duplicate topic id"); seenT.add(t.id);
   if (!t.title) err(file, "title", "missing");
   checkText(file, "summary", t.summary);
   if (!t.syllabus || !Array.isArray(t.syllabus.include) || !t.syllabus.include.length) err(file, "syllabus.include", "missing");
@@ -78,8 +91,9 @@ for (const file of files) {
   let nq = 0;
   (t.archetypes || []).forEach((a, i) => {
     const w = `archetypes[${i}]`;
-    if (!a.id || !a.id.startsWith(t.id + "-") || !/^[\d.]+-[a-z0-9-]+$/.test(a.id)) err(file, w + ".id", `must be '${t.id}-kebab-slug', got '${a.id}'`);
-    if (seenArch.has(a.id)) err(file, w + ".id", "duplicate archetype id"); seenArch.add(a.id);
+    if (!a.id || !a.id.startsWith(t.id + "-") || !/^[A-Z\d.]+-[a-z0-9-]+$/.test(a.id)) err(file, w + ".id", `must be '${t.id}-kebab-slug', got '${a.id}'`);
+    if (seenA.has(a.id)) err(file, w + ".id", "duplicate archetype id"); seenA.add(a.id);
+    if (a.tags && !(Array.isArray(a.tags) && a.tags.every((x) => typeof x === "string"))) err(file, w + ".tags", "must be an array of strings");
     checkText(file, w + ".name", a.name);
     checkText(file, w + ".tests", a.tests);
     if (!Array.isArray(a.questions) || !a.questions.length) err(file, w + ".questions", "need at least one question");

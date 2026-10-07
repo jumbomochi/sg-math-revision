@@ -28,7 +28,9 @@ jobs:
       - run: npm ci
       - run: npm run validate
       - name: Assemble site
-        run: mkdir _site && cp -r index.html assets content _site/
+        run: |
+          mkdir _site && cp -r index.html assets content _site/
+          sed -i "s/__V__/${GITHUB_SHA::8}/g" _site/index.html
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

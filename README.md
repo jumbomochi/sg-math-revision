@@ -49,7 +49,7 @@ Figures (graphs, normal curves, vector diagrams, Venn and tree diagrams, bar cha
 To check figures visually:
 
 ```sh
-node tools/preview-figures.mjs content/6.3-normal-distribution.js --out /tmp/figs   # add --dark for dark mode
+node tools/preview-figures.mjs content/h2/6.3-normal-distribution.js --out /tmp/figs   # add --dark for dark mode
 ```
 
 This renders every figure in the file to a PNG using headless Chrome.
