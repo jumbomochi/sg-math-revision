@@ -114,9 +114,10 @@
   }
 
   const LETTERS = "ABCDEFGH";
-  function choicesHtml(choices) {
+  function choicesHtml(L, choices) {
     if (!choices || !choices.length) return "";
-    return `<ol class="q-choices">${choices.map((c, k) => `<li><span class="q-choice-letter">(${LETTERS[k]})</span><span>${mdi(c)}</span></li>`).join("")}</ol>`;
+    const label = (k) => (L.choiceLabels === "numbers" ? k + 1 : LETTERS[k]);
+    return `<ol class="q-choices">${choices.map((c, k) => `<li><span class="q-choice-letter">(${label(k)})</span><span>${mdi(c)}</span></li>`).join("")}</ol>`;
   }
 
   function questionHtml(L, q, i) {
@@ -127,7 +128,7 @@
       <div class="q-body">
         ${q.stem ? `<div class="q-text">${md(q.stem)}</div>` : ""}
         ${figure(q.figure)}
-        ${choicesHtml(q.choices)}
+        ${choicesHtml(L, q.choices)}
         ${partsHtml(q.parts)}
         ${!q.parts && q.marks ? `<div class="q-marks q-marks-solo">[${q.marks}]</div>` : ""}
         ${q.answer ? `<details class="q-answer"><summary>Show answer</summary><div class="q-answer-body">${md(q.answer)}</div></details>` : ""}
