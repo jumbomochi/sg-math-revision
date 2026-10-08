@@ -175,6 +175,11 @@ H2.setLevels([
       { id: "G", title: "Geometry", section: "all" },
     ],
     footnote: "All problems are original, written in the style of the Singapore Mathematical Olympiad and similar competitions. Difficulty is about the problem, not the student's age.",
-    files: [],
+    files: [
+      "A1-manipulation-identities", "A2-equations-systems", "A3-inequalities", "A4-polynomials", "A5-sequences-recurrences", "A6-functional-equations",
+      "N1-divisibility-primes", "N2-modular-arithmetic", "N3-diophantine", "N4-digits-bases", "N5-floor-gcd-lcm",
+      "C1-counting", "C2-probability-expectation", "C3-pigeonhole-extremal", "C4-invariants-games", "C5-graphs-colouring",
+      "G1-angles-circles", "G2-lengths-areas", "G3-triangle-centres-trig", "G4-coordinate-solid",
+    ],
   },
 ]);
