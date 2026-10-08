@@ -112,16 +112,16 @@ ways. When the identical letters are glued or slotted, divide only by the repeat
     {
       title: String.raw`Selections: "at least" and cases`,
       body: String.raw`- "At least one" — usually fastest as total $-$ none.
-- Otherwise list the **cases** exhaustively and add, e.g. "more women than men" in a committee of 5 means 3W2M, 4W1M or 5W0M.
-- **Overcounting trap**: "choose one man, one woman, then any 3 others" counts the same committee many times. Always split into cases instead.
+- Otherwise list the **cases** exhaustively and add, e.g. "more women than men" in a committee of 6 means 4W2M, 5W1M or 6W0M.
+- **Overcounting trap**: "choose one man, one woman, then any 2 others" counts the same committee many times. Always split into cases instead.
 - A particular person included: fix them in and choose the rest from the remaining people.`,
     },
     {
       title: String.raw`Grouping and distribution`,
       body: String.raw`- Divide $n$ distinct objects into groups of **different** sizes $a, b, c$: $\dfrac{n!}{a!\,b!\,c!}$.
-- Groups of the **same** size that are unlabelled: divide further by the number of ways of ordering those equal groups, e.g. 9 people into three groups of 3: $\dfrac{9!}{3!\,3!\,3!\,3!}$.
+- Groups of the **same** size that are unlabelled: divide further by the number of ways of ordering those equal groups, e.g. 8 people into four groups of 2: $\dfrac{8!}{2!\,2!\,2!\,2!\,4!}$.
 - If the groups are **labelled** (given to named people, rooms, teams A/B/C), do not divide by that extra factor.
-- "Each person receives at least one": split by the possible group sizes, e.g. 6 into 3 nonempty groups: $(4,1,1), (3,2,1), (2,2,2)$.`,
+- "Each person receives at least one": split by the possible group sizes, e.g. 5 into 3 nonempty groups: $(3,1,1), (2,2,1)$.`,
     },
     {
       title: String.raw`Probability rules; mutually exclusive vs independent`,

@@ -58,15 +58,15 @@ $r$ measures how well a **linear** model fits the data. Obtain it from the GC (L
         },
         {
           type: "plot", x: [0, 11], y: [0, 10.5], height: 190, axisLabels: ["x", "y"],
-          scatter: [[1, 1.9], [2, 4.4], [3, 6.9], [4, 8.1], [5, 9.1], [6, 8.7], [7, 8.3], [8, 6.6], [9, 4.8], [10, 1.5]],
+          scatter: [[1, 8.9], [2, 6.2], [3, 4.1], [4, 2.6], [5, 1.7], [6, 1.5], [7, 2.4], [8, 3.9], [9, 6], [10, 8.7]],
           caption: String.raw`$r \approx 0$, yet a strong non-linear relationship`,
-          alt: "Scatter diagram with points lying close to an upside-down U-shaped curve: a strong relationship that is not linear.",
+          alt: "Scatter diagram with points lying close to a U-shaped curve: a strong relationship that is not linear.",
         },
       ],
     },
     {
       title: String.raw`Correlation is not causation`,
-      body: String.raw`A value of $r$ close to $\pm 1$ shows a strong linear association, **not** that a change in $x$ causes a change in $y$. Both variables may be driven by a third factor (e.g. temperature drives both ice-cream sales and beach attendance). Also, a high $|r|$ does not by itself prove the relationship is linear — always check the shape of the scatter diagram.`,
+      body: String.raw`A value of $r$ close to $\pm 1$ shows a strong linear association, **not** that a change in $x$ causes a change in $y$. Both variables may be driven by a third factor (e.g. the size of a town drives both its number of schools and its number of traffic accidents). Also, a high $|r|$ does not by itself prove the relationship is linear — always check the shape of the scatter diagram.`,
     },
     {
       title: String.raw`Least squares regression lines (MF27)`,
@@ -99,9 +99,9 @@ $$y - \bar{y} = b(x - \bar{x}), \qquad b = \frac{\sum (x - \bar{x})(y - \bar{y})
     },
     {
       title: String.raw`Choosing the appropriate line`,
-      body: String.raw`- If one variable is **controlled/independent** (set by the experimenter, e.g. time, temperature, dosage, $x$-values at fixed intervals), use the regression line of the dependent variable on the independent variable — **for estimates in either direction**.
-- If **both** variables are random (e.g. heights and arm spans of students), use $y$ on $x$ to estimate $y$ from a given $x$, and $x$ on $y$ to estimate $x$ from a given $y$.
-- State your reason explicitly in context: "since $t$ is the independent variable, the line of $N$ on $t$ is used."`,
+      body: String.raw`- If one variable is **controlled/independent** (set by the experimenter, e.g. time, concentration, dosage, $x$-values at fixed intervals), use the regression line of the dependent variable on the independent variable — **for estimates in either direction**.
+- If **both** variables are random (e.g. the marks of students in two subjects), use $y$ on $x$ to estimate $y$ from a given $x$, and $x$ on $y$ to estimate $x$ from a given $y$.
+- State your reason explicitly in context: "since $d$ is the independent variable, the line of $V$ on $d$ is used."`,
     },
     {
       title: String.raw`Reliability of an estimate`,
@@ -138,7 +138,7 @@ $$y - \bar{y} = b(x - \bar{x}), \qquad b = \frac{\sum (x - \bar{x})(y - \bar{y})
 | $y = a + \dfrac{b}{x}$ | $y$ against $\dfrac{1}{x}$ | steep near $x = 0$, approaching $y = a$ |
 | $\ln y = a + bx$ (i.e. $y = \ee^{a}\ee^{bx}$) | $\ln y$ against $x$ | exponential growth or decay, $y > 0$ |
 
-To choose a model: (i) rule out a model whose shape does not match the scatter diagram (e.g. $y = a + bx^2$ with $b < 0$ is concave, so it cannot fit points that curve upwards); (ii) among the rest, choose the one whose transformed data give $|r|$ **closest to 1**. Then find the regression line on the transformed variables and convert back.`,
+To choose a model: (i) rule out a model whose shape does not match the scatter diagram (e.g. $y = a + b\ln x$ with $b > 0$ is concave, so it cannot fit points that curve upwards ever more steeply); (ii) among the rest, choose the one whose transformed data give $|r|$ **closest to 1**. Then find the regression line on the transformed variables and convert back.`,
       figure: [
         {
           type: "plot", x: [0, 9], y: [0, 46], height: 200, axisLabels: ["x", "y"],

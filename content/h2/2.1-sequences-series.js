@@ -28,7 +28,7 @@ H2.addTopic({
 
 $$u_n = S_n - S_{n-1} \quad (n \ge 2), \qquad u_1 = S_1.$$
 
-- Always check whether your formula for $u_n$ also gives $u_1 = S_1$. If $S_n$ has a non-zero constant term (e.g. $S_n = 3n^2 - 2n + 4$), it does **not**, and the sequence is not an AP even though $u_n$ is linear for $n \ge 2$.
+- Always check whether your formula for $u_n$ also gives $u_1 = S_1$. If $S_n$ has a non-zero constant term (e.g. $S_n = 2n^2 + n + 3$), it does **not**, and the sequence is not an AP even though $u_n$ is linear for $n \ge 2$.
 - Sum of the terms from $u_{m+1}$ to $u_n$ is $S_n - S_m$.`,
     },
     {
@@ -100,7 +100,7 @@ $$u_n = ar^{n-1}, \qquad S_n = \frac{a(1 - r^n)}{1 - r} \ (r \ne 1).$$
 
 - With an exponential: take $\ln$ of both sides. Dividing by $\ln r$ where $0 < r < 1$ (so $\ln r < 0$) **reverses** the inequality — a common mistake.
 - With a quadratic in $n$ (AP sums): solve the quadratic inequality, then take the least **integer** satisfying it.
-- Using a GC table is acceptable: show the two consecutive rows that straddle the target, e.g. "$n = 23$: $0.0107 > 0.01$; $n = 24$: $0.0080 < 0.01$".
+- Using a GC table is acceptable: show the two consecutive rows that straddle the target, e.g. "$n = 17$: $0.0140 > 0.01$; $n = 18$: $0.0098 < 0.01$".
 - In context, read carefully: "at the end of the $n$th year" vs "during the $n$th year", and whether the first term is $n = 0$ or $n = 1$.`,
       figure: {
         type: "plot", x: [-0.4, 13], y: [-1, 17.5], height: 220, axisLabels: ["n", "Sₙ"],
@@ -128,13 +128,13 @@ $$\sum_{r=1}^{n} u_r = \mathrm{f}(1) - \mathrm{f}(n+1).$$
 - Usually start by expressing $u_r$ in **partial fractions** (MF27 gives the standard forms).
 - For full marks, **write out rows** for $r = 1, 2, 3, \dots, n-1, n$ in columns so the diagonal cancellations are visible; keep the terms that survive at the start *and* the end. With three-term fractions, more terms survive.
 - Then: as $n \to \infty$, the $n$-terms $\to 0$, so the series converges and $S_\infty$ is the constant part.
-- Follow-ups: shift the index ($r \to r - 1$) to get a related sum; or **compare** term by term, e.g. $\dfrac{1}{(r+1)^2} < \dfrac{1}{r(r+2)}$, to bound a sum you cannot find exactly.`,
+- Follow-ups: shift the index ($r \to r - 1$) to get a related sum; or **compare** term by term, e.g. $\dfrac{1}{r^2} > \dfrac{1}{r(r+1)}$, to bound a sum you cannot find exactly.`,
     },
     {
       title: String.raw`Recurrence relations $u_{n+1} = \mathrm{f}(u_n)$`,
       body: String.raw`- Generate terms on the GC (seq mode or a recursive table) and quote them to the accuracy asked.
 - If the sequence converges to $L$, then $u_n \to L$ and $u_{n+1} \to L$, so $L = \mathrm{f}(L)$. Solve, then **reject** roots inconsistent with the sequence (e.g. negative when all terms are positive).
-- Behaviour may depend on $u_1$: converging to one fixed point, staying constant, or diverging. Describe what the GC shows in words ("decreases and converges to 2").
+- Behaviour may depend on $u_1$: converging to one fixed point, staying constant, or diverging. Describe what the GC shows in words ("decreases and converges to 5").
 - The sign of $u_{n+1} - u_n$ tells you whether the sequence is increasing or decreasing; factorise it in terms of $u_n$.
 - Linear models $u_{n+1} = a u_n + b$ (loans, drug doses) have limit $\dfrac{b}{1-a}$ when $|a| < 1$; the closed form comes from summing a GP.`,
       figure: [
@@ -179,8 +179,8 @@ $$\sum_{r=1}^{n} u_r = \mathrm{f}(1) - \mathrm{f}(n+1).$$
       title: String.raw`Sum and difference of two series`,
       body: String.raw`Split awkward sums into pieces you can handle:
 
-- Odd terms = all terms − even terms, e.g. $\displaystyle\sum_{r=1}^{n}(2r-1)^2 = \sum_{r=1}^{2n} r^2 - \sum_{r=1}^{n}(2r)^2$.
-- Alternating sums: group in pairs, $1^2 - 2^2 + 3^2 - \dots$, or use (odd terms) − (even terms).
+- Odd terms = all terms − even terms, e.g. $\displaystyle\sum_{r=1}^{n}(2r-1)^3 = \sum_{r=1}^{2n} r^3 - \sum_{r=1}^{n}(2r)^3$.
+- Alternating sums: group in pairs, $1^3 - 2^3 + 3^3 - \dots$, or use (odd terms) − (even terms).
 - A series such as $\sum (3^r + 2r)$ is a GP plus an AP — sum separately.
 - Counting terms correctly is the usual pitfall: $\sum_{r=1}^{2n}$ has $2n$ terms, of which $n$ are odd.`,
     },

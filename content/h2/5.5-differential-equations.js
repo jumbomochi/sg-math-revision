@@ -26,8 +26,8 @@ H2.addTopic({
 $$\int \frac{1}{\mathrm{g}(y)}\,\dd y = \int \mathrm{f}(x)\,\dd x.$$
 
 - Put **one** constant on the $x$ side only.
-- The left side often needs a 5.3 technique: partial fractions for $\dfrac{1}{4 - y^2}$, a standard form for $\dfrac{1}{1 + y^2}$, parts on the right side for $\ee^x\cos x$, etc.
-- Dividing by $\mathrm{g}(y)$ assumes $\mathrm{g}(y) \ne 0$; constant solutions such as $y = 1$ for $\dfrac{\dd y}{\dd x} = 1 - y$ are equilibrium solutions.
+- The left side often needs a 5.3 technique: partial fractions for $\dfrac{1}{9 - y^2}$, a standard form for $\dfrac{1}{4 + y^2}$, parts on the right side for $x\sin x$, etc.
+- Dividing by $\mathrm{g}(y)$ assumes $\mathrm{g}(y) \ne 0$; constant solutions such as $y = 3$ for $\dfrac{\dd y}{\dd x} = 3 - y$ are equilibrium solutions.
 - "Find $y$ in terms of $x$" means make $y$ the subject — an implicit answer such as $\tan^{-1} y = x^2 + C$ is not enough.`,
     },
     {
@@ -36,8 +36,8 @@ $$\int \frac{1}{\mathrm{g}(y)}\,\dd y = \int \mathrm{f}(x)\,\dd x.$$
 
 $$|y - a| = \ee^{C}\ee^{kt} \ \Rightarrow\ y - a = A\ee^{kt}, \quad A = \pm\ee^{C}.$$
 
-- Either keep the arbitrary constant $A$ (which absorbs the $\pm$) or use the context to fix the sign: in Newton's law of cooling, $\theta > 25$ throughout, so $|\theta - 25| = \theta - 25$. **State** this reason.
-- With partial fractions, combine first: $\ln\left|\dfrac{P - 90}{P - 10}\right| = -0.8t + C$, then decide the sign of the fraction from the initial value.
+- Either keep the arbitrary constant $A$ (which absorbs the $\pm$) or use the context to fix the sign: in Newton's law of cooling, $\theta > 20$ throughout, so $|\theta - 20| = \theta - 20$. **State** this reason.
+- With partial fractions, combine first: $\ln\left|\dfrac{P - 60}{P - 20}\right| = -0.4t + C$, then decide the sign of the fraction from the initial value.
 - Substitute the initial condition **before** rearranging, if that makes $C$ simpler.`,
     },
     {
@@ -46,7 +46,7 @@ $$|y - a| = \ee^{C}\ee^{kt} \ \Rightarrow\ y - a = A\ee^{kt}, \quad A = \pm\ee^{
 
 | Substitution | Differentiate | Replace |
 | $y = ux$ | $\dfrac{\dd y}{\dd x} = u + x\dfrac{\dd u}{\dd x}$ | product rule |
-| $z = x + y$ | $\dfrac{\dd z}{\dd x} = 1 + \dfrac{\dd y}{\dd x}$ | |
+| $z = 2x + y$ | $\dfrac{\dd z}{\dd x} = 2 + \dfrac{\dd y}{\dd x}$ | |
 | $u = y^2$ (say) | $\dfrac{\dd u}{\dd x} = 2y\dfrac{\dd y}{\dd x}$ | chain rule |
 
 The new equation in $u$ and $x$ (or $z$ and $x$) should be separable — a "show that" usually confirms the target form. Solve, then **substitute back** to give the answer in $x$ and $y$.`,
@@ -56,13 +56,13 @@ The new equation in $u$ and $x$ (or $z$ and $x$) should be separable — a "show
       body: String.raw`Translate the words into a rate of change with respect to time $t$:
 
 - "$P$ increases at a rate proportional to $P$": $\dfrac{\dd P}{\dd t} = kP$, $k > 0$.
-- "decreases at a rate proportional to $\sqrt{m}$": $\dfrac{\dd m}{\dd t} = -k\sqrt{m}$, $k > 0$ — put the minus sign in and **state $k > 0$**.
+- "decreases at a rate proportional to $m^2$": $\dfrac{\dd m}{\dd t} = -km^2$, $k > 0$ — put the minus sign in and **state $k > 0$**.
 - **Newton's law of cooling**: $\dfrac{\dd \theta}{\dd t} = -k(\theta - \theta_\text{room})$, $k > 0$.
 - **Inflow–outflow** (tanks, drugs, salt): $\dfrac{\dd x}{\dd t} = (\text{rate in}) - (\text{rate out})$.
 - **Logistic growth**: $\dfrac{\dd P}{\dd t} = kP(N - P)$ — growth slows as $P$ approaches the carrying capacity $N$; a "$-h$" term represents constant harvesting.
 - Linked quantities (volume and radius) need the chain rule: $\dfrac{\dd V}{\dd t} = \dfrac{\dd V}{\dd r}\cdot\dfrac{\dd r}{\dd t}$.
 
-Unknown constants (the constant of integration and $k$) need **two** conditions; a rate given at a particular value ("when $x = 20$ it is increasing at 2 mg per hour") fixes $k$ directly from the differential equation.`,
+Unknown constants (the constant of integration and $k$) need **two** conditions; a rate given at a particular value ("when $x = 15$ it is increasing at 3 mg per hour") fixes $k$ directly from the differential equation.`,
       figure: [
         {
           type: "plot",

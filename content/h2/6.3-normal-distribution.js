@@ -87,7 +87,7 @@ Note that the second parameter is the **variance**: $\N(50, 16)$ has $\sigma = 4
 $$Z = \frac{X - \mu}{\sigma} \sim \N(0, 1).$$
 
 - GC: normalcdf(lower, upper, $\mu$, $\sigma$) — enter $\sigma$, **not** $\sigma^2$. Use a large bound such as $10^{99}$ for an open tail.
-- Always write the probability statement, e.g. "$\P(X > 350) = 0.115$", and sketch the curve with the region shaded when the question is unfamiliar.
+- Always write the probability statement, e.g. "$\P(X > 65) = 0.159$", and sketch the curve with the region shaded when the question is unfamiliar.
 - Give probabilities to 3 significant figures, but keep more figures in intermediate working.`,
       figure: [
         {
@@ -146,7 +146,7 @@ $$Z = \frac{X - \mu}{\sigma} \sim \N(0, 1).$$
 - $\P(X > a) = p \Rightarrow \P(X < a) = 1 - p$.
 - Symmetric interval containing a proportion $p$: $\mu \pm z\sigma$, where $\P(Z < z) = \frac{1 + p}{2}$.
 
-Interpret the answer in context (e.g. "the least mean volume is 508.2 ml").`,
+Interpret the answer in context (e.g. "the least mean mass is 253.3 g").`,
       figure: [
         {
           type: "plot", x: [-3.6, 3.6], y: [-0.02, 0.46], height: 190, axisLabels: ["x", null],
@@ -175,20 +175,20 @@ $$\P(X < x_1) = p \;\Rightarrow\; \frac{x_1 - \mu}{\sigma} = z_p, \quad \P(Z < z
 
 - One unknown: solve directly. Two unknowns: two such equations, solved simultaneously.
 - Check signs: if $x_1 < \mu$ then $z_p < 0$.
-- Keep $z$-values to at least 4 decimal places (e.g. $-1.2816$, $0.8416$) to avoid accumulated rounding errors.`,
+- Keep $z$-values to at least 4 decimal places (e.g. $-1.7507$, $0.5244$) to avoid accumulated rounding errors.`,
       figure: {
         type: "plot", x: [-3.6, 3.6], y: [-0.02, 0.46], height: 200, axisLabels: ["x", null],
         curves: [{ fn: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)" }],
         shade: [
-          { upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: -3.6, to: -1.6449, tone: "warn" },
+          { upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: -3.6, to: -1.7507, tone: "warn" },
           { upper: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)", from: 0.5244, to: 3.6, tone: "warn" },
         ],
         lines: [{ x: 0 }],
-        xTicks: [{ x: -1.6449, label: "x₁" }, { x: 0, label: "μ" }, { x: 0.5244, label: "x₂" }],
-        labels: [{ x: -2.6, y: 0.1, text: "0.05", style: "small", tone: "warn" }, { x: 1.15, y: 0.08, text: "0.3", style: "small" }],
-        segments: [{ from: [-2.45, 0.085], to: [-1.95, 0.03], tone: "muted", thin: true }],
-        caption: String.raw`$\dfrac{x_1 - \mu}{\sigma} = -1.6449$ (negative, as $x_1 < \mu$) and $\dfrac{x_2 - \mu}{\sigma} = 0.5244$.`,
-        alt: "Normal curve with unknown mean mu. The left tail below x1 has area 0.05 and the right tail above x2 has area 0.3; x1 lies below mu and x2 above it.",
+        xTicks: [{ x: -1.7507, label: "x₁" }, { x: 0, label: "μ" }, { x: 0.5244, label: "x₂" }],
+        labels: [{ x: -2.6, y: 0.1, text: "0.04", style: "small", tone: "warn" }, { x: 1.15, y: 0.08, text: "0.3", style: "small" }],
+        segments: [{ from: [-2.45, 0.085], to: [-2.05, 0.025], tone: "muted", thin: true }],
+        caption: String.raw`$\dfrac{x_1 - \mu}{\sigma} = -1.7507$ (negative, as $x_1 < \mu$) and $\dfrac{x_2 - \mu}{\sigma} = 0.5244$.`,
+        alt: "Normal curve with unknown mean mu. The left tail below x1 has area 0.04 and the right tail above x2 has area 0.3; x1 lies below mu and x2 above it.",
       },
     },
     {
@@ -255,8 +255,8 @@ $$\E(aX + bY) = a\E(X) + b\E(Y), \qquad \Var(aX + bY) = a^2\Var(X) + b^2\Var(Y),
 and if $X$ and $Y$ are normal, $aX + bY$ is normal.
 
 - Variances **add** even for a difference: $\Var(X - Y) = \Var(X) + \Var(Y)$.
-- Turn comparisons into a single variable: $\P(X > 2Y) = \P(X - 2Y > 0)$; $\P(|X - Y| < 5) = \P(-5 < X - Y < 5)$.
-- State the distribution in full, e.g. "$X - 2Y \sim \N(2, 8)$", before computing.`,
+- Turn comparisons into a single variable: $\P(X > 3Y) = \P(X - 3Y > 0)$; $\P(|X - Y| < 3) = \P(-3 < X - Y < 3)$.
+- State the distribution in full, e.g. "$X - 3Y \sim \N(5, 25)$", before computing.`,
       figure: [
         {
           type: "plot", x: [12, 44], y: [-0.012, 0.155], height: 200, axisLabels: ["x", null],
@@ -285,9 +285,9 @@ and if $X$ and $Y$ are normal, $aX + bY$ is normal.
       body: String.raw`- $X_1 + X_2 + \cdots + X_n$ (total of $n$ **independent** items): mean $n\mu$, variance $n\sigma^2$.
 - $nX$ (one item multiplied by $n$): mean $n\mu$, variance $n^2\sigma^2$.
 
-Decide which one the context describes: "the total mass of 4 apples" is $A_1 + A_2 + A_3 + A_4$; "twice the mass of an apple" is $2A$. The two have the same mean but different spreads, so different probabilities.
+Decide which one the context describes: "the total mass of 3 pears" is $P_1 + P_2 + P_3$; "three times the mass of a pear" is $3P$. The two have the same mean but different spreads, so different probabilities.
 
-A "box containing 12 items" has total mass $B + X_1 + \cdots + X_{12}$, where $B$ is the box's own mass.`,
+A "box containing 6 items" has total mass $B + X_1 + \cdots + X_6$, where $B$ is the box's own mass.`,
       figure: {
         type: "plot", x: [62, 138], y: [-0.004, 0.064], height: 210, axisLabels: ["x", null],
         curves: [
@@ -303,7 +303,7 @@ A "box containing 12 items" has total mass $B + X_1 + \cdots + X_{12}$, where $B
     {
       title: String.raw`Modelling: assumptions and suitability`,
       body: String.raw`- A normal model is doubtful when the variable cannot be negative but $\P(X < 0)$ is not negligible (mean less than about $2\sigma$ above 0), or when the data are clearly skewed.
-- When combining variables, state the **independence** assumption in context (e.g. "the service times of different customers are independent").
+- When combining variables, state the **independence** assumption in context (e.g. "the lengths of different rods are independent").
 - Questions often combine a normal probability with a binomial count: first find $p = \P(\text{one item satisfies the condition})$, then use $\B(n, p)$.`,
       figure: {
         type: "plot", x: [-7, 15], y: [-0.01, 0.15], height: 190, axisLabels: ["x", null],

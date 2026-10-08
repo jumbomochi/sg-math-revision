@@ -39,7 +39,7 @@ Writing $\frac{\dd y}{\dd x} = \frac{N}{D}$:
 - tangent **parallel to the $x$-axis**: $N = 0$ (with $D \ne 0$);
 - tangent **parallel to the $y$-axis**: $D = 0$ (with $N \ne 0$).
 
-Each condition gives a relation between $x$ and $y$ — substitute it **back into the equation of the curve** to find the actual points. Discard points where $N = D = 0$ (e.g. the origin on $x^3 + y^3 = 6xy$).`,
+Each condition gives a relation between $x$ and $y$ — substitute it **back into the equation of the curve** to find the actual points. Discard points where $N = D = 0$ (e.g. the origin on $x^3 + y^3 = 3xy$).`,
       figure: {
         type: "plot", x: [-3.4, 3.4], y: [-3, 3], equal: true,
         caption: String.raw`Horizontal tangents where $N = 0$, vertical tangents where $D = 0$.`,
@@ -277,7 +277,7 @@ If the stationary value lies outside the allowed interval, the optimum is at an 
       body: String.raw`Link the rates with the chain rule, e.g.
 $$\frac{\dd h}{\dd t} = \frac{\dd h}{\dd V}\cdot\frac{\dd V}{\dd t} = \frac{\dd V/\dd t}{\dd V/\dd h}.$$
 
-- First write the relation between the quantities **in general** (e.g. $V = \frac{\pi}{12}h^3$ using similar triangles), differentiate, and only **then** substitute the instant's values.
+- First write the relation between the quantities **in general** (e.g. $V = \frac{\pi}{27}h^3$ using similar triangles), differentiate, and only **then** substitute the instant's values.
 - Rates of decrease are negative: "leaks at 3 cm³ s⁻¹" means $\frac{\dd V}{\dd t} = -3$.
 - Mensuration formulae are **not** in MF27; questions often quote them, but memorise $V_\text{cone} = \frac13\pi r^2 h$, $V_\text{sphere} = \frac43\pi r^3$, $S_\text{sphere} = 4\pi r^2$, $S_\text{curved, cylinder} = 2\pi r h$.`,
     },

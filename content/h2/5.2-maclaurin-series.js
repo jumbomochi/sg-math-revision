@@ -73,29 +73,29 @@ $x$ is in **radians** throughout.`,
       body: String.raw`The binomial series needs the form $(1 + \text{small})^n$. Factor out the constant first:
 $$(a + bx)^n = a^n\left(1 + \frac{b}{a}x\right)^n, \qquad \text{valid for } \left\lvert \frac{b}{a}x \right\rvert < 1 \iff \lvert x\rvert < \left\lvert\frac{a}{b}\right\rvert.$$
 
-- Put brackets round the whole "$x$": $(1 - \frac{x}{2})^{-1/2}$ needs $\left(-\frac{x}{2}\right)^2$, not $-\frac{x^2}{2}$.
+- Put brackets round the whole "$x$": $(1 - \frac{x}{3})^{-1/2}$ needs $\left(-\frac{x}{3}\right)^2$, not $-\frac{x^2}{3}$.
 - For rational functions, split into **partial fractions** first, expand each, then add.`,
     },
     {
       title: String.raw`Combining series: products, quotients, logs`,
       body: String.raw`- **Products**: multiply truncated series and keep only terms up to the required power — no need to expand fully.
 - **Quotients**: write $\frac{\mathrm{g}(x)}{1 + \mathrm{h}(x)} = \mathrm{g}(x)\,(1 + \mathrm{h}(x))^{-1}$ and use the binomial series.
-- **Logs**: use log laws first, e.g. $\ln\frac{1+x}{1-x} = \ln(1+x) - \ln(1-x)$, or factorise $\ln(1 + 2x - 3x^2) = \ln(1+3x) + \ln(1-x)$.
-- **Range of validity** of a combination is the **intersection** of the ranges of the parts. Watch the end-points of $\ln$: $\ln(1 - x)$ is valid for $-1 \le x < 1$.`,
+- **Logs**: use log laws first, e.g. $\ln\frac{1+4x}{1-2x} = \ln(1+4x) - \ln(1-2x)$, or factorise $\ln(1 + 3x - 10x^2) = \ln(1+5x) + \ln(1-2x)$.
+- **Range of validity** of a combination is the **intersection** of the ranges of the parts. Watch the end-points of $\ln$: $\ln(1 - 2x)$ is valid for $-\frac{1}{2} \le x < \frac{1}{2}$.`,
     },
     {
       title: String.raw`Composite functions`,
       body: String.raw`To expand $\mathrm{f}(\mathrm{g}(x))$ with standard series, substitute the series of $\mathrm{g}$ into the series of $\mathrm{f}$, where $\mathrm{g}(x)$ must be **small** when $x$ is small.
 
-- $\ee^{\sin x}$: let $u = \sin x \approx x - \frac{x^3}{6}$, then use $\ee^u = 1 + u + \frac{u^2}{2} + \cdots$.
-- $\ee^{\cos x}$: $\cos x \to 1$, not 0, so write $\ee^{\cos x} = \ee \cdot \ee^{\cos x - 1}$ with $u = \cos x - 1 \approx -\frac{x^2}{2}$.
+- $\ee^{\tan x}$: let $u = \tan x \approx x + \frac{x^3}{3}$, then use $\ee^u = 1 + u + \frac{u^2}{2} + \cdots$.
+- $\ee^{\cos 2x}$: $\cos 2x \to 1$, not 0, so write $\ee^{\cos 2x} = \ee \cdot \ee^{\cos 2x - 1}$ with $u = \cos 2x - 1 \approx -2x^2$.
 - Decide in advance how many terms of $u$ you need: if $u$ starts at $x^2$, then $u^3$ only contributes from $x^6$.`,
     },
     {
       title: String.raw`Repeated (and implicit) differentiation`,
-      body: String.raw`When standard series are awkward (e.g. $\sec x$), find $\mathrm{f}(0), \mathrm{f}'(0), \mathrm{f}''(0), \ldots$ and use Maclaurin's formula.
+      body: String.raw`When standard series are awkward (e.g. $\tan x$), find $\mathrm{f}(0), \mathrm{f}'(0), \mathrm{f}''(0), \ldots$ and use Maclaurin's formula.
 
-- Work with a **relation** rather than explicit derivatives: from $y = \sec x$, show $\frac{\dd^2 y}{\dd x^2} = 2y^3 - y$, then differentiate that implicitly.
+- Work with a **relation** rather than explicit derivatives: from $y = \tan x$, show $\frac{\dd y}{\dd x} = 1 + y^2$, then differentiate that implicitly.
 - Each differentiation of a product like $y\frac{\dd y}{\dd x}$ needs the product rule: $\frac{\dd}{\dd x}\left(y\frac{\dd y}{\dd x}\right) = \left(\frac{\dd y}{\dd x}\right)^2 + y\frac{\dd^2 y}{\dd x^2}$.
 - Substitute $x = 0$ **after** each differentiation to get the values in order: $y(0)$, then $y'(0)$, then $y''(0)$…
 - For an implicitly defined curve, first find $y$ when $x = 0$ (and justify the root you choose).`,
@@ -107,7 +107,7 @@ $$\sin x \approx x, \qquad \cos x \approx 1 - \tfrac{1}{2}x^2, \qquad \tan x \ap
 Memorise these (they follow from MF27).
 
 - Replace the angle carefully: $\cos 2\theta \approx 1 - 2\theta^2$, $\sin 3\theta \approx 3\theta$.
-- For angles like $\frac{\pi}{3} + \theta$, use the **addition formulae** (MF27) first, then approximate $\sin\theta$ and $\cos\theta$.
+- For angles like $\frac{\pi}{6} + \theta$, use the **addition formulae** (MF27) first, then approximate $\sin\theta$ and $\cos\theta$.
 - In triangles, small angle questions usually go through the cosine rule or sine rule, then a binomial expansion of a square root or reciprocal.
 - Keep terms only up to the order requested ("neglect $\theta^3$ and higher powers").`,
       figure: [

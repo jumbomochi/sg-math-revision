@@ -22,8 +22,8 @@ H2.addTopic({
 
 $$\int \mathrm{f}'(x)[\mathrm{f}(x)]^n \,\dd x = \frac{[\mathrm{f}(x)]^{n+1}}{n+1} + C \ (n \ne -1), \qquad \int \frac{\mathrm{f}'(x)}{\mathrm{f}(x)}\,\dd x = \ln|\mathrm{f}(x)| + C, \qquad \int \mathrm{f}'(x)\,\ee^{\mathrm{f}(x)}\,\dd x = \ee^{\mathrm{f}(x)} + C.$$
 
-- Adjust constants only: $\int x\,\ee^{x^2}\,\dd x = \frac{1}{2}\ee^{x^2} + C$. You **cannot** fix a missing $x$ this way — $\int \ee^{x^2}\,\dd x$ has no elementary answer.
-- Keep the modulus in $\ln|\mathrm{f}(x)|$ unless $\mathrm{f}(x) > 0$ is clear (e.g. $\ln(x^2 + 1)$). Drop it only with a reason.
+- Adjust constants only: $\int x\,\ee^{-x^2}\,\dd x = -\frac{1}{2}\ee^{-x^2} + C$. You **cannot** fix a missing $x$ this way — $\int \ee^{-x^2}\,\dd x$ has no elementary answer.
+- Keep the modulus in $\ln|\mathrm{f}(x)|$ unless $\mathrm{f}(x) > 0$ is clear (e.g. $\ln(x^2 + 4)$). Drop it only with a reason.
 - Linear inside: $\int \mathrm{f}(ax + b)\,\dd x = \frac{1}{a}\mathrm{F}(ax + b) + C$.
 - $\int \tan x\,\dd x = \ln|\sec x| + C$ and $\int \sec x\,\dd x = \ln|\sec x + \tan x| + C$ are in **(MF27)**.`,
     },
@@ -37,7 +37,7 @@ $$\int \mathrm{f}'(x)[\mathrm{f}(x)]^n \,\dd x = \frac{[\mathrm{f}(x)]^{n+1}}{n+
 | $\tan^2 x$ | $\sec^2 x - 1$ | memorise |
 | $\sin mx \cos nx$ etc. | sum/difference of sines or cosines | factor formulae — memorise, or add $\sin(A + B)$ and $\sin(A - B)$ from (MF27) |
 
-- $\cos^4 x$: square $\frac{1}{2}(1 + \cos 2x)$, then use the identity again on $\cos^2 2x$.
+- $\sin^4 x$: square $\frac{1}{2}(1 - \cos 2x)$, then use the identity again on $\cos^2 2x$.
 - Odd powers such as $\sin^3 x$ or $\sin x \cos^4 x$: peel off one factor and use $\mathrm{f}'(x)[\mathrm{f}(x)]^n$, e.g. $\sin^3 x = \sin x - \sin x \cos^2 x$.
 - Work in **radians**; $\int \cos kx \,\dd x = \frac{1}{k}\sin kx + C$ — the $\frac{1}{k}$ is the most common slip.`,
       figure: {
@@ -67,8 +67,8 @@ $$\int \frac{1}{x^2 + a^2}\,\dd x = \frac{1}{a}\tan^{-1}\frac{x}{a}, \qquad \int
 
 $$\int \frac{1}{x^2 - a^2}\,\dd x = \frac{1}{2a}\ln\left(\frac{x - a}{x + a}\right)\ (x > a), \qquad \int \frac{1}{a^2 - x^2}\,\dd x = \frac{1}{2a}\ln\left(\frac{a + x}{a - x}\right)\ (|x| < a).$$
 
-- **Coefficient of $x^2$ not 1**: factor it out first, e.g. $\dfrac{1}{9 + 4x^2} = \dfrac{1}{4}\cdot\dfrac{1}{\frac{9}{4} + x^2}$, so $a = \frac{3}{2}$.
-- **Quadratic with an $x$ term**: complete the square, e.g. $x^2 + 4x + 13 = (x + 2)^2 + 3^2$ and $5 + 4x - x^2 = 3^2 - (x - 2)^2$, then use the form with $x$ replaced by $x + 2$ or $x - 2$.
+- **Coefficient of $x^2$ not 1**: factor it out first, e.g. $\dfrac{1}{25 + 4x^2} = \dfrac{1}{4}\cdot\dfrac{1}{\frac{25}{4} + x^2}$, so $a = \frac{5}{2}$.
+- **Quadratic with an $x$ term**: complete the square, e.g. $x^2 + 6x + 13 = (x + 3)^2 + 2^2$ and $7 + 6x - x^2 = 4^2 - (x - 3)^2$, then use the form with $x$ replaced by $x + 3$ or $x - 3$.
 - The $\ln$ forms are partial fractions in disguise; either route earns full credit.`,
     },
     {
@@ -96,11 +96,11 @@ For definite integrals, combine the logarithms into a single $\ln$ when asked fo
       body: String.raw`The substitution is always given in the question. Change **everything**:
 
 - the integrand, written in the new variable;
-- $\dd x$, via $\dfrac{\dd x}{\dd \theta}$ or $\dfrac{\dd u}{\dd x}$ (e.g. $x = 2\sin\theta \Rightarrow \dd x = 2\cos\theta\,\dd\theta$);
+- $\dd x$, via $\dfrac{\dd x}{\dd \theta}$ or $\dfrac{\dd u}{\dd x}$ (e.g. $x = 3\sin\theta \Rightarrow \dd x = 3\cos\theta\,\dd\theta$);
 - for a **definite** integral, the **limits** — then never return to $x$;
 - for an **indefinite** integral, substitute back so the answer is in terms of $x$ (draw a right-angled triangle to rewrite $\sin 2\theta$, $\cos\theta$, etc.).
 
-Simplify with care: $\sqrt{4 - 4\sin^2\theta} = 2\cos\theta$ is valid because $\cos\theta \ge 0$ on the chosen interval of $\theta$. "Exact value" means surds, $\pi$, $\ln$, $\ee$ — no decimals.`,
+Simplify with care: $\sqrt{9 - 9\sin^2\theta} = 3\cos\theta$ is valid because $\cos\theta \ge 0$ on the chosen interval of $\theta$. "Exact value" means surds, $\pi$, $\ln$, $\ee$ — no decimals.`,
     },
     {
       title: String.raw`Integration by parts`,
@@ -108,9 +108,9 @@ Simplify with care: $\sqrt{4 - 4\sin^2\theta} = 2\cos\theta$ is valid because $\
 
 Choose $u$ to become simpler on differentiation. Rough priority for $u$: **L**ogarithms, **I**nverse trig, **A**lgebraic (powers of $x$), **T**rig, **E**xponentials.
 
-- $x^2\ee^{x}$, $x^2\sin x$: apply parts **twice**, keeping the same type of choice for $u$.
+- $x^2\ee^{2x}$, $x^2\cos x$: apply parts **twice**, keeping the same type of choice for $u$.
 - $\ln x$, $\tan^{-1}x$, $\sin^{-1}x$ alone: write as $1 \cdot \ln x$ and take $u = \ln x$, $\dfrac{\dd v}{\dd x} = 1$.
-- $x\sec^2 x$: $u = x$, $v = \tan x$, then $\int \tan x\,\dd x$ from (MF27).
+- $x\sec^2 2x$: $u = x$, $v = \frac{1}{2}\tan 2x$, then $\int \tan 2x\,\dd x$ using (MF27).
 - For definite integrals evaluate $[uv]_a^b$ straight away — it often vanishes or simplifies.`,
     },
     {
@@ -121,7 +121,7 @@ $$I = (\text{expression}) - k I \ \Rightarrow\ I = \frac{\text{expression}}{1 + 
 
 - Swapping the choice of $u$ on the second application simply undoes the first step and gives $I = I$.
 - Add the constant $C$ only at the end, after solving for $I$.
-- Integrands such as $\ee^{2x}\sin^2 x$ are first rewritten with $\sin^2 x = \frac{1}{2}(1 - \cos 2x)$.`,
+- Integrands such as $\ee^{3x}\cos^2 x$ are first rewritten with $\cos^2 x = \frac{1}{2}(1 + \cos 2x)$.`,
     },
     {
       title: String.raw`Presentation and GC checks`,

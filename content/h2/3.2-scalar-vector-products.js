@@ -319,28 +319,28 @@ a useful check. In interpretation questions, name the specific points and line, 
       title: String.raw`Deductions with abstract vectors`,
       body: String.raw`You **cannot divide** by a vector or "cancel" it. Instead, collect terms:
 
-- $\mathbf{a} \times \mathbf{b} = \mathbf{a} \times \mathbf{c} \Rightarrow \mathbf{a} \times (\mathbf{b} - \mathbf{c}) = \mathbf{0} \Rightarrow \mathbf{b} - \mathbf{c} = \lambda\mathbf{a}$ (given $\mathbf{a} \ne \mathbf{0}$ and $\mathbf{b} \ne \mathbf{c}$), i.e. $\mathbf{a}$ is parallel to $\mathbf{b} - \mathbf{c}$.
-- $\mathbf{a} \cdot \mathbf{b} = \mathbf{a} \cdot \mathbf{c} \Rightarrow \mathbf{a} \cdot (\mathbf{b} - \mathbf{c}) = 0 \Rightarrow \mathbf{a} \perp (\mathbf{b} - \mathbf{c})$.
+- $\mathbf{a} \times \mathbf{b} = \mathbf{b} \times \mathbf{c} \Rightarrow \mathbf{a} \times \mathbf{b} + \mathbf{c} \times \mathbf{b} = \mathbf{0} \Rightarrow (\mathbf{a} + \mathbf{c}) \times \mathbf{b} = \mathbf{0} \Rightarrow \mathbf{a} + \mathbf{c} = \lambda\mathbf{b}$ (given $\mathbf{b} \ne \mathbf{0}$ and $\mathbf{a} + \mathbf{c} \ne \mathbf{0}$), i.e. $\mathbf{b}$ is parallel to $\mathbf{a} + \mathbf{c}$.
+- $\mathbf{a} \cdot \mathbf{c} = \mathbf{b} \cdot \mathbf{c} \Rightarrow (\mathbf{a} - \mathbf{b}) \cdot \mathbf{c} = 0 \Rightarrow \mathbf{c} \perp (\mathbf{a} - \mathbf{b})$.
 - $(\mathbf{a} + \mathbf{b}) \cdot (\mathbf{a} - \mathbf{b}) = |\mathbf{a}|^2 - |\mathbf{b}|^2$.
 
 State the conditions you use (non-zero, non-parallel) — they carry marks.`,
       figure: {
         type: "plot",
         x: [0, 10],
-        y: [0, 6.6],
+        y: [0, 5.6],
         equal: true,
         axes: false,
         segments: [
-          { from: [1, 1], to: [3.2, 1.6], arrow: true, tone: "warn", label: "a", pos: "s" },
-          { from: [1, 1], to: [8.68, 6.04], arrow: true, label: "b", pos: "se", labelAt: [5.22, 3.77] },
-          { from: [1, 1], to: [3.4, 4.6], arrow: true, label: "c", pos: "w" },
-          { from: [3.4, 4.6], to: [8.68, 6.04], arrow: true, tone: "good", label: "b − c = λa", pos: "n", labelAt: [5.78, 5.25] },
+          { from: [5.6, 0.6], to: [7.8, 1.2], arrow: true, tone: "warn", label: "b", pos: "s" },
+          { from: [1, 1], to: [3.4, 4.6], arrow: true, label: "a", pos: "w" },
+          { from: [3.4, 4.6], to: [8.7, 3.1], arrow: true, label: "c", pos: "ne" },
+          { from: [1, 1], to: [8.7, 3.1], arrow: true, tone: "good", label: "a + c = λb", pos: "nw", labelAt: [5.2, 2.15] },
         ],
         points: [
           { x: 1, y: 1, label: "O", pos: "sw" },
         ],
-        caption: String.raw`$\mathbf{a} \times \mathbf{b} = \mathbf{a} \times \mathbf{c}$ does **not** give $\mathbf{b} = \mathbf{c}$: only that $\mathbf{b} - \mathbf{c}$ is parallel to $\mathbf{a}$`,
-        alt: "Vectors b and c from O, with the vector from the tip of c to the tip of b, b minus c, parallel to a.",
+        caption: String.raw`$\mathbf{a} \times \mathbf{b} = \mathbf{b} \times \mathbf{c}$ does **not** give $\mathbf{a} = -\mathbf{c}$: only that $\mathbf{a} + \mathbf{c}$ is parallel to $\mathbf{b}$`,
+        alt: "Vector a from O, followed by vector c from the tip of a; the resultant a + c from O is parallel to a separate vector b.",
       },
     },
   ],

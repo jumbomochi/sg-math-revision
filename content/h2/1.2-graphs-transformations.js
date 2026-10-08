@@ -159,21 +159,21 @@ For a **shifted** conic, complete the square to reach $\dfrac{(x-h)^2}{a^2} \pm 
 The curve takes **all** real values exactly when the discriminant is positive for every $y$ — test this by showing the "discriminant of the discriminant" is negative. "Using an algebraic method" or "non-calculus method" means this route, not differentiation.`,
       figure: {
         type: "plot",
-        x: [-6, 8], y: [-9, 13], height: 300,
-        shade: [{ upper: "x => 6", lower: "x => -2", from: -6, to: 8, tone: "muted" }],
-        lines: [{ x: 1 }, { fn: "x => x + 1" }, { y: 6, label: "y = 6" }, { y: -2, label: "y = −2" }],
-        curves: [{ fn: "x => (x*x + 3)/(x - 1)" }],
+        x: [-7, 11], y: [-13, 21], height: 300,
+        shade: [{ upper: "x => 10", lower: "x => -2", from: -7, to: 11, tone: "muted" }],
+        lines: [{ x: 2 }, { fn: "x => x + 2" }, { y: 10, label: "y = 10" }, { y: -2, label: "y = −2" }],
+        curves: [{ fn: "x => (x*x + 5)/(x - 2)" }],
         points: [
           { x: -1, y: -2, label: "(−1, −2)", pos: "s" },
-          { x: 3, y: 6, label: "(3, 6)", pos: "n" },
+          { x: 5, y: 10, label: "(5, 10)", pos: "n" },
         ],
         labels: [
-          { x: 5.4, y: 2, text: "y cannot be here", style: "small", tone: "warn" },
-          { x: 1.2, y: -8.2, text: "x = 1", pos: "e", style: "italic" },
-          { x: -2.6, y: -1.6, text: "y = x + 1", pos: "nw", style: "italic" },
+          { x: 4.6, y: 2.5, text: "y cannot be here", style: "small", tone: "warn" },
+          { x: 2.2, y: -12, text: "x = 2", pos: "e", style: "italic" },
+          { x: 8.6, y: 9.2, text: "y = x + 2", pos: "se", style: "italic" },
         ],
-        caption: String.raw`$y = \dfrac{x^2 + 3}{x - 1}$: discriminant $\ge 0$ gives $y \le -2$ or $y \ge 6$. The boundary values are the $y$-coordinates of the turning points.`,
-        alt: "Curve y = (x² + 3)/(x − 1) with asymptotes x = 1 and y = x + 1. A horizontal band −2 < y < 6 is shaded and the curve never enters it; the maximum (−1, −2) and minimum (3, 6) sit on the edges of the band.",
+        caption: String.raw`$y = \dfrac{x^2 + 5}{x - 2}$: discriminant $\ge 0$ gives $y \le -2$ or $y \ge 10$. The boundary values are the $y$-coordinates of the turning points.`,
+        alt: "Curve y = (x² + 5)/(x − 2) with asymptotes x = 2 and y = x + 2. A horizontal band −2 < y < 10 is shaded and the curve never enters it; the maximum (−1, −2) and minimum (5, 10) sit on the edges of the band.",
       },
     },
     {
@@ -193,38 +193,38 @@ Full marks need the **full description**: "translation of 2 units in the negativ
       figure: [
         {
           type: "plot",
-          x: [-3.5, 4.8], y: [-3, 3.2], height: 220,
+          x: [-3.5, 4.8], y: [-2.1, 2.2], height: 220,
           curves: [
-            { fn: "x => x*(x - 3)*(x - 3)/2", domain: [-0.45, 4.3], dashed: true, tone: "muted" },
-            { fn: "x => (x + 2)*(x - 1)*(x - 1)/2", domain: [-2.45, 2.3] },
+            { fn: "x => x*(x - 3)*(x - 3)/4", domain: [-0.45, 4.3], dashed: true, tone: "muted" },
+            { fn: "x => (x + 2)*(x - 1)*(x - 1)/4", domain: [-2.45, 2.3] },
           ],
-          segments: [{ from: [0.85, 2], to: [-0.85, 2], arrow: true, thin: true, tone: "warn" }],
-          points: [{ x: 1, y: 2, label: "(1, 2)", pos: "ne" }, { x: -1, y: 2, label: "(−1, 2)", pos: "nw" }],
+          segments: [{ from: [0.85, 1], to: [-0.85, 1], arrow: true, thin: true, tone: "warn" }],
+          points: [{ x: 1, y: 1, label: "(1, 1)", pos: "ne" }, { x: -1, y: 1, label: "(−1, 1)", pos: "nw" }],
           caption: String.raw`$y = \mathrm{f}(x + 2)$: translation of 2 units in the negative $x$-direction`,
-          alt: "Dashed original curve y = f(x) with maximum (1, 2), and the solid curve y = f(x + 2), the same shape moved 2 units left, with maximum (−1, 2).",
+          alt: "Dashed original curve y = f(x) with maximum (1, 1), and the solid curve y = f(x + 2), the same shape moved 2 units left, with maximum (−1, 1).",
         },
         {
           type: "plot",
-          x: [-3.5, 4.8], y: [-3, 3.2], height: 220,
+          x: [-3.5, 4.8], y: [-2.1, 2.2], height: 220,
           curves: [
-            { fn: "x => x*(x - 3)*(x - 3)/2", domain: [-0.45, 4.3], dashed: true, tone: "muted" },
-            { fn: "x => x*(2*x - 3)*(2*x - 3)", domain: [-0.225, 2.15] },
+            { fn: "x => x*(x - 3)*(x - 3)/4", domain: [-0.45, 4.3], dashed: true, tone: "muted" },
+            { fn: "x => x*(2*x - 3)*(2*x - 3)/2", domain: [-0.225, 2.15] },
           ],
-          points: [{ x: 1, y: 2, label: "(1, 2)", pos: "ne" }, { x: 0.5, y: 2, label: "(½, 2)", pos: "nw" }, { x: 1.5, y: 0 }, { x: 3, y: 0 }],
+          points: [{ x: 1, y: 1, label: "(1, 1)", pos: "ne" }, { x: 0.5, y: 1, label: "(½, 1)", pos: "nw" }, { x: 1.5, y: 0 }, { x: 3, y: 0 }],
           xTicks: [{ x: 1.5, label: "1.5" }, { x: 3, label: "3" }],
           caption: String.raw`$y = \mathrm{f}(2x)$: stretch parallel to the $x$-axis, scale factor $\frac{1}{2}$`,
-          alt: "Dashed original curve y = f(x) and the solid curve y = f(2x), squeezed towards the y-axis: the maximum moves from (1, 2) to (½, 2) and the root at 3 moves to 1.5.",
+          alt: "Dashed original curve y = f(x) and the solid curve y = f(2x), squeezed towards the y-axis: the maximum moves from (1, 1) to (½, 1) and the root at 3 moves to 1.5.",
         },
         {
           type: "plot",
-          x: [-3.5, 4.8], y: [-3, 3.2], height: 220,
+          x: [-3.5, 4.8], y: [-2.1, 2.2], height: 220,
           curves: [
-            { fn: "x => x*(x - 3)*(x - 3)/2", domain: [-0.45, 4.3], dashed: true, tone: "muted" },
-            { fn: "x => -x*(x - 3)*(x - 3)/2", domain: [-0.45, 4.3] },
+            { fn: "x => x*(x - 3)*(x - 3)/4", domain: [-0.45, 4.3], dashed: true, tone: "muted" },
+            { fn: "x => -x*(x - 3)*(x - 3)/4", domain: [-0.45, 4.3] },
           ],
-          points: [{ x: 1, y: 2, label: "(1, 2)", pos: "n" }, { x: 1, y: -2, label: "(1, −2)", pos: "s" }],
+          points: [{ x: 1, y: 1, label: "(1, 1)", pos: "n" }, { x: 1, y: -1, label: "(1, −1)", pos: "s" }],
           caption: String.raw`$y = -\mathrm{f}(x)$: reflection in the $x$-axis`,
-          alt: "Dashed original curve y = f(x) and its mirror image y = −f(x) in the x-axis; the maximum (1, 2) becomes the minimum (1, −2).",
+          alt: "Dashed original curve y = f(x) and its mirror image y = −f(x) in the x-axis; the maximum (1, 1) becomes the minimum (1, −1).",
         },
       ],
     },
@@ -232,7 +232,7 @@ Full marks need the **full description**: "translation of 2 units in the negativ
       title: String.raw`$y = |\mathrm{f}(x)|$ and $y = \mathrm{f}(|x|)$`,
       body: String.raw`- $y = |\mathrm{f}(x)|$: keep the parts with $y \ge 0$, **reflect the parts below the $x$-axis in the $x$-axis**. Minimum points below the axis become maximum points; sharp corners appear at the $x$-intercepts.
 - $y = \mathrm{f}(|x|)$: **delete** the part with $x < 0$, then reflect the part with $x \ge 0$ in the $y$-axis. The result is symmetric about the $y$-axis, often with a sharp point at $(0, \mathrm{f}(0))$.
-- Asymptotes transform too: e.g. under $\mathrm{f}(|x|)$, the asymptote $x = 1$ gives $x = \pm 1$ and an oblique asymptote $y = x + 1$ gives $y = |x| + 1$, i.e. $y = -x + 1$ on the left.`,
+- Asymptotes transform too: e.g. under $\mathrm{f}(|x|)$, the asymptote $x = 4$ gives $x = \pm 4$ and an oblique asymptote $y = 2x - 1$ gives $y = 2|x| - 1$, i.e. $y = -2x - 1$ on the left.`,
       figure: [
         {
           type: "plot",
@@ -304,7 +304,7 @@ The **sign** of $y$ is unchanged, and where f increases, $\frac{1}{\mathrm{f}}$ 
       body: String.raw`A curve $x = \mathrm{f}(t)$, $y = \mathrm{g}(t)$ is traced as $t$ varies over the stated interval.
 
 - **Sketch**: use the GC in parametric mode with the given range of $t$; mark points at the ends of the interval and where the curve meets the axes (solve $x = 0$ or $y = 0$ for $t$ first).
-- **Cartesian equation**: eliminate $t$ — make $t$ the subject, or use an identity such as $\sin^2 t + \cos^2 t = 1$, $\sin 2t = 2\sin t \cos t$, $\left(t + \frac{1}{t}\right)^2 - \left(t - \frac{1}{t}\right)^2 = 4$. State any **restriction on $x$ or $y$** that the parameter imposes (e.g. $x = t^2 \Rightarrow x \ge 0$).
+- **Cartesian equation**: eliminate $t$ — make $t$ the subject, or use an identity such as $\sin^2 t + \cos^2 t = 1$, $\cos 2t = 1 - 2\sin^2 t$, $\sec^2 t - \tan^2 t = 1$. State any **restriction on $x$ or $y$** that the parameter imposes (e.g. $x = t^2 \Rightarrow x \ge 0$).
 - **Intersection with a line or curve**: substitute $x(t)$, $y(t)$ into the other equation, solve for $t$, then find the points.`,
       figure: {
         type: "plot",

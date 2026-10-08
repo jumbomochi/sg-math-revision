@@ -11,19 +11,20 @@ const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..")
 const Markup = require(path.join(root, "assets/markup.js"))(katex);
 const Plot = require(path.join(root, "assets/plot.js"));
 
+let errors = 0;
 const levels = [];
 vm.runInNewContext(fs.readFileSync(path.join(root, "content/levels.js"), "utf8"), { H2: { setLevels: (ls) => levels.push(...ls) }, String });
 const levelOfFile = {};
 const listed = levels.flatMap((L) => L.files.map((f) => { const p = `content/${L.id}/${f}.js`; levelOfFile[p] = L; return p; }));
 const files = process.argv.slice(2).length ? process.argv.slice(2).map((f) => path.relative(root, path.resolve(f))) : listed;
 for (const L of levels) {
-  for (const k of ["id", "name", "short", "stage", "code", "eyebrow", "summary", "papers", "sections", "groups", "footnote", "files"]) if (L[k] == null) console.log(`✗ content/levels.js ${L.id || "?"}: missing ${k}`);
+  const required = ["id", "name", "short", "stage", "code", "eyebrow", "summary", "sections", "groups", "footnote", "files"].concat(L.kind === "olympiad" ? [] : ["papers"]);
+  for (const k of required) if (L[k] == null) { errors++; console.log(`✗ content/levels.js ${L.id || "?"}: missing ${k}`); }
   for (const f of fs.existsSync(path.join(root, "content", L.id)) ? fs.readdirSync(path.join(root, "content", L.id)) : []) {
     if (f.endsWith(".js") && !L.files.includes(f.slice(0, -3))) console.log(`✗ content/${L.id}/${f}: not listed in content/levels.js`);
   }
 }
 
-let errors = 0;
 const err = (file, where, msg) => { errors++; console.log(`✗ ${file} ${where}: ${msg}`); };
 const seenArch = {};
 const seenTopic = {};
@@ -82,7 +83,9 @@ for (const file of files) {
   if (seenT.has(t.id)) err(file, "id", "duplicate topic id"); seenT.add(t.id);
   if (!t.title) err(file, "title", "missing");
   checkText(file, "summary", t.summary);
-  if (!t.syllabus || !Array.isArray(t.syllabus.include) || !t.syllabus.include.length) err(file, "syllabus.include", "missing");
+  const olympiad = L.kind === "olympiad";
+  if (!t.syllabus) { if (!olympiad) err(file, "syllabus.include", "missing"); }
+  else if (!Array.isArray(t.syllabus.include) || !t.syllabus.include.length) err(file, "syllabus.include", "missing");
   else t.syllabus.include.forEach((s, i) => checkText(file, `syllabus.include[${i}]`, s));
   (t.syllabus && t.syllabus.exclude || []).forEach((s, i) => checkText(file, `syllabus.exclude[${i}]`, s));
   if (!Array.isArray(t.concepts) || t.concepts.length < 3) err(file, "concepts", "need at least 3 concepts");
@@ -102,9 +105,17 @@ for (const file of files) {
       nq++;
       if (!q.stem && !q.parts) err(file, qw, "needs stem or parts");
       if (q.stem) checkText(file, qw + ".stem", q.stem);
+      if (q.answer != null) checkText(file, qw + ".answer", q.answer);
+      if (olympiad && !q.answer) err(file, qw, "olympiad problems need an answer");
+      if (q.difficulty != null && ![1, 2, 3].includes(q.difficulty)) err(file, qw + ".difficulty", "must be 1, 2 or 3");
+      if (olympiad && q.difficulty == null) err(file, qw, "olympiad problems need a difficulty (1–3)");
+      if (q.choices != null) {
+        if (!Array.isArray(q.choices) || q.choices.length < 2 || q.choices.length > 8) err(file, qw + ".choices", "must be an array of 2–8 options");
+        else q.choices.forEach((c, k) => checkText(file, `${qw}.choices[${k}]`, c));
+      }
       checkFigure(file, qw + ".figure", q.figure);
       const pm = checkParts(file, qw, q.parts);
-      if (!q.parts && !(Number.isInteger(q.marks) && q.marks > 0)) err(file, qw, "question without parts needs integer marks");
+      if (!q.parts && !olympiad && !(Number.isInteger(q.marks) && q.marks > 0)) err(file, qw, "question without parts needs integer marks");
       if (q.parts && q.marks && q.marks !== pm) err(file, qw, `marks ${q.marks} != sum of parts ${pm}`);
     });
   });

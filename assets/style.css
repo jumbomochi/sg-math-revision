@@ -45,7 +45,8 @@ body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 var(-
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 h1, h2, h3, h4 { line-height: 1.25; margin: 0; }
-.katex { font-size: 1.06em; }
+.katex { font-size: 1.06em; position: relative; } /* keeps KaTeX's hidden MathML inside scroll containers */
+.table-wrap, .katex-display { position: relative; }
 .katex-display { margin: 0.7em 0; overflow-x: auto; overflow-y: hidden; padding: 2px 0; }
 
 /* top bar */
@@ -149,7 +150,8 @@ h1 { font: 600 clamp(28px, 4vw, 38px)/1.15 var(--serif); letter-spacing: -0.01em
 .scope ul { margin: 0; padding-left: 18px; font-size: 14.5px; }
 .scope li + li { margin-top: 3px; }
 
-.concepts { display: grid; gap: 12px; }
+.concepts { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+.concept, .q-figure, .question { min-width: 0; }
 .concept { padding: 18px 20px; background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 10px; }
 .concept h3 { font-size: 16.5px; margin-bottom: 8px; }
 .concept-body { font-size: 15px; }
@@ -193,6 +195,16 @@ input[type="checkbox"] { accent-color: var(--good); width: 16px; height: 16px; m
 .q-marks-solo { text-align: right; }
 .q-figure { margin: 12px 0; text-align: center; }
 .q-figure figcaption { font-size: 13.5px; color: var(--ink-3); }
+.q-stars { color: var(--warn); letter-spacing: 1px; font-size: 13px; }
+.q-stars-off { color: var(--line); }
+.q-choices { list-style: none; padding: 0; margin: 10px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px 18px; }
+.q-choices li { display: flex; gap: 8px; }
+.q-choice-letter { color: var(--ink-2); }
+.q-answer { margin-top: 14px; border-top: 1px dashed var(--line); padding-top: 10px; font-family: var(--sans); font-size: 14.5px; }
+.q-answer summary { cursor: pointer; color: var(--accent); font-weight: 600; width: max-content; }
+.q-answer-body { margin-top: 6px; font-family: var(--serif); font-size: 16px; }
+.q-answer-body > :first-child { margin-top: 0; }
+.q-answer-body > :last-child { margin-bottom: 0; }
 .table-wrap { overflow-x: auto; margin: 10px 0; }
 table { border-collapse: collapse; font-size: 15px; font-family: var(--sans); }
 th, td { border: 1px solid var(--line); padding: 5px 12px; text-align: center; }
@@ -276,4 +288,5 @@ th { background: var(--surface-2); font-weight: 600; }
   .layout { display: block; }
   .content { padding: 0; max-width: none; }
   .question { box-shadow: none; break-inside: avoid; }
+  .q-answer { display: none; }
 }

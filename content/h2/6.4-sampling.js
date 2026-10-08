@@ -18,8 +18,8 @@ H2.addTopic({
       title: String.raw`Population and random sample`,
       body: String.raw`The **population** is the whole set of items (people, objects, measurements) under study. A **(simple) random sample** of size $n$ is one in which **every member of the population has an equal chance of being selected, and the selections are independent** of one another (equivalently, every possible sample of size $n$ is equally likely).
 
-- "Explain what is meant by a random sample **in this context**" — name the actual population and items: "every student in the college has the same chance of being chosen, independently of the others."
-- A sample is **not random** when some members cannot be chosen or are more likely to be chosen: e.g. only those at one place/time, volunteers, the first $n$ off a production line, people who answer the phone. Name *who is excluded* and *why that matters* in context.
+- "Explain what is meant by a random sample **in this context**" — name the actual population and items: "every resident of the town has the same chance of being chosen, independently of the others."
+- A sample is **not random** when some members cannot be chosen or are more likely to be chosen: e.g. only members of one club, volunteers, items from a single supplier, people who answer the phone. Name *who is excluded* and *why that matters* in context.
 - To obtain a random sample: number the population $1$ to $N$ (a sampling frame), then use a random number generator to pick $n$ distinct numbers.`,
     },
     {
@@ -143,7 +143,7 @@ When population parameters are unknown, replace $\mu$ and $\sigma^2$ by the unbi
     },
     {
       title: String.raw`Finding the least sample size $n$`,
-      body: String.raw`Standardise with $n$ unknown: e.g. $\P(\overline{X} > k) > 0.98 \iff \dfrac{k - \mu}{\sigma/\sqrt{n}} < -2.0537$.
+      body: String.raw`Standardise with $n$ unknown: e.g. $\P(\overline{X} > k) > 0.99 \iff \dfrac{k - \mu}{\sigma/\sqrt{n}} < -2.3263$.
 
 - Solve for $\sqrt{n}$ and square, taking care with the direction of the inequality when dividing by a negative number; or tabulate $\P(\overline{X} > k)$ against $n$ on the GC and show the two values either side of the boundary.
 - $n$ is an integer: round **up** to the least $n$ satisfying the condition, and quote the GC values that justify it.
@@ -151,11 +151,11 @@ When population parameters are unknown, replace $\mu$ and $\sigma^2$ by the unbi
       figure: {
         type: "plot", x: [-3.6, 3.6], y: [-0.02, 0.46], height: 210, axisLabels: ["x̄", null],
         curves: [{ fn: "x => Math.exp(-0.5*((x-(0))/1)**2)/(1*Math.sqrt(2*Math.PI))" }],
-        shade: [{ upper: "x => Math.exp(-0.5*((x-(0))/1)**2)/(1*Math.sqrt(2*Math.PI))", from: -2.0537, to: 3.6 }, { upper: "x => Math.exp(-0.5*((x-(0))/1)**2)/(1*Math.sqrt(2*Math.PI))", from: -3.6, to: -2.0537, tone: "warn" }],
-        xTicks: [{ x: -2.0537, label: "k" }, { x: 0, label: "μ" }],
-        labels: [{ x: 0, y: 0.17, text: "0.98", style: "plain" }, { x: -2.75, y: 0.1, text: "0.02", style: "small", tone: "warn" }],
-        caption: String.raw`$\P(\overline{X} > k) = 0.98$ exactly when $k$ is $2.0537$ standard deviations $\sigma/\sqrt{n}$ below $\mu$.`,
-        alt: "Distribution of the sample mean with value k marked below mu; area 0.98 to the right of k and 0.02 to the left.",
+        shade: [{ upper: "x => Math.exp(-0.5*((x-(0))/1)**2)/(1*Math.sqrt(2*Math.PI))", from: -2.3263, to: 3.6 }, { upper: "x => Math.exp(-0.5*((x-(0))/1)**2)/(1*Math.sqrt(2*Math.PI))", from: -3.6, to: -2.3263, tone: "warn" }],
+        xTicks: [{ x: -2.3263, label: "k" }, { x: 0, label: "μ" }],
+        labels: [{ x: 0, y: 0.17, text: "0.99", style: "plain" }, { x: -2.9, y: 0.08, text: "0.01", style: "small", tone: "warn" }],
+        caption: String.raw`$\P(\overline{X} > k) = 0.99$ exactly when $k$ is $2.3263$ standard deviations $\sigma/\sqrt{n}$ below $\mu$.`,
+        alt: "Distribution of the sample mean with value k marked below mu; area 0.99 to the right of k and 0.01 to the left.",
       },
     },
   ],

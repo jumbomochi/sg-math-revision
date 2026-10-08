@@ -22,8 +22,8 @@ H2.addTopic({
 $$\mathbf{r} = \mathbf{a} + \lambda\mathbf{d},\ \lambda \in \mathbb{R} \qquad\Longleftrightarrow\qquad \frac{x - a_1}{d_1} = \frac{y - a_2}{d_2} = \frac{z - a_3}{d_3}.$$
 
 - Always write "$\mathbf{r} = $" and state $\lambda \in \mathbb{R}$; a vector equation without $\mathbf{r}$ loses marks.
-- If a component of $\mathbf{d}$ is zero, the cartesian form has that coordinate **constant**, e.g. $\frac{x - 1}{2} = \frac{y + 3}{5},\ z = 4$.
-- Watch signs when converting: $\frac{3 - y}{2} = \frac{y - 3}{-2}$, and $\frac{2x - 1}{4} = \frac{x - \frac{1}{2}}{2}$ (make the coefficient of $x$ equal to 1 first).
+- If a component of $\mathbf{d}$ is zero, the cartesian form has that coordinate **constant**, e.g. $\frac{x - 2}{3} = \frac{y + 3}{5},\ z = 4$.
+- Watch signs when converting: $\frac{5 - y}{2} = \frac{y - 5}{-2}$, and $\frac{2x - 1}{4} = \frac{x - \frac{1}{2}}{2}$ (make the coefficient of $x$ equal to 1 first).
 - To check a point lies on a line, find one $\lambda$ that satisfies **all three** components.`,
       figure: {
         type: "plot",

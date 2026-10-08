@@ -19,7 +19,7 @@ H2.addTopic({
       title: String.raw`Systems of linear equations`,
       body: String.raw`- **Define your unknowns** in words, with units ("Let $x$ be the price, in dollars, of one coffee").
 - $n$ unknowns need $n$ independent equations. Write each equation down in full before using the GC — the equations carry method marks.
-- Solve with the GC's simultaneous-equation solver (or matrix rref). Copy the answer, then **answer the question asked** in context (e.g. "Each coffee costs \$3.50").
+- Solve with the GC's simultaneous-equation solver (or matrix rref). Copy the answer, then **answer the question asked** in context (e.g. "Each coffee costs \$3.80").
 - Curve fitting is the same idea: a point $(p, q)$ on $y = ax^2 + bx + c$ gives the linear equation $ap^2 + bp + c = q$; a gradient condition gives another.`,
     },
     {
@@ -66,7 +66,7 @@ A quadratic factor with positive leading coefficient and negative discriminant (
 - $|x - a| < b \iff a - b < x < a + b$ (memorise).
 - $|x - a| > b \iff x < a - b$ or $x > a + b$ (memorise).
 - $|\mathrm{f}(x)| < |\mathrm{g}(x)| \iff [\mathrm{f}(x)]^2 < [\mathrm{g}(x)]^2$, since both sides are non-negative.
-- When the right-hand side can be negative (e.g. $|x^2 - 4| > 3x$), do **not** square; sketch both graphs or split into cases.`,
+- When the right-hand side can be negative (e.g. $|x^2 - 1| > 2x$), do **not** square; sketch both graphs or split into cases.`,
       figure: [
         {
           type: "plot",

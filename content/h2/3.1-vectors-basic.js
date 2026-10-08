@@ -146,7 +146,7 @@ Do not mix up points and vectors in your notation: write $A(1, 2, 3)$ but $\over
 
 For full marks state **both** facts: the vectors are parallel **and** they share a common point ($A$). Parallel alone only shows the lines are parallel.
 
-The value of $\lambda$ gives the ratio and order: e.g. $\overrightarrow{AC} = 3\overrightarrow{AB}$ means $B$ lies between $A$ and $C$ with $AB : BC = 1 : 2$. A negative $\lambda$ means $A$ lies between the other two points.`,
+The value of $\lambda$ gives the ratio and order: e.g. $\overrightarrow{AC} = 4\overrightarrow{AB}$ means $B$ lies between $A$ and $C$ with $AB : BC = 1 : 3$. A negative $\lambda$ means $A$ lies between the other two points.`,
       figure: {
         type: "plot",
         x: [0, 10],
@@ -155,20 +155,20 @@ The value of $\lambda$ gives the ratio and order: e.g. $\overrightarrow{AC} = 3\
         axes: false,
         segments: [
           { from: [0.43, 1.09], to: [8.7, 4.15], tone: "muted", thin: true },
-          { from: [0.83, 1.77], to: [3.13, 2.62], arrow: true, label: "AB", pos: "nw", style: "plain", labelAt: [1.86, 2.15] },
-          { from: [0.6, 2.38], to: [7.5, 4.93], arrow: true, tone: "good", label: "AC = 3AB", pos: "nw", style: "plain", labelAt: [4.4, 3.78] },
+          { from: [0.83, 1.77], to: [2.58, 2.417], arrow: true, label: "AB", pos: "nw", style: "plain", labelAt: [1.6, 2.05] },
+          { from: [0.6, 2.38], to: [7.6, 4.967], arrow: true, tone: "good", label: "AC = 4AB", pos: "nw", style: "plain", labelAt: [4.45, 3.8] },
         ],
         labels: [
-          { x: 2.31, y: 1.3, text: "1", style: "small" },
-          { x: 5.76, y: 2.58, text: "2", style: "small" },
+          { x: 2.035, y: 1.2, text: "1", style: "small" },
+          { x: 5.535, y: 2.497, text: "3", style: "small" },
         ],
         points: [
           { x: 1, y: 1.3, label: "A", pos: "se" },
-          { x: 3.3, y: 2.15, label: "B", pos: "se" },
-          { x: 7.9, y: 3.85, label: "C", pos: "se" },
+          { x: 2.75, y: 1.947, label: "B", pos: "se" },
+          { x: 8, y: 3.887, label: "C", pos: "se" },
         ],
-        caption: String.raw`$\overrightarrow{AC} = 3\overrightarrow{AB}$ and common point $A$ $\Rightarrow$ collinear, with $AB : BC = 1 : 2$`,
-        alt: "Points A, B, C on a straight line. The vector AC is three times the vector AB, so AB to BC is 1 to 2.",
+        caption: String.raw`$\overrightarrow{AC} = 4\overrightarrow{AB}$ and common point $A$ $\Rightarrow$ collinear, with $AB : BC = 1 : 3$`,
+        alt: "Points A, B, C on a straight line. The vector AC is four times the vector AB, so AB to BC is 1 to 3.",
       },
     },
     {
@@ -190,19 +190,19 @@ $$\overrightarrow{OP} = \frac{\mu\mathbf{a} + \lambda\mathbf{b}}{\lambda + \mu}.
           { from: [2.6, 5.2], to: [9.2, 1.6], tone: "ink", thin: true },
           { from: [1, 0.8], to: [2.6, 5.2], arrow: true, label: "a", pos: "w" },
           { from: [1, 0.8], to: [9.2, 1.6], arrow: true, label: "b", pos: "s" },
-          { from: [1, 0.8], to: [5.24, 3.76], arrow: true, tone: "good", label: "OP", pos: "se", style: "plain", labelAt: [3.33, 2.43] },
+          { from: [1, 0.8], to: [5.43, 3.66], arrow: true, tone: "good", label: "OP", pos: "se", style: "plain", labelAt: [3.42, 2.38] },
         ],
         labels: [
-          { x: 4.11, y: 4.83, text: "λ", style: "italic" },
-          { x: 7.41, y: 3.03, text: "μ", style: "italic" },
+          { x: 4.2, y: 4.78, text: "λ", style: "italic" },
+          { x: 7.5, y: 2.98, text: "μ", style: "italic" },
           { x: 2.6, y: 5.2, text: "A", pos: "n" },
           { x: 9.2, y: 1.6, text: "B", pos: "e" },
-          { x: 5.24, y: 3.76, text: "P", pos: "ne" },
+          { x: 5.43, y: 3.66, text: "P", pos: "ne" },
         ],
         points: [
           { x: 1, y: 0.8, label: "O", pos: "sw" },
         ],
-        caption: String.raw`$AP : PB = \lambda : \mu \Rightarrow \overrightarrow{OP} = \frac{\mu\mathbf{a} + \lambda\mathbf{b}}{\lambda + \mu}$ (drawn with $\lambda : \mu = 2 : 3$)`,
+        caption: String.raw`$AP : PB = \lambda : \mu \Rightarrow \overrightarrow{OP} = \frac{\mu\mathbf{a} + \lambda\mathbf{b}}{\lambda + \mu}$ (drawn with $\lambda : \mu = 3 : 4$)`,
         alt: "Triangle OAB with P on AB dividing it in the ratio lambda to mu; OP is drawn from the origin.",
       },
     },
@@ -214,7 +214,7 @@ $$\overrightarrow{OP} = \frac{\mu\mathbf{a} + \lambda\mathbf{b}}{\lambda + \mu}.
 2. Write both in terms of the same two **non-zero, non-parallel** vectors $\mathbf{a}$ and $\mathbf{b}$.
 3. Compare coefficients (valid **because** $\mathbf{a}$ and $\mathbf{b}$ are non-parallel — say so) and solve for $\lambda$ and $\mu$.
 
-The parameter values give ratios directly: $\lambda = \tfrac{3}{5}$ above means $AX : XP = 3 : 2$.`,
+The parameter values give ratios directly: $\lambda = \tfrac{1}{2}$ in the diagram means $AX : XP = 1 : 1$.`,
       figure: {
         type: "plot",
         x: [0, 10],

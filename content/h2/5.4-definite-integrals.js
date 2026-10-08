@@ -27,7 +27,7 @@ $$\text{lower sum } L_n = h\sum_{r=0}^{n-1}\mathrm{f}(a + rh), \qquad \text{uppe
 and $L_n < \displaystyle\int_a^b \mathrm{f}(x)\,\dd x < U_n$. (For a decreasing function the roles swap: left-end heights give the upper sum.) As $n \to \infty$, both sums tend to the integral.
 
 - Simplify the sum using standard results: $\sum r = \frac{1}{2}n(n + 1)$, $\sum r^2 = \frac{1}{6}n(n + 1)(2n + 1)$, or a **geometric series** for exponential heights.
-- To find the limit, divide through by the highest power of $n$; terms like $\frac{1}{n} \to 0$. For $n(\ee^{1/n} - 1)$ use $\ee^{1/n} \approx 1 + \frac{1}{n}$ (Maclaurin).
+- To find the limit, divide through by the highest power of $n$; terms like $\frac{1}{n} \to 0$. For $n(\ee^{2/n} - 1)$ use $\ee^{2/n} \approx 1 + \frac{2}{n}$ (Maclaurin).
 - "Show that the area of the rectangles is …" — write the sum of $\text{width} \times \text{height}$ explicitly before simplifying.`,
       figure: [
         {
@@ -74,7 +74,7 @@ and $L_n < \displaystyle\int_a^b \mathrm{f}(x)\,\dd x < U_n$. (For a decreasing 
 2. Integrate separately over each sub-interval.
 3. Add the **magnitudes**.
 
-A question that asks you to "explain why $\int_0^3 \mathrm{f}(x)\,\dd x$ does not give the area" wants: part of the region lies below the $x$-axis, so its contribution is negative and cancels part of the positive area.
+A question that asks you to "explain why $\int_1^5 \mathrm{f}(x)\,\dd x$ does not give the area" wants: part of the region lies below the $x$-axis, so its contribution is negative and cancels part of the positive area.
 
 Useful properties: $\int_a^b = -\int_b^a$; $\int_a^b + \int_b^c = \int_a^c$; for an even function $\int_{-a}^{a} = 2\int_0^a$, for an odd function $\int_{-a}^{a} = 0$.`,
       figure: {
@@ -127,7 +127,7 @@ Areas of triangles and trapezia formed by straight lines may be found by geometr
 
 $$\text{Area} = \int_c^d x\,\dd y \quad\text{(make $x$ the subject first).}$$
 
-Integrating with respect to $y$ avoids splitting when the left and right boundaries of the region are single curves, e.g. a region bounded by $y = \sqrt{x}$, $y = x - 2$ and the $x$-axis: $\int_0^2 \big((y + 2) - y^2\big)\,\dd y$. The limits are now $y$-values.`,
+Integrating with respect to $y$ avoids splitting when the left and right boundaries of the region are single curves, e.g. a region bounded by $y = \sqrt{x}$, $y = x - 6$ and the $x$-axis: $\int_0^3 \big((y + 6) - y^2\big)\,\dd y$. The limits are now $y$-values.`,
       figure: {
         type: "plot",
         x: [-0.6, 4.8], y: [-0.7, 3.1],

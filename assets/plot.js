@@ -5,7 +5,7 @@
  * {
  *   type: "plot",
  *   x: [-4, 6], y: [-3, 5],          // visible window
- *   height: 260,                     // optional px height (width is 420)
+ *   height: 260,                     // optional px height (width is 420); ignored when equal is set
  *   equal: true,                     // keep 1:1 units (use for geometric diagrams)
  *   axes: false,                     // hide axes (diagrams, Venn, trees)
  *   axisLabels: ["x", "y"],
@@ -51,12 +51,19 @@
     return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   }
 
-  const numeric = (s) => /^[−\-+]?[\d.,]+%?$/.test(String(s));
+  const numeric = (s) => /^[−\-+]?\d[\d.,\s]*%?$/.test(String(s));
 
   function tone(t, fallback) {
     const v = t || fallback;
     if (!TONES.includes(v)) throw new Error("unknown tone '" + v + "'");
     return "t-" + v;
+  }
+
+  // Offset for a label next to a curve at pixel point (px, py) with pixel slope dir (dx, dy):
+  // rising curves get the label below-right, falling ones above-right, so the text never sits on the curve.
+  function besideCurve(px, py, dx, dy) {
+    const rising = dy < 0 && dx > 0 ? true : dy > 0 && dx < 0;
+    return rising ? [px + 6, py + 15] : [px + 6, py - 6];
   }
 
   const OFF = { n: [0, -9, "middle"], ne: [6, -7, "start"], e: [8, 4, "start"], se: [6, 15, "start"], s: [0, 17, "middle"],
@@ -69,7 +76,7 @@
     const pad = 22;
     const innerW = W - 2 * pad;
     const naturalH = (innerW * (y1 - y0)) / (x1 - x0);
-    const H = Math.round(spec.height || (spec.equal ? naturalH : Math.min(Math.max(naturalH, 160), 360)) + 2 * pad);
+    const H = Math.round((spec.equal ? naturalH : spec.height || Math.min(Math.max(naturalH, 160), 360)) + 2 * pad); // equal scale wins over height
     const innerH = H - 2 * pad;
     const sx = (x) => pad + ((x - x0) / (x1 - x0)) * innerW;
     const sy = (y) => pad + ((y1 - y) / (y1 - y0)) * innerH;
@@ -118,9 +125,11 @@
     if (spec.axes !== false) {
       const ax = Math.min(Math.max(0, y0), y1), ay = Math.min(Math.max(0, x0), x1);
       const [xl, yl] = spec.axisLabels || ["x", "y"];
-      parts.push(`<line class="pl-axis" x1="${pad - 8}" y1="${f(sy(ax))}" x2="${W - pad + 10}" y2="${f(sy(ax))}" marker-end="url(#${id}a)"/>`);
+      // axes stop at the other axis when the window starts there, so they don't cross tick labels
+      const xStart = x0 < 0 ? pad - 8 : sx(ay), yStart = y0 < 0 ? H - pad + 8 : sy(ax);
+      parts.push(`<line class="pl-axis" x1="${f(xStart)}" y1="${f(sy(ax))}" x2="${W - pad + 10}" y2="${f(sy(ax))}" marker-end="url(#${id}a)"/>`);
       if (yl !== null) {
-        parts.push(`<line class="pl-axis" x1="${f(sx(ay))}" y1="${H - pad + 8}" x2="${f(sx(ay))}" y2="${pad - 10}" marker-end="url(#${id}a)"/>`);
+        parts.push(`<line class="pl-axis" x1="${f(sx(ay))}" y1="${f(yStart)}" x2="${f(sx(ay))}" y2="${pad - 10}" marker-end="url(#${id}a)"/>`);
         parts.push(`<text class="pl-label pl-it" x="${f(sx(ay) + 8)}" y="${pad - 4}">${esc(yl)}</text>`);
       }
       parts.push(`<text class="pl-label pl-it" x="${W - pad + 6}" y="${f(sy(ax) + 16)}">${esc(xl)}</text>`);
@@ -160,7 +169,8 @@
         parts.push(`<line class="pl-asym" clip-path="url(#${id})" x1="${f(sx(x0))}" y1="${f(sy(g(x0)))}" x2="${f(sx(x1))}" y2="${f(sy(g(x1)))}"/>`);
         if (l.label) {
           const lx = l.labelAt != null ? l.labelAt : x0 + 0.85 * (x1 - x0);
-          parts.push(`<text class="pl-label pl-it" x="${f(sx(lx) + 4)}" y="${f(sy(g(lx)) - 6)}">${esc(l.label)}</text>`);
+          const [tx, ty] = besideCurve(sx(lx), sy(g(lx)), 1, sy(g(lx + 1e-3)) - sy(g(lx)));
+          late.push(`<text class="pl-label pl-it" x="${f(tx)}" y="${f(ty)}">${esc(l.label)}</text>`);
         }
       }
     }
@@ -196,10 +206,18 @@
       const d = segs.map((s) => "M" + s.map(([x, y]) => `${f(sx(x))},${f(sy(y))}`).join("L")).join("");
       parts.push(`<path class="pl-curve${c.dashed ? " pl-dashed" : ""} ${tone(c.tone, "accent")}" clip-path="url(#${id})" d="${d}"/>`);
       if (c.label) {
-        let lx, ly;
-        if (c.param) { const [px, py] = toFn(c.param)(c.labelAt != null ? c.labelAt : c.t[0] + 0.8 * (c.t[1] - c.t[0])); lx = px; ly = py; }
-        else { const g = toFn(c.fn); const [a, b] = c.domain || [x0, x1]; lx = c.labelAt != null ? c.labelAt : a + 0.85 * (b - a); ly = g(lx); }
-        parts.push(`<text class="pl-label pl-it pl-curve-label ${tone(c.tone, "accent")}" x="${f(sx(lx) + 6)}" y="${f(sy(ly) - 6)}">${esc(c.label)}</text>`);
+        let lx, ly, dx, dy;
+        if (c.param) {
+          const p = toFn(c.param), tl = c.labelAt != null ? c.labelAt : c.t[0] + 0.8 * (c.t[1] - c.t[0]);
+          [lx, ly] = p(tl); const [qx, qy] = p(tl + 1e-3 * (c.t[1] - c.t[0]));
+          dx = sx(qx) - sx(lx); dy = sy(qy) - sy(ly);
+        } else {
+          const g = toFn(c.fn); const [a, b] = c.domain || [x0, x1];
+          lx = c.labelAt != null ? c.labelAt : a + 0.85 * (b - a); ly = g(lx);
+          dx = 1; dy = sy(g(lx + 1e-3 * (b - a))) - sy(ly);
+        }
+        const [tx, ty] = besideCurve(sx(lx), sy(ly), dx, dy);
+        late.push(`<text class="pl-label pl-it pl-curve-label ${tone(c.tone, "accent")}" x="${f(tx)}" y="${f(ty)}">${esc(c.label)}</text>`);
       }
     }
 

@@ -26,7 +26,7 @@ H2.addTopic({
 - **Critical region**: the set of values of the test statistic (or of $\bar{x}$) for which $\mathrm{H}_0$ is rejected; its boundary is the **critical value**.
 - **$p$-value**: the probability, assuming $\mathrm{H}_0$ is true, of obtaining a value of the test statistic at least as extreme as the one observed.
 
-Always define $\mu$ in context: "Let $\mu$ be the population mean mass, in grams, of a packet of rice."`,
+Always define $\mu$ in context: "Let $\mu$ be the population mean mass, in grams, of a bag of flour."`,
       figure: {
         type: "plot", x: [-3.6, 3.6], y: [-0.02, 0.46], height: 220, axisLabels: ["z", null],
         curves: [{ fn: "x => Math.exp(-x*x/2)/Math.sqrt(2*Math.PI)" }],
@@ -55,10 +55,10 @@ In the large-sample case, compute the unbiased estimate $s^2$ first (see 6.4) an
     {
       title: String.raw`Carrying out the test: the full answer`,
       body: String.raw`1. Define $\mu$ in context; state $\mathrm{H}_0$ and $\mathrm{H}_1$.
-2. State the distribution under $\mathrm{H}_0$, e.g. "Under $\mathrm{H}_0$, $\overline{X} \sim \N\!\left(500, \frac{12^2}{20}\right)$" (add "approximately, by CLT" if relevant).
+2. State the distribution under $\mathrm{H}_0$, e.g. "Under $\mathrm{H}_0$, $\overline{X} \sim \N\!\left(500, \frac{12^2}{30}\right)$" (add "approximately, by CLT" if relevant).
 3. State the level of significance and the test statistic; compute $z$ and the $p$-value on the GC (Z-Test), or compare $z$ with the critical value.
 4. Decision: reject $\mathrm{H}_0$ if $p$-value $\le \alpha$.
-5. **Conclusion in context**: "There is sufficient evidence at the 5% level of significance to conclude that the mean mass of a packet is less than 500 g." Or "insufficient evidence … to conclude that …".
+5. **Conclusion in context**: "There is sufficient evidence at the 5% level of significance to conclude that the mean mass of a bag is less than 500 g." Or "insufficient evidence … to conclude that …".
 
 Never write "accept $\mathrm{H}_0$" or "$\mathrm{H}_0$ is proved true" — not rejecting $\mathrm{H}_0$ only means there is not enough evidence against it.`,
       figure: [
@@ -139,19 +139,19 @@ These come from invNorm on the GC (not MF27). For a critical region in terms of 
       title: String.raw`Interpreting the $p$-value and the significance level`,
       body: String.raw`Answers must be **in context** and must mention the "assuming $\mathrm{H}_0$ is true" condition.
 
-- "$p$-value $= 0.0312$" means: assuming the population mean sleep time is 6.5 hours, the probability of obtaining a sample mean of 6.8 hours or more is 0.0312.
-- "5% significance level" means: there is a probability of 0.05 that the test concludes the mean sleep time is more than 6.5 hours when it is in fact 6.5 hours.
+- "$p$-value $= 0.0122$" means: assuming the population mean commute time is 40 minutes, the probability of obtaining a sample mean of 41.8 minutes or more is 0.0122.
+- "5% significance level" means: there is a probability of 0.05 that the test concludes the mean commute time is more than 40 minutes when it is in fact 40 minutes.
 - The $p$-value is the **smallest** significance level at which $\mathrm{H}_0$ would be rejected — useful for "find the range of values of $\alpha$" questions.`,
       figure: {
-        type: "plot", x: [5.92, 7.08], y: [-0.1, 2.85], height: 210, axisLabels: ["x̄", null],
-        curves: [{ fn: "x => Math.exp(-0.5*((x-(6.5))/0.16099)**2)/(0.16099*Math.sqrt(2*Math.PI))" }],
-        shade: [{ upper: "x => Math.exp(-0.5*((x-(6.5))/0.16099)**2)/(0.16099*Math.sqrt(2*Math.PI))", from: 6.8, to: 7.08 }],
-        lines: [{ x: 6.5 }],
-        xTicks: [{ x: 6.5, label: "6.5" }, { x: 6.8, label: "6.8" }],
-        segments: [{ from: [6.9, 0.95], to: [6.84, 0.12], tone: "accent", thin: true }],
-        labels: [{ x: 6.9, y: 0.95, text: "p-value = 0.0312", pos: "n", style: "small", tone: "accent" }],
-        caption: String.raw`Assuming $\mathrm{H}_0$ ($\mu = 6.5$), the $p$-value is $\P(\overline{X} \ge 6.8) = 0.0312$, the area beyond the observed $\bar{x}$.`,
-        alt: "Distribution of the sample mean sleep time under H0, centred at 6.5 hours, with the small right tail beyond the observed sample mean 6.8 shaded: the p-value 0.0312.",
+        type: "plot", x: [37.12, 42.88], y: [-0.02, 0.57], height: 210, axisLabels: ["x̄", null],
+        curves: [{ fn: "x => Math.exp(-0.5*((x-(40))/0.8)**2)/(0.8*Math.sqrt(2*Math.PI))" }],
+        shade: [{ upper: "x => Math.exp(-0.5*((x-(40))/0.8)**2)/(0.8*Math.sqrt(2*Math.PI))", from: 41.8, to: 42.88 }],
+        lines: [{ x: 40 }],
+        xTicks: [{ x: 40, label: "40" }, { x: 41.8, label: "41.8" }],
+        segments: [{ from: [42.15, 0.19], to: [41.95, 0.012], tone: "accent", thin: true }],
+        labels: [{ x: 42.15, y: 0.19, text: "p-value = 0.0122", pos: "n", style: "small", tone: "accent" }],
+        caption: String.raw`Assuming $\mathrm{H}_0$ ($\mu = 40$), the $p$-value is $\P(\overline{X} \ge 41.8) = 0.0122$, the area beyond the observed $\bar{x}$.`,
+        alt: "Distribution of the sample mean commute time under H0, centred at 40 minutes, with the small right tail beyond the observed sample mean 41.8 shaded: the p-value 0.0122.",
       },
     },
     {

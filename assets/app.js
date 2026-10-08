@@ -111,18 +111,31 @@
       </li>`).join("")}</ol>`;
   }
 
+  const LETTERS = "ABCDEFGH";
+  function choicesHtml(choices) {
+    if (!choices || !choices.length) return "";
+    return `<ol class="q-choices">${choices.map((c, k) => `<li><span class="q-choice-letter">(${LETTERS[k]})</span><span>${mdi(c)}</span></li>`).join("")}</ol>`;
+  }
+
   function questionHtml(L, q, i) {
     const m = marksOf(q);
+    const stars = q.difficulty ? `<span class="q-stars" title="Difficulty ${q.difficulty} of 3">${"★".repeat(q.difficulty)}<span class="q-stars-off">${"★".repeat(3 - q.difficulty)}</span></span>` : "";
     return `<article class="question">
-      <header class="q-head"><span class="q-num">Question ${i + 1}</span>${m ? `<span class="q-total">${m} mark${m === 1 ? "" : "s"}</span>` : ""}${q.calculator === false ? `<span class="q-flag">${esc(L.noCalcLabel || "No calculator")}</span>` : ""}</header>
+      <header class="q-head"><span class="q-num">${L.kind === "olympiad" ? "Problem" : "Question"} ${i + 1}</span>${stars}${m ? `<span class="q-total">${m} mark${m === 1 ? "" : "s"}</span>` : ""}${q.calculator === false ? `<span class="q-flag">${esc(L.noCalcLabel || "No calculator")}</span>` : ""}</header>
       <div class="q-body">
         ${q.stem ? `<div class="q-text">${md(q.stem)}</div>` : ""}
         ${figure(q.figure)}
+        ${choicesHtml(q.choices)}
         ${partsHtml(q.parts)}
         ${!q.parts && q.marks ? `<div class="q-marks q-marks-solo">[${q.marks}]</div>` : ""}
+        ${q.answer ? `<details class="q-answer"><summary>Show answer</summary><div class="q-answer-body">${md(q.answer)}</div></details>` : ""}
       </div>
     </article>`;
   }
+
+  const words = (L) => (L && L.kind === "olympiad"
+    ? { concepts: "Key ideas", archetypes: "Problem types", archetype: "Type", checklist: "Progress checklist", topics: "themes" }
+    : { concepts: "Key concepts", archetypes: "Question archetypes", archetype: "Archetype", checklist: "Syllabus checklist", topics: "topics" });
 
   /* ---------- views ---------- */
   function sidebar(L, activeId) {
@@ -137,7 +150,7 @@
         return `<div class="nav-group"><div class="nav-group-title">${groupLabel(g)}</div>
           ${ts.map((t) => `<a class="nav-link${t.id === activeId ? " active" : ""}" href="${link(L, t)}"><span class="nav-id">${t.id}</span>${esc(t.title)}</a>`).join("")}
         </div>`;
-      }).join("") + `<div class="nav-group"><a class="nav-link nav-check${activeId === "checklist" ? " active" : ""}" href="#/${L.id}/checklist">✓ Syllabus checklist</a></div>`;
+      }).join("") + `<div class="nav-group"><a class="nav-link nav-check${activeId === "checklist" ? " active" : ""}" href="#/${L.id}/checklist">✓ ${words(L).checklist}</a></div>`;
   }
 
   function landingView() {
@@ -168,15 +181,15 @@
     let html = `<section class="hero">
       <p class="eyebrow">${esc(L.eyebrow)}</p>
       <h1>${esc(L.name)} Revision</h1>
-      <p class="lede">Key concepts and common question archetypes for every topic, with practice questions.</p>
+      <p class="lede">${L.lede ? esc(L.lede) : "Key concepts and common question archetypes for every topic, with practice questions."}</p>
       <div class="stats">
-        <div><strong>${topics.length}</strong><span>${L.id === "h2" ? "sub-topics" : "topics"}</span></div>
-        <div><strong>${totalArch}</strong><span>archetypes</span></div>
-        <div><strong>${totalQ}</strong><span>questions</span></div>
+        <div><strong>${topics.length}</strong><span>${L.id === "h2" ? "sub-topics" : words(L).topics}</span></div>
+        <div><strong>${totalArch}</strong><span>${words(L).archetypes.toLowerCase()}</span></div>
+        <div><strong>${totalQ}</strong><span>${L.kind === "olympiad" ? "problems" : "questions"}</span></div>
       </div>
       <div class="hero-progress"><span>Your checklist</span>${bar(progressOf(L, topics), "all")}<a href="#/${L.id}/checklist">Open checklist →</a></div>
     </section>
-    <section class="papers">${L.papers.map((p) => `<div class="paper"><h3>${esc(p.title)}</h3><p>${esc(p.text)}</p></div>`).join("")}</section>`;
+    <section class="papers">${(L.papers || []).map((p) => `<div class="paper"><h3>${esc(p.title)}</h3><p>${esc(p.text)}</p></div>`).join("")}</section>`;
     for (const sec of L.sections) {
       if (sec.title) html += `<h2 class="section-title">${esc(sec.title)}</h2>`;
       for (const g of L.groups.filter((g) => g.section === sec.id)) {
@@ -185,7 +198,7 @@
           ${ts.map((t) => `<a class="card" href="${link(L, t)}">
             <span class="card-id">${t.id}${tagChips(t.tags)}</span>
             <span class="card-title">${esc(t.title)}</span>
-            <span class="card-meta">${t.archetypes.length} archetypes · ${countQuestions(t)} questions</span>
+            <span class="card-meta">${t.archetypes.length} ${words(L).archetypes.split(" ").pop().toLowerCase()} · ${countQuestions(t)} ${L.kind === "olympiad" ? "problems" : "questions"}</span>
             ${bar(progressOf(L, [t]), "t:" + t.id)}
           </a>`).join("")}
         </div></div>`;
@@ -210,31 +223,31 @@
       ${bar(progressOf(L, [t]), "t:" + t.id)}
     </header>
     <nav class="toc" aria-label="On this page">
-      <a href="#" data-jump="syllabus">Syllabus scope</a>
-      <a href="#" data-jump="concepts">Key concepts</a>
-      <a href="#" data-jump="archetypes">Archetypes (${t.archetypes.length})</a>
+      ${t.syllabus ? `<a href="#" data-jump="syllabus">Syllabus scope</a>` : ""}
+      <a href="#" data-jump="concepts">${words(L).concepts}</a>
+      <a href="#" data-jump="archetypes">${words(L).archetypes} (${t.archetypes.length})</a>
     </nav>
 
-    <section id="syllabus" class="block">
+    ${t.syllabus ? `<section id="syllabus" class="block">
       <h2>Syllabus scope</h2>
       <div class="scope">
         <div><h4>Included</h4><ul>${t.syllabus.include.map((s) => `<li>${mdi(s)}</li>`).join("")}</ul></div>
         ${t.syllabus.exclude && t.syllabus.exclude.length ? `<div class="scope-ex"><h4>Excluded</h4><ul>${t.syllabus.exclude.map((s) => `<li>${mdi(s)}</li>`).join("")}</ul></div>` : ""}
       </div>
-    </section>
+    </section>` : ""}
 
     <section id="concepts" class="block">
-      <h2>Key concepts</h2>
+      <h2>${words(L).concepts}</h2>
       <div class="concepts">${t.concepts.map((c) => `<div class="concept"><h3>${mdi(c.title)}</h3><div class="concept-body">${md(c.body)}</div>${figure(c.figure)}</div>`).join("")}</div>
     </section>
 
     <section id="archetypes" class="block">
-      <h2>Question archetypes</h2>
+      <h2>${words(L).archetypes}</h2>
       <ol class="arch-index">${t.archetypes.map((a, i) => `<li data-arch="${esc(a.id)}"><a href="${link(L, t, a.id)}">${i + 1}. ${mdi(a.name)}</a></li>`).join("")}</ol>
       ${t.archetypes.map((a, i) => `
         <div class="archetype" id="a-${esc(a.id)}" data-arch="${esc(a.id)}">
           <div class="arch-head">
-            <div><p class="arch-num">Archetype ${i + 1}${tagChips(a.tags)}</p><h3>${mdi(a.name)}</h3></div>
+            <div><p class="arch-num">${words(L).archetype} ${i + 1}${tagChips(a.tags)}</p><h3>${mdi(a.name)}</h3></div>
             <label class="confident"><input type="checkbox" data-check="${esc(a.id)}"><span>I'm confident</span></label>
           </div>
           <div class="arch-tests">${md(a.tests)}</div>
@@ -250,8 +263,8 @@
 
   function checklistView(L) {
     const topics = topicsBy[L.id];
-    let html = `<header class="topic-head"><p class="eyebrow">${esc(L.short)} · Your progress</p><h1>Syllabus checklist</h1>
-      <p class="lede">Tick an archetype when you can do its questions without help. Ticks are saved in this browser only.</p>
+    let html = `<header class="topic-head"><p class="eyebrow">${esc(L.short)} · Your progress</p><h1>${words(L).checklist}</h1>
+      <p class="lede">Tick ${L.kind === "olympiad" ? "a problem type when you can solve its problems" : "an archetype when you can do its questions"} without help. Ticks are saved in this browser only.</p>
       ${bar(progressOf(L, topics), "all")}
       <button class="btn-ghost" id="reset">Clear all ticks</button></header>`;
     for (const g of L.groups) {

@@ -147,7 +147,7 @@ a **real** quadratic factor. Find the remaining factor by comparing coefficients
       title: String.raw`Polynomials with non-real coefficients`,
       body: String.raw`The factor theorem still applies: if $\mathrm{P}(\beta) = 0$ then $(z - \beta)$ is a factor. But the conjugate root theorem does **not** — if any coefficient is non-real, $\beta^*$ need not be a root. Expect questions that ask you to explain this.
 
-Substitutions such as $w = 1/z$, $w = 2z$ or $w = \ii z$ turn a solved equation into a new one: transform each root rather than re-solving.`,
+Substitutions such as $w = z + 1$, $w = 3z$ or $w = \ii z$ turn a solved equation into a new one: transform each root rather than re-solving.`,
     },
     {
       title: String.raw`Argand diagram and geometric effects`,
