@@ -21,6 +21,7 @@ H2.setLevels([
     sections: [
       { id: "A", title: "Section A · Pure Mathematics" },
       { id: "B", title: "Section B · Probability and Statistics" },
+      { id: "IP", title: "Beyond the syllabus · IP extensions" },
     ],
     groups: [
       { id: "1", title: "Functions and Graphs", section: "A" },
@@ -29,7 +30,9 @@ H2.setLevels([
       { id: "4", title: "Introduction to Complex Numbers", section: "A" },
       { id: "5", title: "Calculus", section: "A" },
       { id: "6", title: "Probability and Statistics", section: "B" },
+      { id: "X", title: "IP Extensions", section: "IP" },
     ],
+    tagInfo: { IP: "Beyond the 9758 syllabus (including topics removed from it for exams from 2025). Often taught in IP schools or for H2 Further Mathematics and H3; not examined in H2 Mathematics." },
     footnote: String.raw`Follows the SEAB 9758 syllabus (2026 and 2027 exams). All questions are original. Formulae marked <span class="mf">MF27</span> are in the List of Formulae.`,
     files: [
       "1.1-functions", "1.2-graphs-transformations", "1.3-equations-inequalities",
@@ -38,6 +41,7 @@ H2.setLevels([
       "4.1-complex-numbers",
       "5.1-differentiation", "5.2-maclaurin-series", "5.3-integration-techniques", "5.4-definite-integrals", "5.5-differential-equations",
       "6.1-probability", "6.2-discrete-random-variables", "6.3-normal-distribution", "6.4-sampling", "6.5-hypothesis-testing", "6.6-correlation-regression",
+      "X1-complex-polar-exponential", "X2-proof-by-induction",
     ],
   },
   {
@@ -59,6 +63,7 @@ H2.setLevels([
       { id: "G", title: "Geometry and Measurement", section: "all" },
       { id: "S", title: "Statistics and Probability", section: "all" },
     ],
+    tagInfo: { IP: "Beyond the K310 syllabus. Often taught in IP schools; not examined in E-Math." },
     footnote: String.raw`Follows the SEAB SEC G3 Mathematics syllabus K310 (first exam 2027), which has the same content as O-Level 4052. All questions are original. Formulae marked <span class="mf">Given</span> are on the formula sheet in the exam paper.`,
     files: [
       "N1-numbers-operations", "N2-ratio-proportion", "N3-percentage", "N4-rate-speed", "N5-algebraic-expressions",
@@ -81,18 +86,21 @@ H2.setLevels([
       { title: "Paper 1 · 2 h 15 min · 90 marks", text: "12–14 questions, up to 10 marks each. Calculator allowed." },
       { title: "Paper 2 · 2 h 15 min · 90 marks", text: "9–11 questions, up to 12 marks each. Calculator allowed." },
     ],
-    sections: [{ id: "all", title: "" }],
+    sections: [{ id: "all", title: "" }, { id: "IP", title: "Beyond the syllabus · IP extensions" }],
     groups: [
       { id: "A", title: "Algebra", section: "all" },
       { id: "G", title: "Geometry and Trigonometry", section: "all" },
       { id: "C", title: "Calculus", section: "all" },
+      { id: "X", title: "IP Extensions", section: "IP" },
     ],
+    tagInfo: { IP: "Beyond the K341 syllabus (including topics removed from older O-Level A-Math). Often taught in IP schools; not examined in A-Math." },
     footnote: String.raw`Follows the SEAB SEC G3 Additional Mathematics syllabus K341 (first exam 2027), which has the same content as O-Level 4049. All questions are original. Formulae marked <span class="mf">Given</span> are on the formula sheet in the exam paper.`,
     files: [
       "A1-quadratic-functions", "A2-equations-inequalities", "A3-surds", "A4-polynomials-partial-fractions",
       "A5-binomial-expansions", "A6-exponential-logarithmic",
       "G1-trigonometry", "G2-coordinate-geometry", "G3-plane-geometry-proofs",
       "C1-differentiation", "C2-applications-of-differentiation", "C3-integration", "C4-kinematics",
+      "X1-modulus-functions", "X2-functions", "X3-graph-transformations",
     ],
   },
   {
@@ -114,6 +122,11 @@ H2.setLevels([
       { id: "G", title: "Geometry", section: "all" },
     ],
     footnote: "All problems are original, written in the style of Singapore primary mathematics competitions.",
-    files: [],
+    files: [
+      "N1-whole-numbers-digits", "N2-factors-multiples", "N3-patterns-sequences", "N4-fractions-ratio",
+      "C1-counting", "C2-logic-puzzles", "C3-parity-pigeonhole-games",
+      "W1-supposition-excess-shortage", "W2-working-backwards-model", "W3-speed-distance-work",
+      "G1-angles-figures", "G2-area-perimeter", "G3-solids-nets",
+    ],
   },
 ]);

@@ -33,6 +33,7 @@ const summary = [];
 function checkText(file, where, s, required = true) {
   if (s == null || s === "") { if (required) err(file, where, "missing text"); return; }
   if (typeof s !== "string") { err(file, where, "text must be a string"); return; }
+  if (/\\["']/.test(s.replace(/\$[^$]*\$/g, ""))) err(file, where, "stray backslash before a quote (not needed inside String.raw)");
   try { Markup.render(s, true); } catch (e) { err(file, where, e.message.split("\n")[0]); }
   try { if (Markup.tokenize(s).some((t) => t.type === "math" && !t.value)) err(file, where, "empty maths segment"); } catch (e) { /* reported above */ }
 }
@@ -89,7 +90,7 @@ for (const file of files) {
   else t.syllabus.include.forEach((s, i) => checkText(file, `syllabus.include[${i}]`, s));
   (t.syllabus && t.syllabus.exclude || []).forEach((s, i) => checkText(file, `syllabus.exclude[${i}]`, s));
   if (!Array.isArray(t.concepts) || t.concepts.length < 3) err(file, "concepts", "need at least 3 concepts");
-  (t.concepts || []).forEach((c, i) => { checkText(file, `concepts[${i}].title`, c.title); checkText(file, `concepts[${i}].body`, c.body); checkFigure(file, `concepts[${i}].figure`, c.figure); });
+  (t.concepts || []).forEach((c, i) => { if (c.tags && !(Array.isArray(c.tags) && c.tags.every((x) => typeof x === "string"))) err(file, `concepts[${i}].tags`, "must be an array of strings"); checkText(file, `concepts[${i}].title`, c.title); checkText(file, `concepts[${i}].body`, c.body); checkFigure(file, `concepts[${i}].figure`, c.figure); });
   if (!Array.isArray(t.archetypes) || t.archetypes.length < 3) err(file, "archetypes", "need at least 3 archetypes");
   let nq = 0;
   (t.archetypes || []).forEach((a, i) => {

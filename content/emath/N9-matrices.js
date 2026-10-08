@@ -181,6 +181,41 @@ $$(m \times n)(n \times p) \to (m \times p).$$
 - Forgetting units in context answers, or giving a matrix when a single total is asked for.
 - Matrix algebra rules (orders, addition, multiplication) are **not** on the formula sheet — memorise them.`,
     },
+    {
+      title: String.raw`The identity matrix and the zero matrix`,
+      tags: ["IP"],
+      body: String.raw`Not in K310 (taught in many IP schools). Two special square matrices behave like the numbers 1 and 0.
+
+- The **identity matrix** $I = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$ has 1s on the leading diagonal and 0s elsewhere. For any $2 \times 2$ matrix $A$, $AI = IA = A$.
+- The **zero matrix** $O = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}$ gives $A + O = A$ and $AO = OA = O$.
+- A number term in a matrix equation must be written with $I$: write $A^2 - 3A + 2I$, never $A^2 - 3A + 2$.
+- Matrices are not like numbers in two ways. $AB = O$ does **not** mean $A = O$ or $B = O$, e.g. $\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}\begin{pmatrix} 1 & -1 \\ -1 & 1 \end{pmatrix} = O$. And $A^2 = I$ does not force $A = \pm I$, e.g. $A = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$.`,
+    },
+    {
+      title: String.raw`Determinant and inverse of a $2 \times 2$ matrix`,
+      tags: ["IP"],
+      body: String.raw`Not in K310 (taught in many IP schools). For $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$ (memorise):
+$$\det A = |A| = ad - bc, \qquad A^{-1} = \frac{1}{ad - bc}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix}.$$
+
+- To write $A^{-1}$: **swap** $a$ and $d$, **change the signs** of $b$ and $c$, then **divide** by the determinant.
+- The inverse satisfies $AA^{-1} = A^{-1}A = I$. Multiply out to check your answer.
+- If $\det A = 0$, $A$ is **singular**: it has no inverse. If $\det A \ne 0$, $A$ is **non-singular**. To find an unknown that makes a matrix singular, set the determinant equal to 0 and solve.
+- Only square matrices can have inverses.
+- Example: $\begin{pmatrix} 5 & 2 \\ 7 & 3 \end{pmatrix}$ has determinant $15 - 14 = 1$, so its inverse is $\begin{pmatrix} 3 & -2 \\ -7 & 5 \end{pmatrix}$.
+- Common mistakes: using $ad + bc$, swapping $b$ and $c$ instead of changing their signs, and leaving out the factor $\frac{1}{ad - bc}$. It is fine to leave this factor outside the matrix.`,
+    },
+    {
+      title: String.raw`Solving equations with the inverse matrix`,
+      tags: ["IP"],
+      body: String.raw`Not in K310 (taught in many IP schools). A pair of simultaneous equations can be written as one matrix equation.
+$$\begin{aligned} 2x + y &= 7 \\ 3x + 2y &= 12 \end{aligned} \quad\Longleftrightarrow\quad \begin{pmatrix} 2 & 1 \\ 3 & 2 \end{pmatrix}\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 7 \\ 12 \end{pmatrix}$$
+
+- Multiply both sides **on the left** by the inverse: $\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 2 & -1 \\ -3 & 2 \end{pmatrix}\begin{pmatrix} 7 \\ 12 \end{pmatrix} = \begin{pmatrix} 2 \\ 3 \end{pmatrix}$, so $x = 2$, $y = 3$.
+- Order matters, because $AB \ne BA$ in general. If $AX = B$, then $X = A^{-1}B$ (multiply on the left).
+- If $XA = B$, then $X = BA^{-1}$ (multiply on the right). Never "divide" by a matrix.
+- If the matrix of coefficients is singular, there is no unique solution: the two lines are parallel (no solution) or the same line (infinitely many).
+- When the question says "use a matrix method", you must show the matrix equation, the inverse and the product. Solving by elimination gets no credit.`,
+    },
   ],
   archetypes: [
     {
@@ -314,6 +349,84 @@ In January and February, a cup of coffee costs \$3.20, a cup of tea costs \$2.50
             { label: "(b)", text: String.raw`Write down a column matrix $C$ for the prices and evaluate $(J + F)C$.`, marks: 2 },
             { label: "(c)", text: String.raw`State what the elements of $(J + F)C$ represent.`, marks: 1 },
             { label: "(d)", text: String.raw`In March, every price is increased by 10%. The numbers of cups sold in March are the same as in February. Using matrices, find the amount collected by each branch in March.`, marks: 3 },
+          ],
+        },
+      ],
+    },
+    {
+      id: "N9-determinant-inverse",
+      name: String.raw`Determinant, inverse and singular matrices`,
+      tags: ["IP"],
+      tests: String.raw`Not in K310 (taught in many IP schools). Finding the determinant and inverse of a $2 \times 2$ matrix, checking a result with $I$ and $O$, and finding an unknown that makes a matrix singular. Recognise by "Find $A^{-1}$" or "find the value(s) of $k$ for which the matrix has no inverse".`,
+      questions: [
+        {
+          stem: String.raw`$A = \begin{pmatrix} 3 & 4 \\ 1 & 2 \end{pmatrix}$.`,
+          parts: [
+            { label: "(a)", text: String.raw`Find the determinant of $A$.`, marks: 1 },
+            { label: "(b)", text: String.raw`Find $A^{-1}$.`, marks: 2 },
+            { label: "(c)", text: String.raw`Show that $A^2 - 5A + 2I = O$, where $I$ is the $2 \times 2$ identity matrix and $O$ is the $2 \times 2$ zero matrix.`, marks: 2 },
+            { label: "(d)", text: String.raw`$B = \begin{pmatrix} x & 6 \\ 3 & x + 7 \end{pmatrix}$. Find the values of $x$ for which $B$ is singular.`, marks: 3 },
+          ],
+        },
+        {
+          stem: String.raw`$P = \begin{pmatrix} 2 & -1 \\ k & 3 \end{pmatrix}$, where $k$ is a constant.`,
+          parts: [
+            { label: "(a)", text: String.raw`Find, in terms of $k$, the determinant of $P$.`, marks: 1 },
+            { label: "(b)", text: String.raw`Find the value of $k$ for which $P$ has no inverse.`, marks: 1 },
+            { label: "(c)", text: String.raw`Given that the determinant of $P$ is 10, find $P^{-1}$.`, marks: 2 },
+            { label: "(d)", text: String.raw`Using your answer to part (c), verify that $PP^{-1} = I$.`, marks: 2 },
+          ],
+        },
+      ],
+    },
+    {
+      id: "N9-solve-simultaneous",
+      name: String.raw`Solving simultaneous equations by a matrix method`,
+      tags: ["IP"],
+      tests: String.raw`Not in K310 (taught in many IP schools). Writing a pair of linear equations as a matrix equation, finding the inverse of the coefficient matrix and using it to solve, including setting up the equations from a real-world context. Recognise by "Use a matrix method to solve…" or "Write the equations in the form $A\begin{pmatrix} x \\ y \end{pmatrix} = B$".`,
+      questions: [
+        {
+          stem: String.raw`Consider the simultaneous equations
+$$3x - 2y = 8, \qquad 5x + 4y = 6.$$`,
+          parts: [
+            { label: "(a)", text: String.raw`Write the equations in the form $A\begin{pmatrix} x \\ y \end{pmatrix} = B$, where $A$ is a $2 \times 2$ matrix and $B$ is a column matrix.`, marks: 1 },
+            { label: "(b)", text: String.raw`Find $A^{-1}$.`, marks: 2 },
+            { label: "(c)", text: String.raw`Hence solve the simultaneous equations.`, marks: 2 },
+            { label: "(d)", text: String.raw`Explain why the equations $3x - 2y = 8$ and $6x - 4y = 5$ cannot be solved by this method.`, marks: 1 },
+          ],
+        },
+        {
+          stem: String.raw`A cinema charges \$$a$ for an adult ticket and \$$c$ for a child ticket. Group P buys 4 adult tickets and 3 child tickets for \$74. Group Q buys 2 adult tickets and 5 child tickets for \$65.`,
+          parts: [
+            { label: "(a)", text: String.raw`Write down a pair of simultaneous equations in $a$ and $c$, and express them as a single matrix equation.`, marks: 2 },
+            { label: "(b)", text: String.raw`Use a matrix method to find the cost of an adult ticket and the cost of a child ticket.`, marks: 3 },
+            { label: "(c)", text: String.raw`Group R buys 6 adult tickets and $n$ child tickets for \$139. Find the value of $n$.`, marks: 1 },
+          ],
+        },
+      ],
+    },
+    {
+      id: "N9-matrix-equations",
+      name: String.raw`Matrix equations $AX = B$ and $XA = B$`,
+      tags: ["IP"],
+      tests: String.raw`Not in K310 (taught in many IP schools). Finding an unknown matrix by multiplying by an inverse on the correct side, and checking properties such as $AB \ne BA$ and $(AB)^{-1} = B^{-1}A^{-1}$. Recognise by "Find the matrix $X$ such that…" with $X$ next to a known matrix.`,
+      questions: [
+        {
+          stem: String.raw`$A = \begin{pmatrix} 2 & 1 \\ 5 & 3 \end{pmatrix}$ and $B = \begin{pmatrix} 4 & -1 \\ 7 & 2 \end{pmatrix}$.`,
+          parts: [
+            { label: "(a)", text: String.raw`Find $A^{-1}$.`, marks: 2 },
+            { label: "(b)", text: String.raw`Find the matrix $X$ such that $AX = B$.`, marks: 2 },
+            { label: "(c)", text: String.raw`Find the matrix $Y$ such that $YA = B$.`, marks: 2 },
+            { label: "(d)", text: String.raw`Explain why $X \ne Y$.`, marks: 1 },
+          ],
+        },
+        {
+          stem: String.raw`$P = \begin{pmatrix} 3 & 1 \\ 2 & 1 \end{pmatrix}$ and $Q = \begin{pmatrix} 1 & -1 \\ 0 & 2 \end{pmatrix}$.`,
+          parts: [
+            { label: "(a)", text: String.raw`Find $PQ$ and $QP$. State what your answers show about matrix multiplication.`, marks: 3 },
+            { label: "(b)", text: String.raw`Find $P^{-1}$ and $Q^{-1}$.`, marks: 3 },
+            { label: "(c)", text: String.raw`Show that $(PQ)^{-1} = Q^{-1}P^{-1}$.`, marks: 2 },
+            { label: "(d)", text: String.raw`Find the matrix $X$ such that $PXQ = I$, where $I$ is the $2 \times 2$ identity matrix.`, marks: 2 },
           ],
         },
       ],

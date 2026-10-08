@@ -269,6 +269,94 @@ Binomial is unsuitable when sampling without replacement from a small population
         alt: "Four boxes of 10 items each, with faulty items highlighted. Boxes with 0, 1 and 2 faulty items are accepted; the box with 3 faulty items is rejected. Each box is one trial of the second-stage binomial distribution.",
       },
     },
+    {
+      title: String.raw`Poisson distribution $\mathrm{Po}(\mu)$`,
+      tags: ["IP"],
+      body: String.raw`Beyond 9758 (in H2 Further Mathematics 9649). $X \sim \mathrm{Po}(\mu)$ models the **number of events** in a fixed interval of time or space:
+
+$$\P(X = x) = \frac{\ee^{-\mu}\mu^x}{x!}, \quad x = 0, 1, 2, \ldots \qquad \E(X) = \Var(X) = \mu.$$
+
+- **Conditions** (state them in context): events occur **singly**, **independently** of one another, and **at random** at a constant average rate, so the mean number in an interval is proportional to its length.
+- **Scaling**: if calls arrive at an average of 2 per hour, the number in 3 hours is $\mathrm{Po}(6)$ and the number in 15 minutes is $\mathrm{Po}(0.5)$.
+- **Additive property**: if $X \sim \mathrm{Po}(\mu_1)$ and $Y \sim \mathrm{Po}(\mu_2)$ are independent, then $X + Y \sim \mathrm{Po}(\mu_1 + \mu_2)$. (There is no such result for $X - Y$ or $2X$.)
+- **Checking a model**: since the mean equals the variance, a sample with $\bar{x} \approx s^2$ supports a Poisson model; a variance much larger than the mean suggests events cluster (not independent).
+- GC: poissonpdf$(\mu, x)$ gives $\P(X = x)$; poissoncdf$(\mu, x)$ gives $\P(X \le x)$. Translate "at least", "more than" as for the binomial.
+- Unlike $\B(n, p)$, there is **no upper limit** on $X$.`,
+      figure: [
+        {
+          type: "plot", x: [-0.8, 9.8], y: [0, 0.37], height: 190, axisLabels: ["x", null],
+          polygons: [{ points: [[-0.3, 0], [0.3, 0], [0.3, 0.2231], [-0.3, 0.2231]], fill: true, tone: "accent" },
+            { points: [[0.7, 0], [1.3, 0], [1.3, 0.3347], [0.7, 0.3347]], fill: true, tone: "warn" },
+            { points: [[1.7, 0], [2.3, 0], [2.3, 0.2510], [1.7, 0.2510]], fill: true, tone: "accent" },
+            { points: [[2.7, 0], [3.3, 0], [3.3, 0.1255], [2.7, 0.1255]], fill: true, tone: "accent" },
+            { points: [[3.7, 0], [4.3, 0], [4.3, 0.0471], [3.7, 0.0471]], fill: true, tone: "accent" },
+            { points: [[4.7, 0], [5.3, 0], [5.3, 0.0141], [4.7, 0.0141]], fill: true, tone: "accent" },
+            { points: [[5.7, 0], [6.3, 0], [6.3, 0.0035], [5.7, 0.0035]], fill: true, tone: "accent" },
+            { points: [[6.7, 0], [7.3, 0], [7.3, 0.0008], [6.7, 0.0008]], fill: true, tone: "accent" },
+            { points: [[7.7, 0], [8.3, 0], [8.3, 0.0001], [7.7, 0.0001]], fill: true, tone: "accent" },
+            { points: [[8.7, 0], [9.3, 0], [9.3, 0.0000], [8.7, 0.0000]], fill: true, tone: "accent" }],
+          lines: [{ x: 1.5 }],
+          xTicks: [{ x: 0, label: "0" }, { x: 2, label: "2" }, { x: 4, label: "4" }, { x: 6, label: "6" }, { x: 8, label: "8" }],
+          labels: [{ x: 1.5, y: 0.355, text: "μ = 1.5", pos: "e", style: "small" }],
+          caption: String.raw`$\mathrm{Po}(1.5)$: positively skewed, mode 1.`,
+          alt: "Bar chart of the Poisson distribution with mean 1.5 for x = 0 to 9: the tallest bar is at x = 1 (about 0.33) and the bars tail off to the right; a dashed line marks the mean 1.5.",
+        },
+        {
+          type: "plot", x: [-0.8, 13.8], y: [0, 0.37], height: 190, axisLabels: ["x", null],
+          polygons: [{ points: [[-0.3, 0], [0.3, 0], [0.3, 0.0067], [-0.3, 0.0067]], fill: true, tone: "accent" },
+            { points: [[0.7, 0], [1.3, 0], [1.3, 0.0337], [0.7, 0.0337]], fill: true, tone: "accent" },
+            { points: [[1.7, 0], [2.3, 0], [2.3, 0.0842], [1.7, 0.0842]], fill: true, tone: "accent" },
+            { points: [[2.7, 0], [3.3, 0], [3.3, 0.1404], [2.7, 0.1404]], fill: true, tone: "accent" },
+            { points: [[3.7, 0], [4.3, 0], [4.3, 0.1755], [3.7, 0.1755]], fill: true, tone: "warn" },
+            { points: [[4.7, 0], [5.3, 0], [5.3, 0.1755], [4.7, 0.1755]], fill: true, tone: "warn" },
+            { points: [[5.7, 0], [6.3, 0], [6.3, 0.1462], [5.7, 0.1462]], fill: true, tone: "accent" },
+            { points: [[6.7, 0], [7.3, 0], [7.3, 0.1044], [6.7, 0.1044]], fill: true, tone: "accent" },
+            { points: [[7.7, 0], [8.3, 0], [8.3, 0.0653], [7.7, 0.0653]], fill: true, tone: "accent" },
+            { points: [[8.7, 0], [9.3, 0], [9.3, 0.0363], [8.7, 0.0363]], fill: true, tone: "accent" },
+            { points: [[9.7, 0], [10.3, 0], [10.3, 0.0181], [9.7, 0.0181]], fill: true, tone: "accent" },
+            { points: [[10.7, 0], [11.3, 0], [11.3, 0.0082], [10.7, 0.0082]], fill: true, tone: "accent" },
+            { points: [[11.7, 0], [12.3, 0], [12.3, 0.0034], [11.7, 0.0034]], fill: true, tone: "accent" },
+            { points: [[12.7, 0], [13.3, 0], [13.3, 0.0013], [12.7, 0.0013]], fill: true, tone: "accent" }],
+          lines: [{ x: 5 }],
+          xTicks: [{ x: 0, label: "0" }, { x: 2, label: "2" }, { x: 4, label: "4" }, { x: 6, label: "6" }, { x: 8, label: "8" }, { x: 10, label: "10" }, { x: 12, label: "12" }],
+          labels: [{ x: 5, y: 0.355, text: "μ = 5", pos: "e", style: "small" }],
+          caption: String.raw`$\mathrm{Po}(5)$: more symmetric as $\mu$ grows; modes 4 and 5.`,
+          alt: "Bar chart of the Poisson distribution with mean 5 for x = 0 to 13: bars rise to equal tallest bars at x = 4 and x = 5 (about 0.18) and fall away more slowly to the right; a dashed line marks the mean 5.",
+        },
+      ],
+    },
+    {
+      title: String.raw`Geometric distribution $\mathrm{Geo}(p)$`,
+      tags: ["IP"],
+      body: String.raw`Beyond 9758 (in H2 Further Mathematics 9649). In a sequence of independent trials, each with the same probability $p$ of success, let $X$ be the number of trials **up to and including the first success**. Then $X \sim \mathrm{Geo}(p)$:
+
+$$\P(X = x) = (1 - p)^{x-1}p, \quad x = 1, 2, 3, \ldots \qquad \E(X) = \frac{1}{p}, \quad \Var(X) = \frac{1 - p}{p^2}.$$
+
+- **Tail probability**: $\P(X > x) = (1 - p)^x$, because the first $x$ trials must all be failures. So $\P(X \le x) = 1 - (1 - p)^x$ — much quicker than adding terms.
+- **Least $n$** problems ("how many attempts so that the probability of at least one success exceeds 0.95?") reduce to $1 - (1 - p)^n > 0.95$; solve with logarithms or a GC table.
+- **No memory**: $\P(X > a + b \mid X > a) = \P(X > b)$. Past failures do not make a success "due".
+- The probabilities form a GP with ratio $1 - p$, so sums such as $\P(X \text{ is odd})$ come from a sum to infinity.
+- **Binomial vs geometric**: $\B(n, p)$ counts successes in a **fixed** number of trials; $\mathrm{Geo}(p)$ counts trials until the **first** success, with no upper limit.`,
+      figure: {
+        type: "plot", x: [0, 12.8], y: [0, 0.33], height: 210, axisLabels: ["x", null],
+        polygons: [{ points: [[0.7, 0], [1.3, 0], [1.3, 0.3000], [0.7, 0.3000]], fill: true, tone: "muted" },
+          { points: [[1.7, 0], [2.3, 0], [2.3, 0.2100], [1.7, 0.2100]], fill: true, tone: "muted" },
+          { points: [[2.7, 0], [3.3, 0], [3.3, 0.1470], [2.7, 0.1470]], fill: true, tone: "muted" },
+          { points: [[3.7, 0], [4.3, 0], [4.3, 0.1029], [3.7, 0.1029]], fill: true, tone: "warn" },
+          { points: [[4.7, 0], [5.3, 0], [5.3, 0.0720], [4.7, 0.0720]], fill: true, tone: "warn" },
+          { points: [[5.7, 0], [6.3, 0], [6.3, 0.0504], [5.7, 0.0504]], fill: true, tone: "warn" },
+          { points: [[6.7, 0], [7.3, 0], [7.3, 0.0353], [6.7, 0.0353]], fill: true, tone: "warn" },
+          { points: [[7.7, 0], [8.3, 0], [8.3, 0.0247], [7.7, 0.0247]], fill: true, tone: "warn" },
+          { points: [[8.7, 0], [9.3, 0], [9.3, 0.0173], [8.7, 0.0173]], fill: true, tone: "warn" },
+          { points: [[9.7, 0], [10.3, 0], [10.3, 0.0121], [9.7, 0.0121]], fill: true, tone: "warn" },
+          { points: [[10.7, 0], [11.3, 0], [11.3, 0.0085], [10.7, 0.0085]], fill: true, tone: "warn" },
+          { points: [[11.7, 0], [12.3, 0], [12.3, 0.0059], [11.7, 0.0059]], fill: true, tone: "warn" }],
+        xTicks: [{ x: 1, label: "1" }, { x: 2, label: "2" }, { x: 3, label: "3" }, { x: 4, label: "4" }, { x: 6, label: "6" }, { x: 8, label: "8" }, { x: 10, label: "10" }, { x: 12, label: "12" }],
+        labels: [{ x: 2, y: 0.27, text: "first 3 trials", pos: "e", style: "small", tone: "muted" }, { x: 6.5, y: 0.12, text: "P(X > 3) = 0.7³", pos: "e", style: "small", tone: "warn" }],
+        caption: String.raw`$X \sim \mathrm{Geo}(0.3)$: each bar is 0.7 times the one before. The highlighted tail is $\P(X > 3) = 0.7^3 = 0.343$.`,
+        alt: "Bar chart of the geometric distribution with p = 0.3 for x = 1 to 12, with bars decreasing by a factor of 0.7 each step from 0.3 at x = 1. Bars for x = 1 to 3 are grey; bars from x = 4 onwards are highlighted and labelled P(X > 3) = 0.7 cubed.",
+      },
+    },
   ],
   archetypes: [
     {
@@ -453,6 +541,65 @@ It is given that $\E(X) = 2.6$.`,
             { label: "(i)", text: String.raw`Show that $S = 5X - 20$.`, marks: 1 },
             { label: "(ii)", text: String.raw`Find $\E(S)$ and $\Var(S)$.`, marks: 3 },
             { label: "(iii)", text: String.raw`Find the probability that the candidate's total score is positive.`, marks: 2 },
+          ],
+        },
+      ],
+    },
+    {
+      id: "6.2-poisson",
+      name: String.raw`Poisson distribution as a model`,
+      tags: ["IP"],
+      tests: String.raw`Beyond 9758 (in H2 Further Mathematics 9649). Stating the conditions for a Poisson model in context, rescaling the mean to a different interval, using mean $=$ variance to judge suitability, and adding independent Poisson variables. Recognise it by "on average, $\mu$ per hour / per metre / per page" with no fixed number of trials.`,
+      questions: [
+        {
+          stem: String.raw`Calls arrive at a helpline at random, at an average rate of 3 calls per 10-minute period.`,
+          parts: [
+            { label: "(i)", text: String.raw`State, in context, two assumptions needed for the number of calls in a 10-minute period to be well modelled by a Poisson distribution.`, marks: 2 },
+            { label: "(ii)", text: String.raw`Find the probability that exactly 4 calls arrive in a 10-minute period.`, marks: 1 },
+            { label: "(iii)", text: String.raw`Find the probability that more than 8 calls arrive in a 30-minute period.`, marks: 2 },
+            { label: "(iv)", text: String.raw`An hour is divided into six 10-minute periods. Find the probability that at least one call arrives in every one of these periods.`, marks: 2 },
+            { label: "(v)", text: String.raw`Find the greatest length of time, $t$ minutes, for which the probability that no calls arrive in $t$ minutes is more than 0.5. Give your answer correct to 3 significant figures.`, marks: 3 },
+          ],
+        },
+        {
+          parts: [
+            { label: "(a)", text: String.raw`The numbers of flaws found in 80 randomly chosen 1-metre lengths of fabric are summarised below.
+
+| Number of flaws | 0 | 1 | 2 | 3 | 4 | 5 |
+| Number of lengths | 18 | 27 | 20 | 10 | 4 | 1 |
+
+Find unbiased estimates of the population mean and variance of the number of flaws in a 1-metre length, and explain whether your answers support a Poisson model.`, marks: 3 },
+            { label: "(b)", text: String.raw`The numbers of emails received in an hour by Ali and by Ben are independent random variables with distributions $\mathrm{Po}(2.4)$ and $\mathrm{Po}(1.6)$ respectively.`, parts: [
+              { label: "(i)", text: String.raw`Find the probability that Ali and Ben receive a total of exactly 5 emails in a particular hour.`, marks: 2 },
+              { label: "(ii)", text: String.raw`Given that they receive a total of 5 emails in a particular hour, find the probability that Ali receives exactly 3 of them.`, marks: 3 },
+            ] },
+          ],
+        },
+      ],
+    },
+    {
+      id: "6.2-geometric",
+      name: String.raw`Geometric distribution: waiting for the first success`,
+      tags: ["IP"],
+      tests: String.raw`Beyond 9758 (in H2 Further Mathematics 9649). Recognising "the number of attempts up to and including the first success", using $\P(X = x) = (1 - p)^{x-1}p$, the tail result $\P(X > x) = (1 - p)^x$ and $\E(X) = \frac{1}{p}$, and summing a GP of probabilities.`,
+      questions: [
+        {
+          stem: String.raw`Each time Priya throws a dart, the probability that she hits the bullseye is 0.15, independently of all other throws. She throws darts until she first hits the bullseye. The number of throws she makes, including the throw that hits the bullseye, is $X$.`,
+          parts: [
+            { label: "(i)", text: String.raw`State the distribution of $X$, including the value of its parameter.`, marks: 1 },
+            { label: "(ii)", text: String.raw`Find $\P(X = 4)$.`, marks: 1 },
+            { label: "(iii)", text: String.raw`Find the probability that she needs more than 6 throws.`, marks: 2 },
+            { label: "(iv)", text: String.raw`Find the expected number of throws she makes.`, marks: 1 },
+            { label: "(v)", text: String.raw`Find the least number of throws, $n$, for which the probability that she has hit the bullseye within her first $n$ throws exceeds 0.9.`, marks: 3 },
+          ],
+        },
+        {
+          stem: String.raw`The random variable $X$ has the distribution $\mathrm{Geo}(p)$, where $0 < p < 1$. It is given that $\P(X \le 2) = 0.64$.`,
+          calculator: false,
+          parts: [
+            { label: "(i)", text: String.raw`Show that $p = 0.4$.`, marks: 2 },
+            { label: "(ii)", text: String.raw`Show that $\P(X \text{ is even}) = \dfrac{1 - p}{2 - p}$, and evaluate this probability.`, marks: 3 },
+            { label: "(iii)", text: String.raw`Find $\P(X > 5 \mid X > 2)$, and comment on your answer.`, marks: 3 },
           ],
         },
       ],

@@ -161,6 +161,28 @@ Do **not** "square root both sides" or divide by an expression whose sign you do
         },
       ],
     },
+    {
+      title: String.raw`Roots and coefficients of a quadratic equation`,
+      tags: ["IP"],
+      body: String.raw`Not in K341 (removed from O-Level A-Math 4047). If $\alpha$ and $\beta$ are the roots of $ax^2 + bx + c = 0$, then
+
+$$\alpha + \beta = -\frac{b}{a}, \qquad \alpha\beta = \frac{c}{a}.$$
+
+Memorise these (they are not on the formula sheet). Conversely, a quadratic equation with roots $\alpha$ and $\beta$ is
+
+$$x^2 - (\text{sum of roots})x + (\text{product of roots}) = 0.$$
+
+To find other expressions **without solving** the equation, write them in terms of $\alpha + \beta$ and $\alpha\beta$:
+
+- $\alpha^2 + \beta^2 = (\alpha + \beta)^2 - 2\alpha\beta$
+- $(\alpha - \beta)^2 = (\alpha + \beta)^2 - 4\alpha\beta$
+- $\alpha^3 + \beta^3 = (\alpha + \beta)^3 - 3\alpha\beta(\alpha + \beta)$
+- $\dfrac{1}{\alpha} + \dfrac{1}{\beta} = \dfrac{\alpha + \beta}{\alpha\beta}$
+
+Example: for $x^2 - 5x + 3 = 0$, $\alpha + \beta = 5$ and $\alpha\beta = 3$. The equation with roots $2\alpha$ and $2\beta$ has sum $10$ and product $4\alpha\beta = 12$, so it is $x^2 - 10x + 12 = 0$.
+
+Multiply through at the end to give integer coefficients if the question asks for them.`,
+    },
   ],
   archetypes: [
     {
@@ -281,6 +303,29 @@ Do **not** "square root both sides" or divide by an expression whose sign you do
           parts: [
             { label: "(a)", text: String.raw`Find the range of values of $x$ for which $x(2x + 3) \le 5$.`, marks: 3 },
             { label: "(b)", text: String.raw`Hence find the integer values of $x$ which satisfy both $x(2x + 3) \le 5$ and $3x + 4 > 0$.`, marks: 2 },
+          ],
+        },
+      ],
+    },
+    {
+      id: "A2-roots-and-coefficients",
+      name: String.raw`Roots and coefficients of quadratic equations`,
+      tags: ["IP"],
+      tests: String.raw`Not in K341 (removed from O-Level A-Math 4047). Using $\alpha + \beta = -\frac{b}{a}$ and $\alpha\beta = \frac{c}{a}$ to evaluate symmetric expressions without solving, forming a new equation whose roots are related to $\alpha$ and $\beta$, or finding an unknown coefficient from a condition on the roots.`,
+      questions: [
+        {
+          stem: String.raw`The roots of the equation $2x^2 - 6x + 1 = 0$ are $\alpha$ and $\beta$. Without solving the equation,`,
+          parts: [
+            { label: "(a)", text: String.raw`find the value of $\alpha^2 + \beta^2$,`, marks: 2 },
+            { label: "(b)", text: String.raw`find the value of $\alpha^3 + \beta^3$,`, marks: 2 },
+            { label: "(c)", text: String.raw`find a quadratic equation, with integer coefficients, whose roots are $\dfrac{\alpha}{\beta}$ and $\dfrac{\beta}{\alpha}$.`, marks: 3 },
+          ],
+        },
+        {
+          stem: String.raw`The roots of the equation $x^2 - kx + 27 = 0$, where $k$ is a positive constant, are $\alpha$ and $3\alpha$.`,
+          parts: [
+            { label: "(a)", text: String.raw`Find the value of $\alpha$ and of $k$.`, marks: 3 },
+            { label: "(b)", text: String.raw`Find the quadratic equation whose roots are $\alpha + 2$ and $3\alpha + 2$.`, marks: 2 },
           ],
         },
       ],

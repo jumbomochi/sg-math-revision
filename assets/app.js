@@ -57,7 +57,9 @@
   const groupLabel = (g) => (/^\d+$/.test(g.id) ? `${g.id}. ${esc(g.title)}` : esc(g.title));
   const link = (L, t, archId) => `#/${L.id}/t/${t.id}` + (archId ? `/${encodeURIComponent(archId)}` : "");
   const countQuestions = (t) => t.archetypes.reduce((s, a) => s + a.questions.length, 0);
-  const tagChips = (tags) => (tags && tags.length ? `<span class="tags">${tags.map((x) => `<span class="tag">${esc(x)}</span>`).join("")}</span>` : "");
+  let tagInfo = {};
+  const tagChips = (tags) => (tags && tags.length ? `<span class="tags">${tags.map((x) => `<span class="tag"${tagInfo[x] ? ` title="${esc(tagInfo[x])}"` : ""}>${esc(x)}</span>`).join("")}</span>` : "");
+  const isIP = (t) => !!(t.tags && t.tags.includes("IP"));
 
   function progressOf(L, list) {
     const done = doneOf(L);
@@ -223,13 +225,14 @@
       ${bar(progressOf(L, [t]), "t:" + t.id)}
     </header>
     <nav class="toc" aria-label="On this page">
-      ${t.syllabus ? `<a href="#" data-jump="syllabus">Syllabus scope</a>` : ""}
+      ${t.syllabus ? `<a href="#" data-jump="syllabus">${isIP(t) ? "Scope" : "Syllabus scope"}</a>` : ""}
       <a href="#" data-jump="concepts">${words(L).concepts}</a>
       <a href="#" data-jump="archetypes">${words(L).archetypes} (${t.archetypes.length})</a>
     </nav>
 
     ${t.syllabus ? `<section id="syllabus" class="block">
-      <h2>Syllabus scope</h2>
+      <h2>${isIP(t) ? "Scope · beyond the syllabus" : "Syllabus scope"}</h2>
+      ${isIP(t) && L.tagInfo && L.tagInfo.IP ? `<p class="scope-note">${mdi(L.tagInfo.IP)}</p>` : ""}
       <div class="scope">
         <div><h4>Included</h4><ul>${t.syllabus.include.map((s) => `<li>${mdi(s)}</li>`).join("")}</ul></div>
         ${t.syllabus.exclude && t.syllabus.exclude.length ? `<div class="scope-ex"><h4>Excluded</h4><ul>${t.syllabus.exclude.map((s) => `<li>${mdi(s)}</li>`).join("")}</ul></div>` : ""}
@@ -238,7 +241,7 @@
 
     <section id="concepts" class="block">
       <h2>${words(L).concepts}</h2>
-      <div class="concepts">${t.concepts.map((c) => `<div class="concept"><h3>${mdi(c.title)}</h3><div class="concept-body">${md(c.body)}</div>${figure(c.figure)}</div>`).join("")}</div>
+      <div class="concepts">${t.concepts.map((c) => `<div class="concept"><h3>${mdi(c.title)}${tagChips(c.tags)}</h3><div class="concept-body">${md(c.body)}</div>${figure(c.figure)}</div>`).join("")}</div>
     </section>
 
     <section id="archetypes" class="block">
@@ -314,6 +317,7 @@
 
   function show(L, active, html, title, scrollTo) {
     current = L;
+    tagInfo = (L && L.tagInfo) || {};
     document.title = title;
     $("#main").innerHTML = html;
     $("#nav").innerHTML = sidebar(L, active);

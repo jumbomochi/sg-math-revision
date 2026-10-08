@@ -41,7 +41,8 @@
 
 * { box-sizing: border-box; }
 html { scroll-padding-top: calc(var(--top) + 16px); -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 var(--sans); }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 var(--sans); font-variant-numeric: lining-nums; }
+.plot text { font-variant-numeric: lining-nums tabular-nums; }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 h1, h2, h3, h4 { line-height: 1.25; margin: 0; }
@@ -83,6 +84,9 @@ h1, h2, h3, h4 { line-height: 1.25; margin: 0; }
 .tags { display: inline-flex; gap: 4px; margin-left: 6px; vertical-align: middle; }
 .tag { display: inline-block; font: 700 10.5px/1.6 var(--sans); letter-spacing: 0.04em; padding: 0 6px; border-radius: 4px; background: var(--good-soft); color: var(--good); text-transform: uppercase; }
 .topic-head > .tags { margin: 8px 0 0; }
+.scope-note { margin: -6px 0 12px; color: var(--ink-2); font-size: 14.5px; }
+.tag[title] { cursor: help; }
+.concept h3 .tags { margin-left: 8px; }
 .tag-legend { margin-top: 28px; font-size: 14px; color: var(--ink-2); }
 .tag-legend p { margin: 4px 0; }
 .levels { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); margin-top: 8px; }

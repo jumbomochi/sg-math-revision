@@ -53,7 +53,11 @@ for (const file of files) {
   const base = path.basename(file, ".js");
   const htmlPath = path.join(outDir, base + ".html");
   fs.writeFileSync(htmlPath, html);
-  const height = Math.max(400, Math.ceil(figs.length / 2) * 470 + 60);
+  // window height from each figure's real aspect ratio (two columns, ~460px wide cells)
+  const cellH = cells.map((c) => { const m = c.match(/viewBox="0 0 (\d+(?:\.\d+)?) (\d+(?:\.\d+)?)"/); return m ? (460 * m[2]) / m[1] + 60 : 120; });
+  let height = 80;
+  for (let i = 0; i < cellH.length; i += 2) height += Math.max(cellH[i], cellH[i + 1] || 0) + 14;
+  height = Math.max(400, Math.ceil(height));
   const png = path.join(outDir, base + (dark ? "-dark" : "") + ".png");
   execFileSync(CHROME, ["--headless=new", "--disable-gpu", "--hide-scrollbars", `--window-size=1000,${height}`, `--screenshot=${png}`, "file://" + htmlPath], { stdio: "ignore" });
   console.log(`${file}: ${figs.length} figure(s) → ${png}`);

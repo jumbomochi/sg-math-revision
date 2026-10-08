@@ -29,13 +29,12 @@ $$\int \mathrm{f}'(x)[\mathrm{f}(x)]^n \,\dd x = \frac{[\mathrm{f}(x)]^{n+1}}{n+
     },
     {
       title: String.raw`Trigonometric integrands: use identities first`,
-      body: String.raw`Powers and products of trig functions are rewritten as sums before integrating.
+      body: String.raw`Powers of trig functions are rewritten using identities before integrating.
 
 | Integrand | Rewrite as | Source |
 | $\sin^2 x$ | $\frac{1}{2}(1 - \cos 2x)$ | from $\cos 2A$ (MF27) |
 | $\cos^2 x$ | $\frac{1}{2}(1 + \cos 2x)$ | from $\cos 2A$ (MF27) |
 | $\tan^2 x$ | $\sec^2 x - 1$ | memorise |
-| $\sin mx \cos nx$ etc. | sum/difference of sines or cosines | factor formulae — memorise, or add $\sin(A + B)$ and $\sin(A - B)$ from (MF27) |
 
 - $\sin^4 x$: square $\frac{1}{2}(1 - \cos 2x)$, then use the identity again on $\cos^2 2x$.
 - Odd powers such as $\sin^3 x$ or $\sin x \cos^4 x$: peel off one factor and use $\mathrm{f}'(x)[\mathrm{f}(x)]^n$, e.g. $\sin^3 x = \sin x - \sin x \cos^2 x$.
@@ -131,6 +130,32 @@ $$I = (\text{expression}) - k I \ \Rightarrow\ I = \frac{\text{expression}}{1 + 
 - "Hence" means use the previous result: a derivative found in part (i) is usually the integrand (or the $\dfrac{\dd v}{\dd x}$) needed in part (ii).
 - Reduction formulae ($I_n$ in terms of $I_{n-1}$) are outside the syllabus.`,
     },
+    {
+      title: String.raw`Products of sines and cosines`,
+      tags: ["IP"],
+      body: String.raw`Not in 9758 from 2025. Turn a product into a sum with the factor formulae, which you can build by adding or subtracting the compound-angle formulae (MF27):
+
+$$2\sin A\cos B = \sin(A + B) + \sin(A - B), \qquad 2\cos A\cos B = \cos(A + B) + \cos(A - B),$$
+$$2\sin A\sin B = \cos(A - B) - \cos(A + B).$$
+
+For example, $2\sin 4x\cos 2x = \sin 6x + \sin 2x$, which integrates term by term.`,
+    },
+    {
+      title: String.raw`Reduction formulae`,
+      tags: ["IP"],
+      body: String.raw`Not in 9758 (reduction formulae are excluded; in H3 Mathematics). A reduction formula expresses $I_n$, an integral depending on a whole number $n$, in terms of $I_{n-1}$ or $I_{n-2}$. Repeat it down to $I_0$ or $I_1$, which you integrate directly.
+
+**Deriving one by parts.** Split the integrand so that differentiating $u$ lowers the power by one. For $I_n = \displaystyle\int (\ln x)^n\,\dd x$, take $u = (\ln x)^n$ and $\dfrac{\dd v}{\dd x} = 1$:
+
+$$I_n = x(\ln x)^n - \int x \cdot \frac{n(\ln x)^{n-1}}{x}\,\dd x = x(\ln x)^n - nI_{n-1}.$$
+
+Then $I_0 = x + C$ gives, step by step, $\displaystyle\int (\ln x)^2\,\dd x = x(\ln x)^2 - 2x\ln x + 2x + C$.
+
+- **Powers of trig functions**: write $\sin^n x = \sin^{n-1}x \cdot \sin x$, integrate by parts, then replace $\cos^2 x$ by $1 - \sin^2 x$. The original integral reappears on the right; collect the $I_n$ terms to get $I_n$ in terms of $I_{n-2}$.
+- **Definite integrals**: evaluate $[uv]$ at the limits straight away; it often vanishes or becomes a constant, which gives a much cleaner formula.
+- Odd and even $n$ reduce to **different** starting integrals ($I_1$ or $I_0$), so work out the one you need.
+- Exam questions usually give the target formula ("Show that…"), so check your final line matches it exactly, including the range of $n$ for which it holds.`,
+    },
   ],
   archetypes: [
     {
@@ -160,16 +185,15 @@ $$I = (\text{expression}) - k I \ \Rightarrow\ I = \frac{\text{expression}}{1 + 
     },
     {
       id: "5.3-trig-identities",
-      name: String.raw`Trigonometric integrals via identities and factor formulae`,
-      tests: String.raw`Converting $\sin^2$, $\cos^2$, $\tan^2$, higher even powers and products such as $\sin 3x\cos x$ into sums using the double-angle formulae (MF27) and the factor formulae (memorised, or built from the compound-angle formulae) before integrating. Recognise it whenever a power or product of trig functions has no obvious $\mathrm{f}'$ factor.`,
+      name: String.raw`Trigonometric integrals via identities`,
+      tests: String.raw`Converting $\sin^2$, $\cos^2$, $\tan^2$ and higher even powers into sums using the double-angle formulae (MF27) before integrating. Recognise it whenever a power or product of trig functions has no obvious $\mathrm{f}'$ factor.`,
       questions: [
         {
           stem: String.raw`Without using a calculator,`,
           calculator: false,
           parts: [
             { label: "(i)", text: String.raw`show that $\displaystyle\int_0^{\frac{\pi}{4}} \tan^2 x\,\dd x = 1 - \frac{\pi}{4}$,`, marks: 2 },
-            { label: "(ii)", text: String.raw`find $\displaystyle\int \sin^2 3x\,\dd x$,`, marks: 2 },
-            { label: "(iii)", text: String.raw`find the exact value of $\displaystyle\int_0^{\frac{\pi}{2}} \sin 3x\cos x\,\dd x$.`, marks: 3 },
+            { label: "(ii)", text: String.raw`find $\displaystyle\int \sin^2 3x\,\dd x$.`, marks: 2 },
           ],
         },
         {
@@ -177,6 +201,25 @@ $$I = (\text{expression}) - k I \ \Rightarrow\ I = \frac{\text{expression}}{1 + 
             { label: "(i)", text: String.raw`Show that $\cos^4 x = \dfrac{3}{8} + \dfrac{1}{2}\cos 2x + \dfrac{1}{8}\cos 4x$.`, marks: 3 },
             { label: "(ii)", text: String.raw`Hence find the exact value of $\displaystyle\int_0^{\frac{\pi}{2}} \cos^4 x\,\dd x$.`, marks: 2 },
             { label: "(iii)", text: String.raw`Find $\displaystyle\int \sin^2 x\cos^2 x\,\dd x$.`, marks: 3 },
+          ],
+        },
+      ],
+    },
+    {
+      id: "5.3-product-to-sum",
+      name: String.raw`Products of sines and cosines (factor formulae)`,
+      tags: ["IP"],
+      tests: String.raw`Not in 9758 from 2025. Writing a product such as $\sin mx\cos nx$ as a sum or difference with the factor formulae, then integrating term by term.`,
+      questions: [
+        {
+          stem: String.raw`Without using a calculator, find the exact value of $\displaystyle\int_0^{\frac{\pi}{2}} \sin 3x\cos x\,\dd x$.`,
+          calculator: false,
+          marks: 3,
+        },
+        {
+          parts: [
+            { label: "(i)", text: String.raw`Show that $2\sin 5x\sin x = \cos 4x - \cos 6x$.`, marks: 2 },
+            { label: "(ii)", text: String.raw`Hence find the exact value of $\displaystyle\int_0^{\frac{\pi}{6}} \sin 5x\sin x\,\dd x$.`, marks: 3 },
           ],
         },
       ],
@@ -297,6 +340,33 @@ $$\int_0^1 \frac{x^2}{\sqrt{4 - x^2}}\,\dd x.$$`,
           parts: [
             { label: "(i)", text: String.raw`Find $\displaystyle\int x\tan^{-1}x\,\dd x$.`, marks: 4 },
             { label: "(ii)", text: String.raw`Show that $\displaystyle\int_0^1 \ln(x^2 + 1)\,\dd x = \ln 2 - 2 + \frac{\pi}{2}$.`, marks: 5 },
+          ],
+        },
+      ],
+    },
+    {
+      id: "5.3-reduction-formulae",
+      name: String.raw`Reduction formulae by integration by parts`,
+      tags: ["IP"],
+      tests: String.raw`Not in 9758 (reduction formulae are excluded; in H3 Mathematics). Deriving a given reduction formula for $I_n$ by parts, applying it repeatedly to find a particular $I_n$ exactly, and using it to deduce a related result such as a limit or a product identity.`,
+      questions: [
+        {
+          stem: String.raw`It is given that $I_n = \displaystyle\int_0^{\frac{\pi}{2}} \sin^n x\,\dd x$ for $n \ge 0$.`,
+          calculator: false,
+          parts: [
+            { label: "(i)", text: String.raw`Show that $I_n = \dfrac{n - 1}{n}\,I_{n-2}$ for $n \ge 2$.`, marks: 4 },
+            { label: "(ii)", text: String.raw`Find the exact values of $I_5$ and $I_6$.`, marks: 3 },
+            { label: "(iii)", text: String.raw`Hence find the exact value of $\displaystyle\int_0^{\frac{\pi}{2}} \sin^4 x\cos^2 x\,\dd x$.`, marks: 2 },
+            { label: "(iv)", text: String.raw`Show that $nI_nI_{n-1} = \dfrac{\pi}{2}$ for $n \ge 1$.`, marks: 3 },
+          ],
+        },
+        {
+          stem: String.raw`It is given that $I_n = \displaystyle\int_0^1 x^n\ee^x\,\dd x$ for $n \ge 0$.`,
+          parts: [
+            { label: "(i)", text: String.raw`Show that $I_n = \ee - nI_{n-1}$ for $n \ge 1$.`, marks: 3 },
+            { label: "(ii)", text: String.raw`Without using a calculator, find the exact value of $I_3$.`, marks: 3 },
+            { label: "(iii)", text: String.raw`By considering $x^n\ee^x$ and $\ee x^n$ for $0 \le x \le 1$, show that $0 < I_n < \dfrac{\ee}{n + 1}$.`, marks: 2 },
+            { label: "(iv)", text: String.raw`Hence find $\displaystyle\lim_{n \to \infty} nI_{n-1}$.`, marks: 2 },
           ],
         },
       ],

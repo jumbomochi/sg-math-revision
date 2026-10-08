@@ -2,7 +2,7 @@ H2.addTopic({
   id: "2.1",
   title: "Sequences and Series",
   paper: "Paper 1 / Paper 2A",
-  summary: String.raw`APs and GPs, sigma notation, the method of differences, recurrence relations and convergence.`,
+  summary: String.raw`APs and GPs, sigma notation, recurrence relations and convergence.`,
   syllabus: {
     include: [
       String.raw`concepts of sequence and series for finite and infinite cases`,
@@ -121,7 +121,8 @@ $$u_n = ar^{n-1}, \qquad S_n = \frac{a(1 - r^n)}{1 - r} \ (r \ne 1).$$
     },
     {
       title: String.raw`Method of differences`,
-      body: String.raw`If $u_r = \mathrm{f}(r) - \mathrm{f}(r+1)$ then
+      tags: ["IP"],
+      body: String.raw`Not in 9758 from 2025. If $u_r = \mathrm{f}(r) - \mathrm{f}(r+1)$ then
 
 $$\sum_{r=1}^{n} u_r = \mathrm{f}(1) - \mathrm{f}(n+1).$$
 
@@ -172,6 +173,54 @@ $$\sum_{r=1}^{n} u_r = \mathrm{f}(1) - \mathrm{f}(n+1).$$
           points: Array.from({ length: 10 }, (_, i) => ({ x: i + 1, y: Array.from({ length: i }).reduce((u) => 2 * Math.sqrt(u), 0.5) })),
           caption: String.raw`The same sequence plotted against $n$: increasing and converging to $L$, where $L = \mathrm{f}(L)$.`,
           alt: "Terms of the same recurrence plotted against n, increasing and levelling off just below the horizontal line at height L.",
+        },
+      ],
+    },
+    {
+      title: String.raw`Linear recurrences in closed form`,
+      tags: ["IP"],
+      body: String.raw`Beyond 9758 (in H2 Further Mathematics 9649). Here you solve the recurrence exactly instead of generating terms on the GC.
+
+**First order**, $u_{n+1} = a u_n + b$ with $a \ne 1$:
+
+1. Find the fixed point $L$ from $L = aL + b$, so $L = \dfrac{b}{1 - a}$.
+2. Subtract: $u_{n+1} - L = a(u_n - L)$, so $u_n - L$ is a GP with common ratio $a$.
+3. Hence $u_n = L + (u_1 - L)a^{n-1}$.
+
+For example, $u_{n+1} = 3u_n - 4$ with $u_1 = 5$ has $L = 2$, so $u_n = 2 + 3 \cdot 3^{n-1} = 2 + 3^n$.
+
+| Value of $a$ | Long-term behaviour (when $u_1 \ne L$) |
+| $0 < a < 1$ | converges to $L$ monotonically |
+| $-1 < a < 0$ | converges to $L$, oscillating about it |
+| $a > 1$ | diverges to $\pm\infty$ (sign of $u_1 - L$) |
+| $a \le -1$ | oscillates without converging |
+
+($a = 1$ gives an AP.)
+
+**Second order**, $u_{n+2} = p u_{n+1} + q u_n$: try $u_n = m^n$ to get the **characteristic equation** $m^2 = pm + q$.
+
+- Distinct real roots $\alpha$, $\beta$: $u_n = A\alpha^n + B\beta^n$.
+- Repeated root $\alpha$: $u_n = (A + Bn)\alpha^n$.
+- Find $A$ and $B$ from **two** given terms. For example, $u_{n+2} = u_{n+1} + 2u_n$ has $m^2 - m - 2 = 0$, roots $2$ and $-1$, so $u_n = A \cdot 2^n + B(-1)^n$.
+- For large $n$ the root of largest modulus dominates, so $\dfrac{u_{n+1}}{u_n}$ tends to that root (if its coefficient is non-zero).
+
+**Proving a closed form**: show that the formula satisfies the recurrence for every $n$ **and** matches the starting term(s); since the starting terms fix the whole sequence, the formula is then correct. Mathematical induction (H3) is an alternative.`,
+      figure: [
+        {
+          type: "plot", x: [-0.4, 10.8], y: [-0.4, 8.2], height: 190, axisLabels: ["n", "uₙ"],
+          lines: [{ y: 5, label: "L = 5" }],
+          segments: [{ from: [1, 1], to: [2, 2.6], tone: "muted", thin: true }, { from: [2, 2.6], to: [3, 3.56], tone: "muted", thin: true }, { from: [3, 3.56], to: [4, 4.136], tone: "muted", thin: true }, { from: [4, 4.136], to: [5, 4.482], tone: "muted", thin: true }, { from: [5, 4.482], to: [6, 4.689], tone: "muted", thin: true }, { from: [6, 4.689], to: [7, 4.813], tone: "muted", thin: true }, { from: [7, 4.813], to: [8, 4.888], tone: "muted", thin: true }, { from: [8, 4.888], to: [9, 4.933], tone: "muted", thin: true }, { from: [9, 4.933], to: [10, 4.96], tone: "muted", thin: true }],
+          scatter: [[1, 1], [2, 2.6], [3, 3.56], [4, 4.136], [5, 4.482], [6, 4.689], [7, 4.813], [8, 4.888], [9, 4.933], [10, 4.96]],
+          caption: String.raw`$u_{n+1} = 0.6u_n + 2$: $a = 0.6$, monotonic convergence to $L = 5$`,
+          alt: "Terms of u_{n+1} = 0.6 u_n + 2 from u_1 = 1 plotted against n, increasing steadily towards the dashed line L = 5.",
+        },
+        {
+          type: "plot", x: [-0.4, 10.8], y: [-0.4, 8.2], height: 190, axisLabels: ["n", "uₙ"],
+          lines: [{ y: 5, label: "L = 5" }],
+          segments: [{ from: [1, 1], to: [2, 7.4], tone: "muted", thin: true }, { from: [2, 7.4], to: [3, 3.56], tone: "muted", thin: true }, { from: [3, 3.56], to: [4, 5.864], tone: "muted", thin: true }, { from: [4, 5.864], to: [5, 4.482], tone: "muted", thin: true }, { from: [5, 4.482], to: [6, 5.311], tone: "muted", thin: true }, { from: [6, 5.311], to: [7, 4.813], tone: "muted", thin: true }, { from: [7, 4.813], to: [8, 5.112], tone: "muted", thin: true }, { from: [8, 5.112], to: [9, 4.933], tone: "muted", thin: true }, { from: [9, 4.933], to: [10, 5.04], tone: "muted", thin: true }],
+          scatter: [[1, 1], [2, 7.4], [3, 3.56], [4, 5.864], [5, 4.482], [6, 5.311], [7, 4.813], [8, 5.112], [9, 4.933], [10, 5.04]],
+          caption: String.raw`$u_{n+1} = -0.6u_n + 8$: $a = -0.6$, terms alternate either side of $L = 5$ and converge`,
+          alt: "Terms of u_{n+1} = −0.6 u_n + 8 from u_1 = 1 plotted against n, jumping above and below the dashed line L = 5 with shrinking distance.",
         },
       ],
     },
@@ -352,7 +401,8 @@ $$\{1\},\ \{3, 5\},\ \{7, 9, 11\},\ \{13, 15, 17, 19\},\ \dots$$`,
     {
       id: "2.1-method-of-differences",
       name: String.raw`Method of differences`,
-      tests: String.raw`Expressing $u_r$ in partial fractions, telescoping with the cancellation shown, then deducing convergence and the sum to infinity, a related sum by shifting the index, or an inequality by term-by-term comparison.`,
+      tags: ["IP"],
+      tests: String.raw`Not in 9758 from 2025. Expressing $u_r$ in partial fractions, telescoping with the cancellation shown, then deducing convergence and the sum to infinity, a related sum by shifting the index, or an inequality by term-by-term comparison.`,
       questions: [
         {
           calculator: false,
@@ -398,6 +448,33 @@ $$u_{n+1} = \frac{u_n^2 + 6}{5}, \qquad n \ge 1.$$`,
             { label: "(ii)", text: String.raw`Use a graphing calculator to describe the behaviour of the sequence when (a) $u_1 = 2.5$, (b) $u_1 = 3.5$.`, marks: 2 },
             { label: "(iii)", text: String.raw`Show that $u_{n+1} - u_n = \frac{1}{5}(u_n - 2)(u_n - 3)$. Hence explain why, if $2 < u_n < 3$, then $u_{n+1} < u_n$.`, marks: 3 },
             { label: "(iv)", text: String.raw`Write down a value of $u_1$, other than 3, for which the sequence converges to 3.`, marks: 1 },
+          ],
+        },
+      ],
+    },
+    {
+      id: "2.1-recurrence-closed-form",
+      name: String.raw`Solving linear recurrences in closed form`,
+      tags: ["IP"],
+      tests: String.raw`Beyond 9758 (in H2 Further Mathematics 9649). Solving $u_{n+1} = au_n + b$ through its fixed point, or $u_{n+2} = pu_{n+1} + qu_n$ through the characteristic equation, proving the closed form, and using it to describe long-term behaviour in a model.`,
+      questions: [
+        {
+          stem: String.raw`At the start of 2026 a lake contains 2000 fish. During each year the number of fish increases by 25% through breeding, and at the end of each year 600 fish are removed. The number of fish immediately after the removal at the end of the $n$th year is $P_n$, so that $P_0 = 2000$.`,
+          parts: [
+            { label: "(i)", text: String.raw`Explain why $P_{n+1} = 1.25P_n - 600$.`, marks: 1 },
+            { label: "(ii)", text: String.raw`By considering the sequence $v_n = P_n - 2400$, or otherwise, show that $P_n = 2400 - 400(1.25)^n$.`, marks: 3 },
+            { label: "(iii)", text: String.raw`Find the least value of $n$ for which $P_n < 1000$.`, marks: 2 },
+            { label: "(iv)", text: String.raw`Describe what the model predicts about the number of fish in the long term, and comment on the validity of the model.`, marks: 2 },
+            { label: "(v)", text: String.raw`The lake instead contains $N$ fish at the start of 2026, with the same rates of breeding and removal. Find an expression for $P_n$ in terms of $N$ and $n$, and hence find the set of values of $N$ for which the number of fish never decreases.`, marks: 3 },
+          ],
+        },
+        {
+          stem: String.raw`A path of length $n$ metres is to be paved in a single row using two types of slab: grey slabs of length 1 metre, and long slabs of length 2 metres, which are available in 6 different colours. The number of different ways of paving the path is $u_n$. (For example, $u_2 = 7$.)`,
+          parts: [
+            { label: "(i)", text: String.raw`By considering the last slab laid, explain why $u_n = u_{n-1} + 6u_{n-2}$ for $n \ge 3$, and state the value of $u_1$.`, marks: 2 },
+            { label: "(ii)", text: String.raw`Without using a calculator, find $u_n$ in terms of $n$.`, marks: 4 },
+            { label: "(iii)", text: String.raw`Hence find $\displaystyle\lim_{n \to \infty} \frac{u_{n+1}}{u_n}$, explaining your reasoning.`, marks: 2 },
+            { label: "(iv)", text: String.raw`Find the least value of $n$ for which there are more than one million ways of paving the path.`, marks: 2 },
           ],
         },
       ],

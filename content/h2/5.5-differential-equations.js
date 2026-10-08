@@ -171,6 +171,85 @@ A particular solution is the single member through a given point.`,
         alt: "Five members of the family y = A e^(−x²/2) for A = 2, 1, 0, −1, −2: bell-shaped curves above and below the x-axis that never cross and all approach y = 0; the member through (0, 1) is highlighted",
       },
     },
+    {
+      title: String.raw`First-order linear equations: the integrating factor`,
+      tags: ["IP"],
+      body: String.raw`Beyond 9758 (in H2 Further Mathematics 9649). An equation of the form
+
+$$\frac{\dd y}{\dd x} + \mathrm{P}(x)\,y = \mathrm{Q}(x)$$
+
+is usually **not** separable. Multiply through by the **integrating factor** $\mathrm{R}(x) = \ee^{\int \mathrm{P}(x)\,\dd x}$; the left side becomes the derivative of a product:
+
+$$\frac{\dd}{\dd x}\big(y\,\mathrm{R}(x)\big) = \mathrm{Q}(x)\,\mathrm{R}(x) \ \Rightarrow\ y\,\mathrm{R}(x) = \int \mathrm{Q}(x)\,\mathrm{R}(x)\,\dd x.$$
+
+For example, $\dfrac{\dd y}{\dd x} + 2y = \ee^x$ has $\mathrm{R} = \ee^{2x}$, so $\dfrac{\dd}{\dd x}(y\ee^{2x}) = \ee^{3x}$, giving $y = \frac{1}{3}\ee^x + C\ee^{-2x}$.
+
+- **Standard form first**: divide by the coefficient of $\dfrac{\dd y}{\dd x}$ before reading off $\mathrm{P}(x)$.
+- No constant is needed in $\int \mathrm{P}(x)\,\dd x$. Simplify $\ee^{\ln|\mathrm{f}(x)|} = |\mathrm{f}(x)|$, using the domain to drop the modulus (e.g. $\ee^{3\ln x} = x^3$ for $x > 0$).
+- Add $+\,C$ **before** dividing by $\mathrm{R}(x)$: the constant becomes $C/\mathrm{R}(x)$, not $C$.
+- Mixing problems where the volume changes ("in at 5 litres per minute, out at 4") lead to this form, with $\mathrm{P}(t)$ involving the volume at time $t$.`,
+      figure: {
+        type: "plot", x: [-0.85, 2.4], y: [-1.6, 4.2], height: 230,
+        curves: [
+          { fn: "x => Math.exp(x)/3 + 2*Math.exp(-2*x)", domain: [-0.45, 2.3] },
+          { fn: "x => Math.exp(x)/3 + Math.exp(-2*x)", domain: [-0.7, 2.3] },
+          { fn: "x => Math.exp(x)/3", domain: [-0.8, 2.3], tone: "warn" },
+          { fn: "x => Math.exp(x)/3 - Math.exp(-2*x)", domain: [-0.32, 2.3] },
+        ],
+        labels: [
+          { x: 0.05, y: 2.6, text: "C = 2", pos: "e", style: "small" },
+          { x: -0.35, y: 2.0, text: "C = 1", pos: "w", style: "small" },
+          { x: -0.75, y: 0.2, text: "C = 0", pos: "ne", style: "small", tone: "warn" },
+          { x: -0.18, y: -1.0, text: "C = −1", pos: "w", style: "small" },
+        ],
+        caption: String.raw`Solutions $y = \frac{1}{3}\ee^x + C\ee^{-2x}$ of $\dfrac{\dd y}{\dd x} + 2y = \ee^x$: the $C\ee^{-2x}$ part dies away, so every member approaches $y = \frac{1}{3}\ee^x$`,
+        alt: "Four solution curves y = e^x/3 + C e^(−2x) for C = 2, 1, 0 and −1; the C = 0 curve is highlighted and the others merge into it as x increases.",
+      },
+    },
+    {
+      title: String.raw`Second-order linear equations with constant coefficients`,
+      tags: ["IP"],
+      body: String.raw`Beyond 9758 (in H2 Further Mathematics 9649). For $a\dfrac{\dd^2 y}{\dd x^2} + b\dfrac{\dd y}{\dd x} + cy = 0$, try $y = \ee^{mx}$: this gives the **auxiliary equation** $am^2 + bm + c = 0$.
+
+| Roots of $am^2 + bm + c = 0$ | General solution |
+| distinct real $m_1$, $m_2$ | $y = A\ee^{m_1x} + B\ee^{m_2x}$ |
+| repeated $m$ | $y = (A + Bx)\ee^{mx}$ |
+| complex $p \pm q\ii$ | $y = \ee^{px}(A\cos qx + B\sin qx)$ |
+
+**Non-zero right-hand side** $\mathrm{f}(x)$: general solution $=$ **complementary function** (the solution with right-hand side 0) $+$ **particular integral** (any one solution of the full equation). Find the particular integral by substituting a trial form and comparing coefficients:
+
+| $\mathrm{f}(x)$ | Trial particular integral |
+| polynomial of degree $k$ | general polynomial of degree $k$ |
+| $p\ee^{kx}$ | $\lambda\ee^{kx}$ |
+| $p\cos kx + q\sin kx$ | $\lambda\cos kx + \mu\sin kx$ |
+
+- If the trial form is already part of the complementary function (e.g. $k$ is a root of the auxiliary equation), multiply the trial by $x$.
+- There are **two** arbitrary constants, so a particular solution needs two conditions, typically $y$ and $\dfrac{\dd y}{\dd x}$ at $x = 0$. Find the general solution first, then apply the conditions to the **whole** solution.
+- Long term: if every root has negative real part, the complementary function decays to 0 and $y$ approaches the particular integral (the "steady state").`,
+      figure: [
+        {
+          type: "plot", x: [-0.3, 6], y: [-0.4, 1.25], height: 170,
+          curves: [{ fn: "x => 2*Math.exp(-x) - Math.exp(-2*x)", domain: [0, 6] }],
+          yTicks: [{ y: 1, label: "1" }],
+          caption: String.raw`Distinct roots $-1$, $-2$: $y = 2\ee^{-x} - \ee^{-2x}$`,
+          alt: "Graph of y = 2e^(−x) − e^(−2x) starting at 1 with zero gradient and decaying to 0 without crossing the x-axis.",
+        },
+        {
+          type: "plot", x: [-0.3, 6], y: [-0.4, 1.25], height: 170,
+          curves: [{ fn: "x => (1 + x)*Math.exp(-x)", domain: [0, 6] }],
+          yTicks: [{ y: 1, label: "1" }],
+          caption: String.raw`Repeated root $-1$: $y = (1 + x)\ee^{-x}$`,
+          alt: "Graph of y = (1 + x)e^(−x) starting at 1 with zero gradient and decaying to 0 without crossing the x-axis.",
+        },
+        {
+          type: "plot", x: [-0.3, 6], y: [-0.4, 1.25], height: 170,
+          curves: [{ fn: "x => Math.exp(-x)*(Math.cos(3*x) + Math.sin(3*x)/3)", domain: [0, 6] }],
+          yTicks: [{ y: 1, label: "1" }],
+          caption: String.raw`Complex roots $-1 \pm 3\ii$: $y = \ee^{-x}(\cos 3x + \frac{1}{3}\sin 3x)$`,
+          alt: "Graph of y = e^(−x)(cos 3x + ⅓ sin 3x) starting at 1 and oscillating about the x-axis with decreasing amplitude.",
+        },
+      ],
+    },
   ],
   archetypes: [
     {
@@ -360,6 +439,64 @@ $$\frac{\dd P}{\dd t} = \frac{P(100 - P)}{100} - 9.$$`,
             { label: "(i)", text: String.raw`Show that the general solution is $y = 1 + A\ee^{-x}$, where $A$ is an arbitrary constant.`, marks: 3 },
             { label: "(ii)", text: String.raw`Sketch, on a single diagram, the members of the family of solution curves corresponding to $A = 2$, $A = 0$ and $A = -1$.`, marks: 3 },
             { label: "(iii)", text: String.raw`State a feature common to every member of the family as $x \to \infty$.`, marks: 1 },
+          ],
+        },
+      ],
+    },
+    {
+      id: "5.5-integrating-factor",
+      name: String.raw`First-order linear equations by an integrating factor`,
+      tags: ["IP"],
+      tests: String.raw`Beyond 9758 (in H2 Further Mathematics 9649). Rewriting a first-order linear equation in the form $\dfrac{\dd y}{\dd x} + \mathrm{P}(x)y = \mathrm{Q}(x)$, finding and simplifying the integrating factor, and solving for a general or particular solution, including mixing models where the volume changes with time.`,
+      questions: [
+        {
+          parts: [
+            { label: "(a)", text: String.raw`Find the particular solution of the differential equation
+$$x\frac{\dd y}{\dd x} + 2y = 5x^3, \qquad x > 0,$$
+given that $y = 3$ when $x = 1$.`, marks: 4 },
+            { label: "(b)", text: String.raw`Find the general solution of the differential equation
+$$\cos x\,\frac{\dd y}{\dd x} + y\sin x = 1, \qquad 0 < x < \frac{\pi}{2},$$
+giving $y$ in terms of $x$.`, marks: 4 },
+          ],
+        },
+        {
+          stem: String.raw`A tank initially contains 100 litres of water in which 5 kg of salt is dissolved. Salt solution containing 0.2 kg of salt per litre flows into the tank at a rate of 3 litres per minute. The contents of the tank are kept well mixed, and the mixture flows out of the tank at a rate of 2 litres per minute. At time $t$ minutes, the mass of salt in the tank is $x$ kg.`,
+          parts: [
+            { label: "(i)", text: String.raw`Show that $\dfrac{\dd x}{\dd t} + \dfrac{2x}{100 + t} = 0.6$.`, marks: 2 },
+            { label: "(ii)", text: String.raw`Solve the differential equation to find $x$ in terms of $t$.`, marks: 5 },
+            { label: "(iii)", text: String.raw`The tank has a capacity of 200 litres. Find the mass of salt in the tank at the moment it becomes full.`, marks: 2 },
+            { label: "(iv)", text: String.raw`Find the concentration of salt in the tank, in kg per litre, in terms of $t$. State, with a reason, the value that this concentration would approach if the tank were very large.`, marks: 2 },
+          ],
+        },
+      ],
+    },
+    {
+      id: "5.5-second-order-constant",
+      name: String.raw`Second-order equations with constant coefficients`,
+      tags: ["IP"],
+      tests: String.raw`Beyond 9758 (in H2 Further Mathematics 9649). Solving $a y'' + b y' + c y = \mathrm{f}(x)$ using the auxiliary equation (distinct, repeated or complex roots) for the complementary function and a trial particular integral for polynomial or trigonometric $\mathrm{f}(x)$, then applying two initial conditions and describing the long-term behaviour.`,
+      questions: [
+        {
+          calculator: false,
+          parts: [
+            { label: "(a)", parts: [
+              { label: "(i)", text: String.raw`Find the general solution of the differential equation $\dfrac{\dd^2 y}{\dd x^2} - \dfrac{\dd y}{\dd x} - 6y = 0$.`, marks: 2 },
+              { label: "(ii)", text: String.raw`Hence find the general solution of the differential equation $\dfrac{\dd^2 y}{\dd x^2} - \dfrac{\dd y}{\dd x} - 6y = 12x - 4$.`, marks: 3 },
+            ] },
+            { label: "(b)", text: String.raw`Find the solution of the differential equation
+$$\frac{\dd^2 y}{\dd x^2} + 6\frac{\dd y}{\dd x} + 9y = 0$$
+for which $y = 2$ and $\dfrac{\dd y}{\dd x} = -1$ when $x = 0$.`, marks: 4 },
+          ],
+        },
+        {
+          stem: String.raw`A particle attached to a spring moves along a straight line in a liquid. Its displacement from a fixed point at time $t$ seconds is $x$ metres, where
+$$\frac{\dd^2 x}{\dd t^2} + 2\frac{\dd x}{\dd t} + 5x = 10\cos t.$$
+Initially the particle is at rest with $x = 0$.`,
+          parts: [
+            { label: "(i)", text: String.raw`Find the complementary function of the differential equation.`, marks: 2 },
+            { label: "(ii)", text: String.raw`Find a particular integral of the form $\lambda\cos t + \mu\sin t$.`, marks: 3 },
+            { label: "(iii)", text: String.raw`Hence find $x$ in terms of $t$.`, marks: 4 },
+            { label: "(iv)", text: String.raw`Describe the motion of the particle for large values of $t$, and find the exact amplitude of this motion.`, marks: 2 },
           ],
         },
       ],

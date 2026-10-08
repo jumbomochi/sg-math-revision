@@ -1,6 +1,6 @@
-# H2 Math Revision (9758)
+# Math Revision (Singapore syllabuses)
 
-A static revision site for Singapore-Cambridge A-Level H2 Mathematics (syllabus 9758, examinations 2026–2027). For every syllabus sub-topic it gives:
+A static revision site for Singapore mathematics: H2 Mathematics (9758), Secondary E-Math (SEC K310 / O-Level 4052), A-Math (SEC K341 / O-Level 4049) and a Primary Math Olympiad section. For every topic it gives:
 
 - the syllabus scope (included / excluded content),
 - key concepts,
@@ -18,7 +18,7 @@ npm run serve        # http://localhost:8000
 
 ## Editing content
 
-Each sub-topic is one file in `content/` (e.g. `content/5.3-integration-techniques.js`) containing a single `H2.addTopic({...})` call. Every text field is wrapped in `String.raw\`...\`` so LaTeX backslashes work as written.
+Levels are configured in `content/levels.js` (name, papers, topic groups, and the list of topic files). Each topic is one file in `content/<level>/` (e.g. `content/h2/5.3-integration-techniques.js`) containing a single `H2.addTopic({...})` call. Every text field is wrapped in `String.raw\`...\`` so LaTeX backslashes work as written.
 
 Text fields use a small markup (see `assets/markup.js`):
 
@@ -64,6 +64,11 @@ npm run validate
 
 This checks the schema, mark totals and unique ids, and parses every piece of maths with KaTeX. Pushing to `main` runs the same check and then deploys to GitHub Pages.
 
-## Adding a sub-topic
+## Olympiad problems and IP extensions
 
-Create `content/<id>-<slug>.js` and add a matching `<script>` tag in `index.html`.
+- Olympiad levels (`kind: "olympiad"`) show answers: each problem has `difficulty: 1|2|3`, a short final `answer` (revealed with "Show answer"), and optional `choices` for multiple choice. No `syllabus` field is needed.
+- Content beyond the national syllabus is tagged `tags: ["IP"]` on a topic, concept or archetype; the level's `tagInfo` explains the tag. Start IP text with a one-line scope note (e.g. "Not in K341.").
+
+## Adding a topic
+
+Create `content/<level>/<id>-<slug>.js` and add `"<id>-<slug>"` to that level's `files` in `content/levels.js`.

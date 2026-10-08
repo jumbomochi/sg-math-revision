@@ -92,24 +92,46 @@
     return cells;
   }
 
-  function block(src, strict) {
-    const lines = src.split("\n");
-    if (lines.every((l) => /^\s*- /.test(l))) {
-      return "<ul>" + lines.map((l) => "<li>" + inline(l.replace(/^\s*- /, ""), strict) + "</li>").join("") + "</ul>";
-    }
-    if (lines.every((l) => /^\s*\d+\. /.test(l))) {
-      return "<ol>" + lines.map((l) => "<li>" + inline(l.replace(/^\s*\d+\. /, ""), strict) + "</li>").join("") + "</ol>";
-    }
-    if (lines.every((l) => /^\s*\|/.test(l))) {
-      const rows = lines.filter((l) => !/^\s*\|[\s:|-]+\|\s*$/.test(l)).map(splitRow);
-      const head = rows.shift();
-      return '<div class="table-wrap"><table><thead><tr>' + head.map((c) => "<th>" + inline(c, strict) + "</th>").join("") +
-        "</tr></thead><tbody>" + rows.map((r) => "<tr>" + r.map((c) => "<td>" + inline(c, strict) + "</td>").join("") + "</tr>").join("") +
-        "</tbody></table></div>";
-    }
-    const trimmed = src.trim();
+  function listHtml(tag, items, strict) {
+    return `<${tag}>` + items.map((it) => "<li>" + inline(it, strict) + "</li>").join("") + `</${tag}>`;
+  }
+
+  function tableHtml(lines, strict) {
+    const rows = lines.filter((l) => !/^\s*\|[\s:|-]+\|\s*$/.test(l)).map(splitRow);
+    const head = rows.shift();
+    return '<div class="table-wrap"><table><thead><tr>' + head.map((c) => "<th>" + inline(c, strict) + "</th>").join("") +
+      "</tr></thead><tbody>" + rows.map((r) => "<tr>" + r.map((c) => "<td>" + inline(c, strict) + "</td>").join("") + "</tr>").join("") +
+      "</tbody></table></div>";
+  }
+
+  function paragraph(lines, strict) {
+    const trimmed = lines.join("\n").trim();
     if (/^\$\$[\s\S]*\$\$$/.test(trimmed) && trimmed.indexOf("$$", 2) === trimmed.length - 2) return inline(trimmed, strict);
     return "<p>" + inline(lines.join(" "), strict) + "</p>";
+  }
+
+  // A block may mix prose, "- " bullets, "1. " items and "|" table rows. Prose before a list is a
+  // paragraph; a prose line straight after a list item continues that item.
+  function block(src, strict) {
+    const runs = [];
+    for (const line of src.split("\n")) {
+      const last = runs[runs.length - 1];
+      let m;
+      if (/^\s*\|/.test(line)) {
+        if (last && last.type === "table") last.lines.push(line); else runs.push({ type: "table", lines: [line] });
+      } else if ((m = line.match(/^\s*- (.*)$/))) {
+        if (last && last.type === "ul") last.items.push(m[1]); else runs.push({ type: "ul", items: [m[1]] });
+      } else if ((m = line.match(/^\s*\d+\. (.*)$/))) {
+        if (last && last.type === "ol") last.items.push(m[1]); else runs.push({ type: "ol", items: [m[1]] });
+      } else if (last && (last.type === "ul" || last.type === "ol")) {
+        last.items[last.items.length - 1] += "\n" + line;
+      } else if (last && last.type === "p") {
+        last.lines.push(line);
+      } else {
+        runs.push({ type: "p", lines: [line] });
+      }
+    }
+    return runs.map((r) => (r.type === "table" ? tableHtml(r.lines, strict) : r.type === "p" ? paragraph(r.lines, strict) : listHtml(r.type, r.items, strict))).join("");
   }
 
   function render(src, strict) {
