@@ -182,7 +182,7 @@
     const totalQ = topics.reduce((s, t) => s + countQuestions(t), 0);
     let html = `<section class="hero">
       <p class="eyebrow">${esc(L.eyebrow)}</p>
-      <h1>${esc(L.name)} Revision</h1>
+      <h1>${esc(L.name)}${L.kind === "olympiad" ? "" : " Revision"}</h1>
       <p class="lede">${L.lede ? esc(L.lede) : "Key concepts and common question archetypes for every topic, with practice questions."}</p>
       <div class="stats">
         <div><strong>${topics.length}</strong><span>${L.id === "h2" ? "sub-topics" : words(L).topics}</span></div>
