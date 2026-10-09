@@ -199,6 +199,13 @@ input[type="checkbox"] { accent-color: var(--good); width: 16px; height: 16px; m
 .q-marks-solo { text-align: right; }
 .q-figure { margin: 12px 0; text-align: center; }
 .q-figure figcaption { font-size: 13.5px; color: var(--ink-3); }
+.dfilter { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 14px; font-size: 13.5px; color: var(--ink-2); }
+.dfilter button { border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); border-radius: 99px; padding: 4px 11px; font: 500 13px var(--sans); cursor: pointer; }
+.dfilter button.on { border-color: var(--warn); color: var(--warn); background: var(--warn-soft); }
+#main[data-dfilter="1"] .question[data-d]:not([data-d="1"]),
+#main[data-dfilter="2"] .question[data-d]:not([data-d="2"]),
+#main[data-dfilter="3"] .question[data-d]:not([data-d="3"]),
+#main[data-dfilter="4"] .question[data-d]:not([data-d="4"]) { display: none; }
 .q-stars { color: var(--warn); letter-spacing: 1px; font-size: 13px; }
 .q-stars-off { color: var(--line); }
 .q-choices { list-style: none; padding: 0; margin: 10px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px 18px; }

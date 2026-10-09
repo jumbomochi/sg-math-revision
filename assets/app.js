@@ -25,14 +25,20 @@
   /* ---------- content loading ---------- */
   function loadLevel(L) {
     if (loading[L.id]) return loading[L.id];
-    loading[L.id] = Promise.all(L.files.map((f) => new Promise((resolve, reject) => {
+    // a file that fails to load is skipped, so one bad file never hides the whole level
+    loading[L.id] = Promise.allSettled(L.files.map((f) => new Promise((resolve, reject) => {
       const s = document.createElement("script");
       s.src = `content/${L.id}/${f}.js${V ? "?v=" + V : ""}`;
       s.dataset.level = L.id;
       s.onload = resolve;
       s.onerror = () => reject(new Error("Could not load " + s.src));
       document.body.appendChild(s);
-    }))).then(() => { topicsBy[L.id].sort(byId(L)); return topicsBy[L.id]; });
+    }))).then((results) => {
+      results.filter((r) => r.status === "rejected").forEach((r) => console.warn(r.reason.message));
+      topicsBy[L.id].sort(byId(L));
+      if (!topicsBy[L.id].length && L.files.length) throw new Error("Could not load any topics for this level.");
+      return topicsBy[L.id];
+    });
     return loading[L.id];
   }
 
@@ -122,8 +128,9 @@
 
   function questionHtml(L, q, i) {
     const m = marksOf(q);
-    const stars = q.difficulty ? `<span class="q-stars" title="Difficulty ${q.difficulty} of 3">${"★".repeat(q.difficulty)}<span class="q-stars-off">${"★".repeat(3 - q.difficulty)}</span></span>` : "";
-    return `<article class="question">
+    const maxD = L.maxDifficulty || 3;
+    const stars = q.difficulty ? `<span class="q-stars" title="Difficulty ${q.difficulty} of ${maxD}">${"★".repeat(q.difficulty)}<span class="q-stars-off">${"★".repeat(maxD - q.difficulty)}</span></span>` : "";
+    return `<article class="question"${q.difficulty ? ` data-d="${q.difficulty}"` : ""}>
       <header class="q-head"><span class="q-num">${L.kind === "olympiad" ? "Problem" : "Question"} ${i + 1}</span>${stars}${m ? `<span class="q-total">${m} mark${m === 1 ? "" : "s"}</span>` : ""}${q.calculator === false ? `<span class="q-flag">${esc(L.noCalcLabel || "No calculator")}</span>` : ""}</header>
       <div class="q-body">
         ${q.stem ? `<div class="q-text">${md(q.stem)}</div>` : ""}
@@ -247,6 +254,7 @@
 
     <section id="archetypes" class="block">
       <h2>${words(L).archetypes}</h2>
+      ${L.kind === "olympiad" ? `<div class="dfilter" role="group" aria-label="Show problems by difficulty"><span>Show</span>${["all"].concat(Array.from({ length: L.maxDifficulty || 3 }, (_, i) => i + 1)).map((d) => `<button type="button" data-dfilter="${d}" class="${String(dFilter) === String(d) ? "on" : ""}">${d === "all" ? "All" : "★".repeat(d)}</button>`).join("")}</div>` : ""}
       <ol class="arch-index">${t.archetypes.map((a, i) => `<li data-arch="${esc(a.id)}"><a href="${link(L, t, a.id)}">${i + 1}. ${mdi(a.name)}</a></li>`).join("")}</ol>
       ${t.archetypes.map((a, i) => `
         <div class="archetype" id="a-${esc(a.id)}" data-arch="${esc(a.id)}">
@@ -255,7 +263,7 @@
             <label class="confident"><input type="checkbox" data-check="${esc(a.id)}"><span>I'm confident</span></label>
           </div>
           <div class="arch-tests">${md(a.tests)}</div>
-          ${a.questions.map((q, j) => questionHtml(L, q, j)).join("")}
+          ${(L.kind === "olympiad" ? a.questions.map((q, k) => [q, k]).sort((x, y) => (x[0].difficulty || 0) - (y[0].difficulty || 0) || x[1] - y[1]).map((x) => x[0]) : a.questions).map((q, j) => questionHtml(L, q, j)).join("")}
         </div>`).join("")}
     </section>
 
@@ -288,6 +296,12 @@
 
   /* ---------- router ---------- */
   let current = null; // level shown
+  let dFilter = "all"; // olympiad difficulty filter
+  function applyDFilter() {
+    const main = $("#main");
+    main.dataset.dfilter = dFilter;
+    main.querySelectorAll("[data-dfilter]").forEach((b) => b.classList.toggle("on", b.getAttribute("data-dfilter") === String(dFilter)));
+  }
   let renderSeq = 0;
 
   async function route() {
@@ -326,6 +340,7 @@
     if (L) $("#top-check").setAttribute("href", `#/${L.id}/checklist`);
     document.body.classList.remove("nav-open");
     refreshProgress(L);
+    applyDFilter();
     const target = scrollTo && document.getElementById(scrollTo);
     if (target) { target.scrollIntoView({ block: "start" }); target.classList.add("flash"); setTimeout(() => target.classList.remove("flash"), 1600); }
     else window.scrollTo(0, 0);
@@ -340,6 +355,8 @@
     refreshProgress(current);
   });
   document.addEventListener("click", (e) => {
+    const df = e.target.closest("[data-dfilter]");
+    if (df) { dFilter = df.getAttribute("data-dfilter"); applyDFilter(); return; }
     const jump = e.target.closest("[data-jump]");
     if (jump) { e.preventDefault(); const el = document.getElementById(jump.getAttribute("data-jump")); if (el) el.scrollIntoView({ behavior: "smooth" }); return; }
     if (e.target.id === "reset" && current && confirm(`Clear every tick in your ${current.short} checklist?`)) { doneBy[current.id] = {}; save(current); refreshProgress(current); return; }

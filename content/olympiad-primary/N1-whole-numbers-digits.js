@@ -97,6 +97,14 @@ To count how often **one digit** appears (say the digit $3$), count it in the on
 - $\text{AB} - \text{BA} = 9 \times (\text{A} - \text{B})$, always a multiple of $9$. Example: $63 - 36 = 27 = 9 \times 3$.
 - For three digits: $\text{ABC} - \text{CBA} = 99 \times (\text{A} - \text{C})$. The middle digit cancels out!`,
     },
+    {
+      title: String.raw`Digit sums and the number 9`,
+      body: String.raw`A number and its digit sum leave the **same remainder** when divided by $9$.
+
+- Example: $4721$ has digit sum $14$, and $14 \div 9$ leaves remainder $5$. Check: $4721 = 9 \times 524 + 5$.
+- This works for totals too. When you add several numbers, the total leaves the same remainder (when divided by $9$) as **all their digits added together**. Example: $25 + 31 = 56$. The digits $2 + 5 + 3 + 1 = 11$ leave remainder $2$, and so does $56 = 9 \times 6 + 2$.
+- So if you know which digits are used, you already know the remainder of the total, however the digits are arranged. Use this to rule answers out quickly.`,
+    },
   ],
   archetypes: [
     {
@@ -120,6 +128,26 @@ To count how often **one digit** appears (say the digit $3$), count it in the on
           difficulty: 3,
           answer: String.raw`$625$`,
         },
+        {
+          stem: String.raw`A number is made of $3$ thousands, $15$ hundreds, $4$ tens and $27$ ones. What is the number?`,
+          difficulty: 1,
+          answer: String.raw`$4567$`,
+        },
+        {
+          stem: String.raw`Ravi crosses out the last digit of a four-digit number, which leaves a three-digit number. He adds this three-digit number to the original four-digit number and gets $2026$. What was the four-digit number?`,
+          difficulty: 2,
+          answer: String.raw`$1842$`,
+        },
+        {
+          stem: String.raw`Mei writes a $0$ between the first and second digits of a three-digit number, making a four-digit number. (For example, $347$ would become $3047$.) Her four-digit number is exactly $6$ times her three-digit number. What was the three-digit number?`,
+          difficulty: 3,
+          answer: String.raw`$180$`,
+        },
+        {
+          stem: String.raw`A digit $3$ is written in front of a two-digit number and another $3$ is written at its end, making a four-digit number. (For example, $45$ becomes $3453$.) For how many two-digit numbers is the four-digit number a multiple of the original two-digit number?`,
+          difficulty: 4,
+          answer: String.raw`$7$`,
+        },
       ],
     },
     {
@@ -141,6 +169,27 @@ To count how often **one digit** appears (say the digit $3$), count it in the on
           stem: String.raw`Each of the digits $1$, $2$, $3$, $4$, $5$, $6$, $7$ and $8$ is used exactly once to make two four-digit numbers. What is the smallest possible difference between the two numbers?`,
           difficulty: 3,
           answer: String.raw`$247$`,
+        },
+        {
+          stem: String.raw`Using each of the digits $4$, $0$, $7$, $2$ and $9$ exactly once, what is the smallest **even** five-digit number that can be made?`,
+          difficulty: 1,
+          choices: [String.raw`$20\,479$`, String.raw`$20\,794$`, String.raw`$20\,974$`, String.raw`$24\,790$`, String.raw`$40\,792$`],
+          answer: String.raw`(B) $20\,794$`,
+        },
+        {
+          stem: String.raw`Using each of the digits $3$, $0$, $8$, $1$ and $6$ exactly once, make the five-digit number that is as close as possible to $50\,000$. What is the number?`,
+          difficulty: 2,
+          answer: String.raw`$60\,138$`,
+        },
+        {
+          stem: String.raw`What is the largest whole number whose digits are all different and add up to $10$?`,
+          difficulty: 3,
+          answer: String.raw`$43\,210$`,
+        },
+        {
+          stem: String.raw`Lina uses each of the digits $1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$ and $9$ exactly once to make three three-digit numbers. Then she adds the three numbers. What is the closest total to $2026$ that she can get?`,
+          difficulty: 4,
+          answer: String.raw`$2025$`,
         },
       ],
     },
@@ -164,6 +213,27 @@ To count how often **one digit** appears (say the digit $3$), count it in the on
           stem: String.raw`Mei writes down every whole number from $1$ to $200$. Then she adds up all the digits she has written. What total does she get?`,
           difficulty: 3,
           answer: String.raw`$1902$`,
+        },
+        {
+          stem: String.raw`How many three-digit numbers have digits that add up to $3$?`,
+          difficulty: 1,
+          choices: [String.raw`$3$`, String.raw`$4$`, String.raw`$5$`, String.raw`$6$`, String.raw`$10$`],
+          answer: String.raw`(D) $6$`,
+        },
+        {
+          stem: String.raw`How many whole numbers from $1$ to $300$ have digits that add up to $10$?`,
+          difficulty: 2,
+          answer: String.raw`$28$`,
+        },
+        {
+          stem: String.raw`A whole number is added to the sum of its own digits, and the total is $2026$. What is the number?`,
+          difficulty: 3,
+          answer: String.raw`$2021$`,
+        },
+        {
+          stem: String.raw`For how many whole numbers from $1$ to $999$ is the sum of the digits of the number equal to the sum of the digits of **twice** the number? (For example, $45$ works: $45 \times 2 = 90$, and $4 + 5 = 9 + 0$.)`,
+          difficulty: 4,
+          answer: String.raw`$91$`,
         },
       ],
     },
@@ -212,6 +282,83 @@ To count how often **one digit** appears (say the digit $3$), count it in the on
           difficulty: 3,
           answer: String.raw`$625$`,
         },
+        {
+          stem: String.raw`In the subtraction shown, each box hides one digit. What is the sum of the three missing digits?`,
+          difficulty: 1,
+          figure: {
+            type: "plot",
+            x: [-3, 7],
+            y: [-0.6, 2.6],
+            equal: true,
+            axes: false,
+            polygons: [
+              { points: [[1.65, 1.65], [2.35, 1.65], [2.35, 2.35], [1.65, 2.35]], tone: "ink" },
+              { points: [[2.65, 0.65], [3.35, 0.65], [3.35, 1.35], [2.65, 1.35]], tone: "ink" },
+              { points: [[0.65, -0.35], [1.35, -0.35], [1.35, 0.35], [0.65, 0.35]], tone: "ink" },
+            ],
+            segments: [
+              { from: [-0.2, 0.45], to: [3.6, 0.45], tone: "ink" },
+            ],
+            labels: [
+              { x: 1, y: 2, text: "8" },
+              { x: 3, y: 2, text: "2" },
+              { x: 0, y: 1, text: "−" },
+              { x: 1, y: 1, text: "3" },
+              { x: 2, y: 1, text: "7" },
+              { x: 2, y: 0, text: "6" },
+              { x: 3, y: 0, text: "5" },
+            ],
+            alt: "Column subtraction: 8, box, 2 minus 3, 7, box equals box, 6, 5.",
+          },
+          answer: String.raw`$15$`,
+        },
+        {
+          stem: String.raw`In the sum $\text{A} + \text{AB} + \text{ABC} = 300$, different letters stand for different digits. AB is a two-digit number and ABC is a three-digit number. What is the number ABC?`,
+          difficulty: 2,
+          answer: String.raw`$271$`,
+        },
+        {
+          stem: String.raw`In the long multiplication shown, each box hides one digit. What is the four-digit answer?`,
+          difficulty: 3,
+          figure: {
+            type: "plot",
+            x: [-2, 7],
+            y: [-0.6, 4.6],
+            equal: true,
+            axes: false,
+            polygons: [
+              { points: [[2.65, 3.65], [3.35, 3.65], [3.35, 4.35], [2.65, 4.35]], tone: "ink" },
+              { points: [[3.65, 2.65], [4.35, 2.65], [4.35, 3.35], [3.65, 3.35]], tone: "ink" },
+              { points: [[2.65, 1.65], [3.35, 1.65], [3.35, 2.35], [2.65, 2.35]], tone: "ink" },
+              { points: [[0.65, 0.65], [1.35, 0.65], [1.35, 1.35], [0.65, 1.35]], tone: "ink" },
+              { points: [[1.65, 0.65], [2.35, 0.65], [2.35, 1.35], [1.65, 1.35]], tone: "ink" },
+              { points: [[2.65, 0.65], [3.35, 0.65], [3.35, 1.35], [2.65, 1.35]], tone: "ink" },
+              { points: [[0.65, -0.35], [1.35, -0.35], [1.35, 0.35], [0.65, 0.35]], tone: "ink" },
+              { points: [[1.65, -0.35], [2.35, -0.35], [2.35, 0.35], [1.65, 0.35]], tone: "ink" },
+              { points: [[3.65, -0.35], [4.35, -0.35], [4.35, 0.35], [3.65, 0.35]], tone: "ink" },
+            ],
+            segments: [
+              { from: [1.5, 2.45], to: [4.6, 2.45], tone: "ink" },
+              { from: [0.4, 0.45], to: [4.6, 0.45], tone: "ink" },
+            ],
+            labels: [
+              { x: 4, y: 4, text: "7" },
+              { x: 2, y: 3, text: "×" },
+              { x: 3, y: 3, text: "3" },
+              { x: 2, y: 2, text: "3" },
+              { x: 4, y: 2, text: "6" },
+              { x: 0, y: 1, text: "+" },
+              { x: 3, y: 0, text: "8" },
+            ],
+            alt: "Long multiplication: box 7 times 3 box. The first line of working is 3, box, 6. The second line of working is three boxes, moved one place to the left. The answer is box, box, 8, box.",
+          },
+          answer: String.raw`$1786$`,
+        },
+        {
+          stem: String.raw`In the multiplication $\text{ABC} \times 9 = \text{DDDB}$, different letters stand for different digits. ABC is a three-digit number and DDDB is a four-digit number. What is the number ABC?`,
+          difficulty: 4,
+          answer: String.raw`$864$`,
+        },
       ],
     },
     {
@@ -234,6 +381,27 @@ To count how often **one digit** appears (say the digit $3$), count it in the on
           stem: String.raw`What is the largest five-digit palindrome that is divisible by $6$?`,
           difficulty: 3,
           answer: String.raw`$89\,898$`,
+        },
+        {
+          stem: String.raw`A palindrome is a number that reads the same forwards and backwards, such as $3883$. How many four-digit palindromes are there between $3000$ and $5000$?`,
+          difficulty: 1,
+          answer: String.raw`$20$`,
+        },
+        {
+          stem: String.raw`A palindrome is a number that reads the same forwards and backwards, such as $2552$ or $7007$. Every four-digit palindrome is a multiple of one of these numbers. Which one?`,
+          difficulty: 2,
+          choices: [String.raw`$3$`, String.raw`$7$`, String.raw`$9$`, String.raw`$11$`, String.raw`$13$`],
+          answer: String.raw`(D) $11$`,
+        },
+        {
+          stem: String.raw`A palindrome is a number that reads the same forwards and backwards. What is the sum of all the four-digit palindromes?`,
+          difficulty: 3,
+          answer: String.raw`$495\,000$`,
+        },
+        {
+          stem: String.raw`A palindrome is a number that reads the same forwards and backwards. Some five-digit palindromes can be written as the sum of two different four-digit palindromes. What is the largest such five-digit palindrome?`,
+          difficulty: 4,
+          answer: String.raw`$12\,221$`,
         },
       ],
     },
@@ -258,6 +426,29 @@ To count how often **one digit** appears (say the digit $3$), count it in the on
           difficulty: 3,
           answer: String.raw`$155$`,
         },
+        {
+          stem: String.raw`All the whole numbers from $1$ to $100$ are written down. How many times is the digit $0$ written?`,
+          difficulty: 1,
+          choices: [String.raw`$9$`, String.raw`$10$`, String.raw`$11$`, String.raw`$12$`, String.raw`$20$`],
+          answer: String.raw`(C) $11$`,
+        },
+        {
+          stem: String.raw`A chapter of a book starts on page $58$ and ends on page $132$. How many digits are used to print the page numbers of this chapter?`,
+          difficulty: 2,
+          answer: String.raw`$183$`,
+        },
+        {
+          stem: String.raw`The pages of a book are numbered $1, 2, 3, \ldots$ in order. The number of digits used is exactly twice the number of pages. How many pages does the book have?`,
+          difficulty: 3,
+          answer: String.raw`$108$`,
+        },
+        {
+          stem: String.raw`The whole numbers from $1$ to $999$ are written one after another to make one long string of digits:
+$$123456789101112 \ldots 998999$$
+How many times does the block "$12$" (a $1$ followed straight away by a $2$) appear in the string?`,
+          difficulty: 4,
+          answer: String.raw`$32$`,
+        },
       ],
     },
     {
@@ -280,6 +471,27 @@ To count how often **one digit** appears (say the digit $3$), count it in the on
           stem: String.raw`A three-digit number is $495$ more than the number formed by reversing its digits. Its digits add up to $18$, and its middle digit is equal to the sum of the other two digits. What is the number?`,
           difficulty: 3,
           answer: String.raw`$792$`,
+        },
+        {
+          stem: String.raw`A two-digit number is $63$ more than the number formed by reversing its digits. Its digits add up to $11$. What is the number?`,
+          difficulty: 1,
+          answer: String.raw`$92$`,
+        },
+        {
+          stem: String.raw`A three-digit number is added to the number formed by reversing its digits, and the total is $1251$. What is the middle digit of the number?`,
+          difficulty: 2,
+          choices: [String.raw`$2$`, String.raw`$5$`, String.raw`$6$`, String.raw`$7$`, String.raw`$9$`],
+          answer: String.raw`(D) $7$`,
+        },
+        {
+          stem: String.raw`A two-digit number is multiplied by the number formed by reversing its digits, and the product is $2296$. What is the larger of these two numbers?`,
+          difficulty: 3,
+          answer: String.raw`$82$`,
+        },
+        {
+          stem: String.raw`Take a three-digit number whose last digit is not $0$, and add it to the number formed by reversing its digits. For example, $152 + 251 = 403$. For how many three-digit numbers is the total a palindrome (a number that reads the same forwards and backwards)?`,
+          difficulty: 4,
+          answer: String.raw`$188$`,
         },
       ],
     },

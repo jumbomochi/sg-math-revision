@@ -168,6 +168,14 @@ Make the unchanged quantity the **same number of units** in the "before" and "af
 
 *Example.* A : B $= 2 : 5$. B spends \$$12$ and then A : B $= 2 : 3$. A has not changed, so A is $2$ units both times. B went from $5$ units to $3$ units, so $2$ units $=$ \$$12$. A has \$$12$.`,
     },
+    {
+      title: String.raw`Working backwards with a choice: draw a tree`,
+      body: String.raw`Sometimes a step can be undone in **more than one way**. Then draw a **tree** and follow every branch back.
+
+*Example.* Rule: if the number is even, halve it; if it is odd, add $1$. What could have come just before $6$? Either $12$ (halved to $6$) or $5$ (odd, and $5 + 1 = 6$). What could have come just before $5$? Only $10$: the other choice would be $4$, but $4$ is even, so it would have been halved, not had $1$ added.
+
+Check every branch: an "add" branch only works if the number before it really is odd.`,
+    },
   ],
   archetypes: [
     {
@@ -189,6 +197,26 @@ Make the unchanged quantity the **same number of units** in the "before" and "af
           stem: String.raw`Amy, Ben and Chen share a bag of sweets. Amy takes $\frac{1}{4}$ of the sweets and then $3$ more. Ben takes $\frac{2}{5}$ of the remaining sweets and then $2$ more. Chen takes the last $16$ sweets. How many sweets were in the bag?`,
           difficulty: 3,
           answer: String.raw`44 sweets`,
+        },
+        {
+          stem: String.raw`Tom thinks of a number. He multiplies it by $3$, takes away $7$ and then divides the result by $4$. His answer is $5$. What number did he think of?`,
+          difficulty: 1,
+          answer: String.raw`$9$`,
+        },
+        {
+          stem: String.raw`On Monday a library lent out $\frac{1}{4}$ of its storybooks. On Tuesday it lent out $\frac{1}{3}$ of the storybooks that were left. On Wednesday it lent out $\frac{2}{3}$ of the storybooks that were still left. Then $200$ storybooks remained. How many storybooks were lent out on Tuesday?`,
+          difficulty: 2,
+          answer: String.raw`300 storybooks`,
+        },
+        {
+          stem: String.raw`Jia Hui spent half of her money and then \$$4$ more on a book. Then she spent half of the money she had left and then \$$4$ more on a pen. In the end she had exactly $\frac{1}{8}$ of the money she started with. How much money did she have at first?`,
+          difficulty: 3,
+          answer: String.raw`\$$48$`,
+        },
+        {
+          stem: String.raw`Siti writes a positive whole number on the board. Then, five times in a row, she changes the number by this rule: if the number is even, she halves it; if the number is odd, she adds $5$ to it. After the five changes, the number on the board is $7$. How many different numbers could she have started with?`,
+          difficulty: 4,
+          answer: String.raw`8`,
         },
       ],
     },
@@ -213,6 +241,27 @@ Make the unchanged quantity the **same number of units** in the "before" and "af
           difficulty: 3,
           answer: String.raw`52 marbles`,
         },
+        {
+          stem: String.raw`Ann has $45$ marbles and Ben has $15$ marbles. How many marbles must Ann give Ben so that Ann then has twice as many marbles as Ben?`,
+          difficulty: 1,
+          answer: String.raw`5 marbles`,
+        },
+        {
+          stem: String.raw`Kai and Lim have the same number of cards. Kai gives Lim $12$ cards. Now Lim has $3$ times as many cards as Kai. How many cards did each boy have at first?`,
+          difficulty: 2,
+          choices: [String.raw`(A) $12$`, String.raw`(B) $18$`, String.raw`(C) $24$`, String.raw`(D) $36$`, String.raw`(E) $48$`],
+          answer: String.raw`(C) $24$`,
+        },
+        {
+          stem: String.raw`Ali gives $\frac{1}{3}$ of his stamps to Ben. Then Ben gives $\frac{1}{4}$ of the stamps he now has to Ali. In the end, Ali has $30$ stamps and Ben has $36$ stamps. How many stamps did Ben have at first?`,
+          difficulty: 3,
+          answer: String.raw`39 stamps`,
+        },
+        {
+          stem: String.raw`Pam, Qi and Ravi have some sweets. First, Pam gives away half of her sweets, sharing them equally between Qi and Ravi. Next, Qi gives away half of the sweets she now has, sharing them equally between Pam and Ravi. Finally, Ravi gives away half of the sweets he now has, sharing them equally between Pam and Qi. In the end, all three of them have the same number of sweets. At first, Ravi had $45$ more sweets than Pam. How many sweets did Ravi have at first?`,
+          difficulty: 4,
+          answer: String.raw`65 sweets`,
+        },
       ],
     },
     {
@@ -235,6 +284,27 @@ Make the unchanged quantity the **same number of units** in the "before" and "af
           stem: String.raw`Uncle Tan says to Ken: "When I was as old as you are now, you were $4$ years old. When you are as old as I am now, I will be $61$ years old." How old is Ken now?`,
           difficulty: 3,
           answer: String.raw`23 years old`,
+        },
+        {
+          stem: String.raw`Ann is $9$ years old and her brother is $5$ years old. In how many years will the sum of their ages be $30$?`,
+          difficulty: 1,
+          choices: [String.raw`(A) $4$`, String.raw`(B) $8$`, String.raw`(C) $16$`, String.raw`(D) $21$`],
+          answer: String.raw`(B) $8$`,
+        },
+        {
+          stem: String.raw`Mr Lee is $40$ years old. His three children are $6$, $8$ and $10$ years old. In how many years will Mr Lee's age be equal to the sum of his three children's ages?`,
+          difficulty: 2,
+          answer: String.raw`8 years`,
+        },
+        {
+          stem: String.raw`All ages in this problem are whole numbers of years. Mr and Mrs Tan married $12$ years ago. After that they had two children, Kai and his younger sister Lin, and nobody else has ever joined or left the family. Today the ages of the four family members add up to $84$. Three years ago, the ages of the family members at that time added up to $73$. Six years ago, they added up to $65$. How old is Kai today?`,
+          difficulty: 3,
+          answer: String.raw`5 years old`,
+        },
+        {
+          stem: String.raw`Ann is older than Ben, and Ben is older than Cai. When Ann was as old as Ben is now, Ben was as old as Cai is now. When Cai is as old as Ben is now, Ann will be $40$. Today their three ages add up to $72$. How old is Cai now?`,
+          difficulty: 4,
+          answer: String.raw`16 years old`,
         },
       ],
     },
@@ -259,6 +329,26 @@ Make the unchanged quantity the **same number of units** in the "before" and "af
           difficulty: 3,
           answer: String.raw`23 kg`,
         },
+        {
+          stem: String.raw`There are three numbers. The first number is $7$ more than the second, and the third number is $7$ more than the first. The three numbers add up to $81$. What is the largest of the three numbers?`,
+          difficulty: 1,
+          answer: String.raw`$34$`,
+        },
+        {
+          stem: String.raw`A bag of rice and a bag of flour weigh $30$ kg together. $3$ bags of rice and $2$ bags of flour weigh $74$ kg together. All the bags of rice weigh the same, and all the bags of flour weigh the same. How heavy is one bag of rice?`,
+          difficulty: 2,
+          answer: String.raw`14 kg`,
+        },
+        {
+          stem: String.raw`Ann, Bea and Cal have \$$93$ altogether. If Ann spends \$$5$, Bea is given \$$7$ and Cal's money is doubled, then all three of them will have the same amount. How much money does Ann have?`,
+          difficulty: 3,
+          answer: String.raw`\$$43$`,
+        },
+        {
+          stem: String.raw`There are three numbers $A$, $B$ and $C$. $A + B$ is $3$ times $C$. $B + C$ is twice $A$. $A + C$ is $40$ more than $B$. What is the largest of the three numbers?`,
+          difficulty: 4,
+          answer: String.raw`$100$`,
+        },
       ],
     },
     {
@@ -281,6 +371,26 @@ Make the unchanged quantity the **same number of units** in the "before" and "af
           stem: String.raw`A shop had $3$ times as many apples as pears. After $45$ apples and $5$ pears were sold, the shop had twice as many apples as pears. How many pears did the shop have at first?`,
           difficulty: 3,
           answer: String.raw`35 pears`,
+        },
+        {
+          stem: String.raw`Jon has $3$ times as many stickers as Kim. Jon has $24$ more stickers than Kim. How many stickers does Kim have?`,
+          difficulty: 1,
+          answer: String.raw`12 stickers`,
+        },
+        {
+          stem: String.raw`Ali has twice as many marbles as Bob, and Bob has $3$ times as many marbles as Cai. Ali has $40$ more marbles than Cai. How many marbles do the three boys have altogether?`,
+          difficulty: 2,
+          answer: String.raw`80 marbles`,
+        },
+        {
+          stem: String.raw`When a larger whole number is divided by a smaller whole number, the quotient is $6$ and the remainder is $4$. The larger number, the smaller number, the quotient and the remainder add up to $98$. What is the larger number?`,
+          difficulty: 3,
+          answer: String.raw`$76$`,
+        },
+        {
+          stem: String.raw`If Dev gives Eli $10$ stickers, Dev will have twice as many stickers as Eli. If instead Eli gives Dev $10$ stickers, Dev will have $5$ times as many stickers as Eli. How many stickers do they have altogether?`,
+          difficulty: 4,
+          answer: String.raw`120 stickers`,
         },
       ],
     },
@@ -305,6 +415,27 @@ Make the unchanged quantity the **same number of units** in the "before" and "af
           difficulty: 3,
           answer: String.raw`24 pupils`,
         },
+        {
+          stem: String.raw`The average of five numbers is $12$. Four of the numbers are $10$, $8$, $15$ and $11$. What is the fifth number?`,
+          difficulty: 1,
+          choices: [String.raw`(A) $12$`, String.raw`(B) $14$`, String.raw`(C) $16$`, String.raw`(D) $44$`],
+          answer: String.raw`(C) $16$`,
+        },
+        {
+          stem: String.raw`The average of $10$ numbers was worked out as $45$. Then it was found that one of the numbers had been copied wrongly as $72$ when it should have been $27$. What is the correct average of the $10$ numbers?`,
+          difficulty: 2,
+          answer: String.raw`$40.5$`,
+        },
+        {
+          stem: String.raw`The average of $A$, $B$ and $C$ is $30$. The average of $B$, $C$ and $D$ is $35$. The average of all four numbers $A$, $B$, $C$ and $D$ is $32$. What is $D$?`,
+          difficulty: 3,
+          answer: String.raw`$38$`,
+        },
+        {
+          stem: String.raw`In a test, the average mark of a class was $70$. If the highest mark is left out, the average of the other marks is $68$. If instead the lowest mark is left out, the average of the other marks is $72$. The highest mark is $52$ more than the lowest mark. What is the highest mark?`,
+          difficulty: 4,
+          answer: String.raw`$96$`,
+        },
       ],
     },
     {
@@ -326,6 +457,26 @@ Make the unchanged quantity the **same number of units** in the "before" and "af
           stem: String.raw`Box $A$ has $5$ times as many marbles as Box $B$. After $36$ marbles are moved from Box $A$ to Box $B$, Box $A$ has twice as many marbles as Box $B$. How many marbles were in Box $A$ at first?`,
           difficulty: 3,
           answer: String.raw`180 marbles`,
+        },
+        {
+          stem: String.raw`Box $A$ has $3$ times as many beads as Box $B$. After $20$ more beads are put into Box $B$, the two boxes have the same number of beads. How many beads are in Box $A$?`,
+          difficulty: 1,
+          answer: String.raw`30 beads`,
+        },
+        {
+          stem: String.raw`On a bus, the ratio of the number of boys to the number of girls is $3 : 2$. At a bus stop, $6$ boys get off and $6$ girls get on. Now there are as many boys as girls on the bus. How many children are on the bus?`,
+          difficulty: 2,
+          answer: String.raw`60 children`,
+        },
+        {
+          stem: String.raw`The ratio of Mary's money to Nina's money is $4 : 5$. Mary spends $\frac{1}{4}$ of her money and Nina spends \$$60$. Now the ratio of Mary's money to Nina's money is $3 : 2$. How much money did Nina have at first?`,
+          difficulty: 3,
+          answer: String.raw`\$$100$`,
+        },
+        {
+          stem: String.raw`The numbers of books on Shelf $A$ and Shelf $B$ are in the ratio $4 : 3$. After $6$ books are moved from Shelf $A$ to Shelf $B$, the ratio becomes $6 : 5$. Then some books are moved from Shelf $B$ back to Shelf $A$, and now Shelf $A$ has twice as many books as Shelf $B$. How many books were moved from Shelf $B$ to Shelf $A$?`,
+          difficulty: 4,
+          answer: String.raw`28 books`,
         },
       ],
     },

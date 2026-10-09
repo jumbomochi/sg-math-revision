@@ -228,6 +228,21 @@ $$\frac13 - \frac14 = \frac{4 - 3}{3 \times 4} = \frac{1}{12}$$
 $$\frac{1}{3 \times 4} + \frac{1}{4 \times 5} + \frac{1}{5 \times 6} = \Big(\frac13 - \frac14\Big) + \Big(\frac14 - \frac15\Big) + \Big(\frac15 - \frac16\Big) = \frac13 - \frac16 = \frac16$$
 - Learn to spot $2 = 1 \times 2$, $6 = 2 \times 3$, $12 = 3 \times 4$, $20 = 4 \times 5$, …`,
     },
+    {
+      title: String.raw`Mixtures: find the part that stays the same`,
+      body: String.raw`When something is added to or taken from a mixture, look for the ingredient that does **not** change, and work with it.
+
+- A $60$ g bag of nuts is $25\%$ peanuts, so it has $15$ g of peanuts. Cashews are taken out until peanuts make up $50\%$. The peanuts are still $15$ g, so the bag now weighs $30$ g: $30$ g of cashews were taken out.
+- Adding **water** keeps the salt or sugar the same. Adding **sugar** keeps the water the same.`,
+    },
+    {
+      title: String.raw`Telescoping with three numbers multiplied`,
+      body: String.raw`When three neighbouring numbers are multiplied, split using the two-number products:
+$$\frac{1}{1 \times 2 \times 3} = \frac12 \times \Big(\frac{1}{1 \times 2} - \frac{1}{2 \times 3}\Big) = \frac12 \times \Big(\frac12 - \frac16\Big) = \frac16$$
+
+- The $\frac12$ in front is there because the first and last numbers ($1$ and $3$) differ by $2$.
+- In a long sum, split every term this way. The middle pieces cancel, leaving only the first and the last.`,
+    },
   ],
   archetypes: [
     {
@@ -249,6 +264,27 @@ $$\frac{1}{3 \times 4} + \frac{1}{4 \times 5} + \frac{1}{5 \times 6} = \Big(\fra
           stem: String.raw`In the morning, a farmer sold $\frac14$ of his eggs and $6$ more. In the afternoon, he sold $\frac13$ of the remaining eggs and $4$ more. He then had $52$ eggs left. How many eggs did he have at first?`,
           difficulty: 3,
           answer: String.raw`$120$`,
+        },
+        {
+          stem: String.raw`Wei read $\frac25$ of a book on Monday. On Tuesday he read half of the remaining pages. What fraction of the book has he still not read?`,
+          difficulty: 1,
+          choices: [String.raw`$\frac{1}{10}$`, String.raw`$\frac15$`, String.raw`$\frac{3}{10}$`, String.raw`$\frac25$`, String.raw`$\frac12$`],
+          answer: String.raw`(C) $\frac{3}{10}$`,
+        },
+        {
+          stem: String.raw`Siti spent $\frac14$ of her money on a pair of shoes and $\frac23$ of the remaining money on a bag. The bag cost \$45 more than the shoes. How much money did she have at first?`,
+          difficulty: 2,
+          answer: String.raw`\$180`,
+        },
+        {
+          stem: String.raw`A shop had some pens. On Day $1$ it sold $\frac12$ of them. On Day $2$ it sold $\frac13$ of the pens that were left. On Day $3$ it sold $\frac14$ of the pens that were left, and so on, until on Day $9$ it sold $\frac{1}{10}$ of the pens that were left. It then had $12$ pens. How many pens did the shop have at first?`,
+          difficulty: 3,
+          answer: String.raw`$120$`,
+        },
+        {
+          stem: String.raw`A farmer had some durians. On Day $1$ he sold $\frac14$ of his durians and then some extra durians. On Day $2$ he sold $\frac13$ of the durians left, and then the same number of extra durians as on Day $1$. On Day $3$ he sold $\frac12$ of the durians left, and again the same number of extra durians. He then had $18$ durians left. He sold $10$ more durians on Day $1$ than on Day $3$. How many durians did he have at first?`,
+          difficulty: 4,
+          answer: String.raw`$160$`,
         },
       ],
     },
@@ -273,6 +309,27 @@ $$\frac{1}{3 \times 4} + \frac{1}{4 \times 5} + \frac{1}{5 \times 6} = \Big(\fra
           difficulty: 3,
           answer: String.raw`$15$`,
         },
+        {
+          stem: String.raw`Ali had twice as many stickers as Ben. After Ali gave Ben $15$ stickers, Ben had twice as many stickers as Ali. How many stickers did they have altogether?`,
+          difficulty: 1,
+          answer: String.raw`$45$`,
+        },
+        {
+          stem: String.raw`Jug A has $\frac34$ as much water as Jug B. After $150$ ml of water is poured from Jug B into Jug A, Jug A has $\frac43$ as much water as Jug B. How much water is there altogether?`,
+          difficulty: 2,
+          choices: [String.raw`$450$ ml`, String.raw`$700$ ml`, String.raw`$900$ ml`, String.raw`$1050$ ml`, String.raw`$1200$ ml`],
+          answer: String.raw`(D) $1050$ ml`,
+        },
+        {
+          stem: String.raw`Ann and Ben had some marbles. First, Ann gave Ben $\frac14$ of her marbles. Then Ben gave Ann $\frac13$ of the marbles he had at that time. In the end, each of them had $60$ marbles. How many marbles did Ben have at first?`,
+          difficulty: 3,
+          answer: String.raw`$80$`,
+        },
+        {
+          stem: String.raw`Jars A, B and C held beads in the ratio $6 : 5 : 4$. First, some beads were moved from Jar A to Jar B. Then some beads were moved from Jar B to Jar C. The ratio then became $4 : 3 : 5$. In the second move, $45$ more beads were moved than in the first move. How many beads were there altogether?`,
+          difficulty: 4,
+          answer: String.raw`$540$`,
+        },
       ],
     },
     {
@@ -295,6 +352,26 @@ $$\frac{1}{3 \times 4} + \frac{1}{4 \times 5} + \frac{1}{5 \times 6} = \Big(\fra
           stem: String.raw`Mother is now $4$ times as old as Jia Hui. In $6$ years' time, Mother will be $3$ times as old as Jia Hui. How old will Jia Hui be when Mother is twice as old as her?`,
           difficulty: 3,
           answer: String.raw`$36$ years old`,
+        },
+        {
+          stem: String.raw`Ali has \$45 and Bala has \$15. They each add the same amount of money to their savings. Then Ali has twice as much money as Bala. How much did each of them add?`,
+          difficulty: 1,
+          answer: String.raw`\$15`,
+        },
+        {
+          stem: String.raw`Grandpa is $66$ years old. His three grandchildren are $10$, $8$ and $6$ years old. In how many years' time will Grandpa's age be equal to the sum of the ages of his three grandchildren?`,
+          difficulty: 2,
+          answer: String.raw`$21$ years`,
+        },
+        {
+          stem: String.raw`Mrs Tan and her son have the same birthday, and Mrs Tan is $36$ years older than her son. On how many of her son's birthdays, from his $1$st birthday onwards, is Mrs Tan's age an exact multiple of her son's age?`,
+          difficulty: 3,
+          answer: String.raw`$9$`,
+        },
+        {
+          stem: String.raw`My age is a two-digit number. Uncle Lim's age is my age with its two digits swapped. In $13$ years' time, Uncle Lim will be exactly twice as old as I will be then. How old is Uncle Lim now?`,
+          difficulty: 4,
+          answer: String.raw`$41$ years old`,
         },
       ],
     },
@@ -319,6 +396,26 @@ $$\frac{1}{3 \times 4} + \frac{1}{4 \times 5} + \frac{1}{5 \times 6} = \Big(\fra
           difficulty: 3,
           answer: String.raw`$25$`,
         },
+        {
+          stem: String.raw`A bag has red and blue beads, and $\frac14$ of the beads are red. After $20$ blue beads are taken out, half of the beads in the bag are red. How many red beads are there?`,
+          difficulty: 1,
+          answer: String.raw`$10$`,
+        },
+        {
+          stem: String.raw`A bottle holds $200$ g of salt water, and $10\%$ of it is salt. How much water must be added so that only $8\%$ of it is salt?`,
+          difficulty: 2,
+          answer: String.raw`$50$ g`,
+        },
+        {
+          stem: String.raw`A jug holds $400$ g of sugar water, and $15\%$ of it is sugar. How much sugar must be added so that $20\%$ of it is sugar?`,
+          difficulty: 3,
+          answer: String.raw`$25$ g`,
+        },
+        {
+          stem: String.raw`In a hall, $\frac59$ of the people were pupils and the rest were adults. Then $60$ pupils and some adults left, and $\frac47$ of the people still in the hall were pupils. After that, $30$ more adults left, and $\frac23$ of the people still in the hall were pupils. How many adults left the hall the first time?`,
+          difficulty: 4,
+          answer: String.raw`$54$`,
+        },
       ],
     },
     {
@@ -341,6 +438,27 @@ $$\frac{1}{3 \times 4} + \frac{1}{4 \times 5} + \frac{1}{5 \times 6} = \Big(\fra
           stem: String.raw`In a box, $40\%$ of the balls are red and the rest are blue. After $30$ more red balls are put in, $60\%$ of the balls are red. How many balls are in the box now?`,
           difficulty: 3,
           answer: String.raw`$90$`,
+        },
+        {
+          stem: String.raw`After a price increase of $20\%$, a toy costs \$72. What was the price before the increase?`,
+          difficulty: 1,
+          answer: String.raw`\$60`,
+        },
+        {
+          stem: String.raw`A shop gives a $20\%$ discount on a jacket. Club members get a further $10\%$ off the discounted price. For a club member, what is the total discount as a percentage of the original price?`,
+          difficulty: 2,
+          choices: [String.raw`$18\%$`, String.raw`$28\%$`, String.raw`$30\%$`, String.raw`$32\%$`, String.raw`$72\%$`],
+          answer: String.raw`(B) $28\%$`,
+        },
+        {
+          stem: String.raw`Town A has $20\%$ more people than Town B. After $300$ people move from Town A to Town B, Town B has $20\%$ more people than Town A. How many people are there in the two towns altogether?`,
+          difficulty: 3,
+          answer: String.raw`$3300$`,
+        },
+        {
+          stem: String.raw`In a class, $60\%$ of the boys and $75\%$ of the girls passed a test. Altogether, $66\%$ of the pupils in the class passed. $14$ more boys than girls failed the test. How many pupils are in the class?`,
+          difficulty: 4,
+          answer: String.raw`$100$`,
         },
       ],
     },
@@ -367,6 +485,29 @@ $$\frac27 < \frac{n}{24} < \frac59$$`,
           difficulty: 3,
           answer: String.raw`$7$`,
         },
+        {
+          stem: String.raw`Which fraction is closest to $\frac12$?`,
+          difficulty: 1,
+          choices: [String.raw`$\frac37$`, String.raw`$\frac59$`, String.raw`$\frac{6}{11}$`, String.raw`$\frac{7}{15}$`, String.raw`$\frac49$`],
+          answer: String.raw`(D) $\frac{7}{15}$`,
+        },
+        {
+          stem: String.raw`Which of these fractions is the smallest?
+$$\frac34, \quad \frac57, \quad \frac{7}{10}, \quad \frac{9}{13}, \quad \frac{11}{16}$$`,
+          difficulty: 2,
+          answer: String.raw`$\frac{11}{16}$`,
+        },
+        {
+          stem: String.raw`Arrange these fractions from the smallest to the largest:
+$$\frac{12}{37}, \quad \frac{9}{28}, \quad \frac{17}{53}, \quad \frac{7}{22}$$`,
+          difficulty: 3,
+          answer: String.raw`$\frac{7}{22}, \ \frac{17}{53}, \ \frac{9}{28}, \ \frac{12}{37}$`,
+        },
+        {
+          stem: String.raw`A fraction lies between $\frac{2026}{2027}$ and $\frac{2027}{2028}$. Its numerator and denominator are whole numbers. What is the smallest possible denominator?`,
+          difficulty: 4,
+          answer: String.raw`$4055$`,
+        },
       ],
     },
     {
@@ -390,6 +531,29 @@ $$\frac12 + \frac13 + \frac17 + \frac{1}{\square} = 1$$`,
           stem: String.raw`In how many ways can $\frac16$ be written as $\frac1a + \frac1b$, where $a$ and $b$ are whole numbers and $a$ is not bigger than $b$? (For example, $\frac16 = \frac{1}{12} + \frac{1}{12}$ is one way.)`,
           difficulty: 3,
           answer: String.raw`5 ways`,
+        },
+        {
+          stem: String.raw`The same number goes in both boxes. What is the number?
+$$\frac{1}{\square} + \frac{1}{\square} = \frac15$$`,
+          difficulty: 1,
+          answer: String.raw`$10$`,
+        },
+        {
+          stem: String.raw`In how many ways can $\frac{7}{12}$ be written as $\frac1a + \frac1b$, where $a$ and $b$ are whole numbers and $a$ is smaller than $b$?`,
+          difficulty: 2,
+          answer: String.raw`2 ways`,
+        },
+        {
+          stem: String.raw`$\frac12$ is written as the sum of three unit fractions with different denominators:
+$$\frac12 = \frac1a + \frac1b + \frac1c, \qquad a < b < c$$
+What is the smallest possible value of $c$?`,
+          difficulty: 3,
+          answer: String.raw`$12$`,
+        },
+        {
+          stem: String.raw`In how many ways can $\frac35$ be written as $\frac1a + \frac1b + \frac1c$, where $a$, $b$ and $c$ are whole numbers and $a \le b \le c$? (For example, $\frac35 = \frac15 + \frac15 + \frac15$ is one way.)`,
+          difficulty: 4,
+          answer: String.raw`10 ways`,
         },
       ],
     },
@@ -416,6 +580,30 @@ $$\frac{1}{1 \times 2} + \frac{1}{2 \times 3} + \frac{1}{3 \times 4} + \dots + \
 $$\frac{1}{2 \times 4} + \frac{1}{4 \times 6} + \frac{1}{6 \times 8} + \dots + \frac{1}{98 \times 100}$$`,
           difficulty: 3,
           answer: String.raw`$\frac{49}{200}$`,
+        },
+        {
+          stem: String.raw`What is the value of $\frac12 + \frac14 + \frac18 + \frac{1}{16} + \frac{1}{32} + \frac{1}{64}$?`,
+          difficulty: 1,
+          choices: [String.raw`$\frac{1}{64}$`, String.raw`$\frac{31}{32}$`, String.raw`$\frac{63}{64}$`, String.raw`$1$`, String.raw`$\frac{127}{128}$`],
+          answer: String.raw`(C) $\frac{63}{64}$`,
+        },
+        {
+          stem: String.raw`Find the value of
+$$\frac{3}{1 \times 4} + \frac{3}{4 \times 7} + \frac{3}{7 \times 10} + \dots + \frac{3}{28 \times 31}$$`,
+          difficulty: 2,
+          answer: String.raw`$\frac{30}{31}$`,
+        },
+        {
+          stem: String.raw`Find the value of
+$$\frac{1}{1 \times 3} + \frac{1}{2 \times 4} + \frac{1}{3 \times 5} + \dots + \frac{1}{9 \times 11}$$`,
+          difficulty: 3,
+          answer: String.raw`$\frac{36}{55}$`,
+        },
+        {
+          stem: String.raw`Find the value of
+$$\frac{1}{2 \times 3 \times 4} + \frac{2}{3 \times 4 \times 5} + \frac{3}{4 \times 5 \times 6} + \dots + \frac{9}{10 \times 11 \times 12}$$`,
+          difficulty: 4,
+          answer: String.raw`$\frac{15}{88}$`,
         },
       ],
     },

@@ -159,6 +159,20 @@ H2.addTopic({
 - A perfect square always ends in $0, 1, 4, 5, 6$ or $9$, never in $2, 3, 7$ or $8$.
 - When a perfect square is split into primes, **each prime appears an even number of times**: $36 = 2 \times 2 \times 3 \times 3$. To turn $12 = 2 \times 2 \times 3$ into a square, multiply by one more $3$: $12 \times 3 = 36$.`,
     },
+    {
+      title: String.raw`Remainders of sums and products`,
+      body: String.raw`To find a remainder, you only need the **remainders** of the pieces.
+
+- **Sums**: $17 + 23$ divided by $5$: the remainders are $2$ and $3$, and $2 + 3 = 5$ leaves remainder $0$. Check: $40 = 5 \times 8$.
+- **Products**: $17 \times 23$ divided by $5$: $2 \times 3 = 6$ leaves remainder $1$. Check: $391 = 5 \times 78 + 1$.
+- For dividing by $9$ (or $3$), every number can be swapped for its **digit sum**, because they leave the same remainder.`,
+    },
+    {
+      title: String.raw`Years and leap years`,
+      body: String.raw`- A year of $365$ days is $52$ weeks and $1$ day. So a date moves on by **$1$ day of the week** each year: if your birthday is a Monday this year, it is a Tuesday next year.
+- A **leap year** has $366$ days (the extra day is 29 February). If a 29 February comes in between, the date moves on by **$2$ days** instead.
+- Leap years are the years that are multiples of $4$ (with a few exceptions such as 1900 and 2100, which you will be told about if they matter).`,
+    },
   ],
   archetypes: [
     {
@@ -181,6 +195,27 @@ H2.addTopic({
           stem: String.raw`What is the smallest whole number that has exactly $10$ factors?`,
           difficulty: 3,
           answer: String.raw`$48$`,
+        },
+        {
+          stem: String.raw`Which of these numbers has exactly $3$ factors?`,
+          difficulty: 1,
+          choices: [String.raw`$8$`, String.raw`$12$`, String.raw`$25$`, String.raw`$27$`, String.raw`$30$`],
+          answer: String.raw`(C) $25$`,
+        },
+        {
+          stem: String.raw`$72$ pupils stand in equal rows for a photo. Each row must have at least $3$ and at most $20$ pupils. How many different numbers of pupils in each row are possible?`,
+          difficulty: 2,
+          answer: String.raw`$7$`,
+        },
+        {
+          stem: String.raw`A whole number has exactly $8$ factors. Two of its factors are $21$ and $35$. What is the number?`,
+          difficulty: 3,
+          answer: String.raw`$105$`,
+        },
+        {
+          stem: String.raw`How many whole numbers from $1$ to $100$ have exactly $6$ factors?`,
+          difficulty: 4,
+          answer: String.raw`$16$`,
         },
       ],
     },
@@ -219,6 +254,26 @@ H2.addTopic({
           difficulty: 3,
           answer: String.raw`$42$`,
         },
+        {
+          stem: String.raw`What is the smallest number of sweets that can be shared equally among $4$ children, or equally among $6$ children, or equally among $9$ children, with none left over each time?`,
+          difficulty: 1,
+          answer: String.raw`$36$`,
+        },
+        {
+          stem: String.raw`A rectangular field measures $120$ m by $84$ m. Trees are planted along its edges, with a tree at each corner and the same distance between neighbouring trees all the way round. This distance is a whole number of metres, as large as possible. How many trees are planted?`,
+          difficulty: 2,
+          answer: String.raw`$34$`,
+        },
+        {
+          stem: String.raw`Two whole numbers have an HCF of $12$ and add up to $96$. What is the largest possible LCM of the two numbers?`,
+          difficulty: 3,
+          answer: String.raw`$180$`,
+        },
+        {
+          stem: String.raw`How many pairs of different whole numbers have an LCM of $60$? (The pair $4$ and $15$ counts only once: it is the same pair as $15$ and $4$.)`,
+          difficulty: 4,
+          answer: String.raw`$22$`,
+        },
       ],
     },
     {
@@ -241,6 +296,27 @@ H2.addTopic({
           stem: String.raw`The five-digit number $7\square36\square$ is divisible by $72$. The two boxes may hide different digits. What is the largest possible value of the number?`,
           difficulty: 3,
           answer: String.raw`$73\,368$`,
+        },
+        {
+          stem: String.raw`Which of these numbers is divisible by $4$ but **not** by $8$?`,
+          difficulty: 1,
+          choices: [String.raw`$3216$`, String.raw`$5124$`, String.raw`$7320$`, String.raw`$4816$`, String.raw`$6408$`],
+          answer: String.raw`(B) $5124$`,
+        },
+        {
+          stem: String.raw`In the four-digit number $2\square\square6$, both boxes hide the same digit. The number is divisible by $12$. What is the number?`,
+          difficulty: 2,
+          answer: String.raw`$2556$`,
+        },
+        {
+          stem: String.raw`A whole number is written using only the digits $3$ and $4$, and it uses each of them at least once. It is divisible by $36$. What is the smallest such number?`,
+          difficulty: 3,
+          answer: String.raw`$33\,444$`,
+        },
+        {
+          stem: String.raw`Seven-digit numbers are made using each of the digits $1, 2, 3, 4, 5, 6, 7$ exactly once. How many of these numbers are divisible by $11$?`,
+          difficulty: 4,
+          answer: String.raw`$576$`,
         },
       ],
     },
@@ -265,6 +341,29 @@ H2.addTopic({
           difficulty: 3,
           answer: String.raw`$122$`,
         },
+        {
+          stem: String.raw`When a whole number is divided by $9$, the quotient is $15$. What is the largest the number can be?`,
+          difficulty: 1,
+          answer: String.raw`$143$`,
+        },
+        {
+          stem: String.raw`A whole number leaves a remainder of $4$ when divided by $9$. What is the remainder when $5$ times the number is divided by $9$?`,
+          difficulty: 2,
+          choices: [String.raw`$0$`, String.raw`$2$`, String.raw`$4$`, String.raw`$5$`, String.raw`$8$`],
+          answer: String.raw`(B) $2$`,
+        },
+        {
+          stem: String.raw`When $2026$ is divided by a certain two-digit number, the remainder is $16$. How many two-digit numbers could it be?`,
+          difficulty: 3,
+          answer: String.raw`$2$`,
+        },
+        {
+          stem: String.raw`The whole numbers from $1$ to $2026$ are written one after another to make one very long number:
+$$12345678910111213 \ldots 20252026$$
+What is the remainder when this long number is divided by $9$?`,
+          difficulty: 4,
+          answer: String.raw`$1$`,
+        },
       ],
     },
     {
@@ -288,6 +387,27 @@ H2.addTopic({
           difficulty: 3,
           answer: String.raw`$7$`,
         },
+        {
+          stem: String.raw`What is the last digit of $13 \times 23 \times 33 \times 43 \times 53$?`,
+          difficulty: 1,
+          answer: String.raw`$3$`,
+        },
+        {
+          stem: String.raw`What is the last digit of $2^{2026} + 3^{2026}$?`,
+          difficulty: 2,
+          choices: [String.raw`$1$`, String.raw`$3$`, String.raw`$5$`, String.raw`$7$`, String.raw`$9$`],
+          answer: String.raw`(B) $3$`,
+        },
+        {
+          stem: String.raw`What is the last digit of $1 + 2 + 2^{2} + 2^{3} + \cdots + 2^{100}$?`,
+          difficulty: 3,
+          answer: String.raw`$1$`,
+        },
+        {
+          stem: String.raw`What is the last digit of $1^{2026} + 2^{2026} + 3^{2026} + \cdots + 2026^{2026}$?`,
+          difficulty: 4,
+          answer: String.raw`$1$`,
+        },
       ],
     },
     {
@@ -309,6 +429,26 @@ H2.addTopic({
           stem: String.raw`In a certain month, there are more Tuesdays than Mondays, and more Tuesdays than Wednesdays. On what day of the week is the 1st of that month?`,
           difficulty: 3,
           answer: String.raw`Tuesday`,
+        },
+        {
+          stem: String.raw`Today is Wednesday. What day of the week was it $50$ days ago?`,
+          difficulty: 1,
+          answer: String.raw`Tuesday`,
+        },
+        {
+          stem: String.raw`In a certain month, the dates of all the Thursdays add up to $80$. What is the date of the first Thursday of that month?`,
+          difficulty: 2,
+          answer: String.raw`The 2nd`,
+        },
+        {
+          stem: String.raw`1 January 2026 is a Thursday. On what day of the week is 1 January 2030? (2028 is a leap year with $366$ days. 2026, 2027 and 2029 each have $365$ days.)`,
+          difficulty: 3,
+          answer: String.raw`Tuesday`,
+        },
+        {
+          stem: String.raw`The year 2026 has $365$ days and starts on a Thursday. In which year will a 2026 calendar next be correct again, with every date falling on the same day of the week as in 2026? (Between 2026 and 2100, the leap years, with $366$ days, are exactly the years that are multiples of $4$.)`,
+          difficulty: 4,
+          answer: String.raw`2037`,
         },
       ],
     },
@@ -332,6 +472,27 @@ H2.addTopic({
           stem: String.raw`There are $150$ lights in a row, numbered $1$ to $150$, and all are off. $150$ children take turns. Child $1$ presses the switch of every light. Child $2$ presses the switch of every light whose number is a multiple of $2$. Child $3$ presses the switch of every light whose number is a multiple of $3$, and so on, up to child $150$. Each press turns a light from off to on, or from on to off. How many lights are on at the end?`,
           difficulty: 3,
           answer: String.raw`$12$`,
+        },
+        {
+          stem: String.raw`Exactly one of these numbers is **not** a perfect square. Which one?`,
+          difficulty: 1,
+          choices: [String.raw`$1369$`, String.raw`$2209$`, String.raw`$3427$`, String.raw`$4624$`, String.raw`$5776$`],
+          answer: String.raw`(C) $3427$`,
+        },
+        {
+          stem: String.raw`How many of the factors of $144$ are perfect squares?`,
+          difficulty: 2,
+          answer: String.raw`$6$`,
+        },
+        {
+          stem: String.raw`Two neighbouring square numbers (like $16$ and $25$) differ by $91$. What is the larger of the two square numbers?`,
+          difficulty: 3,
+          answer: String.raw`$2116$`,
+        },
+        {
+          stem: String.raw`Some whole numbers have exactly $3$ factors that are perfect squares. For example, the factors of $16$ that are perfect squares are $1$, $4$ and $16$. (Remember that $1 = 1 \times 1$ is a perfect square.) How many whole numbers from $1$ to $200$ have exactly $3$ factors that are perfect squares?`,
+          difficulty: 4,
+          answer: String.raw`$10$`,
         },
       ],
     },

@@ -108,8 +108,9 @@ for (const file of files) {
       if (q.stem) checkText(file, qw + ".stem", q.stem);
       if (q.answer != null) checkText(file, qw + ".answer", q.answer);
       if (olympiad && !q.answer) err(file, qw, "olympiad problems need an answer");
-      if (q.difficulty != null && ![1, 2, 3].includes(q.difficulty)) err(file, qw + ".difficulty", "must be 1, 2 or 3");
-      if (olympiad && q.difficulty == null) err(file, qw, "olympiad problems need a difficulty (1–3)");
+      const maxD = L.maxDifficulty || 3;
+      if (q.difficulty != null && !(Number.isInteger(q.difficulty) && q.difficulty >= 1 && q.difficulty <= maxD)) err(file, qw + ".difficulty", `must be an integer from 1 to ${maxD}`);
+      if (olympiad && q.difficulty == null) err(file, qw, `olympiad problems need a difficulty (1–${maxD})`);
       if (q.choices != null) {
         if (!Array.isArray(q.choices) || q.choices.length < 2 || q.choices.length > 8) err(file, qw + ".choices", "must be an array of 2–8 options");
         else q.choices.forEach((c, k) => checkText(file, `${qw}.choices[${k}]`, c));
