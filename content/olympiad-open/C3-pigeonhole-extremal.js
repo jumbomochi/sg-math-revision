@@ -79,6 +79,12 @@ H2.addTopic({
 - **Double counting**: count the same set of pairs (person, club), (point, line), ... in two ways to get the total, then average over the boxes.
 - To improve a weak averaging bound, leave out an awkward object (such as the smallest one) and average over the rest.`,
     },
+    {
+      title: String.raw`Splitting into monotone subsequences`,
+      body: String.raw`- Label each term by the length of the longest increasing subsequence **ending** at it. Two terms with the same label form a decreasing pair (otherwise the later one would get a bigger label).
+- So a sequence with no increasing subsequence of length $k$ splits into at most $k - 1$ **decreasing** subsequences (the dual form of Erdős–Szekeres).
+- Example: $3, 1, 4, 2, 5$ has labels $1, 1, 2, 2, 3$, giving the decreasing subsequences $3, 1$ and $4, 2$ and $5$.`,
+    },
   ],
   archetypes: [
     {
@@ -102,6 +108,26 @@ H2.addTopic({
           difficulty: 3,
           answer: String.raw`**Proof.** Key idea: the cells containing $1$ and $60$ are joined by a path of at most $14$ steps between side-sharing cells (at most $9$ horizontal and $5$ vertical); the $59$ total increase along the path cannot be made of $14$ or fewer steps of at most $4$.`,
         },
+        {
+          stem: String.raw`A drawer contains $10$ red, $8$ blue and $3$ green socks. In the dark, what is the smallest number of socks you must take out to be sure of having $4$ socks of the same colour?`,
+          difficulty: 1,
+          answer: String.raw`$10$`,
+        },
+        {
+          stem: String.raw`Each cell of an $8 \times 8$ board contains a non-negative integer, and the sum of all $64$ numbers is $2024$. Find the largest integer $M$ such that, however the numbers are chosen, some $2 \times 2$ square of cells has sum at least $M$.`,
+          difficulty: 2,
+          answer: String.raw`$127$`,
+        },
+        {
+          stem: String.raw`In a class of $30$ students, a test had $8$ problems, and each problem was solved by at least $20$ of the students. Prove that there are two students who, between them, solved all $8$ problems.`,
+          difficulty: 3,
+          answer: String.raw`**Proof.** Key idea: count the pairs (pair of students, problem missed by both): each problem is missed by at most $10$ students, so there are at most $8\binom{10}{2} = 360$ of them, fewer than the $\binom{30}{2} = 435$ pairs of students, so some pair misses no problem.`,
+        },
+        {
+          stem: String.raw`A quiz has $6$ true-or-false questions, and every student answered all of them. Every two students gave different answers to at least $3$ of the questions. Find, with proof, the largest possible number of students.`,
+          difficulty: 4,
+          answer: String.raw`$8$. **Proof.** Key idea: the students who gave the more common answer to question $1$ (at least half of them) still differ in at least $3$ of the other $5$ questions, so halving twice reduces to $4$ questions, where $3$ students are impossible because each question adds at most $2$ to the three pairwise numbers of differences ($4 \cdot 2 < 3 \cdot 3$); for $8$, answer the first three questions in all $8$ ways and let the answers to questions $4, 5, 6$ record whether the answers to questions $1$ and $2$, $1$ and $3$, $2$ and $3$ agree.`,
+        },
       ],
     },
     {
@@ -123,6 +149,27 @@ H2.addTopic({
           stem: String.raw`Find the smallest positive integer $n$ such that among any $n$ integers there are always two whose sum or difference is divisible by $14$. Prove that your answer is correct.`,
           difficulty: 3,
           answer: String.raw`$n = 9$. **Proof.** Key idea: use the $8$ boxes of remainders mod $14$: $\{0\}$, $\{7\}$, $\{1, 13\}$, $\{2, 12\}$, ..., $\{6, 8\}$; two numbers in the same box have sum or difference divisible by $14$, while $0, 1, \ldots, 7$ show that $8$ integers are not enough.`,
+        },
+        {
+          stem: String.raw`What is the smallest number of integers that must be chosen to be sure that three of them leave the same remainder when divided by $7$?`,
+          difficulty: 1,
+          choices: [String.raw`$8$`, String.raw`$14$`, String.raw`$15$`, String.raw`$21$`, String.raw`$22$`],
+          answer: String.raw`(C) $15$`,
+        },
+        {
+          stem: String.raw`What is the largest number of integers that can be chosen from $1, 2, \ldots, 25$ so that no two of the chosen numbers differ by exactly $4$?`,
+          difficulty: 2,
+          answer: String.raw`$13$`,
+        },
+        {
+          stem: String.raw`What is the smallest positive integer $n$ such that among any $n$ different numbers chosen from $1, 2, \ldots, 100$ there are always two whose product is a perfect square?`,
+          difficulty: 3,
+          answer: String.raw`$62$`,
+        },
+        {
+          stem: String.raw`Find, with proof, all integers $m \ge 2$ for which one can choose $\lfloor m/2 \rfloor + 1$ integers whose squares leave pairwise different remainders when divided by $m$.`,
+          difficulty: 4,
+          answer: String.raw`All primes $m$ and all $m = 2p$ with $p$ an odd prime. **Proof.** Key idea: every integer is $\equiv \pm r \pmod m$ with $0 \le r \le \lfloor m/2 \rfloor$, so the condition says that $0^2, 1^2, \ldots, \lfloor m/2 \rfloor^2$ are different mod $m$; this fails if $4 \mid m$ or $p^2 \mid m$ (compare $(m/2)^2$ or $(m/p)^2$ with $0^2$) or if $m = uv$ with coprime $u, v \ge 3$ (by the Chinese remainder theorem some $x \not\equiv \pm 1$ has $x^2 \equiv 1$), and for $m = p$ or $2p$ one checks that $m \mid (x - y)(x + y)$ is impossible for $0 \le y < x \le \lfloor m/2 \rfloor$.`,
         },
       ],
     },
@@ -146,6 +193,26 @@ H2.addTopic({
           difficulty: 3,
           answer: String.raw`$n = 7$. **Proof.** Key idea: among any $3$ integers two have an even sum, so from $7$ integers remove three disjoint pairs with even sums $2a$, $2b$, $2c$; two of $a, b, c$ have the same parity, giving four numbers with sum divisible by $4$. The integers $0, 0, 0, 1, 1, 1$ show that $6$ are not enough.`,
         },
+        {
+          stem: String.raw`What is the largest $n$ for which there is a sequence of $n$ integers in which no block of one or more consecutive terms has a sum divisible by $6$?`,
+          difficulty: 1,
+          answer: String.raw`$5$`,
+        },
+        {
+          stem: String.raw`Each of the $100$ cells of a $1 \times 100$ strip contains a positive integer, and the total of all $100$ numbers is $199$. Prove that there is a block of consecutive cells whose numbers add up to exactly $100$.`,
+          difficulty: 2,
+          answer: String.raw`**Proof.** Key idea: two of the $101$ prefix sums $s_0 = 0, s_1, \ldots, s_{100}$ leave the same remainder mod $100$, so some block has a sum that is a positive multiple of $100$ and at most $199$, hence exactly $100$.`,
+        },
+        {
+          stem: String.raw`Let $n \ge 1$. Some $n$ positive integers are written around a circle, and their total $S$ is at most $2n - 1$. Prove that for every $k$ with $1 \le k \le S$ there is a block of consecutive numbers around the circle with sum exactly $k$.`,
+          difficulty: 3,
+          answer: String.raw`**Proof.** Key idea: the $n$ prefix sums $s_0, \ldots, s_{n-1}$ (starting anywhere) are distinct mod $S$, and so are the $n$ numbers $s_i + k$; since $2n > S$, some $s_j \equiv s_i + k \pmod S$, and the arc from position $i$ to position $j$ has sum $k$ (for $k = S$ take the whole circle).`,
+        },
+        {
+          stem: String.raw`Let $n \ge 2$. Call a sequence of $2n$ terms, each equal to $1$ or $-1$, **balanced** if its sum is $0$. Find, with proof, the largest $L < 2n$ such that every balanced sequence of $2n$ terms has $L$ consecutive terms with sum $0$.`,
+          difficulty: 4,
+          answer: String.raw`$L = n$ if $n$ is even and $L = n + 1$ if $n$ is odd. **Proof.** Key idea: the sums of $L$ consecutive terms ($L$ even) change by $0$ or $\pm 2$ when the block moves one step, so it suffices to find one block with sum $\ge 0$ and one with sum $\le 0$, namely the two halves ($n$ even) or the first and last $n + 1$ terms, which overlap in only $2$ terms ($n$ odd); for even $L = 2k$ with $n + 1 < 2k < 2n$, repeat a block of $2k$ terms with sum $2$ whose first $2n - 2k$ terms have sum $-2$, so that every $2k$ consecutive terms have sum $2$.`,
+        },
       ],
     },
     {
@@ -167,6 +234,26 @@ H2.addTopic({
           stem: String.raw`Thirteen points are placed in a $2 \times 3$ rectangle (inside or on the boundary). Prove that three of them are the vertices of a triangle (possibly degenerate) with area at most $\frac{1}{2}$.`,
           difficulty: 3,
           answer: String.raw`**Proof.** Key idea: cut the rectangle into six unit squares; since $13 > 2 \times 6$, one square contains three of the points, and a triangle inside a unit square has area at most $\frac{1}{2}$ (cut it by the horizontal line through its middle vertex into two triangles with a common base at most $1$ and heights adding up to at most $1$).`,
+        },
+        {
+          stem: String.raw`What is the smallest positive integer $n$ such that whenever $n$ points are placed in a cube of edge $2$ (inside or on the surface), some two of them are at distance at most $\sqrt{3}$?`,
+          difficulty: 1,
+          answer: String.raw`$9$`,
+        },
+        {
+          stem: String.raw`Nineteen points are placed in a unit square (inside or on the boundary). Prove that some three of them lie in a disc of radius $\frac{1}{4}$.`,
+          difficulty: 2,
+          answer: String.raw`**Proof.** Key idea: cut the square into nine squares of side $\frac{1}{3}$; since $19 > 2 \times 9$, one small square holds three points, and it lies inside its circumscribed disc of radius $\frac{\sqrt{2}}{6} < \frac{1}{4}$.`,
+        },
+        {
+          stem: String.raw`Prove that there is an integer $n$ with $1 \le n \le 1000$ such that both $n\sqrt{2}$ and $n\sqrt{3}$ differ from an integer by less than $\frac{1}{31}$.`,
+          difficulty: 3,
+          answer: String.raw`**Proof.** Key idea: for $n = 0, 1, \ldots, 1000$ plot the point (fractional part of $n\sqrt{2}$, fractional part of $n\sqrt{3}$) in the unit square cut into $31^2 = 961$ small squares; two of the $1001$ points share a small square, and the difference of their two values of $n$ works.`,
+        },
+        {
+          stem: String.raw`Find, with proof, the largest number of points that can be placed in a closed ball of radius $1$ (inside or on the boundary) so that every two of them are at distance at least $\sqrt{2}$.`,
+          difficulty: 4,
+          answer: String.raw`$6$, for example $(\pm 1, 0, 0)$, $(0, \pm 1, 0)$, $(0, 0, \pm 1)$. **Proof.** Key idea: with $O$ the centre (which cannot be one of two or more such points), $\angle POQ < 90^\circ$ would give $PQ^2 < OP^2 + OQ^2 \le 2$, so the directions from $O$ make pairwise angles of at least $90^\circ$; fixing one direction $u$, at most one other is $-u$, and the projections of the rest onto the plane perpendicular to $u$ still make pairwise angles of at least $90^\circ$ (the dot products only decrease), so there are at most $4$ of them.`,
         },
       ],
     },
@@ -190,6 +277,26 @@ H2.addTopic({
           difficulty: 3,
           answer: String.raw`**Proof.** Key idea: choose the division that makes the number of enemy pairs inside the same group as small as possible; a member with $3$ or more enemies in their own group has at most $2$ in the other, so moving them would lower that number.`,
         },
+        {
+          stem: String.raw`A set $S$ of seven positive integers has the property that whenever $a$ and $b$ are in $S$ with $a > b$, the number $a - b$ is also in $S$. The largest element of $S$ is $63$. What is the smallest element of $S$?`,
+          difficulty: 1,
+          answer: String.raw`$9$`,
+        },
+        {
+          stem: String.raw`Find all finite sets $S$ of real numbers with at least two elements such that the sum of any two different elements of $S$ is also an element of $S$.`,
+          difficulty: 2,
+          answer: String.raw`$S = \{0, a\}$ or $S = \{-a, 0, a\}$ with $a \ne 0$.`,
+        },
+        {
+          stem: String.raw`Finitely many unit squares with sides parallel to the axes lie in the plane, and their union has area $A$. Prove that one can choose some of these squares, no two of which have a common point, with total area at least $\frac{A}{6}$.`,
+          difficulty: 3,
+          answer: String.raw`**Proof.** Key idea: repeatedly choose, among the squares not yet chosen or discarded, one whose left side is furthest to the left, and discard the squares it meets; these lie in a $2 \times 3$ rectangle starting at the chosen square's left side and extending one unit above and below it, so the union is covered by rectangles of total area $6$ times that of the chosen squares.`,
+        },
+        {
+          stem: String.raw`In a club, every member has at most $7$ enemies among the other members (enmity is mutual). Prove that the members can be split into a red group and a blue group so that every red member has at most $2$ red enemies and every blue member has at most $4$ blue enemies.`,
+          difficulty: 4,
+          answer: String.raw`**Proof.** Key idea: choose the split that minimises $2R + B$, where $R$ and $B$ are the numbers of enemy pairs inside the red and inside the blue group; a red member with at least $3$ red enemies has at most $4$ blue ones, and a blue member with at least $5$ blue enemies has at most $2$ red ones, so moving such a member to the other group would lower $2R + B$ (by at least $2$, respectively $1$).`,
+        },
       ],
     },
     {
@@ -211,6 +318,27 @@ H2.addTopic({
           stem: String.raw`$2026$ students of different heights stand in a row. Prove that one can choose $46$ of them who, read from left to right, are in increasing order of height or in decreasing order of height.`,
           difficulty: 3,
           answer: String.raw`**Proof.** Key idea: $2026 = 45^2 + 1$; label each student by the lengths $(i, d)$ of the longest increasing and decreasing selections ending with them. Different students get different labels, so not all labels fit in $\{1, \ldots, 45\}^2$.`,
+        },
+        {
+          stem: String.raw`What is the smallest $n$ such that every sequence of $n$ different real numbers contains an increasing subsequence of length $3$ or a decreasing subsequence of length $5$?`,
+          difficulty: 1,
+          choices: [String.raw`$8$`, String.raw`$9$`, String.raw`$10$`, String.raw`$15$`, String.raw`$16$`],
+          answer: String.raw`(B) $9$`,
+        },
+        {
+          stem: String.raw`What is the smallest positive integer $n$ such that among any $n$ different positive integers there are always three, $a < b < c$, with $a \mid b$ and $b \mid c$, or three of which none divides another?`,
+          difficulty: 2,
+          answer: String.raw`$5$`,
+        },
+        {
+          stem: String.raw`For an arrangement of $1, 2, \ldots, 2026$ in a row, let $I$ be the length of its longest increasing subsequence and $D$ the length of its longest decreasing subsequence (subsequences read from left to right, not necessarily adjacent). Over all arrangements, what is the smallest possible value of $I + D$?`,
+          difficulty: 3,
+          answer: String.raw`$91$`,
+        },
+        {
+          stem: String.raw`Students with pairwise different heights and pairwise different weights stand in a row. Find, with proof, the smallest $n$ such that among any $n$ such students one can always choose $4$ who, read from left to right, are in increasing or in decreasing order of height and also in increasing or in decreasing order of weight.`,
+          difficulty: 4,
+          answer: String.raw`$n = 82$. **Proof.** Key idea: apply the Erdős–Szekeres theorem twice ($82 = 9^2 + 1$ students include $10 = 3^2 + 1$ in monotone order of height, and these include $4$ in monotone order of weight); for $81$ students, label them along the row by $(a, b, c, d) \in \{1, 2, 3\}^4$ in dictionary order, and order heights by $(a, b, -c, -d)$ and weights by $(a, -b, c, -d)$ in dictionary order, so that the four kinds of monotone pairs are exactly the pairs whose labels first differ in the $1$st, $2$nd, $3$rd and $4$th place, and $4$ labels cannot pairwise first differ in the same place.`,
         },
       ],
     },

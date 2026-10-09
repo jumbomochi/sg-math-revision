@@ -73,6 +73,21 @@ where $r_v, b_v$ are the numbers of red and blue edges at $v$. An upper bound fo
 - A player with the most wins is a **king**: for every other player $Y$, the king beat $Y$ or beat someone who beat $Y$. (If $Y$ beat the king and everyone the king beat, $Y$ would have more wins.)`,
       figure: {"type": "plot", "x": [-1.6, 4.6], "y": [-0.9, 3.9], "equal": true, "axes": false, "segments": [{"from": [0.32, 0.0], "to": [2.68, 0.0], "arrow": true, "tone": "warn"}, {"from": [3.0, 0.32], "to": [3.0, 2.68], "arrow": true, "tone": "warn"}, {"from": [2.774, 2.774], "to": [0.226, 0.226], "arrow": true, "tone": "warn"}, {"from": [0.0, 2.68], "to": [0.0, 0.32], "arrow": true, "tone": "ink"}, {"from": [0.226, 2.774], "to": [2.774, 0.226], "arrow": true, "tone": "ink"}, {"from": [2.68, 3.0], "to": [0.32, 3.0], "arrow": true, "tone": "ink"}], "points": [{"x": 0, "y": 0, "label": "P (1)", "pos": "sw", "style": "plain"}, {"x": 3, "y": 0, "label": "Q (1)", "pos": "se", "style": "plain"}, {"x": 3, "y": 3, "label": "R (2)", "pos": "ne", "style": "plain"}, {"x": 0, "y": 3, "label": "S (2)", "pos": "nw", "style": "plain"}], "caption": "Arrow $X \\to Y$ means $X$ beat $Y$; wins in brackets. The wins add up to $\\binom{4}{2} = 6$. $P \\to Q \\to R \\to P$ is a cyclic triple.", "alt": "Four players P, Q, R, S with arrows for results: P beat Q, Q beat R, R beat P (highlighted cycle), S beat P and Q, R beat S."},
     },
+    {
+      title: String.raw`Turán's theorem`,
+      body: String.raw`- A graph on $n$ vertices containing no $r + 1$ pairwise adjacent vertices (no $K_{r+1}$) has at most as many edges as the **Turán graph**: split the $n$ vertices into $r$ groups whose sizes differ by at most $1$, and join every two vertices in different groups.
+- For $r = 2$ this is Mantel's theorem: a triangle-free graph has at most $\left\lfloor \frac{n^{2}}{4} \right\rfloor$ edges.
+- Example: with $7$ vertices and no $K_{4}$, the groups have sizes $3, 2, 2$, so there are at most $3 \cdot 2 + 3 \cdot 2 + 2 \cdot 2 = 16$ edges, and the Turán graph shows that $16$ is possible.
+- Idea of proof: take a vertex $v$ of largest degree; its neighbours contain no $K_{r}$, so induct inside the neighbourhood and count the edges at the other vertices.`,
+    },
+    {
+      title: String.raw`Distance layers (breadth-first search)`,
+      body: String.raw`- Fix a vertex $v$ and let layer $L_{i}$ be the set of vertices at distance exactly $i$ from $v$. Every edge joins two vertices of the same layer or of consecutive layers.
+- If the graph has **no cycle of length at most $2r$**, then no two vertices of $L_{1}, \ldots, L_{r}$ can be reached from $v$ along two different short routes, so the first $r$ layers form a tree: each vertex of $L_{i}$ ($i < r$) has all its other neighbours in $L_{i+1}$, and they are all different.
+- This gives a lower bound for the number of vertices. Example: if every degree is at least $4$ and there is no cycle of length at most $4$, then $|L_{1}| \ge 4$ and $|L_{2}| \ge 4 \cdot 3$, so there are at least $1 + 4 + 12 = 17$ vertices.
+- Layers starting from both ends of an edge, instead of one vertex, handle cycles of even length.
+- In a tree, the vertices farthest from a "centre" (the middle of a longest path) control the longest distance.`,
+    },
   ],
   archetypes: [
     {
@@ -96,6 +111,26 @@ where $r_v, b_v$ are the numbers of red and blue edges at $v$. An upper bound fo
           difficulty: 3,
           answer: String.raw`$4$`,
         },
+        {
+          stem: String.raw`At a party of $15$ people, each person shook hands with exactly $k$ of the others, and no pair shook hands more than once. How many different values of $k$ are possible?`,
+          difficulty: 1,
+          answer: String.raw`$8$`,
+        },
+        {
+          stem: String.raw`At a party of $21$ people, every man shook hands with exactly $2$ other men and exactly $4$ women, and every woman shook hands with exactly $3$ other women and exactly $3$ men. No pair shook hands more than once. How many handshakes were there in total?`,
+          difficulty: 2,
+          answer: String.raw`$63$`,
+        },
+        {
+          stem: String.raw`A simple graph has $10$ vertices. For every whole number $d$, the number of vertices of degree $d$ is either $0$ or exactly $d$. What is the largest possible number of edges of the graph?`,
+          difficulty: 3,
+          answer: String.raw`$29$`,
+        },
+        {
+          stem: String.raw`In a group of $10$ people there are exactly $31$ pairs of friends. Prove that there are at least $26$ sets of three people who are pairwise friends.`,
+          difficulty: 4,
+          answer: String.raw`**Proof.** Key idea: friends $u, v$ have at least $\deg u + \deg v - 10$ common friends, so summing over the $31$ pairs (which counts each such set of three $3$ times) gives at least $\sum \deg^{2} - 310$, and since the degrees are whole numbers adding up to $62$, $\sum \deg^{2} \ge 8 \cdot 6^{2} + 2 \cdot 7^{2} = 386$, so there are at least $\frac{76}{3} > 25$ such sets.`,
+        },
       ],
     },
     {
@@ -117,6 +152,26 @@ where $r_v, b_v$ are the numbers of red and blue edges at $v$. An upper bound fo
           stem: String.raw`Every vertex of a finite simple graph has degree at least $3$. Prove that the graph contains a cycle of even length.`,
           difficulty: 3,
           answer: String.raw`**Proof.** Key idea: take a longest path $v_1 v_2 \ldots v_k$; all of the at least $3$ neighbours of $v_1$ lie on it, say $v_a, v_b, v_c$ with $1 < a < b < c$, and two of $a, b, c$ have the same parity, say $p < q$, so the cycle $v_1 v_p v_{p+1} \ldots v_q v_1$ has even length $q - p + 2$.`,
+        },
+        {
+          stem: String.raw`A graph has $30$ vertices and $24$ edges and contains no cycle. Into how many connected pieces does it fall?`,
+          difficulty: 1,
+          answer: String.raw`$6$`,
+        },
+        {
+          stem: String.raw`A country has $12$ cities joined by two-way roads, with at most one road between any two cities. However any two of the roads are closed, it is still possible to travel between any two cities on the remaining roads. What is the least possible number of roads?`,
+          difficulty: 2,
+          answer: String.raw`$18$`,
+        },
+        {
+          stem: String.raw`A tree has $15$ vertices, and every vertex has degree at most $3$. The **distance** between two vertices is the number of edges on the path joining them. What is the smallest possible value of the largest distance between two vertices of the tree?`,
+          difficulty: 3,
+          answer: String.raw`$6$`,
+        },
+        {
+          stem: String.raw`A country has $2025$ cities. Some pairs of cities are joined by two-way roads, with at most one road between any two cities, and every city has at least $3$ roads. Prove that there is a cycle of roads of length at most $19$ (a round trip through at most $19$ different cities, using no road twice).`,
+          difficulty: 4,
+          answer: String.raw`**Proof.** Key idea: if there is no cycle of length at most $19$, then for any road $uv$ the cities at distance at most $9$ from $u$ or $v$ are reached along a tree that doubles at every step, giving at least $2(1 + 2 + 4 + \cdots + 2^{9}) = 2046 > 2025$ different cities.`,
         },
       ],
     },
@@ -142,12 +197,32 @@ where $r_v, b_v$ are the numbers of red and blue edges at $v$. An upper bound fo
           difficulty: 3,
           answer: String.raw`$33$`,
         },
+        {
+          stem: String.raw`For each $n$ with $2 \le n \le 12$, draw $n$ points in the plane, no three on a line, and all $\binom{n}{2}$ segments joining them. The pen may change direction only at the $n$ points. For how many of these values of $n$ can the figure be drawn in one stroke, drawing each segment exactly once?`,
+          difficulty: 1,
+          answer: String.raw`$6$`,
+        },
+        {
+          stem: String.raw`A wire model of a $2 \times 2 \times 2$ cube is made from all the edges of its eight unit cubes: $54$ pieces of wire, each of length $1$. An ant walks along the wires, covering every piece at least once, and finishes where it started. What is the shortest possible length of its walk?`,
+          difficulty: 2,
+          answer: String.raw`$68$`,
+        },
+        {
+          stem: String.raw`A string of letters is made from the eight letters A, B, C, D, E, F, G, H (letters may be repeated). Every two different letters must stand next to each other, in some order, somewhere in the string. What is the shortest possible length of the string?`,
+          difficulty: 3,
+          answer: String.raw`$32$`,
+        },
+        {
+          stem: String.raw`A connected graph has exactly $2k$ vertices of odd degree, where $k \ge 1$. Prove that these $2k$ vertices can be split into $k$ pairs, and the two vertices of each pair joined by a **shortest** path (one with the fewest possible edges between them), so that no two of the $k$ paths have a common edge.`,
+          difficulty: 4,
+          answer: String.raw`**Proof.** Key idea: choose the pairing with the smallest total distance between paired vertices; if shortest paths for the pairs $\{s_1, t_1\}$ and $\{s_2, t_2\}$ both used an edge $uv$, re-pairing $s_1$ with $s_2$ and $t_1$ with $t_2$ (or $s_1$ with $t_2$ and $s_2$ with $t_1$, according to the direction in which the second path crosses $uv$) would lower the total by at least $2$.`,
+        },
       ],
     },
     {
       id: "C5-ramsey-extremal",
       name: String.raw`Ramsey-type and extremal arguments`,
-      tests: String.raw`Edges of a complete graph are coloured, or a graph avoids triangles, and you must force or count a structure. Pigeonhole at one vertex, count two-coloured corners, or use $\deg u + \deg v \le n$ for edges of a triangle-free graph.`,
+      tests: String.raw`Edges of a complete graph are coloured, or a graph avoids triangles, and you must force or count a structure. Pigeonhole at one vertex, count two-coloured corners, or use $\deg u + \deg v \le n$ for edges of a triangle-free graph; Turán's theorem gives the largest graphs with no $K_{r+1}$.`,
       questions: [
         {
           stem: String.raw`The $10$ segments joining $5$ points are each coloured red or blue so that no triangle with vertices among the $5$ points has all three sides the same colour. How many red segments are there?`,
@@ -163,6 +238,26 @@ where $r_v, b_v$ are the numbers of red and blue edges at $v$. An upper bound fo
           stem: String.raw`Each of the $28$ segments joining $8$ points, no three collinear, is coloured red or blue. Prove that there are at least $8$ triangles, with vertices among the $8$ points, whose three sides all have the same colour.`,
           difficulty: 3,
           answer: String.raw`**Proof.** Key idea: count two-coloured corners; at each point $r + b = 7$ gives $rb \le 12$, so there are at most $\frac{1}{2} \cdot 8 \cdot 12 = 48$ non-monochromatic triangles among the $\binom{8}{3} = 56$.`,
+        },
+        {
+          stem: String.raw`In a group of $9$ people, no three are pairwise friends, and Sam, one of the nine, has exactly $6$ friends in the group. What is the largest possible number of pairs of friends in the group?`,
+          difficulty: 1,
+          answer: String.raw`$18$`,
+        },
+        {
+          stem: String.raw`Each side and each diagonal of a regular nonagon (a $9$-gon) is coloured: red if it joins two vertices that are $1$ or $2$ places apart around the nonagon, and blue otherwise. How many of the triangles whose vertices are vertices of the nonagon have all three sides of the same colour?`,
+          difficulty: 2,
+          answer: String.raw`$12$`,
+        },
+        {
+          stem: String.raw`In a group of $11$ people, no four are pairwise friends. What is the largest possible number of pairs of friends?`,
+          difficulty: 3,
+          answer: String.raw`$40$`,
+        },
+        {
+          stem: String.raw`Find the smallest $n$ such that, however the edges of the complete graph $K_n$ are coloured red and blue, there are three triangles, each of which has all three sides of one colour (the colours of the three triangles may differ), such that no two of the three triangles have a common side.`,
+          difficulty: 4,
+          answer: String.raw`$9$`,
         },
       ],
     },
@@ -187,6 +282,27 @@ where $r_v, b_v$ are the numbers of red and blue edges at $v$. An upper bound fo
           difficulty: 3,
           answer: String.raw`**Proof.** Key idea: choose the split with the largest number of friend pairs between the two groups; if someone had more friends in their own group, moving them to the other group would increase that number.`,
         },
+        {
+          stem: String.raw`A rook moves on an $n \times n$ board, each step going to a cell that shares a side with its current cell. For how many values of $n$ with $2 \le n \le 10$ can the rook visit every cell exactly once and return, with its last step, to the cell where it started?`,
+          difficulty: 1,
+          answer: String.raw`$5$`,
+        },
+        {
+          stem: String.raw`An equilateral triangle of side $3$ is divided into $9$ small equilateral triangles, as shown, giving $10$ points joined by $18$ unit segments. What is the least number of segments that must be erased so that the $10$ points can be coloured with two colours in such a way that every remaining segment joins points of different colours?`,
+          figure: {"type": "plot", "x": [-0.4, 3.4], "y": [-0.4, 2.998], "equal": true, "axes": false, "segments": [{"from": [0.0, 0.0], "to": [3.0, 0.0], "tone": "ink"}, {"from": [0, 0], "to": [1.5, 2.598], "tone": "ink"}, {"from": [0.5, 0.866], "to": [2.5, 0.866], "tone": "ink"}, {"from": [1, 0], "to": [2.0, 1.732], "tone": "ink"}, {"from": [1, 0], "to": [0.5, 0.866], "tone": "ink"}, {"from": [1.0, 1.732], "to": [2.0, 1.732], "tone": "ink"}, {"from": [2, 0], "to": [2.5, 0.866], "tone": "ink"}, {"from": [2, 0], "to": [1.0, 1.732], "tone": "ink"}, {"from": [3, 0], "to": [1.5, 2.598], "tone": "ink"}], "points": [{"x": 0.0, "y": 0.0}, {"x": 1.0, "y": 0.0}, {"x": 2.0, "y": 0.0}, {"x": 3.0, "y": 0.0}, {"x": 0.5, "y": 0.866}, {"x": 1.5, "y": 0.866}, {"x": 2.5, "y": 0.866}, {"x": 1.0, "y": 1.732}, {"x": 2.0, "y": 1.732}, {"x": 1.5, "y": 2.598}], "alt": "An equilateral triangle of side 3 divided into 9 small equilateral triangles; the 10 grid points are marked and joined by 18 unit segments."},
+          difficulty: 2,
+          answer: String.raw`$6$`,
+        },
+        {
+          stem: String.raw`In a country some pairs of cities are joined by two-way roads, and some of the roads are toll roads. Every round trip that uses each of its roads once and visits no city twice (a cycle) uses an even number of toll roads. Prove that the cities can be split into two groups so that a road is a toll road exactly when it joins two cities of different groups.`,
+          difficulty: 3,
+          answer: String.raw`**Proof.** Key idea: in each connected part fix a city $O$ and put a city in the second group when a route from $O$ to it uses an odd number of toll roads; two routes of different parity would give a closed walk with an odd number of toll roads, and such a walk contains a cycle with an odd number of toll roads.`,
+        },
+        {
+          stem: String.raw`In a group of $12$ people no three are pairwise friends, but the $12$ people cannot be split into two groups so that no two friends are in the same group. Find the largest possible number of pairs of friends, and prove that it cannot be exceeded.`,
+          difficulty: 4,
+          answer: String.raw`$31$. **Proof.** Key idea: a shortest odd cycle $C$, of length $2k + 1 \ge 5$, has no chord and every person off $C$ has at most $2$ friends on $C$ (three would close up a shorter odd cycle), so with Mantel's theorem for the other $11 - 2k$ people there are at most $(2k + 1) + 2(11 - 2k) + \left\lfloor \frac{(11 - 2k)^{2}}{4} \right\rfloor \le 31$ pairs; equality holds for a $5$-cycle $v_1 v_2 v_3 v_4 v_5$ plus $4$ people who are friends with $v_1$ and $v_3$ and $3$ people who are friends with $v_2$ and $v_4$, each of the $4$ being friends with each of the $3$.`,
+        },
       ],
     },
     {
@@ -209,6 +325,26 @@ where $r_v, b_v$ are the numbers of red and blue edges at $v$. An upper bound fo
           difficulty: 3,
           answer: String.raw`$5$`,
         },
+        {
+          stem: String.raw`What is the largest number of cells of a $6 \times 6$ board that can be coloured black so that no $2 \times 2$ square of four cells is entirely black?`,
+          difficulty: 1,
+          answer: String.raw`$27$`,
+        },
+        {
+          stem: String.raw`In how many ways can each cell of a $6 \times 6$ board be coloured red or blue so that every row and every column contains an odd number of red cells?`,
+          difficulty: 2,
+          answer: String.raw`$2^{25}$`,
+        },
+        {
+          stem: String.raw`What is the least number of cells of a $7 \times 7$ board that must be coloured black so that every $1 \times 4$ rectangle of four cells in a row or in a column contains at least one black cell?`,
+          difficulty: 3,
+          answer: String.raw`$12$`,
+        },
+        {
+          stem: String.raw`Some cells of a $7 \times 7$ board are coloured black so that no black cell shares a side with two or more black cells. What is the largest possible number of black cells?`,
+          difficulty: 4,
+          answer: String.raw`$26$`,
+        },
       ],
     },
     {
@@ -230,6 +366,26 @@ where $r_v, b_v$ are the numbers of red and blue edges at $v$. An upper bound fo
           stem: String.raw`Eight players play a round-robin tournament with no draws, and one of them, Anna, won exactly $6$ of her $7$ games. A set of three players is called **cyclic** if each of the three beat exactly one of the other two. Find the largest possible number of cyclic sets, and prove that it cannot be exceeded.`,
           difficulty: 3,
           answer: String.raw`$17$. **Proof.** Key idea: a non-cyclic set has exactly one player who beat both others, so there are $\sum \binom{w_i}{2}$ non-cyclic sets; Anna gives $\binom{6}{2} = 15$ and the other seven win $22$ games, so they give at least $6\binom{3}{2} + \binom{4}{2} = 24$, leaving at most $56 - 39 = 17$, with equality when Anna loses only to player $0$ and the seven players other than Anna, numbered $0$ to $6$, play so that $i$ beats $i + 1, i + 2, i + 3 \pmod 7$.`,
+        },
+        {
+          stem: String.raw`Six football teams play a round-robin tournament, each pair of teams meeting once. A win earns $3$ points, a draw earns $1$ point for each team, and a loss earns $0$ points. How many different values can the total number of points of all six teams take?`,
+          difficulty: 1,
+          answer: String.raw`$16$`,
+        },
+        {
+          stem: String.raw`Eight players play a round-robin chess tournament, each pair playing once, with no draws. What is the largest possible number of players who win at least $5$ games?`,
+          difficulty: 2,
+          answer: String.raw`$5$`,
+        },
+        {
+          stem: String.raw`Ten teams play a round-robin tournament, each pair meeting once, with $3$ points for a win, $1$ point to each team for a draw and $0$ for a loss. What is the smallest number $P$ such that a team with at least $P$ points is certain that at most two other teams have as many points as it or more?`,
+          difficulty: 3,
+          answer: String.raw`$23$`,
+        },
+        {
+          stem: String.raw`Fourteen players play a round-robin tournament, every two players meeting once, with no draws. Find the smallest $k$ such that, however the games turn out, one can choose $k$ players so that every other player lost to at least one of the $k$ chosen players, and prove your answer.`,
+          difficulty: 4,
+          answer: String.raw`$3$. **Proof.** Key idea: a player with the most wins beat at least $7$ others, so at most $6$ players remain, and repeating the step inside the remaining group leaves at most $2$ and then $0$; for $k = 2$ to fail, take the $7$ players $0, 1, \ldots, 6$ in which $i$ beat $i + 1, i + 2, i + 4 \pmod 7$ and replace each player by two players with the same results against everyone else.`,
         },
       ],
     },

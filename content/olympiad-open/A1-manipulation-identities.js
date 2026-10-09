@@ -75,6 +75,14 @@ $$a^4 + 4b^4 = (a^2 + 2b^2)^2 - (2ab)^2 = (a^2 + 2ab + 2b^2)(a^2 - 2ab + 2b^2).$
 - **Cube roots**: guess $\sqrt[3]{p + q\sqrt{d}} = u + v\sqrt{d}$ and expand; or let $t = \sqrt[3]{A} + \sqrt[3]{B}$ and use $t^3 = A + B + 3\sqrt[3]{AB}\,t$. Example: $(1 + \sqrt{2})^3 = 7 + 5\sqrt{2}$.
 - If $\sqrt{a} + \sqrt{b}$ equals a rational multiple of $\sqrt{d}$, squaring shows $\sqrt{ab}$ is rational, which pins down the form of $a$ and $b$.`,
     },
+    {
+      title: String.raw`Hidden differences of squares`,
+      body: String.raw`Adding and subtracting a well-chosen term can turn an expression into $P^2 - Q^2$; the Sophie Germain identity is one example.
+
+- $x^2 + x + 1 = (x + 1)^2 - x$ splits whenever $x$ is a perfect square, and $x^2 - x + 1 = (x + 1)^2 - 3x$ splits whenever $3x$ is a perfect square. Example: $12^2 - 12 + 1 = 13^2 - 6^2 = 7 \cdot 19$.
+- Combined with $a^3 \pm 1 = (a \pm 1)(a^2 \mp a + 1)$, this can split a number like $a^{3} + 1$ into three factors of similar size.
+- Comparing factorisations of one number $N = ab$: since $(a + b)^2 - (b - a)^2 = 4N$, the closer $a$ and $b$ are, the closer $a + b$ is to $2\sqrt{N}$.`,
+    },
   ],
   archetypes: [
     {
@@ -96,6 +104,26 @@ $$a^4 + 4b^4 = (a^2 + 2b^2)^2 - (2ab)^2 = (a^2 + 2ab + 2b^2)(a^2 - 2ab + 2b^2).$
           stem: String.raw`Prove that $n^5 - 5n^3 + 4n$ is divisible by $120$ for every integer $n$.`,
           difficulty: 3,
           answer: String.raw`**Proof.** Key idea: factorise as $(n-2)(n-1)n(n+1)(n+2)$, a product of five consecutive integers, which is divisible by $3$, $5$ and $8$.`,
+        },
+        {
+          stem: String.raw`Evaluate $\dfrac{2026^3 - 1}{2026^2 + 2027}$.`,
+          difficulty: 1,
+          answer: String.raw`$2025$`,
+        },
+        {
+          stem: String.raw`Find all positive integers $n$ for which $n^3 - 8n^2 + 20n - 13$ is a prime number.`,
+          difficulty: 2,
+          answer: String.raw`$n = 2, 3, 4$`,
+        },
+        {
+          stem: String.raw`Find all positive integers $n$ for which $n^{2026} + n^{1013} + 1$ is a prime number, and prove that there are no others.`,
+          difficulty: 3,
+          answer: String.raw`Only $n = 1$. **Proof.** Key idea: since $n^3 \equiv 1 \pmod{n^2 + n + 1}$ and $2026 \equiv 1$, $1013 \equiv 2 \pmod 3$, the number is $\equiv n + n^2 + 1 \equiv 0 \pmod{n^2 + n + 1}$, a proper factor once $n \ge 2$.`,
+        },
+        {
+          stem: String.raw`Prove that $3^{2025} + 1$ has a positive divisor $d$ with $3^{1000} < d < 3^{1012}$.`,
+          difficulty: 4,
+          answer: String.raw`**Proof.** Key idea: for odd $k$, $3^{2k} - 3^k + 1 = (3^k + 1)^2 - 3^{k+1}$ is a difference of squares, so $3^{3k} + 1 = (3^k + 1)\big(3^k + 1 - 3^{(k+1)/2}\big)\big(3^k + 1 + 3^{(k+1)/2}\big)$; applying this for $k = 25, 75, 225, 675$ and taking $d = (3^{25} + 1)\prod_{k \in \{75, 225, 675\}}\big(3^k + 1 + 3^{(k+1)/2}\big)$ gives a divisor just above $3^{1000}$.`,
         },
       ],
     },
@@ -120,6 +148,28 @@ $$a^4 + 4b^4 = (a^2 + 2b^2)^2 - (2ab)^2 = (a^2 + 2ab + 2b^2)(a^2 - 2ab + 2b^2).$
           difficulty: 3,
           answer: String.raw`**Proof.** Key idea: with $t_n = x^n + x^{-n}$, the recurrence $t_{n+1} = t_1 t_n - t_{n-1}$ (and $t_0 = 2$) gives integers by strong induction.`,
         },
+        {
+          stem: String.raw`The real number $x$ satisfies $x - \dfrac{1}{x} = 3$. Find $x^4 + \dfrac{1}{x^4}$.`,
+          difficulty: 1,
+          answer: String.raw`$119$`,
+        },
+        {
+          stem: String.raw`The positive real number $x$ satisfies $x^2 + \dfrac{1}{x^2} = 47$. Find $\sqrt{x} + \dfrac{1}{\sqrt{x}}$.`,
+          difficulty: 2,
+          answer: String.raw`$3$`,
+        },
+        {
+          stem: String.raw`Let $x$ be a non-zero real number such that $x^2 + \dfrac{1}{x^2}$ and $x^3 + \dfrac{1}{x^3}$ are both integers. Prove that $x + \dfrac{1}{x}$ is an integer.`,
+          difficulty: 3,
+          answer: String.raw`**Proof.** Key idea: with $t = x + \frac1x$ and $a = t^2 - 2$, we get $x^3 + x^{-3} = t(t^2 - 3) = t(a - 1)$ with $a - 1 \ge 1$, so $t$ is rational; a rational $t$ with $t^2 = a + 2$ an integer must be an integer.`,
+        },
+        {
+          stem: String.raw`Let $k \ge 3$ be an integer and let $x$ be a real number with $x + \dfrac{1}{x} = k$. Prove that for every odd positive integer $n$, the number
+$$\frac{x^n + x^{-n} - 2}{k - 2}$$
+is the square of an integer.`,
+          difficulty: 4,
+          answer: String.raw`**Proof.** Key idea: $x^n + x^{-n} - 2 = \big(x^{n/2} - x^{-n/2}\big)^2$ and $k - 2 = \big(x^{1/2} - x^{-1/2}\big)^2$, so for $n = 2m + 1$ the quotient is $\big(x^{-m} + \cdots + x^{m}\big)^2 = \big(1 + t_1 + \cdots + t_m\big)^2$ with $t_j = x^j + x^{-j}$ integers.`,
+        },
       ],
     },
     {
@@ -142,6 +192,29 @@ $$a^4 + 4b^4 = (a^2 + 2b^2)^2 - (2ab)^2 = (a^2 + 2ab + 2b^2)(a^2 - 2ab + 2b^2).$
           difficulty: 3,
           answer: String.raw`$\dfrac{1833}{4930}$`,
         },
+        {
+          stem: String.raw`Evaluate $\dfrac{1}{1 \cdot 2 \cdot 3} + \dfrac{1}{2 \cdot 3 \cdot 4} + \dfrac{1}{3 \cdot 4 \cdot 5} + \cdots + \dfrac{1}{8 \cdot 9 \cdot 10}$, giving your answer as a fraction in lowest terms.`,
+          difficulty: 1,
+          answer: String.raw`$\dfrac{11}{45}$`,
+        },
+        {
+          stem: String.raw`Let $\theta = \arctan\dfrac{1}{3} + \arctan\dfrac{1}{7} + \arctan\dfrac{1}{13} + \cdots + \arctan\dfrac{1}{91}$, where the $k$-th angle is $\arctan\dfrac{1}{k^2 + k + 1}$ for $k = 1, 2, \ldots, 9$. Find $\tan\theta$.`,
+          difficulty: 2,
+          answer: String.raw`$\dfrac{9}{11}$`,
+        },
+        {
+          stem: String.raw`Find the exact value of the infinite sum
+$$\sum_{k=1}^{\infty} \frac{k^2 + k - 1}{(k + 2)!}.$$`,
+          difficulty: 3,
+          answer: String.raw`$\dfrac{1}{2}$`,
+        },
+        {
+          stem: String.raw`Prove that there are infinitely many positive integers $n$ for which
+$$\left(4 \cdot 1^4 + 1\right)\left(4 \cdot 2^4 + 1\right)\left(4 \cdot 3^4 + 1\right)\cdots\left(4n^4 + 1\right)$$
+is a perfect square.`,
+          difficulty: 4,
+          answer: String.raw`**Proof.** Key idea: $4k^4 + 1 = h(k)\,h(k+1)$ with $h(k) = k^2 + (k - 1)^2$, so the product telescopes to $\big(n^2 + (n+1)^2\big)$ times a square; and $n^2 + (n + 1)^2 = c^2$ has infinitely many solutions, since $(n, c) \mapsto (3n + 2c + 1,\ 4n + 3c + 2)$ maps one solution to a larger one (starting from $(3, 5)$).`,
+        },
       ],
     },
     {
@@ -163,6 +236,26 @@ $$a^4 + 4b^4 = (a^2 + 2b^2)^2 - (2ab)^2 = (a^2 + 2ab + 2b^2)(a^2 - 2ab + 2b^2).$
           stem: String.raw`Find all pairs $(m, n)$ of positive integers for which $m^4 + 4n^4$ is prime, and prove that there are no others.`,
           difficulty: 3,
           answer: String.raw`Only $(m, n) = (1, 1)$. **Proof.** Key idea: $m^4 + 4n^4 = \big((m+n)^2 + n^2\big)\big((m-n)^2 + n^2\big)$, and the smaller factor equals $1$ only when $m = n = 1$.`,
+        },
+        {
+          stem: String.raw`Evaluate $\dfrac{2026^4 + 4}{2025^2 + 1}$.`,
+          difficulty: 1,
+          answer: String.raw`$4108730$ (that is, $2027^2 + 1$)`,
+        },
+        {
+          stem: String.raw`Find the largest prime factor of $4^9 + 9^4$.`,
+          difficulty: 2,
+          answer: String.raw`$881$`,
+        },
+        {
+          stem: String.raw`Find all positive integers $n$ for which $n^4 + 4$ is a power of a prime (that is, equal to $p^k$ for some prime $p$ and positive integer $k$), and prove that there are no others.`,
+          difficulty: 3,
+          answer: String.raw`Only $n = 1$. **Proof.** Key idea: $n^4 + 4 = \big((n+1)^2 + 1\big)\big((n-1)^2 + 1\big)$; if both factors exceeded $1$ they would both be powers of the same odd prime $p$, which then divides their difference $4n$ and hence $n$, but then $(n+1)^2 + 1 \equiv 2 \pmod p$.`,
+        },
+        {
+          stem: String.raw`Find all positive integers $n$ for which $n^4 + 4$ can be written as $ab$ with positive integers $a \le b$ and $b - a < 4n$, and prove that there are no others.`,
+          difficulty: 4,
+          answer: String.raw`$n = 2$ and $n = 4$ (for example $20 = 4 \cdot 5$ and $260 = 13 \cdot 20$). **Proof.** Key idea: Sophie Germain gives $(n^2 - 2n + 2)(n^2 + 2n + 2)$ with gap exactly $4n$; for any $ab = n^4 + 4$ write $a + b = 2n^2 + s$, so $(b - a)^2 = s^2 + 4n^2 s - 16$, and $b - a < 4n$ forces $1 \le s \le 3$, where $s = 2, 3$ fail mod $8$ and mod $3$ and $s = 1$ needs $4n^2 - 15$ to be a square.`,
         },
       ],
     },
@@ -188,6 +281,28 @@ Find $x^4 + y^4 + z^4$.`,
           difficulty: 3,
           answer: String.raw`$69$`,
         },
+        {
+          stem: String.raw`Real numbers $a$ and $b$ satisfy $a - b = 2$ and $ab = 5$. Find $a^3 - b^3$.`,
+          difficulty: 1,
+          answer: String.raw`$38$`,
+        },
+        {
+          stem: String.raw`Real numbers $a, b, c$ satisfy $a + b + c = 3$ and $ab + bc + ca = 3$. Find $a^{2026} + b^{2026} + c^{2026}$.`,
+          difficulty: 2,
+          answer: String.raw`$3$`,
+        },
+        {
+          stem: String.raw`Three distinct real numbers $a, b, c$ satisfy
+$$a^3 - 6a = b^3 - 6b = c^3 - 6c.$$
+Find $a^4 + b^4 + c^4$.`,
+          difficulty: 3,
+          answer: String.raw`$72$`,
+        },
+        {
+          stem: String.raw`Find the smallest positive integer $m$ with the following property: whenever real numbers $a, b, c$ are such that $a + b + c$, $a^2 + b^2 + c^2$ and $a^3 + b^3 + c^3$ are all integers, the number $m\left(a^4 + b^4 + c^4\right)$ is also an integer.`,
+          difficulty: 4,
+          answer: String.raw`$m = 6$. Key idea: from Newton's identities $2e_2$ and $6e_3$ are integers and $6p_4$ is a polynomial with integer coefficients in $p_1, p_2, p_3$; real examples such as $(p_1, p_2, p_3) = (-6, 13, -30)$ and $(-5, 11, -28)$ give $p_4 = \frac{145}{2}$ and $\frac{229}{3}$, so $2 \mid m$ and $3 \mid m$.`,
+        },
       ],
     },
     {
@@ -209,6 +324,28 @@ Find $x^4 + y^4 + z^4$.`,
           stem: String.raw`Find all pairs $(a, b)$ of positive integers with $a < b$ such that $\sqrt{a} + \sqrt{b} = \sqrt{98}$, and prove that there are no others.`,
           difficulty: 3,
           answer: String.raw`$(a, b) = (2, 72), (8, 50), (18, 32)$. **Proof.** Key idea: squaring $\sqrt{b} = \sqrt{98} - \sqrt{a}$ shows $\sqrt{98a} = 7\sqrt{2a}$ is rational, so $a = 2m^2$ and then $b = 2(7 - m)^2$.`,
+        },
+        {
+          stem: String.raw`Simplify $\sqrt{8 + 2\sqrt{15}} - \sqrt{8 - 2\sqrt{15}}$.`,
+          difficulty: 1,
+          answer: String.raw`$2\sqrt{3}$`,
+        },
+        {
+          stem: String.raw`Simplify $\sqrt{6 - \sqrt{17 + 12\sqrt{2}}}$.`,
+          difficulty: 2,
+          answer: String.raw`$\sqrt{2} - 1$`,
+        },
+        {
+          stem: String.raw`Find all pairs $(x, y)$ of rational numbers with $x \ge y \ge 0$ such that
+$$\sqrt{x} + \sqrt{y} = \sqrt{2 + \sqrt{3}},$$
+and prove that there are no others.`,
+          difficulty: 3,
+          answer: String.raw`Only $(x, y) = \left(\frac32, \frac12\right)$. **Proof.** Key idea: squaring gives $2\sqrt{xy} = \sqrt3 + (2 - x - y)$; squaring again leaves a rational multiple of $\sqrt3$ that must vanish, so $x + y = 2$ and $4xy = 3$.`,
+        },
+        {
+          stem: String.raw`Find all pairs $(a, b)$ of positive integers with $a < b$ such that $\sqrt[3]{a} + \sqrt[3]{b} = \sqrt[3]{250}$, and prove that there are no others.`,
+          difficulty: 4,
+          answer: String.raw`$(a, b) = (2, 128)$ and $(16, 54)$. **Proof.** Key idea: cubing, $t^3 = a + b + 3\sqrt[3]{ab}\,t$ with $t = \sqrt[3]{250}$, shows $\sqrt[3]{a}\sqrt[3]{b} = r/t$ for a rational $r$; then $w = \sqrt[3]{a}/t$ is a root of a rational quadratic with $w^3$ rational, which forces $w$ rational, so $a = 250w^3$, $b = 250(1-w)^3$ with $w \in \{\frac15, \frac25, \frac35, \frac45\}$.`,
         },
       ],
     },

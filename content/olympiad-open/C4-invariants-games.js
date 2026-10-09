@@ -79,6 +79,24 @@ Rules: a position with no moves is P; a position is **N** if **some** move leads
 - Example: heaps $2, 5, 6$: $010 \oplus 101 \oplus 110 = 001$, so reduce $5$ to $5 \oplus 1 = 4$. Check: $2 \oplus 4 \oplus 6 = 0$.
 - Many games are **Nim in disguise**: identify what plays the role of each heap (a distance, a gap, a count) and check that a move changes exactly one "heap" and can reduce it to any smaller value.`,
     },
+    {
+      title: String.raw`Weighted invariants: a weight $x^{k}$ for position $k$`,
+      body: String.raw`When tokens move along a row of squares, give a token on square $k$ the weight $x^{k}$ and choose $x$ so that **one move does not change the total weight**.
+
+- Write the move as an equation in $x$ and solve it. Example: a move replaces three tokens on square $k$ by one token on square $k + 1$. Then $3x^{k} = x^{k+1}$ gives $x = 3$, so $\sum 3^{(\text{square})}$ is invariant.
+- If $x > 1$ and every weight is positive, the invariant total limits how far right a token can get: in the example, starting with $50$ tokens on square $0$ (total weight $50$), no token can reach square $4$, since $3^{4} = 81 > 50$.
+- Pair the weight with a count (the number of tokens, or of moves) to prove that a process stops or to find how long it takes.`,
+    },
+    {
+      title: String.raw`Grundy values: adding games together`,
+      body: String.raw`When a game is made of independent parts (several piles, several rows), and a move is made in exactly one part, give each position of a part its **Grundy value**:
+
+- the **mex** (minimum excluded value) of a set of non-negative integers is the least non-negative integer not in it, e.g. $\operatorname{mex}\{0, 1, 3\} = 2$;
+- $g(\text{position}) = \operatorname{mex}\{g(Q) : Q \text{ reachable in one move}\}$; a position with no moves has value $0$.
+- **Sprague–Grundy theorem**: a position made of parts with values $g_1, g_2, \ldots$ is a P-position exactly when $g_1 \oplus g_2 \oplus \cdots = 0$. Each part behaves like a Nim heap of size $g_i$.
+- A winning move changes one part from value $g_i$ to $g_i \oplus s$, where $s$ is the total nim-sum; count the winning moves part by part.
+- Example: piles where a move removes $1$ or $2$ stones from one pile. Tabulating gives $g(n) = n \bmod 3$, so piles $4$ and $5$ have values $1 \oplus 2 = 3 \ne 0$, and the first player wins by moving pile $5$ to value $1$ (take $1$ stone, leaving $4$ and $4$).`,
+    },
   ],
   archetypes: [
     {
@@ -88,9 +106,9 @@ Rules: a position with no moves is P; a position is **N** if **some** move leads
       questions: [
         {
           stem: String.raw`The numbers $1, 2, 3, \ldots, 10$ are written on a board. A move consists of erasing two numbers and writing either their sum or the larger minus the smaller. After nine moves one number is left. Which of the following could it be?`,
-          choices: [String.raw`$0$`, String.raw`$12$`, String.raw`$20$`, String.raw`$37$`, String.raw`$56$`],
+          choices: [String.raw`$0$`, String.raw`$12$`, String.raw`$20$`, String.raw`$28$`, String.raw`$37$`],
           difficulty: 1,
-          answer: String.raw`(D) $37$`,
+          answer: String.raw`(E) $37$`,
         },
         {
           stem: String.raw`Three boxes contain $4$, $9$ and $14$ marbles. A move consists of taking one marble from each of two boxes and putting both of them into the third box. What is the largest number of marbles that can ever be in one box?`,
@@ -103,12 +121,32 @@ Rules: a position with no moves is P; a position is **N** if **some** move leads
           difficulty: 3,
           answer: String.raw`$181\,440$`,
         },
+        {
+          stem: String.raw`A frog sits at $0$ on the number line and makes $21$ jumps. The first jump has length $1$, the second has length $2$, and so on, up to the $21$st jump of length $21$; each jump goes to the left or to the right, as the frog chooses. How many different numbers can the frog be at after the $21$ jumps?`,
+          difficulty: 1,
+          answer: String.raw`$232$`,
+        },
+        {
+          stem: String.raw`A robot starts at the point $(0, 0)$ of the coordinate plane. Each move takes it from $(x, y)$ to $(x + 2, y + 1)$, to $(x + 1, y + 3)$ or to $(x - 3, y - 4)$. How many of the $100$ points $(x, y)$ with $x, y \in \{0, 1, 2, \ldots, 9\}$ can the robot reach?`,
+          difficulty: 2,
+          answer: String.raw`$20$`,
+        },
+        {
+          stem: String.raw`A **word** is a finite string of the letters A and B (the empty word, with no letters, is allowed). A move consists of inserting one of the blocks AAA, BB or ABAB anywhere in a word (at the start, at the end or between two letters), or deleting one of these blocks where it appears as consecutive letters. How many of the $1024$ words of length $10$ can be turned into the empty word by a sequence of moves?`,
+          difficulty: 3,
+          answer: String.raw`$171$`,
+        },
+        {
+          stem: String.raw`Let $n \ge 3$. Around a circle stand $n$ boxes, each containing one stone. A move consists of choosing a box whose two neighbouring boxes are both non-empty, taking one stone from each of these two neighbours, and putting both stones into the chosen box. Find all $n$ for which it is possible to gather all $n$ stones in one box, and prove that there are no others.`,
+          difficulty: 4,
+          answer: String.raw`All odd $n$. **Proof.** Key idea: number the boxes $0, 1, \ldots, n - 1$ round the circle; if box $k$ holds $a_k$ stones, then $\sum k\,a_k \pmod n$ never changes, which rules out even $n$; for odd $n$, run the moves backwards: each becomes a move in which a box with at least two stones sends one stone to each neighbour, and spreading one pile of $n$ stones in this way along a line ends with one stone on each of $n$ consecutive points, so wrapping the line round the circle does it.`,
+        },
       ],
     },
     {
       id: "C4-algebraic-invariants",
       name: String.raw`The last number on the board`,
-      tests: String.raw`Two numbers are repeatedly replaced by one according to a formula, and you must find the final number. Find a function $f$ with $f(\text{new}) = f(a) + f(b)$ or $f(a)\,f(b)$, so that a sum or product over the board is invariant.`,
+      tests: String.raw`Two numbers are repeatedly replaced by one according to a formula, and you must find the final number. Find a function $f$ with $f(\text{new}) = f(a) + f(b)$ or $f(a)\,f(b)$, so that a sum or product over the board is invariant. Harder versions move tokens along a strip; weight a token on square $k$ by $x^{k}$.`,
       questions: [
         {
           stem: String.raw`The numbers $1, 2, 3, \ldots, 30$ are written on a board. A move consists of erasing two numbers $a$ and $b$ and writing $a + b - 1$. After $29$ moves one number is left. What is it?`,
@@ -124,6 +162,26 @@ Rules: a position with no moves is P; a position is **N** if **some** move leads
           stem: String.raw`The $99$ numbers $\dfrac{1}{2}, \dfrac{1}{3}, \dfrac{1}{4}, \ldots, \dfrac{1}{100}$ are written on a board. A move consists of erasing two numbers $a$ and $b$ and writing $\dfrac{a + b}{1 + ab}$. After $98$ moves one number is left. What is it?`,
           difficulty: 3,
           answer: String.raw`$\dfrac{5049}{5051}$`,
+        },
+        {
+          stem: String.raw`The numbers $1, 2, 3, \ldots, 24$ are written on a board. A move consists of erasing two numbers $a$ and $b$ and writing $\sqrt{a^{2} + b^{2}}$. After $23$ moves one number is left. What is it?`,
+          difficulty: 1,
+          answer: String.raw`$70$`,
+        },
+        {
+          stem: String.raw`The six numbers $2, 4, 8, 16, 32, 64$ are written on a board. A move consists of erasing two numbers $a$ and $b$ and writing $a^{\log_{2} b}$. After five moves one number is left. What is it?`,
+          difficulty: 2,
+          answer: String.raw`$2^{720}$`,
+        },
+        {
+          stem: String.raw`The $20$ numbers $2, \dfrac{3}{2}, \dfrac{4}{3}, \ldots, \dfrac{21}{20}$ (that is, $1 + \dfrac{1}{k}$ for $k = 1, 2, \ldots, 20$) are written on a board. A move consists of erasing two numbers $a$ and $b$ and writing $\dfrac{ab - 1}{a + b - 2}$. After $19$ moves one number is left. What is it?`,
+          difficulty: 3,
+          answer: String.raw`$\dfrac{211}{210}$`,
+        },
+        {
+          stem: String.raw`The squares of an infinite strip are numbered by all the integers, from left to right. Initially there are $100$ stones on square $0$ and no other stones. A move consists of choosing a square $k$ with at least two stones, removing two stones from it, and putting one stone on square $k + 1$ and one stone on square $k - 2$. Prove that, however the moves are made, no stone ever reaches square $9$.`,
+          difficulty: 4,
+          answer: String.raw`**Proof.** Key idea: give a stone on square $k$ the weight $\varphi^{k}$, where $\varphi = \frac{1 + \sqrt5}{2}$, so that $2\varphi^{k} = \varphi^{k+1} + \varphi^{k-2}$ and the total weight stays $100$; a first stone on square $9$ needs two stones on square $8$, and just before the second of these arrives there are one stone on square $8$ and two on square $7$, of total weight $\varphi^{8} + 2\varphi^{7} = \varphi^{9} + \varphi^{7} > 105$.`,
         },
       ],
     },
@@ -147,12 +205,32 @@ Rules: a position with no moves is P; a position is **N** if **some** move leads
           difficulty: 3,
           answer: String.raw`**Proof.** Key idea: read the row as a binary number with the $k$-th lamp from the left worth $2^{k-1}$ when on; a move on lamps $k, k+1$ gains $2^{k}-2^{k-1}=2^{k-1}$ and loses at most $2^{k-1}-1$ on the lamps to the left, so the number rises by at least $1$ each move and stays between $0$ and $2^{n}-1$.`,
         },
+        {
+          stem: String.raw`The boxes of a row are numbered $0, 1, 2, \ldots$ from left to right, and box $0$ contains $100$ tokens; the other boxes are empty. A move consists of taking two tokens from one box, putting one of them into the next box to the right and throwing the other one away. Moves are made until every box contains at most one token. How many moves are made?`,
+          difficulty: 1,
+          answer: String.raw`$97$`,
+        },
+        {
+          stem: String.raw`Twelve coins lie in a row, all showing heads. A move consists of choosing a coin that shows heads and is not the rightmost coin, and turning over both it and the coin immediately to its right. Moves are made until no move is possible. What is the largest possible number of moves?`,
+          difficulty: 2,
+          answer: String.raw`$66$`,
+        },
+        {
+          stem: String.raw`The numbers $1, 2, 3, \ldots, 10$ are written on a board. A move consists of choosing two numbers $a$ and $b$ on the board with $a \ge b + 2$ and replacing them by $a - 1$ and $b + 1$. Moves are made until no move is possible. How many different values can the total number of moves take?`,
+          difficulty: 3,
+          answer: String.raw`$31$`,
+        },
+        {
+          stem: String.raw`A word is written using the letters A, B and C. A move consists of replacing two consecutive letters AB by the three letters BBA, or replacing two consecutive letters BC by the three letters CCB. Prove that, whatever the starting word and however the moves are chosen, only finitely many moves can be made.`,
+          difficulty: 4,
+          answer: String.raw`**Proof.** Key idea: the sum over all letters B of $2^{(\text{number of A's to its left})}$ never changes, so the number of B's is bounded and only finitely many AB-moves happen; between two AB-moves the sum over all letters C of $2^{(\text{number of B's to its left})}$ is constant, which bounds the number of BC-moves.`,
+        },
       ],
     },
     {
       id: "C4-colouring-tilings",
       name: String.raw`Colouring arguments for tilings`,
-      tests: String.raw`"Can this board be tiled by these pieces?" or "where can the missing cell be?" Colour the board (chessboard, or $(i + j) \bmod k$ for $1 \times k$ pieces) so each piece covers a fixed colour pattern, then compare colour counts.`,
+      tests: String.raw`"Can this board be tiled by these pieces?" or "where can the missing cell be?" Colour the board (chessboard, or $(i + j) \bmod k$ for $1 \times k$ pieces) so each piece covers a fixed colour pattern, then compare colour counts. Near a corner, follow the placements that are forced.`,
       questions: [
         {
           stem: String.raw`Two cells are removed from the $6 \times 6$ board shown, whose columns are labelled a to f and rows $1$ to $6$. In which case can the remaining $34$ cells **not** be tiled by $17$ dominoes ($1 \times 2$ rectangles)?`,
@@ -170,6 +248,28 @@ Rules: a position with no moves is P; a position is **N** if **some** move leads
           stem: String.raw`One cell is removed from a $5 \times 9$ board, and the remaining $44$ cells are tiled by eleven $1 \times 4$ rectangles. How many of the $45$ cells could the removed cell be?`,
           difficulty: 3,
           answer: String.raw`$6$`,
+        },
+        {
+          stem: String.raw`An equilateral triangle of side $6$ is divided by lines parallel to its sides into $36$ small equilateral triangles of side $1$, as shown. A **rhombus** is a piece made of two small triangles that share a side. What is the largest number of rhombuses that can be cut from the big triangle along the grid lines?`,
+          figure: {"type": "plot", "x": [-0.4, 6.4], "y": [-0.4, 5.596], "equal": true, "axes": false, "segments": [{"from": [0.0, 0.0], "to": [6.0, 0.0], "tone": "ink"}, {"from": [0, 0], "to": [3.0, 5.196], "tone": "ink"}, {"from": [0.5, 0.866], "to": [5.5, 0.866], "tone": "ink"}, {"from": [1, 0], "to": [3.5, 4.33], "tone": "ink"}, {"from": [1, 0], "to": [0.5, 0.866], "tone": "ink"}, {"from": [1.0, 1.732], "to": [5.0, 1.732], "tone": "ink"}, {"from": [2, 0], "to": [4.0, 3.464], "tone": "ink"}, {"from": [2, 0], "to": [1.0, 1.732], "tone": "ink"}, {"from": [1.5, 2.598], "to": [4.5, 2.598], "tone": "ink"}, {"from": [3, 0], "to": [4.5, 2.598], "tone": "ink"}, {"from": [3, 0], "to": [1.5, 2.598], "tone": "ink"}, {"from": [2.0, 3.464], "to": [4.0, 3.464], "tone": "ink"}, {"from": [4, 0], "to": [5.0, 1.732], "tone": "ink"}, {"from": [4, 0], "to": [2.0, 3.464], "tone": "ink"}, {"from": [2.5, 4.33], "to": [3.5, 4.33], "tone": "ink"}, {"from": [5, 0], "to": [5.5, 0.866], "tone": "ink"}, {"from": [5, 0], "to": [2.5, 4.33], "tone": "ink"}, {"from": [6, 0], "to": [3.0, 5.196], "tone": "ink"}], "alt": "An equilateral triangle of side 6 divided by lines parallel to its sides into 36 small equilateral triangles."},
+          difficulty: 1,
+          answer: String.raw`$15$`,
+        },
+        {
+          stem: String.raw`Let $n \ge 1$. The **staircase** of size $n$ consists of $n$ rows of unit cells; from top to bottom the rows contain $1, 2, \ldots, n$ cells, and all rows start at the same left edge (the figure shows $n = 5$). Prove that for no $n$ can the staircase be tiled by $1 \times 3$ rectangles, placed horizontally or vertically.`,
+          figure: {"type": "plot", "x": [-0.3, 5.3], "y": [-0.3, 5.3], "equal": true, "axes": false, "polygons": [{"points": [[0, 4], [1, 4], [1, 5], [0, 5]], "tone": "ink"}, {"points": [[0, 3], [1, 3], [1, 4], [0, 4]], "tone": "ink"}, {"points": [[1, 3], [2, 3], [2, 4], [1, 4]], "tone": "ink"}, {"points": [[0, 2], [1, 2], [1, 3], [0, 3]], "tone": "ink"}, {"points": [[1, 2], [2, 2], [2, 3], [1, 3]], "tone": "ink"}, {"points": [[2, 2], [3, 2], [3, 3], [2, 3]], "tone": "ink"}, {"points": [[0, 1], [1, 1], [1, 2], [0, 2]], "tone": "ink"}, {"points": [[1, 1], [2, 1], [2, 2], [1, 2]], "tone": "ink"}, {"points": [[2, 1], [3, 1], [3, 2], [2, 2]], "tone": "ink"}, {"points": [[3, 1], [4, 1], [4, 2], [3, 2]], "tone": "ink"}, {"points": [[0, 0], [1, 0], [1, 1], [0, 1]], "tone": "ink"}, {"points": [[1, 0], [2, 0], [2, 1], [1, 1]], "tone": "ink"}, {"points": [[2, 0], [3, 0], [3, 1], [2, 1]], "tone": "ink"}, {"points": [[3, 0], [4, 0], [4, 1], [3, 1]], "tone": "ink"}, {"points": [[4, 0], [5, 0], [5, 1], [4, 1]], "tone": "ink"}], "alt": "A staircase of cells: rows of 1, 2, 3, 4 and 5 cells from top to bottom, all starting at the same left edge.", "caption": "The staircase for $n = 5$."},
+          difficulty: 2,
+          answer: String.raw`**Proof.** Key idea: the right-hand cell of each row can only be covered by a vertical rectangle hanging down from it, since the cell to its left is already covered by the rectangle hanging down from the row above; so the last cell of row $n - 1$ would need a rectangle reaching row $n + 1$.`,
+        },
+        {
+          stem: String.raw`The rows and the columns of a $12 \times 12$ board are numbered $1$ to $12$. The board is tiled by $1 \times 3$ rectangles (placed horizontally or vertically) together with exactly nine $2 \times 2$ squares. For how many of the nine squares is the sum $r + c$ divisible by $3$, where $(r, c)$ is the cell in the top-left corner of the square (row $r$, column $c$)?`,
+          difficulty: 3,
+          answer: String.raw`$3$`,
+        },
+        {
+          stem: String.raw`The rows and the columns of a $2026 \times 2026$ board are numbered $1$ to $2026$. The board is tiled by $1 \times 4$ rectangles (placed horizontally or vertically) and $2 \times 2$ squares. Prove that some $2 \times 2$ square has its top-left cell in row $r$ and column $c$, where $r$ and $c$ are odd and $r \equiv c \pmod 4$.`,
+          difficulty: 4,
+          answer: String.raw`**Proof.** Key idea: colour cell $(r, c)$ by $(r + c) \bmod 4$, and separately by $(r - c) \bmod 4$; each rectangle covers every colour once, so comparing colour counts shows that squares with top-left $r + c \equiv 2$ outnumber those with $r + c \equiv 0$ by exactly one, and squares with $r - c \equiv 0$ outnumber those with $r - c \equiv 2$ by exactly one, and adding these two equations shows that the squares of the required kind outnumber those with $r, c$ odd and $r \not\equiv c \pmod 4$ by exactly one.`,
         },
       ],
     },
@@ -193,12 +293,32 @@ Rules: a position with no moves is P; a position is **N** if **some** move leads
           difficulty: 3,
           answer: String.raw`$162$`,
         },
+        {
+          stem: String.raw`A token stands in the top-right cell of a board with $m$ columns and $n$ rows. Two players take turns to move the token one cell to the left, one cell down, or one cell diagonally down and to the left. The player who moves the token into the bottom-left cell wins. For how many of the $81$ boards with $2 \le m \le 10$ and $2 \le n \le 10$ can the second player guarantee a win?`,
+          difficulty: 1,
+          answer: String.raw`$16$`,
+        },
+        {
+          stem: String.raw`A positive integer $n$ is written on a board. Two players take turns. On each turn the player replaces the number $m$ on the board by $m - 1$ or, if $m$ is even, by $\dfrac{m}{2}$. The player who writes $0$ wins. For how many values of $n$ with $1 \le n \le 100$ can the second player guarantee a win?`,
+          difficulty: 2,
+          answer: String.raw`$49$`,
+        },
+        {
+          stem: String.raw`There are two piles of stones, with $a$ and $b$ stones. Two players take turns. On each turn a player either takes any positive number of stones from one pile, or takes exactly one stone from each pile. The player who takes the last stone wins. For how many of the $400$ starting positions with $1 \le a \le 20$ and $1 \le b \le 20$ can the second player guarantee a win?`,
+          difficulty: 3,
+          answer: String.raw`$20$`,
+        },
+        {
+          stem: String.raw`A pile has $n \ge 2$ stones. Two players take turns. On the first turn, the first player removes any number of stones, but not all of them. On every later turn, the player must remove a number of stones that divides the number of stones the opponent removed on the turn before. The player who takes the last stone wins. Find all $n$ for which the second player has a winning strategy, and prove that there are no others.`,
+          difficulty: 4,
+          answer: String.raw`The powers of $2$. **Proof.** Key idea: if $n = 2^{a}b$ with $b > 1$ odd, the first player removes $2^{a}$, while if $n = 2^{a}$ the second player answers a first removal of $2^{j}c$ ($c$ odd) by removing $2^{j}$; from then on this player copies every removal of the opponent, which keeps the number of stones left a multiple of twice the last removal (always a power of $2$), so this player is never stuck.`,
+        },
       ],
     },
     {
       id: "C4-symmetry-nim",
       name: String.raw`Symmetry strategies and Nim`,
-      tests: String.raw`Games on symmetric boards and arrangements, and games made of independent parts. Look for a mirror move that is always legal, or translate the game into Nim heaps and use the nim-sum.`,
+      tests: String.raw`Games on symmetric boards and arrangements, and games made of independent parts. Look for a mirror move that is always legal, or translate the game into Nim heaps and use the nim-sum; for other games made of independent parts, use Grundy values.`,
       questions: [
         {
           stem: String.raw`Twenty sweets are placed in a $4 \times 5$ rectangular array, as shown. Two players take turns. On each turn a player takes either one sweet, or two sweets that were next to each other in the same row or the same column of the original array and are both still there. The player who takes the last sweet wins. Which player can guarantee a win?`,
@@ -215,6 +335,27 @@ Rules: a position with no moves is P; a position is **N** if **some** move leads
           stem: String.raw`Two players take turns to shade one unshaded cell of a $2025 \times 2025$ board. A cell may not be shaded if it shares a side with a cell that is already shaded. The player who cannot move loses. Prove that the first player has a winning strategy.`,
           difficulty: 3,
           answer: String.raw`**Proof.** Key idea: shade the centre cell first, then always shade the cell symmetric (through the centre) to the opponent's last cell; a cell and its mirror image are never adjacent, so by symmetry this reply is always legal.`,
+        },
+        {
+          stem: String.raw`In the game of Nim, which of the following positions (sizes of three heaps) is a losing position for the player who is about to move?`,
+          choices: [String.raw`$4, 7, 9$`, String.raw`$5, 9, 12$`, String.raw`$6, 10, 13$`, String.raw`$7, 8, 14$`, String.raw`$8, 9, 14$`],
+          difficulty: 1,
+          answer: String.raw`(B) $5, 9, 12$`,
+        },
+        {
+          stem: String.raw`There are $2026$ points equally spaced around a circle. Two players take turns. On each turn a player draws a chord joining two points that are not yet endpoints of a chord; the new chord may not cross or touch any chord already drawn. The player who cannot move loses. Which player can guarantee a win?`,
+          difficulty: 2,
+          answer: String.raw`The first player`,
+        },
+        {
+          stem: String.raw`There are four piles with $7$, $9$, $13$ and $18$ stones. Two players take turns. On each turn a player removes $1$, $2$ or $3$ stones from one pile. The player who takes the last stone wins. How many different first moves guarantee a win for the first player?`,
+          difficulty: 3,
+          answer: String.raw`$4$`,
+        },
+        {
+          stem: String.raw`There are four piles with $12$, $20$, $40$ and $48$ stones. Two players take turns. On each turn a player chooses a pile and removes from it a number of stones that divides the current number of stones in that pile (the whole pile may be removed). The player who takes the last stone wins. How many different first moves guarantee a win for the first player?`,
+          difficulty: 4,
+          answer: String.raw`$6$`,
         },
       ],
     },

@@ -292,6 +292,15 @@ $$AC \cdot BD = AB \cdot CD + AD \cdot BC.$$
         alt: "Cyclic quadrilateral ABCD with its diagonals AC and BD drawn.",
       },
     },
+    {
+      title: String.raw`Areas around an interior point`,
+      body: String.raw`Let $P$ be inside triangle $ABC$, with $u = [PBC]$, $v = [PCA]$, $w = [PAB]$, and let $AP$, $BP$, $CP$ meet the opposite sides at $D$, $E$, $F$.
+
+- The cevians split the sides in ratios of these areas: $\dfrac{BD}{DC} = \dfrac{w}{v}$, $\dfrac{CE}{EA} = \dfrac{u}{w}$, $\dfrac{AF}{FB} = \dfrac{v}{u}$ (triangles $ABD$, $ADC$ and $PBD$, $PDC$ share heights). Multiplying gives Ceva's theorem again.
+- Along a cevian: $\dfrac{AP}{PD} = \dfrac{v + w}{u}$.
+- Each of the six small triangles is then a fraction of $u$, $v$ or $w$, for example $[PBD] = u \cdot \dfrac{w}{v + w}$.
+- Example: with $u : v : w = 1 : 2 : 4$, $BD : DC = 2 : 1$ and $AP : PD = 6 : 1$.`,
+    },
   ],
   archetypes: [
     {
@@ -398,6 +407,31 @@ $$AC \cdot BD = AB \cdot CD + AD \cdot BC.$$
             alt: "Right-angled triangle ABC with the right angle at C and altitude CD to the hypotenuse. The incircles of triangles ACD and BCD are drawn.",
           },
           answer: String.raw`$29$`,
+        },
+        {
+          stem: String.raw`$ABCD$ is a trapezium with $AB \parallel DC$, $AB = 12$ and $DC = 4$. Its diagonals meet at $P$, and triangle $PDC$ has area $3$. What is the area of the trapezium?`,
+          difficulty: 1,
+          figure: {"type": "plot", "x": [-0.4, 4.96], "y": [-0.4, 3.06], "equal": true, "axes": false, "polygons": [{"points": [[2.052, 1.995], [1.216, 2.66], [2.736, 2.66]], "fill": true, "tone": "accent"}], "segments": [{"from": [0.0, 0.0], "to": [4.56, 0.0], "tone": "ink"}, {"from": [4.56, 0.0], "to": [2.736, 2.66], "tone": "ink"}, {"from": [2.736, 2.66], "to": [1.216, 2.66], "tone": "ink"}, {"from": [1.216, 2.66], "to": [0.0, 0.0], "tone": "ink"}, {"from": [0.0, 0.0], "to": [2.736, 2.66], "tone": "muted"}, {"from": [4.56, 0.0], "to": [1.216, 2.66], "tone": "muted"}], "points": [{"x": 2.052, "y": 1.995}], "labels": [{"x": 2.28, "y": 0.0, "text": "12", "pos": "s", "style": "plain"}, {"x": 1.976, "y": 2.66, "text": "4", "pos": "n", "style": "plain"}, {"x": 2.001, "y": 2.438, "text": "3", "pos": "c", "style": "plain"}, {"x": 0.0, "y": 0.0, "text": "A", "pos": "sw", "style": "italic"}, {"x": 4.56, "y": 0.0, "text": "B", "pos": "se", "style": "italic"}, {"x": 2.736, "y": 2.66, "text": "C", "pos": "ne", "style": "italic"}, {"x": 1.216, "y": 2.66, "text": "D", "pos": "nw", "style": "italic"}, {"x": 2.052, "y": 1.995, "text": "P", "pos": "s", "style": "italic"}], "alt": "Trapezium ABCD with the long base AB = 12 at the bottom and the short base DC = 4 at the top. The diagonals cross at P, and triangle PDC is shaded with area 3."},
+          choices: [String.raw`$36$`, String.raw`$39$`, String.raw`$45$`, String.raw`$48$`, String.raw`$64$`],
+          answer: String.raw`(D) $48$`,
+        },
+        {
+          stem: String.raw`A right-angled triangle has legs $6$ and $8$. A square lies inside it with one side on the hypotenuse and its other two vertices on the two legs. Find the side length of the square.`,
+          difficulty: 2,
+          figure: {"type": "plot", "x": [-0.45, 4.45], "y": [-0.45, 3.45], "equal": true, "axes": false, "polygons": [{"points": [[1.297, 0.0], [0.0, 0.973], [0.973, 2.27], [2.27, 1.297]], "fill": true, "tone": "accent"}], "segments": [{"from": [4.0, 0.0], "to": [0.0, 3.0], "tone": "ink"}, {"from": [0.0, 3.0], "to": [0.0, 0.0], "tone": "ink"}, {"from": [0.0, 0.0], "to": [4.0, 0.0], "tone": "ink"}], "rightAngles": [{"at": [0.0, 0.0], "a": [4.0, 0.0], "b": [0.0, 3.0], "size": 0.2}], "labels": [{"x": 2.0, "y": 0.0, "text": "8", "pos": "s", "style": "plain"}, {"x": 0.0, "y": 1.5, "text": "6", "pos": "w", "style": "plain"}], "alt": "Right-angled triangle with legs 6 and 8. A shaded square sits inside it with one side along the hypotenuse and one vertex on each leg."},
+          answer: String.raw`$\tfrac{120}{37}$`,
+        },
+        {
+          stem: String.raw`Triangle $ABC$ has a right angle at $C$, and $CD$ is its altitude. Points $M$ on $CD$ and $N$ on $DB$ satisfy $\dfrac{CM}{MD} = \dfrac{BN}{ND}$. Prove that $AM \perp CN$.`,
+          difficulty: 3,
+          figure: {"type": "plot", "x": [-2.418, 1.994], "y": [-2.194, 0.4], "equal": true, "axes": false, "segments": [{"from": [-2.018, -1.794], "to": [1.594, -1.794], "tone": "ink"}, {"from": [1.594, -1.794], "to": [0.0, -0.0], "tone": "ink"}, {"from": [0.0, -0.0], "to": [-2.018, -1.794], "tone": "ink"}, {"from": [0.0, -0.0], "to": [0.0, -1.794], "tone": "muted"}, {"from": [-2.018, -1.794], "to": [0.0, -0.673], "tone": "accent"}, {"from": [0.0, -0.0], "to": [0.997, -1.794], "tone": "good"}], "rightAngles": [{"at": [0.0, -0.0], "a": [-2.018, -1.794], "b": [1.594, -1.794], "size": 0.18}, {"at": [0.0, -1.794], "a": [1.594, 0.0], "b": [0.0, 1.794], "size": 0.18}], "points": [{"x": 0.0, "y": -0.673}, {"x": 0.997, "y": -1.794}], "labels": [{"x": -2.018, "y": -1.794, "text": "A", "pos": "sw", "style": "italic"}, {"x": 1.594, "y": -1.794, "text": "B", "pos": "se", "style": "italic"}, {"x": 0.0, "y": -0.0, "text": "C", "pos": "n", "style": "italic"}, {"x": 0.0, "y": -1.794, "text": "D", "pos": "s", "style": "italic"}, {"x": 0.0, "y": -0.673, "text": "M", "pos": "e", "style": "italic"}, {"x": 0.997, "y": -1.794, "text": "N", "pos": "s", "style": "italic"}], "alt": "Right-angled triangle ABC with the right angle at C and altitude CD to the hypotenuse. M is on CD and N is on DB; segments AM and CN are drawn."},
+          answer: String.raw`**Proof.** Key idea: triangles $ACD$ and $CBD$ are similar with $A \to C$, $C \to B$, $D \to D$, and $M$, $N$ are corresponding points; this similarity is a rotation through $90^\circ$ about $D$ combined with a scaling, so it turns $AM$ into $CN$ through $90^\circ$.`,
+        },
+        {
+          stem: String.raw`In an acute triangle, a square is inscribed **on** a side if one side of the square lies on that side of the triangle and its other two vertices lie on the other two sides. Acute triangle $ABC$ has inradius $r$, and its three inscribed squares (the one on $BC$ is shown) have sides $x$, $y$, $z$. Prove that $$\frac1x + \frac1y + \frac1z \le \frac{2 + \sqrt3}{2r}.$$`,
+          difficulty: 4,
+          figure: {"type": "plot", "x": [-0.4, 5.0], "y": [-0.4, 4.49], "equal": true, "axes": false, "polygons": [{"points": [[0.919, 0.0], [3.084, 0.0], [3.084, 2.165], [0.919, 2.165]], "fill": true, "tone": "accent"}], "segments": [{"from": [1.736, 4.09], "to": [0.0, 0.0], "tone": "ink"}, {"from": [0.0, 0.0], "to": [4.6, 0.0], "tone": "ink"}, {"from": [4.6, 0.0], "to": [1.736, 4.09], "tone": "ink"}], "labels": [{"x": 1.736, "y": 4.09, "text": "A", "pos": "n", "style": "italic"}, {"x": 0.0, "y": 0.0, "text": "B", "pos": "sw", "style": "italic"}, {"x": 4.6, "y": 0.0, "text": "C", "pos": "se", "style": "italic"}], "alt": "Acute triangle ABC with the shaded square inscribed on side BC: one side of the square lies on BC and its top vertices lie on AB and AC."},
+          answer: String.raw`**Proof.** Key idea: similar triangles give $\frac1x = \frac1a + \frac1{h_a}$ (and likewise for $y$, $z$), and $\frac1{h_a} + \frac1{h_b} + \frac1{h_c} = \frac{a + b + c}{2[ABC]} = \frac1r$; for $\frac1a + \frac1b + \frac1c \le \frac{\sqrt3}{2r}$ use Ravi's $a = q + w$, $b = w + p$, $c = p + q$ with $r^2 = \frac{pqw}{p + q + w}$, then $\frac1{q + w} \le \frac1{2\sqrt{qw}}$ and $\big(\sum \frac1{\sqrt{qw}}\big)^2 \le 3\sum\frac1{qw} = \frac3{r^2}$.`,
         },
       ],
     },
@@ -509,6 +543,30 @@ $$AC \cdot BD = AB \cdot CD + AD \cdot BC.$$
           },
           answer: String.raw`$7$`,
         },
+        {
+          stem: String.raw`Triangle $ABC$ has area $72$. $D$ is the midpoint of $AB$, and $E$ is the point on $BC$ with $BE : EC = 1 : 2$. Find the area of triangle $DBE$.`,
+          difficulty: 1,
+          figure: {"type": "plot", "x": [-0.4, 5.2], "y": [-0.4, 3.8], "equal": true, "axes": false, "polygons": [{"points": [[0.75, 1.7], [0.0, 0.0], [1.6, 0.0]], "fill": true, "tone": "accent"}], "segments": [{"from": [1.5, 3.4], "to": [0.0, 0.0], "tone": "ink"}, {"from": [0.0, 0.0], "to": [4.8, 0.0], "tone": "ink"}, {"from": [4.8, 0.0], "to": [1.5, 3.4], "tone": "ink"}, {"from": [0.75, 1.7], "to": [1.6, 0.0], "tone": "accent"}, {"from": [1.207, 2.514], "to": [1.043, 2.586], "tone": "ink"}, {"from": [0.457, 0.814], "to": [0.293, 0.886], "tone": "ink"}], "points": [{"x": 0.75, "y": 1.7}, {"x": 1.6, "y": 0.0}], "labels": [{"x": 0.783, "y": 0.567, "text": "?", "pos": "c", "style": "plain"}, {"x": 1.5, "y": 3.4, "text": "A", "pos": "n", "style": "italic"}, {"x": 0.0, "y": 0.0, "text": "B", "pos": "sw", "style": "italic"}, {"x": 4.8, "y": 0.0, "text": "C", "pos": "se", "style": "italic"}, {"x": 0.75, "y": 1.7, "text": "D", "pos": "w", "style": "italic"}, {"x": 1.6, "y": 0.0, "text": "E", "pos": "s", "style": "italic"}], "alt": "Triangle ABC with D the midpoint of AB and E on BC one third of the way from B to C. Triangle DBE is shaded and marked with a question mark."},
+          answer: String.raw`$12$`,
+        },
+        {
+          stem: String.raw`Point $P$ lies inside parallelogram $ABCD$. Triangles $PAB$, $PBC$ and $PCD$ have areas $5$, $9$ and $8$. Find the area of triangle $PAC$.`,
+          difficulty: 2,
+          figure: {"type": "plot", "x": [-0.4, 5.742], "y": [-0.4, 4.834], "equal": true, "axes": false, "segments": [{"from": [0.0, 0.0], "to": [4.237, 0.0], "tone": "ink"}, {"from": [4.237, 0.0], "to": [5.342, 4.434], "tone": "ink"}, {"from": [5.342, 4.434], "to": [1.105, 4.434], "tone": "ink"}, {"from": [1.105, 4.434], "to": [0.0, 0.0], "tone": "ink"}, {"from": [1.729, 1.705], "to": [0.0, 0.0], "tone": "muted"}, {"from": [1.729, 1.705], "to": [4.237, 0.0], "tone": "muted"}, {"from": [1.729, 1.705], "to": [5.342, 4.434], "tone": "muted"}, {"from": [1.729, 1.705], "to": [1.105, 4.434], "tone": "muted"}, {"from": [0.0, 0.0], "to": [5.342, 4.434], "tone": "accent", "dashed": true}], "points": [{"x": 1.729, "y": 1.705}], "labels": [{"x": 1.989, "y": 0.568, "text": "5", "pos": "c", "style": "plain"}, {"x": 3.769, "y": 2.046, "text": "9", "pos": "c", "style": "plain"}, {"x": 2.725, "y": 3.524, "text": "8", "pos": "c", "style": "plain"}, {"x": 0.0, "y": 0.0, "text": "A", "pos": "sw", "style": "italic"}, {"x": 4.237, "y": 0.0, "text": "B", "pos": "se", "style": "italic"}, {"x": 5.342, "y": 4.434, "text": "C", "pos": "ne", "style": "italic"}, {"x": 1.105, "y": 4.434, "text": "D", "pos": "nw", "style": "italic"}, {"x": 1.729, "y": 1.705, "text": "P", "pos": "n", "style": "italic"}], "alt": "Parallelogram ABCD with an interior point P joined to all four vertices. The triangles PAB, PBC and PCD are labelled with areas 5, 9 and 8. The diagonal AC is dashed."},
+          answer: String.raw`$1$`,
+        },
+        {
+          stem: String.raw`$ABCD$ is a parallelogram. $E$ is the point on $AB$ with $AE : EB = 1 : 2$, and $F$ is the point on $BC$ with $BF : FC = 3 : 1$. Lines $DE$ and $DF$ meet the diagonal $AC$ at $P$ and $Q$. What fraction of the area of $ABCD$ is the area of triangle $DPQ$?`,
+          difficulty: 3,
+          figure: {"type": "plot", "x": [-0.4, 5.9], "y": [-0.4, 3.4], "equal": true, "axes": false, "polygons": [{"points": [[1.3, 3.0], [1.375, 0.75], [4.4, 2.4]], "fill": true, "tone": "accent"}], "segments": [{"from": [0.0, 0.0], "to": [4.2, 0.0], "tone": "ink"}, {"from": [4.2, 0.0], "to": [5.5, 3.0], "tone": "ink"}, {"from": [5.5, 3.0], "to": [1.3, 3.0], "tone": "ink"}, {"from": [1.3, 3.0], "to": [0.0, 0.0], "tone": "ink"}, {"from": [0.0, 0.0], "to": [5.5, 3.0], "tone": "muted"}, {"from": [1.3, 3.0], "to": [1.4, 0.0], "tone": "ink"}, {"from": [1.3, 3.0], "to": [5.175, 2.25], "tone": "ink"}], "points": [{"x": 1.4, "y": 0.0}, {"x": 5.175, "y": 2.25}], "labels": [{"x": 0.0, "y": 0.0, "text": "A", "pos": "sw", "style": "italic"}, {"x": 4.2, "y": 0.0, "text": "B", "pos": "se", "style": "italic"}, {"x": 5.5, "y": 3.0, "text": "C", "pos": "ne", "style": "italic"}, {"x": 1.3, "y": 3.0, "text": "D", "pos": "nw", "style": "italic"}, {"x": 1.4, "y": 0.0, "text": "E", "pos": "s", "style": "italic"}, {"x": 5.175, "y": 2.25, "text": "F", "pos": "e", "style": "italic"}, {"x": 1.375, "y": 0.75, "text": "P", "pos": "se", "style": "italic"}, {"x": 4.4, "y": 2.4, "text": "Q", "pos": "s", "style": "italic"}], "alt": "Parallelogram ABCD with E on AB and F on BC. Segments DE and DF cross the diagonal AC at P and Q, and triangle DPQ is shaded."},
+          answer: String.raw`$\tfrac{11}{40}$`,
+        },
+        {
+          stem: String.raw`Point $P$ lies inside triangle $ABC$, and lines $AP$, $BP$, $CP$ meet $BC$, $CA$, $AB$ at $D$, $E$, $F$. Writing $[XYZ]$ for the area of triangle $XYZ$, prove that $$[DEF]^3 \le \frac{27}{8}\,[PBD]\,[PCE]\,[PAF].$$`,
+          difficulty: 4,
+          figure: {"type": "plot", "x": [-0.4, 5.4], "y": [-0.4, 4.0], "equal": true, "axes": false, "polygons": [{"points": [[2.2, 1.2], [0.0, 0.0], [2.5, 0.0]], "fill": true, "tone": "accent"}, {"points": [[2.2, 1.2], [5.0, 0.0], [3.3, 1.8]], "fill": true, "tone": "accent"}, {"points": [[2.2, 1.2], [1.6, 3.6], [0.8, 1.8]], "fill": true, "tone": "accent"}], "segments": [{"from": [1.6, 3.6], "to": [0.0, 0.0], "tone": "ink"}, {"from": [0.0, 0.0], "to": [5.0, 0.0], "tone": "ink"}, {"from": [5.0, 0.0], "to": [1.6, 3.6], "tone": "ink"}, {"from": [1.6, 3.6], "to": [2.5, 0.0], "tone": "muted"}, {"from": [0.0, 0.0], "to": [3.3, 1.8], "tone": "muted"}, {"from": [5.0, 0.0], "to": [0.8, 1.8], "tone": "muted"}, {"from": [2.5, 0.0], "to": [3.3, 1.8], "tone": "accent", "dashed": true}, {"from": [3.3, 1.8], "to": [0.8, 1.8], "tone": "accent", "dashed": true}, {"from": [0.8, 1.8], "to": [2.5, 0.0], "tone": "accent", "dashed": true}], "points": [{"x": 2.2, "y": 1.2}], "labels": [{"x": 1.6, "y": 3.6, "text": "A", "pos": "n", "style": "italic"}, {"x": 0.0, "y": 0.0, "text": "B", "pos": "sw", "style": "italic"}, {"x": 5.0, "y": 0.0, "text": "C", "pos": "se", "style": "italic"}, {"x": 2.5, "y": 0.0, "text": "D", "pos": "s", "style": "italic"}, {"x": 3.3, "y": 1.8, "text": "E", "pos": "ne", "style": "italic"}, {"x": 0.8, "y": 1.8, "text": "F", "pos": "nw", "style": "italic"}, {"x": 2.2, "y": 1.2, "text": "P", "pos": "n", "style": "italic"}], "alt": "Triangle ABC with cevians AD, BE and CF through the point P. The three triangles PBD, PCE and PAF are shaded, and triangle DEF is dashed."},
+          answer: String.raw`**Proof.** Key idea: with $u = [PBC]$, $v = [PCA]$, $w = [PAB]$, $T = u + v + w$ and $\Pi = (u + v)(v + w)(w + u)$, the product on the right is $\frac{27}{8}\cdot\frac{(uvw)^2}{\Pi}$ and $[DEF] = \frac{2uvwT}{\Pi}$, so the claim is $64\,uvwT^3 \le 27\,\Pi^2$, which follows from $9\Pi \ge 8T(uv + vw + wu)$ and $(uv + vw + wu)^2 \ge 3uvwT$.`,
+        },
       ],
     },
     {
@@ -618,6 +676,29 @@ $$AC \cdot BD = AB \cdot CD + AD \cdot BC.$$
           },
           answer: String.raw`**Proof.** Key idea: by the internal and external angle bisector theorems, $\frac{BD}{DC} \cdot \frac{CE}{EA} \cdot \frac{AF}{FB} = \frac{c}{b} \cdot \frac{a}{c} \cdot \frac{b}{a} = 1$, with exactly one point on an extended side, so the converse of Menelaus applies.`,
         },
+        {
+          stem: String.raw`In triangle $ABC$, $D$ is the midpoint of $BC$ and $E$ is the point on $AD$ with $AE : ED = 1 : 2$. Line $BE$ meets $AC$ at $F$. Find $AF : FC$.`,
+          difficulty: 1,
+          figure: {"type": "plot", "x": [-0.4, 5.4], "y": [-0.49, 3.8], "equal": true, "axes": false, "segments": [{"from": [1.4, 3.4], "to": [0.0, 0.0], "tone": "ink"}, {"from": [0.0, 0.0], "to": [5.0, 0.0], "tone": "ink"}, {"from": [5.0, 0.0], "to": [1.4, 3.4], "tone": "ink"}, {"from": [1.4, 3.4], "to": [2.5, 0.0], "tone": "muted"}, {"from": [0.0, 0.0], "to": [2.12, 2.72], "tone": "accent"}, {"from": [1.25, 0.09], "to": [1.25, -0.09], "tone": "ink"}, {"from": [3.75, 0.09], "to": [3.75, -0.09], "tone": "ink"}], "points": [{"x": 2.5, "y": 0.0}, {"x": 1.767, "y": 2.267}, {"x": 2.12, "y": 2.72}], "labels": [{"x": 1.4, "y": 3.4, "text": "A", "pos": "n", "style": "italic"}, {"x": 0.0, "y": 0.0, "text": "B", "pos": "sw", "style": "italic"}, {"x": 5.0, "y": 0.0, "text": "C", "pos": "se", "style": "italic"}, {"x": 2.5, "y": 0.0, "text": "D", "pos": "s", "style": "italic"}, {"x": 1.767, "y": 2.267, "text": "E", "pos": "w", "style": "italic"}, {"x": 2.12, "y": 2.72, "text": "F", "pos": "ne", "style": "italic"}], "alt": "Triangle ABC with the median AD. E is on AD one third of the way from A, and the line from B through E meets AC at F."},
+          answer: String.raw`$1 : 4$`,
+        },
+        {
+          stem: String.raw`Points $D$ on side $AB$ and $E$ on side $AC$ of triangle $ABC$ satisfy $AD : DB = 3 : 2$ and $AE : EC = 1 : 3$. Line $DE$ meets line $BC$ at $F$. Find $FB : BC$.`,
+          difficulty: 2,
+          figure: {"type": "plot", "x": [-1.543, 4.4], "y": [-0.4, 3.8], "equal": true, "axes": false, "segments": [{"from": [1.6, 3.4], "to": [0.0, 0.0], "tone": "ink"}, {"from": [0.0, 0.0], "to": [4.0, 0.0], "tone": "ink"}, {"from": [4.0, 0.0], "to": [1.6, 3.4], "tone": "ink"}, {"from": [-1.143, 0.0], "to": [0.0, 0.0], "tone": "muted", "dashed": true}, {"from": [-1.143, 0.0], "to": [2.2, 2.55], "tone": "accent"}], "points": [{"x": 0.64, "y": 1.36}, {"x": 2.2, "y": 2.55}, {"x": -1.143, "y": 0.0}], "labels": [{"x": 1.6, "y": 3.4, "text": "A", "pos": "n", "style": "italic"}, {"x": 0.0, "y": 0.0, "text": "B", "pos": "s", "style": "italic"}, {"x": 4.0, "y": 0.0, "text": "C", "pos": "se", "style": "italic"}, {"x": 0.64, "y": 1.36, "text": "D", "pos": "nw", "style": "italic"}, {"x": 2.2, "y": 2.55, "text": "E", "pos": "ne", "style": "italic"}, {"x": -1.143, "y": 0.0, "text": "F", "pos": "s", "style": "italic"}], "alt": "Triangle ABC with D on AB and E on AC. The line ED is extended beyond D and meets line CB, extended beyond B, at F."},
+          answer: String.raw`$2 : 7$`,
+        },
+        {
+          stem: String.raw`Cevians $AD$, $BE$, $CF$ of triangle $ABC$ meet at one point. $K$, $L$, $M$ are the midpoints of $BC$, $CA$, $AB$, and $X$, $Y$, $Z$ are the midpoints of $AD$, $BE$, $CF$. Prove that the lines $KX$, $LY$, $MZ$ are concurrent.`,
+          difficulty: 3,
+          figure: {"type": "plot", "x": [-0.4, 6.4], "y": [-0.4, 4.6], "equal": true, "axes": false, "segments": [{"from": [1.8, 4.2], "to": [0.0, 0.0], "tone": "ink"}, {"from": [0.0, 0.0], "to": [6.0, 0.0], "tone": "ink"}, {"from": [6.0, 0.0], "to": [1.8, 4.2], "tone": "ink"}, {"from": [1.8, 4.2], "to": [2.0, 0.0], "tone": "muted"}, {"from": [0.0, 0.0], "to": [4.6, 1.4], "tone": "muted"}, {"from": [6.0, 0.0], "to": [0.36, 0.84], "tone": "muted"}, {"from": [3.0, 0.0], "to": [1.9, 2.1], "tone": "accent"}, {"from": [3.9, 2.1], "to": [2.3, 0.7], "tone": "accent"}, {"from": [0.9, 2.1], "to": [3.18, 0.42], "tone": "accent"}], "points": [{"x": 3.0, "y": 0.0}, {"x": 3.9, "y": 2.1}, {"x": 0.9, "y": 2.1}, {"x": 1.9, "y": 2.1}, {"x": 2.3, "y": 0.7}, {"x": 3.18, "y": 0.42}, {"x": 2.0, "y": 0.0}, {"x": 4.6, "y": 1.4}, {"x": 0.36, "y": 0.84}], "labels": [{"x": 1.8, "y": 4.2, "text": "A", "pos": "n", "style": "italic"}, {"x": 0.0, "y": 0.0, "text": "B", "pos": "sw", "style": "italic"}, {"x": 6.0, "y": 0.0, "text": "C", "pos": "se", "style": "italic"}, {"x": 2.0, "y": 0.0, "text": "D", "pos": "s", "style": "italic"}, {"x": 4.6, "y": 1.4, "text": "E", "pos": "ne", "style": "italic"}, {"x": 0.36, "y": 0.84, "text": "F", "pos": "nw", "style": "italic"}, {"x": 3.0, "y": 0.0, "text": "K", "pos": "s", "style": "italic"}, {"x": 3.9, "y": 2.1, "text": "L", "pos": "ne", "style": "italic"}, {"x": 0.9, "y": 2.1, "text": "M", "pos": "nw", "style": "italic"}, {"x": 1.9, "y": 2.1, "text": "X", "pos": "e", "style": "italic"}, {"x": 2.3, "y": 0.7, "text": "Y", "pos": "nw", "style": "italic"}, {"x": 3.18, "y": 0.42, "text": "Z", "pos": "n", "style": "italic"}], "alt": "Triangle ABC with three concurrent cevians AD, BE and CF. K, L, M are the midpoints of the sides and X, Y, Z the midpoints of the cevians; the segments KX, LY and MZ are drawn in accent colour."},
+          answer: String.raw`**Proof.** Key idea: the half-size homothety at $A$ puts $X$ on the midline $ML$ with $MX : XL = BD : DC$, and similarly for $Y$ and $Z$; so $KX$, $LY$, $MZ$ are cevians of triangle $KLM$, and their Ceva product is the reciprocal of the Ceva product for $AD$, $BE$, $CF$, which is $1$.`,
+        },
+        {
+          stem: String.raw`Point $P$ lies inside triangle $ABC$, and lines $AP$, $BP$, $CP$ meet $BC$, $CA$, $AB$ at $D$, $E$, $F$. Suppose that $\angle EDF = \angle BAC$, $\angle DEF = \angle CBA$ and $\angle DFE = \angle ACB$. Prove that $P$ is the centroid of triangle $ABC$.`,
+          difficulty: 4,
+          answer: String.raw`**Proof.** Key idea: the circles $AEF$, $BFD$, $CDE$ share a point $M$ with $\angle BMC = \angle A + \angle EDF = 2\angle A$ and $\angle CMA = 2\angle B$ (directed angles), so $M$ is the circumcentre $O$; then $OD$, $OE$, $OF$ make equal angles $\varphi$ with the sides, so $BD = R(\sin A + t\cos A)$, $DC = R(\sin A - t\cos A)$ with $t = \cot\varphi$ (and similarly on $CA$, $AB$), and Ceva's condition becomes $t\big(1 + (1 + t^2)\cos A\cos B\cos C\big) = 0$, which forces $t = 0$ (the other roots put $D$, $E$ or $F$ outside its side), so $D$, $E$, $F$ are the midpoints.`,
+        },
       ],
     },
     {
@@ -715,6 +796,30 @@ $$AC \cdot BD = AB \cdot CD + AD \cdot BC.$$
             alt: "Triangle ABC with angle B marked 2 theta and angle C marked theta.",
           },
           answer: String.raw`**Proof.** Key idea: draw the bisector $BD$ of $\angle B$; then $\angle ABD = \angle ACB$, so triangle $ABD$ is similar to triangle $ACB$ and $AB^2 = AD \cdot AC$; finish with $AD = \frac{AC \cdot AB}{AB + BC}$ from the angle bisector theorem.`,
+        },
+        {
+          stem: String.raw`Triangle $ABC$ has $AB = 10$, $BC = 8$ and $CA = 6$, and incentre $I$. Line $AI$ meets $BC$ at $D$. Find $AI : ID$.`,
+          difficulty: 1,
+          figure: {"type": "plot", "x": [-0.45, 4.05], "y": [-0.45, 3.15], "equal": true, "axes": false, "segments": [{"from": [0.0, 2.7], "to": [3.6, 0.0], "tone": "ink"}, {"from": [3.6, 0.0], "to": [0.0, 0.0], "tone": "ink"}, {"from": [0.0, 0.0], "to": [0.0, 2.7], "tone": "ink"}, {"from": [0.0, 2.7], "to": [1.35, 0.0], "tone": "accent"}], "rightAngles": [{"at": [0.0, 0.0], "a": [3.6, 0.0], "b": [0.0, 2.7], "size": 0.18}], "points": [{"x": 0.9, "y": 0.9}, {"x": 1.35, "y": 0.0}], "labels": [{"x": 1.8, "y": 1.35, "text": "10", "pos": "ne", "style": "plain"}, {"x": 1.8, "y": 0.0, "text": "8", "pos": "s", "style": "plain"}, {"x": 0.0, "y": 1.35, "text": "6", "pos": "w", "style": "plain"}, {"x": 0.0, "y": 2.7, "text": "A", "pos": "n", "style": "italic"}, {"x": 3.6, "y": 0.0, "text": "B", "pos": "se", "style": "italic"}, {"x": 0.0, "y": 0.0, "text": "C", "pos": "sw", "style": "italic"}, {"x": 0.9, "y": 0.9, "text": "I", "pos": "ne", "style": "italic"}, {"x": 1.35, "y": 0.0, "text": "D", "pos": "s", "style": "italic"}], "alt": "Right-angled triangle ABC with AB = 10, BC = 8 and CA = 6. The incentre I lies on the segment from A to D on BC."},
+          answer: String.raw`$2 : 1$`,
+        },
+        {
+          stem: String.raw`In triangle $ABC$, $AB = 6$ and $AC = 10$. $P$ is the foot of the perpendicular from $B$ to the bisector of $\angle BAC$, and $M$ is the midpoint of $BC$. Find $PM$.`,
+          difficulty: 2,
+          figure: {"type": "plot", "x": [-0.4, 4.9], "y": [-0.4, 3.363], "equal": true, "axes": false, "segments": [{"from": [0.472, 2.963], "to": [0.0, 0.0], "tone": "ink"}, {"from": [0.0, 0.0], "to": [4.5, 0.0], "tone": "ink"}, {"from": [4.5, 0.0], "to": [0.472, 2.963], "tone": "ink"}, {"from": [0.472, 2.963], "to": [1.688, 0.0], "tone": "muted"}, {"from": [0.0, 0.0], "to": [1.444, 0.593], "tone": "muted"}, {"from": [1.444, 0.593], "to": [2.25, 0.0], "tone": "accent", "dashed": true}], "angles": [{"at": [0.472, 2.963], "from": [0.0, 0.0], "to": [1.688, 0.0], "r": 0.6}, {"at": [0.472, 2.963], "from": [1.688, 0.0], "to": [4.5, 0.0], "r": 0.7}], "rightAngles": [{"at": [1.444, 0.593], "a": [-1.444, -0.593], "b": [-0.972, 2.37], "size": 0.16}], "points": [{"x": 2.25, "y": 0.0}, {"x": 1.444, "y": 0.593}], "labels": [{"x": 0.236, "y": 1.481, "text": "6", "pos": "nw", "style": "plain"}, {"x": 2.486, "y": 1.481, "text": "10", "pos": "ne", "style": "plain"}, {"x": 0.472, "y": 2.963, "text": "A", "pos": "n", "style": "italic"}, {"x": 0.0, "y": 0.0, "text": "B", "pos": "sw", "style": "italic"}, {"x": 4.5, "y": 0.0, "text": "C", "pos": "se", "style": "italic"}, {"x": 2.25, "y": 0.0, "text": "M", "pos": "s", "style": "italic"}, {"x": 1.444, "y": 0.593, "text": "P", "pos": "e", "style": "italic"}], "alt": "Triangle ABC with AB = 6 and AC = 10. The bisector of angle A is drawn, with its two equal halves marked; P is the foot of the perpendicular from B to it, and M is the midpoint of BC. Segment PM is dashed."},
+          answer: String.raw`$2$`,
+        },
+        {
+          stem: String.raw`In triangle $ABC$, $AB = 6$ and $AC = 9$. The bisector of $\angle ABC$ meets $AC$ at $E$, and it is perpendicular to the median $AM$. Find $AE$.`,
+          difficulty: 3,
+          figure: {"type": "plot", "x": [-0.4, 4.96], "y": [-0.49, 2.056], "equal": true, "axes": false, "segments": [{"from": [1.568, 1.656], "to": [0.0, 0.0], "tone": "ink"}, {"from": [0.0, 0.0], "to": [4.56, 0.0], "tone": "ink"}, {"from": [4.56, 0.0], "to": [1.568, 1.656], "tone": "ink"}, {"from": [0.0, 0.0], "to": [2.565, 1.104], "tone": "accent"}, {"from": [1.568, 1.656], "to": [2.28, 0.0], "tone": "good"}, {"from": [1.14, 0.09], "to": [1.14, -0.09], "tone": "ink"}, {"from": [3.42, 0.09], "to": [3.42, -0.09], "tone": "ink"}], "rightAngles": [{"at": [1.924, 0.828], "a": [0.641, 0.276], "b": [0.356, -0.828], "size": 0.15}], "points": [{"x": 2.565, "y": 1.104}, {"x": 2.28, "y": 0.0}], "labels": [{"x": 0.784, "y": 0.828, "text": "6", "pos": "nw", "style": "plain"}, {"x": 3.064, "y": 0.828, "text": "9", "pos": "ne", "style": "plain"}, {"x": 1.568, "y": 1.656, "text": "A", "pos": "n", "style": "italic"}, {"x": 0.0, "y": 0.0, "text": "B", "pos": "sw", "style": "italic"}, {"x": 4.56, "y": 0.0, "text": "C", "pos": "se", "style": "italic"}, {"x": 2.565, "y": 1.104, "text": "E", "pos": "ne", "style": "italic"}, {"x": 2.28, "y": 0.0, "text": "M", "pos": "s", "style": "italic"}], "alt": "Triangle ABC with AB = 6 and AC = 9. The bisector BE of angle B and the median AM from A cross at right angles."},
+          answer: String.raw`$3$`,
+        },
+        {
+          stem: String.raw`The bisectors of the angles of triangle $ABC$ meet at $I$ and meet the opposite sides at $D$, $E$, $F$. Prove that $$AI + BI + CI \ge 2\,(ID + IE + IF).$$`,
+          difficulty: 4,
+          figure: {"type": "plot", "x": [-0.4, 5.4], "y": [-0.4, 3.7], "equal": true, "axes": false, "segments": [{"from": [1.5, 3.3], "to": [0, 0], "tone": "ink"}, {"from": [0, 0], "to": [5, 0], "tone": "ink"}, {"from": [5, 0], "to": [1.5, 3.3], "tone": "ink"}, {"from": [1.5, 3.3], "to": [2.149, 0], "tone": "accent"}, {"from": [0, 0], "to": [2.971, 1.913], "tone": "accent"}, {"from": [5, 0], "to": [0.764, 1.682], "tone": "accent"}], "points": [{"x": 1.907, "y": 1.228}, {"x": 2.149, "y": 0}, {"x": 2.971, "y": 1.913}, {"x": 0.764, "y": 1.682}], "labels": [{"x": 1.5, "y": 3.3, "text": "A", "pos": "n", "style": "italic"}, {"x": 0, "y": 0, "text": "B", "pos": "sw", "style": "italic"}, {"x": 5, "y": 0, "text": "C", "pos": "se", "style": "italic"}, {"x": 2.149, "y": 0, "text": "D", "pos": "s", "style": "italic"}, {"x": 2.971, "y": 1.913, "text": "E", "pos": "ne", "style": "italic"}, {"x": 0.764, "y": 1.682, "text": "F", "pos": "nw", "style": "italic"}, {"x": 1.907, "y": 1.228, "text": "I", "pos": "e", "style": "italic"}], "alt": "Triangle ABC with its three angle bisectors AD, BE and CF meeting at the incentre I."},
+          answer: String.raw`**Proof.** Key idea: $\frac{AI}{ID} = \frac{b + c}{a}$ gives $AI - 2\,ID = \frac{b + c - 2a}{a + b + c}\,AD$, so the difference of the two sides is $\frac{1}{a + b + c}\sum (b - a)(AD - BE)$ over the three pairs of vertices, and each term is $\ge 0$ because the bisector to the longer side is the shorter one (compare $AD^2 = bc\big(1 - \frac{a^2}{(b + c)^2}\big)$ with $BE^2 = ca\big(1 - \frac{b^2}{(c + a)^2}\big)$).`,
         },
       ],
     },
@@ -827,6 +932,28 @@ $$AC \cdot BD = AB \cdot CD + AD \cdot BC.$$
           },
           answer: String.raw`$27$`,
         },
+        {
+          stem: String.raw`In triangle $ABC$, $AB = 9$ and $AC = 7$, and the median $AM$ has length $7$. Find $BC$.`,
+          difficulty: 1,
+          figure: {"type": "plot", "x": [-0.4, 4.4], "y": [-0.49, 3.754], "equal": true, "axes": false, "segments": [{"from": [3.0, 3.354], "to": [0.0, 0.0], "tone": "ink"}, {"from": [0.0, 0.0], "to": [4.0, 0.0], "tone": "ink"}, {"from": [4.0, 0.0], "to": [3.0, 3.354], "tone": "ink"}, {"from": [3.0, 3.354], "to": [2.0, 0.0], "tone": "accent"}, {"from": [1.0, 0.09], "to": [1.0, -0.09], "tone": "ink"}, {"from": [3.0, 0.09], "to": [3.0, -0.09], "tone": "ink"}], "points": [{"x": 2.0, "y": 0.0}], "labels": [{"x": 1.5, "y": 1.677, "text": "9", "pos": "nw", "style": "plain"}, {"x": 3.5, "y": 1.677, "text": "7", "pos": "ne", "style": "plain"}, {"x": 2.45, "y": 1.509, "text": "7", "pos": "e", "style": "plain"}, {"x": 3.0, "y": 3.354, "text": "A", "pos": "n", "style": "italic"}, {"x": 0.0, "y": 0.0, "text": "B", "pos": "sw", "style": "italic"}, {"x": 4.0, "y": 0.0, "text": "C", "pos": "se", "style": "italic"}, {"x": 2.0, "y": 0.0, "text": "M", "pos": "s", "style": "italic"}], "alt": "Triangle ABC with AB = 9 and AC = 7. M is the midpoint of BC and the median AM has length 7."},
+          answer: String.raw`$8$`,
+        },
+        {
+          stem: String.raw`Triangle $ABC$ has $AB = 11$, $AC = 7$ and $BC = 12$. $D$ is the foot of the altitude from $A$, and $M$ is the midpoint of $BC$. Find $DM$.`,
+          difficulty: 2,
+          answer: String.raw`$3$`,
+        },
+        {
+          stem: String.raw`In triangle $ABC$, $AB = 9$ and $AC = 6$. Points $D$ and $E$ lie on $BC$ with $BD = DE = EC$, and $AD = 7$. Find $AE$.`,
+          difficulty: 3,
+          figure: {"type": "plot", "x": [-0.4, 4.773], "y": [-0.45, 3.262], "equal": true, "axes": false, "segments": [{"from": [3.473, 2.862], "to": [0, 0], "tone": "ink"}, {"from": [0, 0], "to": [4.373, 0], "tone": "ink"}, {"from": [4.373, 0], "to": [3.473, 2.862], "tone": "ink"}, {"from": [3.473, 2.862], "to": [1.458, 0], "tone": "accent"}, {"from": [3.473, 2.862], "to": [2.915, 0], "tone": "accent", "dashed": true}, {"from": [0.729, 0.09], "to": [0.729, -0.09], "tone": "ink"}, {"from": [2.187, 0.09], "to": [2.187, -0.09], "tone": "ink"}, {"from": [3.644, 0.09], "to": [3.644, -0.09], "tone": "ink"}], "points": [{"x": 1.458, "y": 0}, {"x": 2.915, "y": 0}], "labels": [{"x": 1.736, "y": 1.431, "text": "9", "pos": "nw", "style": "plain"}, {"x": 3.923, "y": 1.431, "text": "6", "pos": "ne", "style": "plain"}, {"x": 2.365, "y": 1.288, "text": "7", "pos": "w", "style": "plain"}, {"x": 3.473, "y": 2.862, "text": "A", "pos": "n", "style": "italic"}, {"x": 0, "y": 0, "text": "B", "pos": "sw", "style": "italic"}, {"x": 4.373, "y": 0, "text": "C", "pos": "se", "style": "italic"}, {"x": 1.458, "y": 0, "text": "D", "pos": "s", "style": "italic"}, {"x": 2.915, "y": 0, "text": "E", "pos": "s", "style": "italic"}], "alt": "Triangle ABC with AB = 9 and AC = 6. Points D and E divide BC into three equal parts, AD = 7, and AE is dashed."},
+          answer: String.raw`$\sqrt{34}$`,
+        },
+        {
+          stem: String.raw`Point $P$ lies inside an acute triangle $ABC$ that is not equilateral, and $D$, $E$, $F$ are the feet of the perpendiculars from $P$ to $BC$, $CA$, $AB$. Prove that $$BD + CE + AF = DC + EA + FB$$ if and only if $P$ lies on the line through the circumcentre and the incentre of the triangle.`,
+          difficulty: 4,
+          answer: String.raw`**Proof.** Key idea: Pythagoras gives $BD^2 - DC^2 = PB^2 - PC^2$, so $BD - DC = \frac{PB^2 - PC^2}{a}$ and $g(P) = \sum\frac{PB^2 - PC^2}{a}$ is a linear function of the coordinates of $P$ (the squared terms cancel); it vanishes at the circumcentre (where $BD = DC$) and at the incentre (where $BD - DC = c - b$), and it is not constant, since its gradient is twice the sum of the unit vectors along $\overrightarrow{BC}$, $\overrightarrow{CA}$, $\overrightarrow{AB}$, which is nonzero for a non-equilateral triangle.`,
+        },
       ],
     },
     {
@@ -866,6 +993,27 @@ $$AC \cdot BD = AB \cdot CD + AD \cdot BC.$$
           stem: String.raw`The side lengths of a triangle are three consecutive integers $n - 1$, $n$, $n + 1$, and its area is an integer. Prove that the altitude to the side of length $n$ is an integer divisible by $3$.`,
           difficulty: 3,
           answer: String.raw`**Proof.** Key idea: Heron's formula gives $16K^2 = 3n^2(n^2 - 4)$, which is odd for odd $n$, so $n = 2m$ and the altitude $h = \frac{2K}{n} = \frac{K}{m}$ is a rational number with $h^2 = 3(m^2 - 1)$ an integer, hence $h$ is an integer and $3 \mid h^2$ forces $3 \mid h$.`,
+        },
+        {
+          stem: String.raw`Find the length of the shortest altitude of the triangle with sides $11$, $13$ and $20$.`,
+          difficulty: 1,
+          figure: {"type": "plot", "x": [-0.4, 4.8], "y": [-0.4, 1.852], "equal": true, "axes": false, "segments": [{"from": [1.936, 1.452], "to": [0.0, 0.0], "tone": "ink"}, {"from": [0.0, 0.0], "to": [4.4, 0.0], "tone": "ink"}, {"from": [4.4, 0.0], "to": [1.936, 1.452], "tone": "ink"}], "labels": [{"x": 0.968, "y": 0.726, "text": "11", "pos": "nw", "style": "plain"}, {"x": 3.168, "y": 0.726, "text": "13", "pos": "ne", "style": "plain"}, {"x": 2.2, "y": 0.0, "text": "20", "pos": "s", "style": "plain"}, {"x": 1.936, "y": 1.452, "text": "A", "pos": "n", "style": "italic"}, {"x": 0.0, "y": 0.0, "text": "B", "pos": "sw", "style": "italic"}, {"x": 4.4, "y": 0.0, "text": "C", "pos": "se", "style": "italic"}], "alt": "Triangle with sides 11, 13 and 20."},
+          answer: String.raw`$\tfrac{33}{5}$`,
+        },
+        {
+          stem: String.raw`The three altitudes of a triangle have lengths $10$, $12$ and $15$. Find the area of the triangle.`,
+          difficulty: 2,
+          answer: String.raw`$\dfrac{240\sqrt7}{7}$`,
+        },
+        {
+          stem: String.raw`Find all triangles with integer side lengths and area $36$, and prove that there are no others.`,
+          difficulty: 3,
+          answer: String.raw`Sides $3, 25, 26$ and $9, 10, 17$. Key idea: the perimeter is even, so $x = s - a$, $y = s - b$, $z = s - c$ are positive integers with $xyz(x + y + z) = 36^2$; taking $x \ge y \ge z$ bounds $z$ and then $y$, leaving a short list of cases.`,
+        },
+        {
+          stem: String.raw`A triangle has integer side lengths $a$, $b$, $c$ and integer area $K$. Prove that $abcK$ is divisible by $120$.`,
+          difficulty: 4,
+          answer: String.raw`**Proof.** Key idea: the perimeter is even, so $x = s - a$, $y = s - b$, $z = s - c$ are integers with $K^2 = xyz(x + y + z)$ and $a = y + z$, $b = z + x$, $c = x + y$; modulo $3$ this product is $\equiv 2$ unless a factor is divisible by $3$, so $3 \mid K$; if $5 \nmid abc$ then $a^2, b^2, c^2 \equiv \pm 1 \pmod 5$ and $16K^2 = 2(a^2b^2 + b^2c^2 + c^2a^2) - (a^4 + b^4 + c^4)$ is $\equiv 3$ (impossible) or $\equiv 0$, so $5 \mid K$; and a case check on how many of $x$, $y$, $z$ are even gives $8 \mid abcK$.`,
         },
       ],
     },
@@ -960,6 +1108,30 @@ $$AC \cdot BD = AB \cdot CD + AD \cdot BC.$$
             alt: "Square ABCD inscribed in a circle, with P on the minor arc AB joined to all four vertices.",
           },
           answer: String.raw`$6 + 6\sqrt{2}$`,
+        },
+        {
+          stem: String.raw`An isosceles trapezium has parallel sides $6$ and $10$ and legs of length $5$. Find the length of its diagonals.`,
+          difficulty: 1,
+          figure: {"type": "plot", "x": [-0.4, 4.2], "y": [-0.4, 2.141], "equal": true, "axes": false, "segments": [{"from": [0.0, 0.0], "to": [3.8, 0.0], "tone": "ink"}, {"from": [3.8, 0.0], "to": [3.04, 1.741], "tone": "ink"}, {"from": [3.04, 1.741], "to": [0.76, 1.741], "tone": "ink"}, {"from": [0.76, 1.741], "to": [0.0, 0.0], "tone": "ink"}, {"from": [0.0, 0.0], "to": [3.04, 1.741], "tone": "accent", "dashed": true}, {"from": [3.8, 0.0], "to": [0.76, 1.741], "tone": "accent", "dashed": true}], "labels": [{"x": 1.9, "y": 0.0, "text": "10", "pos": "s", "style": "plain"}, {"x": 1.9, "y": 1.741, "text": "6", "pos": "n", "style": "plain"}, {"x": 0.38, "y": 0.871, "text": "5", "pos": "w", "style": "plain"}, {"x": 3.42, "y": 0.871, "text": "5", "pos": "e", "style": "plain"}, {"x": 0.0, "y": 0.0, "text": "A", "pos": "sw", "style": "italic"}, {"x": 3.8, "y": 0.0, "text": "B", "pos": "se", "style": "italic"}, {"x": 3.04, "y": 1.741, "text": "C", "pos": "ne", "style": "italic"}, {"x": 0.76, "y": 1.741, "text": "D", "pos": "nw", "style": "italic"}], "alt": "Isosceles trapezium with parallel sides 10 (bottom) and 6 (top) and legs 5; both diagonals are dashed."},
+          answer: String.raw`$\sqrt{85}$`,
+        },
+        {
+          stem: String.raw`Triangle $ABC$ has $AB = AC = 5$ and $BC = 6$. Point $P$ lies on the arc $BC$ of its circumcircle that does not contain $A$, and $PA = 6$. Find $PB + PC$.`,
+          difficulty: 2,
+          figure: {"type": "plot", "x": [-1.806, 1.806], "y": [-1.413, 2.2], "equal": true, "axes": false, "circles": [{"c": [0.0, 0.394], "r": 1.406, "tone": "ink"}], "segments": [{"from": [0.0, 1.8], "to": [-1.35, 0.0], "tone": "ink"}, {"from": [-1.35, 0.0], "to": [1.35, 0.0], "tone": "ink"}, {"from": [1.35, 0.0], "to": [0.0, 1.8], "tone": "ink"}, {"from": [0.0, 1.8], "to": [0.756, -0.792], "tone": "accent"}, {"from": [-1.35, 0.0], "to": [0.756, -0.792], "tone": "good"}, {"from": [1.35, 0.0], "to": [0.756, -0.792], "tone": "good"}, {"from": [-0.603, 0.846], "to": [-0.747, 0.954], "tone": "ink"}, {"from": [0.747, 0.954], "to": [0.603, 0.846], "tone": "ink"}], "labels": [{"x": 0.249, "y": 0.945, "text": "6", "pos": "w", "style": "plain"}, {"x": 0.0, "y": 1.8, "text": "A", "pos": "n", "style": "italic"}, {"x": -1.35, "y": 0.0, "text": "B", "pos": "w", "style": "italic"}, {"x": 1.35, "y": 0.0, "text": "C", "pos": "e", "style": "italic"}, {"x": 0.756, "y": -0.792, "text": "P", "pos": "s", "style": "italic"}], "alt": "Isosceles triangle ABC with AB = AC inscribed in a circle. P is on the arc BC below BC, and PA = 6; segments PB and PC are drawn."},
+          answer: String.raw`$\tfrac{36}{5}$`,
+        },
+        {
+          stem: String.raw`Triangle $ABC$ has $AB = 5$, $BC = 7$ and $CA = 8$. Point $P$ lies on the arc $BC$ of its circumcircle that does not contain $A$, and $PB = 3$. Find $PA$.`,
+          difficulty: 3,
+          figure: {"type": "plot", "x": [-0.617, 3.417], "y": [-1.208, 2.825], "equal": true, "axes": false, "circles": [{"c": [1.4, 0.808], "r": 1.617, "tone": "ink"}], "segments": [{"from": [0.286, 1.979], "to": [0.0, 0.0], "tone": "ink"}, {"from": [0.0, 0.0], "to": [2.8, 0.0], "tone": "ink"}, {"from": [2.8, 0.0], "to": [0.286, 1.979], "tone": "ink"}, {"from": [0.943, -0.742], "to": [0.0, 0.0], "tone": "good"}, {"from": [0.943, -0.742], "to": [2.8, 0.0], "tone": "good"}, {"from": [0.943, -0.742], "to": [0.286, 1.979], "tone": "accent", "dashed": true}], "labels": [{"x": 0.143, "y": 0.99, "text": "5", "pos": "w", "style": "plain"}, {"x": 1.543, "y": 0.99, "text": "8", "pos": "ne", "style": "plain"}, {"x": 2.1, "y": 0, "text": "7", "pos": "n", "style": "plain"}, {"x": 0.471, "y": -0.371, "text": "3", "pos": "sw", "style": "plain"}, {"x": 0.286, "y": 1.979, "text": "A", "pos": "n", "style": "italic"}, {"x": 0, "y": 0, "text": "B", "pos": "w", "style": "italic"}, {"x": 2.8, "y": 0, "text": "C", "pos": "e", "style": "italic"}, {"x": 0.943, "y": -0.742, "text": "P", "pos": "s", "style": "italic"}], "alt": "Triangle ABC with AB = 5, BC = 7 and CA = 8 inscribed in a circle. P is on the arc BC not containing A, with PB = 3; PC is drawn and PA is dashed."},
+          answer: String.raw`$7$`,
+        },
+        {
+          stem: String.raw`$A_1A_2\ldots A_n$ $(n \ge 3)$ is a regular polygon, and $P$ is a point on the arc $A_1A_2$ of its circumcircle that contains no other vertex (an octagon is shown). Prove that $$PA_1 + PA_2 + \cdots + PA_n = \frac{PA_1 + PA_2}{1 - \cos\frac{\pi}{n}}.$$`,
+          difficulty: 4,
+          figure: {"type": "plot", "x": [-2.5, 2.5], "y": [-2.4, 2.75], "equal": true, "axes": false, "circles": [{"c": [0, 0], "r": 2, "tone": "muted"}], "segments": [{"from": [-0.765, 1.848], "to": [0.765, 1.848], "tone": "ink"}, {"from": [0.765, 1.848], "to": [1.848, 0.765], "tone": "ink"}, {"from": [1.848, 0.765], "to": [1.848, -0.765], "tone": "ink"}, {"from": [1.848, -0.765], "to": [0.765, -1.848], "tone": "ink"}, {"from": [0.765, -1.848], "to": [-0.765, -1.848], "tone": "ink"}, {"from": [-0.765, -1.848], "to": [-1.848, -0.765], "tone": "ink"}, {"from": [-1.848, -0.765], "to": [-1.848, 0.765], "tone": "ink"}, {"from": [-1.848, 0.765], "to": [-0.765, 1.848], "tone": "ink"}, {"from": [-0.244, 1.985], "to": [-0.765, 1.848], "tone": "accent"}, {"from": [-0.244, 1.985], "to": [0.765, 1.848], "tone": "accent"}, {"from": [-0.244, 1.985], "to": [1.848, 0.765], "tone": "good"}, {"from": [-0.244, 1.985], "to": [1.848, -0.765], "tone": "good"}, {"from": [-0.244, 1.985], "to": [0.765, -1.848], "tone": "good"}, {"from": [-0.244, 1.985], "to": [-0.765, -1.848], "tone": "good"}, {"from": [-0.244, 1.985], "to": [-1.848, -0.765], "tone": "good"}, {"from": [-0.244, 1.985], "to": [-1.848, 0.765], "tone": "good"}], "labels": [{"x": -0.765, "y": 1.848, "text": "A₁", "pos": "nw", "style": "italic"}, {"x": 0.765, "y": 1.848, "text": "A₂", "pos": "n", "style": "italic"}, {"x": 1.848, "y": 0.765, "text": "A₃", "pos": "ne", "style": "italic"}, {"x": 1.848, "y": -0.765, "text": "A₄", "pos": "e", "style": "italic"}, {"x": 0.765, "y": -1.848, "text": "A₅", "pos": "se", "style": "italic"}, {"x": -0.765, "y": -1.848, "text": "A₆", "pos": "s", "style": "italic"}, {"x": -1.848, "y": -0.765, "text": "A₇", "pos": "sw", "style": "italic"}, {"x": -1.848, "y": 0.765, "text": "A₈", "pos": "w", "style": "italic"}, {"x": -0.244, "y": 1.985, "text": "P", "pos": "n", "style": "italic"}], "alt": "A regular octagon A1 to A8 in its circumscribed circle, with a point P on the arc between A1 and A2 joined to all eight vertices."},
+          answer: String.raw`**Proof.** Key idea: Ptolemy's theorem in $A_1PA_2A_k$ gives $s \cdot PA_k = PA_1 \cdot A_2A_k + PA_2 \cdot A_1A_k$ ($s$ the side) for each $k \ge 3$; summing, and using that $A_1$ and $A_2$ have the same sum $S$ of distances to the other vertices, gives $PA_1 + \cdots + PA_n = (PA_1 + PA_2)\frac{S}{s}$, and $\frac{S}{s} = \sum_{j=1}^{n-1}\frac{\sin(j\pi/n)}{\sin(\pi/n)} = \frac{1}{2\sin^2\frac{\pi}{2n}}$.`,
         },
       ],
     },

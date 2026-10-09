@@ -151,12 +151,18 @@ H2.addTopic({
 - **Burnside's lemma**: the number of different patterns equals the **average**, over all symmetries, of the number of colourings that the symmetry leaves unchanged.
 - Example: colour the vertices of an equilateral triangle with $2$ colours, rotations counting as the same. The identity fixes $8$ colourings; each of the two rotations fixes only the $2$ one-colour ones. So there are $\frac{8 + 2 + 2}{3} = 4$ patterns.`,
     },
+    {
+      title: String.raw`Truncated inclusion–exclusion (Bonferroni)`,
+      body: String.raw`- Stopping inclusion–exclusion early gives a **bound**: if you stop after a term you **added**, you get an upper bound for the number of objects with none of the bad properties; if you stop after a term you **subtracted**, you get a lower bound.
+- Reason: an object with exactly $m \ge 1$ bad properties is counted $1 - m + \binom{m}{2} - \cdots \pm \binom{m}{j}$ times, which equals $(-1)^j \binom{m-1}{j}$.
+- Example: of $1, 2, \ldots, N$, at least $N - \frac{N}{p_1} - \cdots - \frac{N}{p_k}$ are divisible by none of the primes $p_1, \ldots, p_k$ (stop after the first subtraction).`,
+    },
   ],
   archetypes: [
     {
       id: "C1-multiplication-casework",
       name: String.raw`Multiplication principle and casework`,
-      tests: String.raw`Forming numbers or choices in stages, where restrictions (no leading zero, distinct digits, conditions on primes) force a split into cases. Fill the tightest position first, or handle each prime separately.`,
+      tests: String.raw`Forming numbers or choices in stages, where restrictions (no leading zero, distinct digits, conditions on primes) force a split into cases. Fill the tightest position first, or handle each prime separately. The hardest versions place the values one at a time so that the number of choices never depends on earlier choices.`,
       questions: [
         {
           stem: String.raw`How many four-digit odd numbers have four different digits?`,
@@ -174,12 +180,32 @@ H2.addTopic({
           difficulty: 3,
           answer: String.raw`$130$`,
         },
+        {
+          stem: String.raw`How many positive divisors of $7200$ are perfect squares?`,
+          difficulty: 1,
+          answer: String.raw`$12$`,
+        },
+        {
+          stem: String.raw`How many six-digit positive integers have the product of their digits equal to $400$?`,
+          difficulty: 2,
+          answer: String.raw`$465$`,
+        },
+        {
+          stem: String.raw`How many subsets $S$ of $\{1, 2, \ldots, 20\}$ (including the empty set) have the property that for every $x$ in $S$, neither $2x$ nor $3x$ is in $S$?`,
+          difficulty: 3,
+          answer: String.raw`$43776$`,
+        },
+        {
+          stem: String.raw`Let $n \ge 1$. Prove that the number of permutations $(a_1, a_2, \ldots, a_n)$ of $1, 2, \ldots, n$ with $a_i \le 2i$ for every $i$ is equal to the number of permutations with $a_{i+1} \le 2a_i$ for every $i = 1, 2, \ldots, n - 1$.`,
+          difficulty: 4,
+          answer: String.raw`**Proof.** Key idea: both numbers equal $\prod_{v=1}^{n} \left(\left\lfloor \frac{v}{2} \right\rfloor + 1\right)$: for the first kind place the values $n, n - 1, \ldots, 1$ in this order (value $v$ can use the $\left\lfloor \frac{v}{2} \right\rfloor + 1$ positions $i \ge \frac{v}{2}$ not already taken by larger values), and for the second kind build the row by inserting $1, 2, \ldots, n$ in this order (value $v$ can go at the front or just after one of the $\left\lfloor \frac{v}{2} \right\rfloor$ earlier values that are at least $\frac{v}{2}$, and inserting it never spoils a neighbouring pair).`,
+        },
       ],
     },
     {
       id: "C1-restricted-arrangements",
       name: String.raw`Arrangements with restrictions`,
-      tests: String.raw`Arranging people, letters or beads in a row or around a table when some must (or must not) be adjacent, or some objects are identical. Use glue, gaps, complements and, for long conditions, a recursion on the last object placed.`,
+      tests: String.raw`Arranging people, letters or beads in a row or around a table when some must (or must not) be adjacent, or some objects are identical. Use glue, gaps, complements and, for long conditions, a recursion on the last object placed; truncated inclusion–exclusion gives lower bounds.`,
       questions: [
         {
           stem: String.raw`How many different arrangements of the seven letters of the word LETTERS have the two T's **not** next to each other?`,
@@ -196,12 +222,32 @@ H2.addTopic({
           difficulty: 3,
           answer: String.raw`$588$`,
         },
+        {
+          stem: String.raw`In how many ways can the six letters of the word BANANA be arranged in a row so that no two A's are next to each other?`,
+          difficulty: 1,
+          answer: String.raw`$12$`,
+        },
+        {
+          stem: String.raw`Four people sit down in a row of $10$ chairs so that no two of them sit next to each other, and the two end chairs are not both empty. In how many ways can this be done? (The people are different; the empty chairs are not.)`,
+          difficulty: 2,
+          answer: String.raw`$720$`,
+        },
+        {
+          stem: String.raw`Let $n \ge 2$. Prove that the number of ways to arrange $1, 2, \ldots, n$ in a row so that every number is at most $2$ larger than the number immediately to its left is $2 \cdot 3^{n-2}$.`,
+          difficulty: 3,
+          answer: String.raw`**Proof.** Key idea: removing $n$ from a good arrangement leaves a good arrangement of $1, \ldots, n - 1$ (the number before $n$ is $n - 1$ or $n - 2$, so the new neighbours still satisfy the rule), and conversely $n$ can be put back in exactly $3$ places: at the front, just after $n - 1$, or just after $n - 2$.`,
+        },
+        {
+          stem: String.raw`Let $n \ge 3$. Prove that more than one third of the $n!$ arrangements of $1, 2, \ldots, n$ in a row have no number $k$ immediately followed by $k + 1$.`,
+          difficulty: 4,
+          answer: String.raw`**Proof.** Key idea: stopping inclusion–exclusion after the subtracted third term gives a lower bound, and gluing $j$ chosen pairs $(k, k + 1)$ leaves $n - j$ blocks, so $S_j = \binom{n-1}{j}(n-j)!$ arrangements are counted for each $j$ and $n! - S_1 + S_2 - S_3 = \frac{2n + 3}{6n}\, n! > \frac{n!}{3}$.`,
+        },
       ],
     },
     {
       id: "C1-stars-bars",
       name: String.raw`Distributions: stars and bars`,
-      tests: String.raw`Sharing identical objects among distinct people or counting integer solutions of $x_1 + \cdots + x_k = n$, possibly with lower and upper bounds. Shift to remove lower bounds; use inclusion–exclusion for upper bounds.`,
+      tests: String.raw`Sharing identical objects among distinct people or counting integer solutions of $x_1 + \cdots + x_k = n$, possibly with lower and upper bounds. Shift to remove lower bounds; use inclusion–exclusion for upper bounds. Conditions on running totals turn the tuple into a word or path, whose cyclic rotations or reflections can be compared.`,
       questions: [
         {
           stem: String.raw`How many ordered quadruples $(a, b, c, d)$ of **positive** integers satisfy $a + b + c + d = 12$?`,
@@ -217,6 +263,28 @@ H2.addTopic({
           stem: String.raw`Twelve identical red marbles and twelve identical blue marbles are shared among three children, Ann, Bala and Chen. Every marble is given out, and each child receives at least one marble (of either colour). In how many ways can this be done?`,
           difficulty: 3,
           answer: String.raw`$7777$`,
+        },
+        {
+          stem: String.raw`After the expansion of $(x + y + z + w)^6$ is multiplied out and like terms are collected, how many different terms are there?`,
+          difficulty: 1,
+          choices: [String.raw`$20$`, String.raw`$24$`, String.raw`$35$`, String.raw`$56$`, String.raw`$84$`],
+          answer: String.raw`(E) $84$`,
+        },
+        {
+          stem: String.raw`In how many ways can $8$ identical balls be placed into $5$ different boxes so that exactly two of the boxes are empty?`,
+          difficulty: 2,
+          answer: String.raw`$210$`,
+        },
+        {
+          stem: String.raw`Thirty points are equally spaced around a circle. In how many ways can $5$ of them be chosen so that, going round the circle, between any two consecutive chosen points there are at least $3$ points that are not chosen?`,
+          difficulty: 3,
+          answer: String.raw`$6006$`,
+        },
+        {
+          stem: String.raw`Let $n \ge 1$. Find, with proof, the number of $n$-tuples $(x_1, \ldots, x_n)$ of non-negative integers with $x_1 + \cdots + x_n = 2n$ and
+$$x_1 + x_2 + \cdots + x_k \ge 2k \quad \text{for every } k = 1, 2, \ldots, n.$$`,
+          difficulty: 4,
+          answer: String.raw`$\frac{1}{2n+1}\binom{3n}{n}$. **Proof.** Key idea: write the tuple as a word of $+1$'s and $-2$'s ($x_1$ copies of $+1$, then $-2$, then $x_2$ copies of $+1$, then $-2$, and so on) with one extra $+1$ in front, so that the condition says every running total is positive; of the $3n + 1$ cyclic rotations of any word of $2n + 1$ $(+1)$'s and $n$ $(-2)$'s, exactly one has all running totals positive (the one starting just after the last place where the running total is smallest), so the answer is $\frac{1}{3n+1}\binom{3n+1}{n}$.`,
         },
       ],
     },
@@ -241,12 +309,32 @@ $$\sum_{k=0}^{n} (-1)^k \binom{n}{k} (n-k)^n = n!.$$`,
           difficulty: 3,
           answer: String.raw`**Proof.** Key idea: both sides count the functions from $\{1, \ldots, n\}$ onto $\{1, \ldots, n\}$; the left side does it by inclusion–exclusion on the set of values that are missed ($\binom{n}{k}(n-k)^n$ functions avoid a chosen $k$ values), and an onto function between two $n$-element sets is a permutation.`,
         },
+        {
+          stem: String.raw`How many integers from $1$ to $500$ are divisible by exactly one of the numbers $3$ and $5$?`,
+          difficulty: 1,
+          answer: String.raw`$200$`,
+        },
+        {
+          stem: String.raw`How many strings of six digits, each digit being $1$, $2$, $3$ or $4$, contain each of the digits $1$, $2$ and $3$ at least once?`,
+          difficulty: 2,
+          answer: String.raw`$2100$`,
+        },
+        {
+          stem: String.raw`How many words of length $8$ made from the letters A, B, C, D use all four letters and have no two equal letters next to each other?`,
+          difficulty: 3,
+          answer: String.raw`$7224$`,
+        },
+        {
+          stem: String.raw`Let $n \ge 1$, and let $N_n$ be the number of ways to colour each cell of an $n \times n$ board black or white so that every row and every column contains at least one black cell. Prove that $N_n$ leaves remainder $1$ on division by $8$ when $n$ is odd, and remainder $7$ when $n$ is even.`,
+          difficulty: 4,
+          answer: String.raw`**Proof.** Key idea: inclusion–exclusion on the set of columns with no black cell gives $N_n = \sum_{k=0}^{n} (-1)^k \binom{n}{k} \left(2^{n-k} - 1\right)^n$, and modulo $8$ every factor $(2^m - 1)^n$ with $m \ge 3$ is $(-1)^n$, so the alternating binomial sum collapses and only the terms with $n - k = 2$ and $n - k = 1$ need individual attention.`,
+        },
       ],
     },
     {
       id: "C1-bijections-paths",
       name: String.raw`Lattice paths and bijections`,
-      tests: String.raw`Counting grid paths, monotone digit strings or restricted paths by matching them one-to-one with words, subsets or multisets, or by reflecting the bad paths.`,
+      tests: String.raw`Counting grid paths, monotone digit strings or restricted paths by matching them one-to-one with words, subsets or multisets, or by reflecting the bad paths. Pairs of paths that must not meet are counted by swapping their tails at the first meeting point.`,
       questions: [
         {
           stem: String.raw`The diagram shows a $6 \times 4$ grid of streets. A walker goes from A to B along the streets, each step one block to the right or one block up. How many such routes pass through the point P?`,
@@ -296,6 +384,27 @@ $$\binom{2n}{n} - \binom{2n}{n+2}.$$`,
           difficulty: 3,
           answer: String.raw`**Proof.** Key idea: reflect the part of a bad path up to its first point on $y = x + 2$ in that line; this is a bijection between bad paths and all paths from $(-2, 2)$ to $(n, n)$, of which there are $\binom{2n}{n+2}$.`,
         },
+        {
+          stem: String.raw`A path in space goes from $(0, 0, 0)$ to $(3, 2, 2)$, and each step increases exactly one of the three coordinates by $1$. How many such paths are there?`,
+          difficulty: 1,
+          answer: String.raw`$210$`,
+        },
+        {
+          stem: String.raw`A path from $(0, 0)$ to $(6, 6)$ uses unit steps to the right or up. How many such paths meet the line $y = x$ only at their two endpoints?`,
+          difficulty: 2,
+          answer: String.raw`$84$`,
+        },
+        {
+          stem: String.raw`How many $5$-element subsets of $\{1, 2, \ldots, 15\}$ contain exactly one pair of consecutive integers? (For example, $\{2, 3, 7, 10, 14\}$ is counted, but $\{2, 3, 4, 8, 12\}$ and $\{1, 3, 5, 7, 9\}$ are not.)`,
+          difficulty: 3,
+          answer: String.raw`$1320$`,
+        },
+        {
+          stem: String.raw`Let $n \ge 1$. A path from $(0, 0)$ to $(n, n)$ uses unit steps to the right or up. Prove that the number of ordered pairs $(P, Q)$ of such paths that have no common point other than $(0, 0)$ and $(n, n)$ is
+$$2\left[\binom{2n-2}{n-1}^2 - \binom{2n-2}{n}^2\right].$$`,
+          difficulty: 4,
+          answer: String.raw`**Proof.** Key idea: if $P$ starts with a step right then $Q$ starts with a step up and the paths end the other way round, so removing these steps leaves paths from $(1, 0)$ to $(n, n - 1)$ and from $(0, 1)$ to $(n - 1, n)$ with no common point, and swapping the parts after the first common point matches the pairs that do meet with all pairs of paths from $(1, 0)$ to $(n - 1, n)$ and from $(0, 1)$ to $(n, n - 1)$.`,
+        },
       ],
     },
     {
@@ -318,6 +427,26 @@ $$\binom{2n}{n} - \binom{2n}{n+2}.$$`,
           difficulty: 3,
           answer: String.raw`**Proof.** Key idea: classify tilings by the first vertical grid line, at distance $2k$ from the left edge, that no domino crosses; the part to its left is a $3 \times 2k$ tiling with no such line inside, and there are $3$ of these for $k = 1$ and exactly $2$ for each $k \ge 2$, so $t_n = 3t_{n-1} + 2(t_{n-2} + \cdots + t_0)$, and subtracting the same identity for $n - 1$ gives the result.`,
         },
+        {
+          stem: String.raw`A $1 \times 10$ strip is tiled with $1 \times 1$ squares and $1 \times 2$ dominoes. Each square is then painted red or blue (the dominoes stay white). How many different painted tilings are there?`,
+          difficulty: 1,
+          answer: String.raw`$5741$`,
+        },
+        {
+          stem: String.raw`How many subsets of $\{1, 2, \ldots, 12\}$ (including the empty set) contain no two numbers that differ by exactly $2$?`,
+          difficulty: 2,
+          answer: String.raw`$441$`,
+        },
+        {
+          stem: String.raw`In how many ways can a $2 \times 7$ rectangle be tiled with $1 \times 1$ squares and $1 \times 2$ dominoes? (Dominoes may be placed horizontally or vertically.)`,
+          difficulty: 3,
+          answer: String.raw`$2356$`,
+        },
+        {
+          stem: String.raw`Let $n \ge 1$. Some $2n$ children sit on the chairs of a $2 \times n$ grid of chairs ($2$ rows, $n$ columns), one child per chair. They all stand up and sit down again, one child per chair, so that each child sits either on their own chair or on a chair next to it in the same row or the same column. Let $g_n$ be the number of possible new seatings (including the one in which nobody moves), and put $g_0 = 1$. Prove that $g_n = 3g_{n-1} + 3g_{n-2} - g_{n-3}$ for every $n \ge 3$.`,
+          difficulty: 4,
+          answer: String.raw`**Proof.** Key idea: the children who move form swaps of two neighbours and cycles running round the edge of a $2 \times k$ block ($k \ge 2$, in either direction), so cutting at every column line that no swap or cycle crosses gives $g_n = 2g_{n-1} + 5g_{n-2} + 4(g_{n-3} + \cdots + g_0)$ (an uncut block of width $w \ge 3$ is one of the $2$ cycles round its edge or one of the $2$ staggered patterns of horizontal swaps), and subtracting the same identity for $n - 1$ gives the result.`,
+        },
       ],
     },
     {
@@ -328,8 +457,8 @@ $$\binom{2n}{n} - \binom{2n}{n+2}.$$`,
         {
           stem: String.raw`Seven people sit around a round table. Two seatings count as the same if every person has the same left-hand neighbour and the same right-hand neighbour in both. How many different seatings are there?`,
           difficulty: 1,
-          choices: [String.raw`$120$`, String.raw`$360$`, String.raw`$720$`, String.raw`$2520$`, String.raw`$5040$`],
-          answer: String.raw`(C) $720$`,
+          choices: [String.raw`$720$`, String.raw`$840$`, String.raw`$1440$`, String.raw`$2520$`, String.raw`$5040$`],
+          answer: String.raw`(A) $720$`,
         },
         {
           stem: String.raw`The six vertices of a regular hexagon are coloured so that exactly two are red, two are blue and two are green. Two colourings count as the same if one can be turned into the other by a rotation or a reflection of the hexagon. How many different colourings are there?`,
@@ -340,6 +469,28 @@ $$\binom{2n}{n} - \binom{2n}{n+2}.$$`,
           stem: String.raw`Let $p$ be a prime and $a$ a positive integer. A necklace is a ring of $p$ beads, each bead one of $a$ colours, where necklaces that differ by a rotation are the same. By counting necklaces, prove that $p$ divides $a^p - a$.`,
           difficulty: 3,
           answer: String.raw`**Proof.** Key idea: a string of $p$ beads that is unchanged by a rotation through $k$ places with $0 < k < p$ must be one colour, because $\gcd(k, p) = 1$; so the $a^p - a$ strings that are not one colour fall into rotation classes of exactly $p$ strings each.`,
+        },
+        {
+          stem: String.raw`Six beads, three red and three blue, are arranged in a ring that lies flat on a table. Two rings count as the same if one can be rotated (but not turned over) into the other. How many different rings are there?`,
+          difficulty: 1,
+          answer: String.raw`$4$`,
+        },
+        {
+          stem: String.raw`Exactly three of the nine cells of a $3 \times 3$ board are coloured black. Two colourings count as the same if one can be rotated into the other (rotations through $90^\circ$, $180^\circ$ or $270^\circ$; reflections are not allowed). How many different colourings are there?`,
+          difficulty: 2,
+          answer: String.raw`$22$`,
+        },
+        {
+          stem: String.raw`Eight beads, each black or white, are threaded on a ring so that no two black beads are next to each other. Two rings count as the same if one can be rotated or turned over into the other. How many different rings are there? (The all-white ring counts.)`,
+          difficulty: 3,
+          answer: String.raw`$8$`,
+        },
+        {
+          stem: String.raw`Let $L_1 = 1$, $L_2 = 3$ and $L_{k+1} = L_k + L_{k-1}$ for $k \ge 2$. Prove that for every integer $n \ge 3$,
+$$n \text{ divides } \sum_{d \mid n} \varphi\!\left(\frac{n}{d}\right) L_d,$$
+where the sum is over the positive divisors $d$ of $n$ and $\varphi$ is Euler's function.`,
+          difficulty: 4,
+          answer: String.raw`**Proof.** Key idea: apply Burnside's lemma to rings of $n$ black and white beads with no two black beads next to each other, up to rotation: the rotation through $k$ places fixes exactly the rings that repeat every $d = \gcd(k, n)$ beads, which correspond to the $L_d$ cyclic strings of length $d$ with no two black beads next to each other (check $d = 1, 2$ directly), and exactly $\varphi\!\left(\frac{n}{d}\right)$ of the $n$ rotations have $\gcd(k, n) = d$.`,
         },
       ],
     },

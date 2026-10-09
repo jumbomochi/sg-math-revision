@@ -109,6 +109,24 @@ $$a_1 b_n + \cdots + a_n b_1 \;\le\; a_1 c_1 + \cdots + a_n c_n \;\le\; a_1 b_1 
 - **Geometry**: $\sqrt{(x - p)^2 + (y - q)^2}$ is a distance, so a sum of such roots is the length of a broken path; it is shortest when the path is straight.
 - **Discriminant method**: if $k$ is a value of the expression, rewrite as a quadratic in one variable and require a real root ($\Delta \ge 0$).`,
     },
+    {
+      title: String.raw`Weighted AM-GM`,
+      body: String.raw`For positive reals $x_1, \ldots, x_n$ and positive weights $w_1, \ldots, w_n$ with $w_1 + \cdots + w_n = 1$:
+$$w_1 x_1 + w_2 x_2 + \cdots + w_n x_n \ge x_1^{w_1} x_2^{w_2} \cdots x_n^{w_n},$$
+with equality when all the $x_i$ are equal.
+
+- The weights may be any positive reals adding to $1$, even expressions in the variables themselves; this is how to handle **variable exponents** such as $a^b$.
+- Example: $\frac13 \cdot 8 + \frac23 \cdot 1 \ge 8^{1/3} \cdot 1^{2/3}$, i.e. $\frac{10}{3} \ge 2$.
+- With rational weights it is just ordinary AM-GM with repeated terms: $\frac{x + x + y}{3} \ge \sqrt[3]{x^2 y}$.`,
+    },
+    {
+      title: String.raw`Trigonometric substitution`,
+      body: String.raw`Some algebraic expressions are trigonometric identities in disguise.
+
+- If $x = \tan\alpha$ with $-\frac{\pi}{2} < \alpha < \frac{\pi}{2}$, then $1 + x^2 = \frac{1}{\cos^2\alpha}$, so $\frac{1}{1 + x^2} = \cos^2\alpha$ and $\frac{2x}{1 + x^2} = \sin 2\alpha \le 1$.
+- Tangents combine: with $x = \tan\alpha$, $y = \tan\beta$, $\frac{x + y}{1 - xy} = \tan(\alpha + \beta)$ and $\frac{1 - x^2}{1 + x^2} = \cos 2\alpha$.
+- For $x^2 + y^2 = 1$ put $x = \cos\theta$, $y = \sin\theta$; then the bound comes from $|\sin| \le 1$, $|\cos| \le 1$.`,
+    },
   ],
   archetypes: [
     {
@@ -119,8 +137,8 @@ $$a_1 b_n + \cdots + a_n b_1 \;\le\; a_1 c_1 + \cdots + a_n c_n \;\le\; a_1 b_1 
         {
           stem: String.raw`What is the minimum value of $\dfrac{x^2 + 2x + 16}{x}$ over all positive real numbers $x$?`,
           difficulty: 1,
-          choices: [String.raw`$6$`, String.raw`$8$`, String.raw`$10$`, String.raw`$12$`, String.raw`$18$`],
-          answer: String.raw`(C) $10$`,
+          choices: [String.raw`$10$`, String.raw`$12$`, String.raw`$14$`, String.raw`$16$`, String.raw`$18$`],
+          answer: String.raw`(A) $10$`,
         },
         {
           stem: String.raw`Find the minimum value of $x^2 + \dfrac{16}{x}$ over all positive real numbers $x$.`,
@@ -132,6 +150,29 @@ $$a_1 b_n + \cdots + a_n b_1 \;\le\; a_1 c_1 + \cdots + a_n c_n \;\le\; a_1 b_1 
 $$\frac{a}{b} + \frac{b}{c} + \frac{c}{a} \ge \frac{a + b + c}{\sqrt[3]{abc}}.$$`,
           difficulty: 3,
           answer: String.raw`**Proof.** Key idea: by AM-GM on three terms, $\frac{a}{b} + \frac{a}{b} + \frac{b}{c} \ge 3\sqrt[3]{\frac{a^2}{bc}} = \frac{3a}{\sqrt[3]{abc}}$; add the three cyclic versions.`,
+        },
+        {
+          stem: String.raw`Positive real numbers $x$ and $y$ satisfy $xy = 8$. Find the minimum value of $x + 2y$.`,
+          difficulty: 1,
+          answer: String.raw`$8$`,
+        },
+        {
+          stem: String.raw`Positive real numbers $x, y, z$ satisfy $x + y + z = 6$. Find the maximum value of $xy^2z^3$.`,
+          difficulty: 2,
+          answer: String.raw`$108$`,
+        },
+        {
+          stem: String.raw`Find the minimum value of
+$$T + \frac{16}{T}, \qquad \text{where } T = \frac{(x + y)(y + z)(z + x)}{xyz},$$
+over all positive real numbers $x, y, z$.`,
+          difficulty: 3,
+          answer: String.raw`$10$`,
+        },
+        {
+          stem: String.raw`Positive real numbers $a, b, c$ satisfy $a + b + c = 3$. Prove that
+$$(a^2 + b^2 + c^2)^3 \left(a^b\, b^c\, c^a\right)^2 \le 27.$$`,
+          difficulty: 4,
+          answer: String.raw`**Proof.** Key idea: weighted AM-GM with weights $\frac b3, \frac c3, \frac a3$ gives $a^b b^c c^a \le u^3$ where $u = \frac{ab + bc + ca}{3}$, and $a^2 + b^2 + c^2 = 9 - 6u$, so it remains to show $u^2(3 - 2u) \le 1$, i.e. $(1 - u)^2(1 + 2u) \ge 0$.`,
         },
       ],
     },
@@ -156,6 +197,28 @@ $$\frac{a}{3a + b} + \frac{b}{3b + c} + \frac{c}{3c + a} \le \frac{3}{4}.$$`,
           difficulty: 3,
           answer: String.raw`**Proof.** Key idea: write $\frac{a}{3a + b} = \frac{1}{3}\big(1 - \frac{b}{3a + b}\big)$, then bound $\sum \frac{b}{3a + b} = \sum \frac{b^2}{3ab + b^2}$ below by the Engel form and finish with $a^2 + b^2 + c^2 \ge ab + bc + ca$.`,
         },
+        {
+          stem: String.raw`Real numbers $x, y, z$ satisfy $x + 2y + 2z = 9$. Find the minimum value of $x^2 + y^2 + z^2$.`,
+          difficulty: 1,
+          answer: String.raw`$9$`,
+        },
+        {
+          stem: String.raw`Positive real numbers $x, y, z$ satisfy $x + 2y + 3z = 6$. Find the minimum value of $\dfrac{1}{x} + \dfrac{2}{y} + \dfrac{3}{z}$.`,
+          difficulty: 2,
+          answer: String.raw`$6$`,
+        },
+        {
+          stem: String.raw`Non-negative real numbers $x, y, z$ satisfy $x + y + z = 3$. Find the maximum value of
+$$\sqrt{x + 1} + 2\sqrt{y + 2} + 3\sqrt{z + 3}.$$`,
+          difficulty: 3,
+          answer: String.raw`$1 + 2\sqrt{26}$`,
+        },
+        {
+          stem: String.raw`Positive real numbers $a, b, c$ satisfy $a + b + c = 3$. Prove that
+$$\frac{a^2}{b + c^2} + \frac{b^2}{c + a^2} + \frac{c^2}{a + b^2} \ge \frac{3}{2}.$$`,
+          difficulty: 4,
+          answer: String.raw`**Proof.** Key idea: apply the Engel form to $\sum \frac{a^4}{a^2 b + a^2 c^2}$ and replace $3$ by $a + b + c$ to make the result homogeneous; what remains is $2(a^4 + b^4 + c^4) \ge a^3 b + b^3 c + c^3 a + abc(a + b + c)$, which follows from AM-GM.`,
+        },
       ],
     },
     {
@@ -178,6 +241,28 @@ $$\frac{a}{3a + b} + \frac{b}{3b + c} + \frac{c}{3c + a} \le \frac{3}{4}.$$`,
           difficulty: 3,
           answer: String.raw`$191$`,
         },
+        {
+          stem: String.raw`The numbers $1, 4, 6, 8$ are matched with the numbers $2, 3, 5, 7$ in pairs, and the four products of matched numbers are added. What is the difference between the largest and the smallest possible total?`,
+          difficulty: 1,
+          answer: String.raw`$39$`,
+        },
+        {
+          stem: String.raw`The numbers $x_1, x_2, \ldots, x_{10}$ are $1, 2, \ldots, 10$ in some order. Find the largest possible value of
+$$(x_1 - 1)^2 + (x_2 - 2)^2 + \cdots + (x_{10} - 10)^2.$$`,
+          difficulty: 2,
+          answer: String.raw`$330$`,
+        },
+        {
+          stem: String.raw`Let $a, b, c$ be positive real numbers. Prove that $a^a\, b^b\, c^c \ge a^b\, b^c\, c^a$.`,
+          difficulty: 3,
+          answer: String.raw`**Proof.** Key idea: take logarithms; $(a, b, c)$ and $(\ln a, \ln b, \ln c)$ are similarly ordered, so by rearrangement $a\ln a + b\ln b + c\ln c \ge b\ln a + c\ln b + a\ln c$.`,
+        },
+        {
+          stem: String.raw`Let $n \ge 2$. The numbers $1, 2, \ldots, n$ are written in a row in some order $x_1, x_2, \ldots, x_n$. Find, in terms of $n$, the smallest possible value of
+$$\frac{x_1}{x_2} + \frac{x_2}{x_3} + \cdots + \frac{x_{n-1}}{x_n}.$$`,
+          difficulty: 4,
+          answer: String.raw`$n - \left(1 + \dfrac12 + \cdots + \dfrac1n\right)$, only for the order $1, 2, \ldots, n$. Key idea: with the end values $x_1 = s$ and $x_n = t$ fixed, rearrangement says the sum is at least what you get by matching the numerators and the denominators in increasing order, and comparing the two sorted lists every such ratio is at least $1$ except $\frac{k}{k+1}$ for $s \le k < t$, so the ends should be $1$ and $n$.`,
+        },
       ],
     },
     {
@@ -199,6 +284,28 @@ $$\frac{a}{3a + b} + \frac{b}{3b + c} + \frac{c}{3c + a} \le \frac{3}{4}.$$`,
           stem: String.raw`Prove that $x^4 + y^4 + 8 \ge 8xy$ for all real numbers $x$ and $y$, and find all cases of equality.`,
           difficulty: 3,
           answer: String.raw`Equality at $x = y = \sqrt{2}$ and $x = y = -\sqrt{2}$. **Proof.** Key idea: $x^4 + y^4 + 8 - 8xy = (x^2 - y^2)^2 + 2(xy - 2)^2$.`,
+        },
+        {
+          stem: String.raw`Find all pairs $(x, y)$ of real numbers such that $x^2 + y^2 + 2x - 4y + 5 = 0$.`,
+          difficulty: 1,
+          answer: String.raw`Only $(x, y) = (-1, 2)$`,
+        },
+        {
+          stem: String.raw`Find the minimum value of $x^4 - 4x^3 + 8x^2 - 8x + 5$ over all real numbers $x$.`,
+          difficulty: 2,
+          answer: String.raw`$2$`,
+        },
+        {
+          stem: String.raw`Real numbers $x, y, z$ satisfy $xy + yz + zx = 1$. Find the minimum value of $3x^2 + 3y^2 + z^2$.`,
+          difficulty: 3,
+          answer: String.raw`$2$`,
+        },
+        {
+          stem: String.raw`Find the minimum value of
+$$2(x^2 + 4)(y^2 + 1) - 5x - 10y$$
+over all real numbers $x$ and $y$.`,
+          difficulty: 4,
+          answer: String.raw`$\dfrac{5}{2}$`,
         },
       ],
     },
@@ -224,6 +331,29 @@ $$\frac{a^3}{a^2 + 2} + \frac{b^3}{b^2 + 2} + \frac{c^3}{c^2 + 2} \ge 1.$$`,
           difficulty: 3,
           answer: String.raw`**Proof.** Key idea: the tangent line at $x = 1$ gives $\frac{x^3}{x^2 + 2} \ge \frac{7x - 4}{9}$ for $x > 0$, which is equivalent to $(x - 1)^2(x + 4) \ge 0$; then add.`,
         },
+        {
+          stem: String.raw`Non-negative real numbers $a, b, c$ satisfy $a + b + c = 3$. Find the maximum value of $(4a - a^2) + (4b - b^2) + (4c - c^2)$.`,
+          difficulty: 1,
+          answer: String.raw`$9$`,
+        },
+        {
+          stem: String.raw`Positive real numbers $a, b, c$ satisfy $a + b + c = 3$. Find the minimum value of
+$$\frac{a^3}{a + 1} + \frac{b^3}{b + 1} + \frac{c^3}{c + 1}.$$`,
+          difficulty: 2,
+          answer: String.raw`$\dfrac{3}{2}$`,
+        },
+        {
+          stem: String.raw`Positive real numbers $a, b, c$ satisfy $a + b + c = 3$. Prove that
+$$\frac{a}{a^3 + 3} + \frac{b}{b^3 + 3} + \frac{c}{c^3 + 3} \le \frac{3}{4}.$$`,
+          difficulty: 3,
+          answer: String.raw`**Proof.** Key idea: the tangent line at $x = 1$ gives $\frac{x}{x^3 + 3} \le \frac{x + 3}{16}$ for $x > 0$, which is equivalent to $(x - 1)^2(x^2 + 5x + 9) \ge 0$; then add.`,
+        },
+        {
+          stem: String.raw`Real numbers $a, b, c$ (not necessarily positive) satisfy $a + b + c = 3$. Prove that
+$$\frac{1}{a^2 - a + 2} + \frac{1}{b^2 - b + 2} + \frac{1}{c^2 - c + 2} \le \frac{3}{2}.$$`,
+          difficulty: 4,
+          answer: String.raw`**Proof.** Key idea: the tangent-line bound $\frac{1}{x^2 - x + 2} \le \frac{3 - x}{4}$ is equivalent to $(x - 1)^2(x - 2) \le 0$, so it works when all three numbers are at most $2$; if one exceeds $2$, its term is below $\frac14$ and each other term is at most $\frac47$ (the maximum, at $x = \frac12$), and $\frac14 + \frac87 < \frac32$.`,
+        },
       ],
     },
     {
@@ -247,6 +377,28 @@ $$\frac{xy + yz + 2zx}{x^2 + y^2 + z^2}$$
 over all real numbers $x, y, z$, not all zero.`,
           difficulty: 3,
           answer: String.raw`$\dfrac{1 + \sqrt{3}}{2}$`,
+        },
+        {
+          stem: String.raw`Find the minimum value of $|x - 1| + |x - 4| + |x - 6|$ over all real numbers $x$.`,
+          difficulty: 1,
+          answer: String.raw`$5$`,
+        },
+        {
+          stem: String.raw`Find the maximum value of $\dfrac{3x + 4}{x^2 + 1}$ over all real numbers $x$.`,
+          difficulty: 2,
+          answer: String.raw`$\dfrac{9}{2}$`,
+        },
+        {
+          stem: String.raw`For real numbers $x$ and $y$, let $M$ be the largest of the three numbers $|x|$, $|2y|$ and $|x + y - 6|$. Find the smallest possible value of $M$.`,
+          difficulty: 3,
+          answer: String.raw`$\dfrac{12}{5}$`,
+        },
+        {
+          stem: String.raw`Find the maximum value of
+$$\frac{x + y}{(1 + x^2)(1 + y^2)}$$
+over all real numbers $x$ and $y$.`,
+          difficulty: 4,
+          answer: String.raw`$\dfrac{3\sqrt{3}}{8}$`,
         },
       ],
     },

@@ -41,6 +41,13 @@ H2.addTopic({
 - On the integers, setting $y = 1$ turns many equations into a recurrence for $f(n + 1)$; solve it by induction in both directions.`,
     },
     {
+      title: String.raw`Additive, multiplicative and exponential`,
+      body: String.raw`- If $g$ is both **additive** ($g(x + y) = g(x) + g(y)$) and **multiplicative** ($g(xy) = g(x)g(y)$) on $\mathbb{R}$, then $g(x) = x$ for all $x$ or $g \equiv 0$: $g(t^2) = g(t)^2 \ge 0$ makes $g$ increasing, and an increasing additive function is linear.
+- If $g(x + y) = g(x)g(y)$, then $g(x) = g\!\left(\frac x2\right)^2 \ge 0$, and one zero value forces $g \equiv 0$. On $\mathbb{Q}$, $g\!\left(\frac pq\right)^q = g(1)^p$.
+- A function with $f(mn) = f(m)f(n)$ for **all** $m, n$ (completely multiplicative) is fixed by its values at the primes; comparing powers such as $f(a^k)$ with $f(b^l)$ when $a^k < b^l$ uses monotonicity or a size condition to pin down those values.
+- Rescale or shift to reach these forms. Example: if $f(x + y) = 3f(x)f(y)$, then $g = 3f$ satisfies $g(x + y) = g(x)g(y)$.`,
+    },
+    {
       title: String.raw`Injective and surjective`,
       body: String.raw`- $f$ is **injective** if $f(a) = f(b)$ forces $a = b$. To prove it, assume $f(a) = f(b)$, substitute both into the equation, and compare.
 - $f$ is **surjective** if every value is taken. If one side of the equation can be made to equal any number (e.g. $f(\ldots) = x + \text{const}$), then $f$ is surjective.
@@ -77,8 +84,8 @@ H2.addTopic({
         {
           stem: String.raw`A function $f$ satisfies $f(x + y) = f(x) + f(y) + 2xy$ for all real $x, y$, and $f(1) = 3$. What is $f(5)$?`,
           difficulty: 1,
-          choices: [String.raw`$15$`, String.raw`$25$`, String.raw`$35$`, String.raw`$45$`, String.raw`$55$`],
-          answer: String.raw`(C) $35$`,
+          choices: [String.raw`$35$`, String.raw`$40$`, String.raw`$45$`, String.raw`$50$`, String.raw`$55$`],
+          answer: String.raw`(A) $35$`,
         },
         {
           stem: String.raw`A function $f : \mathbb{R} \to \mathbb{R}$ satisfies
@@ -94,12 +101,36 @@ for all real $x, y$, and prove that there are no others.`,
           difficulty: 3,
           answer: String.raw`$f(x) = 1 + 2x$ and $f(x) = 1 - 2x$. **Proof.** Key idea: $f(0) = 1$ (as $f(0) = 0$ forces $f \equiv 0$, which fails); with $c = f(1)$, $y = 1$ gives $f(x + 1) = cf(x) - 4x$, and comparing the substitutions $(x, y + 1)$ and $(x + 1, y)$ yields $xf(y) - yf(x) = x - y$, so $y = 1$ makes $f$ linear.`,
         },
+        {
+          stem: String.raw`A function $f : \mathbb{R} \to \mathbb{R}$ satisfies $f(x - y) = f(x) + f(y) - 2xy$ for all real $x, y$. Find $f(2026)$.`,
+          difficulty: 1,
+          answer: String.raw`$2026^2 = 4104676$`,
+        },
+        {
+          stem: String.raw`A function $f : \mathbb{R} \to \mathbb{R}$ satisfies $f(x + f(y)) = x + y + 1$ for all real $x, y$. Find $f(2026)$.`,
+          difficulty: 2,
+          answer: String.raw`$\dfrac{4053}{2}$`,
+        },
+        {
+          stem: String.raw`Find all functions $f : \mathbb{R} \to \mathbb{R}$ such that
+$$f(x\,f(y)) = f(xy) + x$$
+for all real $x, y$, and prove that there are no others.`,
+          difficulty: 3,
+          answer: String.raw`$f(x) = x + 1$. **Proof.** Key idea: $y = 0$ gives $f(x\,f(0)) = f(0) + x$, so $f(0) = c \ne 0$ and $f(t) = c + \dfrac tc$ for all $t$; substituting back forces $\dfrac{1}{c^2} = \dfrac1c$, so $c = 1$.`,
+        },
+        {
+          stem: String.raw`Find all functions $f : \mathbb{R} \to \mathbb{R}$ such that
+$$f(x + y) + f(xy) = f(x)f(y) + 1$$
+for all real $x, y$, and prove that there are no others.`,
+          difficulty: 4,
+          answer: String.raw`$f(x) = 1$ for all $x$, and $f(x) = x + 1$. **Proof.** Key idea: $f(0) = 1$; with $a = f(1)$, $y = 1$ gives $f(x + 1) = (a - 1)f(x) + 1$, and comparing the substitutions $y = -1$ at $x$ and $-x$ leaves $a = 1$ (so $f \equiv 1$), $a = 2$ or $a = 0$. For $g = f - 1$, replacing $y$ by $y + 1$ and subtracting gives $g(xy + x) = g(xy) + g(x)$ when $a = 2$, so $g$ is additive and then multiplicative, hence $g(x) = x$; when $a = 0$ the same step gives $g(2x) = 0$, contradicting $g(1) = -1$.`,
+        },
       ],
     },
     {
       id: "A6-systems",
       name: String.raw`Swapping the variable to build a system`,
-      tests: String.raw`An equation in one variable linking $f(x)$ with $f(1/x)$, $f(1 - x)$ or $f$ at some other related point. Substitute the related point to get more equations and solve the linear system.`,
+      tests: String.raw`An equation in one variable linking $f(x)$ with $f(1/x)$, $f(1 - x)$ or $f$ at some other related point. Substitute the related point to get more equations and solve the linear system; if the substitutions never close up (as with $x \mapsto \frac x2$), chain them and use a continuity or differentiability condition at $0$.`,
       questions: [
         {
           stem: String.raw`A function $f$ satisfies $f(x) + 2f\!\left(\dfrac1x\right) = 3x$ for all $x \ne 0$. Find $f(2)$.`,
@@ -119,6 +150,32 @@ $$f(x) + x\,f(1 - x) = x^3 - x^2 + x$$
 for all real $x$, and prove that there are no others.`,
           difficulty: 3,
           answer: String.raw`$f(x) = x^2$. **Proof.** Key idea: replacing $x$ by $1 - x$ gives a second linear equation in $f(x)$ and $f(1 - x)$; its determinant $1 - x(1 - x) = x^2 - x + 1$ is never $0$, so $f(x)$ is uniquely determined, and $x^2$ works.`,
+        },
+        {
+          stem: String.raw`A function $f : \mathbb{R} \to \mathbb{R}$ satisfies $f(x) + 3f(-x) = x^2 + 4x$ for all real $x$. Find $f(1)$.`,
+          difficulty: 1,
+          answer: String.raw`$-\dfrac74$`,
+        },
+        {
+          stem: String.raw`A function $f$ is defined for all real $x \ne 1$ and satisfies
+$$f(x) + 2f\!\left(\frac{x + 1}{x - 1}\right) = x.$$
+Find $f(3)$.`,
+          difficulty: 2,
+          answer: String.raw`$\dfrac13$`,
+        },
+        {
+          stem: String.raw`Prove that there is no function $f$, defined for all real $x$ other than $-1$, $0$ and $1$, such that
+$$f(x) + f\!\left(\frac{x - 1}{x + 1}\right) = x$$
+for all such $x$.`,
+          difficulty: 3,
+          answer: String.raw`**Proof.** Key idea: the map $x \mapsto \frac{x - 1}{x + 1}$ has period $4$ ($x \to \frac{x-1}{x+1} \to -\frac1x \to \frac{1 + x}{1 - x} \to x$), so the four equations along a cycle can only be consistent if the alternating sum of their right sides is $0$; at $x = 2$ it is $2 - \frac13 - \frac12 + 3 \ne 0$.`,
+        },
+        {
+          stem: String.raw`Find all functions $f : \mathbb{R} \to \mathbb{R}$ that are differentiable at $0$ and satisfy
+$$f(x) - 3f\!\left(\frac x2\right) + 2f\!\left(\frac x4\right) = x^2$$
+for all real $x$, and prove that there are no others.`,
+          difficulty: 4,
+          answer: String.raw`$f(x) = \dfrac83x^2 + ax + b$ for any real constants $a, b$. **Proof.** Key idea: $g(x) = f(x) - f\!\left(\frac x2\right)$ satisfies $g(x) - 2g\!\left(\frac x2\right) = x^2$, so $h(x) = g(x) - 2x^2$ has $h(x) = 2h\!\left(\frac x2\right)$ and $\frac{h(x)}{x} = \frac{h(x/2^n)}{x/2^n} \to h'(0)$, making $h$ linear (continuity alone would allow $h(x) = x\sin(2\pi\log_2|x|)$); then chain $f(x) - f\!\left(\frac x2\right) = 2x^2 + h'(0)x$ down to $0$.`,
         },
       ],
     },
@@ -144,6 +201,30 @@ for all integers $m, n$, and prove that there are no others.`,
           difficulty: 3,
           answer: String.raw`$f(n) = cn^2$ for any integer $c$. **Proof.** Key idea: $m = n = 0$ gives $f(0) = 0$ and $m = 0$ shows $f$ is even; then $n = 1$ gives $f(m + 1) = 2f(m) - f(m - 1) + 2f(1)$, and induction gives $f(m) = m^2 f(1)$.`,
         },
+        {
+          stem: String.raw`A function $f : \mathbb{Z} \to \mathbb{Z}$ satisfies $f(m + n) = f(m) + f(n) + 3$ for all integers $m, n$, and $f(1) = 2$. Find $f(10)$.`,
+          difficulty: 1,
+          answer: String.raw`$47$`,
+        },
+        {
+          stem: String.raw`A function $f : \mathbb{Q} \to \mathbb{R}$ satisfies $f(x + y) = f(x)\,f(y)$ for all rational $x, y$, and $f(1) = 4$. Find $f\!\left(\dfrac32\right)$.`,
+          difficulty: 2,
+          answer: String.raw`$8$`,
+        },
+        {
+          stem: String.raw`Find all functions $f : \mathbb{Q} \to \mathbb{Q}$ such that
+$$f\!\left(\frac{x + 2y}{3}\right) = \frac{f(x) + 2f(y)}{3}$$
+for all rational $x, y$, and prove that there are no others.`,
+          difficulty: 3,
+          answer: String.raw`$f(x) = ax + b$ for rational constants $a, b$. **Proof.** Key idea: $g = f - f(0)$ satisfies $g\!\left(\frac x3\right) = \frac{g(x)}{3}$ and $g\!\left(\frac{2y}{3}\right) = \frac{2g(y)}{3}$ (put $y = 0$, then $x = 0$), so the equation becomes $g(u + v) = g(u) + g(v)$ with $u = \frac x3$, $v = \frac{2y}{3}$ arbitrary; Cauchy on $\mathbb{Q}$ gives $g(x) = ax$.`,
+        },
+        {
+          stem: String.raw`Find all functions $f : \mathbb{Q} \to \mathbb{Q}$ such that
+$$f(x + y) = f(x) + f(y) + f(x)f(y)$$
+for all rational $x, y$, and prove that there are no others.`,
+          difficulty: 4,
+          answer: String.raw`$f(x) = 0$ for all $x$, and $f(x) = -1$ for all $x$. **Proof.** Key idea: $g = f + 1$ satisfies $g(x + y) = g(x)g(y)$, so $g \ge 0$ and either $g \equiv 0$ or $g > 0$ everywhere; in the second case $r = g(1)$ is a positive rational with a rational $n$-th root $g\!\left(\frac1n\right)$ for every $n$, so every prime exponent of $r$ is divisible by every $n$, giving $r = 1$ and then $g \equiv 1$.`,
+        },
       ],
     },
     {
@@ -168,12 +249,34 @@ for all rational $x, y$.`,
           difficulty: 3,
           answer: String.raw`**Proof.** Key idea: $f$ is injective and surjective, which gives $f(0) = 0$ and $f(f(y)) = 2y$; replacing $y$ by $f(y)$ makes $f$ additive, so $f(x) = cx$ on $\mathbb{Q}$ with $c^2 = 2$, impossible for rational $c$.`,
         },
+        {
+          stem: String.raw`A linear function $f(x) = ax + b$, with $a$ and $b$ real, satisfies $f(f(f(x))) = 8x + 21$ for all real $x$. Find $f(1)$.`,
+          difficulty: 1,
+          answer: String.raw`$5$`,
+        },
+        {
+          stem: String.raw`A function $f : \mathbb{R} \to \mathbb{R}$ satisfies $f(f(x)) = 3x + 2$ for all real $x$. Find $f(-1)$.`,
+          difficulty: 2,
+          answer: String.raw`$-1$`,
+        },
+        {
+          stem: String.raw`Prove that there is no function $f : \mathbb{R} \to \mathbb{R}$ such that $f(f(x)) = -x^3$ for all real $x$.`,
+          difficulty: 3,
+          answer: String.raw`**Proof.** Key idea: applying $f$ gives $f(-x^3) = f(f(f(x))) = -f(x)^3$, so $x = 1$ and $x = -1$ give $f(1) = f(1)^9$, i.e. $f(1) \in \{-1, 0, 1\}$, and each of these contradicts $f(f(1)) = -1$.`,
+        },
+        {
+          stem: String.raw`Find all functions $f : \mathbb{R} \to \mathbb{R}$ such that
+$$f(2x + f(y)) = f(x) + x + y$$
+for all real $x, y$, and prove that there are no others.`,
+          difficulty: 4,
+          answer: String.raw`$f(x) = x$. **Proof.** Key idea: $f$ is bijective; with $f(a) = 0$, $y = a$ gives $f(2x) = f(x) + x + a$, and applying this to $2x + f(y) = 2\left(x + \frac{f(y)}{2}\right)$ shows $f(x + t) - f(x)$ does not depend on $x$, so $g = f - f(0)$ is additive; substituting back separates the variables as $g(x) - x = y - g(g(y)) - g(f(0))$, so both sides are constant, giving $g(x) = x$ and $f(0) = 0$.`,
+        },
       ],
     },
     {
       id: "A6-positive-integers",
       name: String.raw`Functions on the positive integers`,
-      tests: String.raw`$f$ is defined on the positive integers by a recursive rule or a condition such as "strictly increasing". Compute small values, look at binary digits for rules in $2n$ and $2n + 1$, and use induction or the gaps $f(n + 1) - f(n) \ge 1$.`,
+      tests: String.raw`$f$ is defined on the positive integers by a recursive rule or a condition such as "strictly increasing". Compute small values, look at binary digits for rules in $2n$ and $2n + 1$, and use induction or the gaps $f(n + 1) - f(n) \ge 1$; for multiplicative conditions, work prime by prime and compare powers.`,
       questions: [
         {
           stem: String.raw`A function on the positive integers satisfies $f(1) = 1$, $f(2n) = f(n)$ and $f(2n + 1) = f(n) + 1$ for all $n \ge 1$. Find $f(2026)$.`,
@@ -189,6 +292,28 @@ for all rational $x, y$.`,
           stem: String.raw`Find all strictly increasing functions $f$ from the positive integers to the positive integers such that $f(f(n)) = n + 2026$ for every positive integer $n$, and prove that there are no others.`,
           difficulty: 3,
           answer: String.raw`$f(n) = n + 1013$. **Proof.** Key idea: $f(n + 2026) = f(f(f(n))) = f(n) + 2026$, and the $2026$ gaps $f(k + 1) - f(k) \ge 1$ from $k = n$ to $n + 2025$ add up to $2026$, so each gap is $1$; hence $f(n) = n + c$ with $2c = 2026$.`,
+        },
+        {
+          stem: String.raw`A function $f$ on the positive integers satisfies $f(mn) = f(m) + f(n)$ for all positive integers $m, n$, with $f(2) = 3$ and $f(3) = 5$. Find $f(72)$.`,
+          difficulty: 1,
+          answer: String.raw`$19$`,
+        },
+        {
+          stem: String.raw`A function on the positive integers satisfies $f(1) = 1$ and $f(n) = f\!\left(\left\lfloor \dfrac n2 \right\rfloor\right) + n$ for all $n \ge 2$. Find $f(2026)$.`,
+          difficulty: 2,
+          answer: String.raw`$4044$`,
+        },
+        {
+          stem: String.raw`A strictly increasing function $f$ from the positive integers to the positive integers satisfies $f(mn) = f(m)f(n)$ for all positive integers $m, n$, and $f(2) = 4$. Find $f(3)$.`,
+          difficulty: 3,
+          answer: String.raw`$9$`,
+        },
+        {
+          stem: String.raw`Find all functions $f$ from the positive integers to the positive integers such that
+$$f(mn) = f(m)f(n) \quad\text{and}\quad f(m + n) \le f(m) + f(n)$$
+for all positive integers $m, n$, and prove that there are no others.`,
+          difficulty: 4,
+          answer: String.raw`$f(n) = n$ and $f(n) = 1$. **Proof.** Key idea: $f(1) = 1$ and subadditivity give $f(n) \le n$, while $f(2) \in \{1, 2\}$. If $f(2) = 2$, then $2^k = f(2^k) \le f(n) + f(2^k - n) \le f(n) + 2^k - n$ forces $f(n) \ge n$. If $f(2) = 1$, writing $n^k$ in binary gives $f(n)^k = f(n^k) \le k\log_2 n + 1$ for every $k$, so $f(n) = 1$.`,
         },
       ],
     },

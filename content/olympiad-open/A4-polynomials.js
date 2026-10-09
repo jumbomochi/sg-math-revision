@@ -51,6 +51,13 @@ starting from $p_0 = 3$, $p_1 = e_1$, $p_2 = e_1^2 - 2e_2$. The same works for a
 - To solve an equation for an unknown polynomial: substitute values that make one side vanish to find roots, factor them out, and compare degrees or leading coefficients.`,
     },
     {
+      title: String.raw`Repeated roots and the derivative`,
+      body: String.raw`- $(x - a)^2$ divides $P(x)$ exactly when $P(a) = 0$ **and** $P'(a) = 0$: if $P = (x - a)^2 Q$ then $P' = (x - a)\big(2Q + (x - a)Q'\big)$.
+- More generally $(x - a)^k$ divides $P$ when $P$ and its first $k - 1$ derivatives vanish at $a$. To find a remainder on division by $(x - a)^k$, expand $P$ in powers of $t = x - a$ and keep the terms below $t^k$.
+- Example: $x^3 - 3x + 2$ has $P(1) = 0$ and $P'(1) = 3 - 3 = 0$, so $(x - 1)^2$ is a factor; indeed $x^3 - 3x + 2 = (x - 1)^2(x + 2)$.
+- The same test works at a non-real root, using complex arithmetic.`,
+    },
+    {
       title: String.raw`New polynomials from old roots`,
       body: String.raw`If $P(x)$ has roots $r_i$, then:
 
@@ -108,6 +115,28 @@ $$\frac{1}{a^2 - 2a} + \frac{1}{b^2 - 2b} + \frac{1}{c^2 - 2c}.$$`,
           difficulty: 3,
           answer: String.raw`$\dfrac{1}{5}$`,
         },
+        {
+          stem: String.raw`The roots of $2x^2 - 6x + 1 = 0$ are $a$ and $b$. Find $|a - b|$.`,
+          difficulty: 1,
+          answer: String.raw`$\sqrt7$`,
+        },
+        {
+          stem: String.raw`The three roots of $x^3 - 6x^2 + kx + 6 = 0$ are real and form an arithmetic progression. Find $k$.`,
+          difficulty: 2,
+          answer: String.raw`$5$`,
+        },
+        {
+          stem: String.raw`Real numbers $a$, $b$, $c$ are such that all four roots of
+$$x^4 + ax^3 + bx^2 + cx + 1 = 0$$
+are positive real numbers. Prove that $a + c \le -8$.`,
+          difficulty: 3,
+          answer: String.raw`**Proof.** Key idea: the product of the roots is $1$, so by Vieta $-c = \sum r_ir_jr_k = \sum \dfrac{1}{r_i}$ and $a + c = -\sum\left(r_i + \dfrac{1}{r_i}\right) \le -8$, as $r + \dfrac1r \ge 2$ for $r > 0$.`,
+        },
+        {
+          stem: String.raw`The polynomial $x^4 - 4x^3 + 2x^2 + bx + c$, where $b$ and $c$ are real, has four real roots (counted with multiplicity). Find the largest possible value of $c$.`,
+          difficulty: 4,
+          answer: String.raw`$1$. Key idea: the roots have sum $4$ and sum of squares $16 - 4 = 12$, and $c$ is their product. If all roots are positive, AM-GM gives $c \le 1$. If two are negative, pair each with a positive root: a pair with sum $s$ and sum of squares $u$ has product $-\frac{u - s^2}{2} < 0$, so by AM-GM $c \le \frac{1}{16}\left(12 - s^2 - t^2\right)^2 \le 1$ since $s + t = 4$ gives $s^2 + t^2 \ge 8$. Equality for $(x^2 - 2x - 1)^2$.`,
+        },
       ],
     },
     {
@@ -130,12 +159,34 @@ $$\frac{1}{a^2 - 2a} + \frac{1}{b^2 - 2b} + \frac{1}{c^2 - 2c}.$$`,
           difficulty: 3,
           answer: String.raw`$350$`,
         },
+        {
+          stem: String.raw`Let $a$, $b$, $c$ be the roots of $x^3 - 2x - 3 = 0$. Find $a^3 + b^3 + c^3$.`,
+          difficulty: 1,
+          answer: String.raw`$9$`,
+        },
+        {
+          stem: String.raw`Real numbers $a$, $b$, $c$ satisfy
+$$a + b + c = 1, \qquad a^2 + b^2 + c^2 = 5, \qquad a^3 + b^3 + c^3 = 4.$$
+Find $a^4 + b^4 + c^4$.`,
+          difficulty: 2,
+          answer: String.raw`$13$`,
+        },
+        {
+          stem: String.raw`Let $\alpha$ be the largest real root of $x^3 - 4x^2 + 2 = 0$. Prove that $\lfloor \alpha^n \rfloor$ is odd for every integer $n \ge 3$.`,
+          difficulty: 3,
+          answer: String.raw`**Proof.** Key idea: with the other two roots $\beta \approx 0.79$ and $\gamma \approx -0.66$, Newton's sums $p_n = 4p_{n-1} - 2p_{n-3}$ make $p_n = \alpha^n + \beta^n + \gamma^n$ an even integer for $n \ge 1$, while $0 < \beta^n + \gamma^n < 1$ for $n \ge 3$; hence $\lfloor \alpha^n \rfloor = p_n - 1$.`,
+        },
+        {
+          stem: String.raw`Let $a$, $b$, $c$ be the roots of $x^3 - 2x^2 + 3x - 5 = 0$, and let $s_n = a^n + b^n + c^n$ (an integer for every $n \ge 0$). Prove that for every prime $p$ and every positive integer $n$, the number $s_{pn} - s_n$ is divisible by $p$.`,
+          difficulty: 4,
+          answer: String.raw`**Proof.** Key idea: $u = a^n$, $v = b^n$, $w = c^n$ are the roots of a monic cubic with integer coefficients (its coefficients are symmetric integer polynomials in $a, b, c$), and for such roots $(u + v + w)^p - (u^p + v^p + w^p)$ is $p$ times an integer, because every multinomial coefficient $\frac{p!}{i!\,j!\,k!}$ with $i, j, k < p$ is divisible by $p$ and the terms group into symmetric polynomials with integer coefficients; so $s_{pn} \equiv s_n^p \equiv s_n \pmod p$ by Fermat.`,
+        },
       ],
     },
     {
       id: "A4-remainder-factor",
       name: String.raw`Remainder and factor theorems`,
-      tests: String.raw`Finding the remainder of a polynomial division without dividing, often from partial information about $P$. Write $P = DQ + R$ with $\deg R < \deg D$ and substitute the roots of the divisor $D$.`,
+      tests: String.raw`Finding the remainder of a polynomial division without dividing, often from partial information about $P$. Write $P = DQ + R$ with $\deg R < \deg D$ and substitute the roots of the divisor $D$; for a repeated factor such as $(x^2 + x + 1)^2$ or a power $x^n$, use derivatives or compare coefficients.`,
       questions: [
         {
           stem: String.raw`Find the remainder when $x^{2026} + 3x^5 - 4$ is divided by $x + 1$.`,
@@ -152,12 +203,32 @@ $$\frac{1}{a^2 - 2a} + \frac{1}{b^2 - 2b} + \frac{1}{c^2 - 2c}.$$`,
           difficulty: 3,
           answer: String.raw`$x^2 + 4$`,
         },
+        {
+          stem: String.raw`When the polynomial $P(x)$ is divided by $x^2 - x$, the remainder is $1 - x$. Find the remainder when $P(P(P(x)))$ is divided by $x^2 - x$.`,
+          difficulty: 1,
+          answer: String.raw`$1 - x$`,
+        },
+        {
+          stem: String.raw`A polynomial $P(x)$ with real coefficients leaves remainder $x + 2$ when divided by $x^2 + 1$, and remainder $5$ when divided by $x - 1$. Find the remainder when $P(x)$ is divided by $(x^2 + 1)(x - 1)$.`,
+          difficulty: 2,
+          answer: String.raw`$x^2 + x + 3$`,
+        },
+        {
+          stem: String.raw`Prove that there are no positive integers $m$ and $n$ for which $x^m + x^n + 1$ is divisible by $(x^2 + x + 1)^2$.`,
+          difficulty: 3,
+          answer: String.raw`**Proof.** Key idea: $\omega$ would be a double root, so $P(\omega) = P'(\omega) = 0$; the first forces $\{\omega^m, \omega^n\} = \{\omega, \omega^2\}$, and then $\omega P'(\omega) = m\omega^m + n\omega^n$ is $m\omega + n\omega^2$ or $m\omega^2 + n\omega$, which is never $0$ for positive $m, n$.`,
+        },
+        {
+          stem: String.raw`Find all integers $a$ with the following property: for every positive integer $n$ there is a polynomial $P$ with integer coefficients such that $P(x)^3 - 1 - ax$ is divisible by $x^n$. Prove that there are no others.`,
+          difficulty: 4,
+          answer: String.raw`Exactly the multiples of $9$. **Proof.** Key idea: writing $P(x) \equiv 1 + Q(x)$ with $Q = c_1x + c_2x^2 + \cdots$ (the constant term must be $1$), the coefficients of $x, x^2, x^3$ in $1 + 3Q + 3Q^2 + Q^3$ force $c_1 = \frac a3$, $c_2 = -c_1^2$, $c_3 = \frac53c_1^3$, so $3 \mid c_1$, i.e. $9 \mid a$; conversely, if $3 \mid c_1$ then $3c_k = -3[x^k]Q^2 - [x^k]Q^3$ shows by induction that every $c_k$ is a multiple of $3$.`,
+        },
       ],
     },
     {
       id: "A4-integer-roots",
       name: String.raw`Integer coefficients and rational roots`,
-      tests: String.raw`Polynomials with integer coefficients: finding rational or integer roots, or proving that certain values are impossible. Use the rational root theorem, Vieta with integer roots, or the fact that $a - b$ divides $P(a) - P(b)$.`,
+      tests: String.raw`Polynomials with integer coefficients: finding rational or integer roots, or proving that certain values are impossible. Use the rational root theorem, Vieta with integer roots, or the fact that $a - b$ divides $P(a) - P(b)$; harder versions factor out known roots, or compare the growth of $P(n)$ for large $n$.`,
       questions: [
         {
           stem: String.raw`Which of the following is a root of $2x^3 - x^2 - 13x - 6 = 0$?`,
@@ -174,6 +245,27 @@ $$\frac{1}{a^2 - 2a} + \frac{1}{b^2 - 2b} + \frac{1}{c^2 - 2c}.$$`,
           stem: String.raw`Find all integers $k$ for which all three roots of $x^3 - 13x + k = 0$ are integers.`,
           difficulty: 3,
           answer: String.raw`$k = 12$ or $k = -12$`,
+        },
+        {
+          stem: String.raw`For how many integers $k$ does the equation $x^2 + kx + 12 = 0$ have two integer roots?`,
+          difficulty: 1,
+          choices: [String.raw`$2$`, String.raw`$3$`, String.raw`$4$`, String.raw`$5$`, String.raw`$6$`],
+          answer: String.raw`(E) $6$`,
+        },
+        {
+          stem: String.raw`A polynomial $P$ with integer coefficients satisfies $P(2) = 5$ and $P(5) = 2$, and it has an integer root $r$. Find all possible values of $r$.`,
+          difficulty: 2,
+          answer: String.raw`$r = 3$ or $r = 7$`,
+        },
+        {
+          stem: String.raw`Prove that there is no polynomial $P$ with integer coefficients such that $P(1) = 3$, $P(3) = 5$ and $P(5) = 3$.`,
+          difficulty: 3,
+          answer: String.raw`**Proof.** Key idea: $P(x) - 3$ vanishes at $1$ and $5$, so $P(x) - 3 = (x - 1)(x - 5)Q(x)$ where $Q$ has integer coefficients (dividing by a monic integer polynomial); then $x = 3$ gives $2 = -4Q(3)$, impossible.`,
+        },
+        {
+          stem: String.raw`Find all polynomials $P$ with integer coefficients such that, for every positive integer $n$, $P(n) \ne 0$ and $P(n)$ divides $P(2n)$. Prove that there are no others.`,
+          difficulty: 4,
+          answer: String.raw`$P(x) = cx^d$ for a nonzero integer $c$ and an integer $d \ge 0$. **Proof.** Key idea: $\dfrac{P(2n)}{P(n)}$ is an integer and tends to $2^d$ (where $d = \deg P$), so it equals $2^d$ for all large $n$; then $P(2x) = 2^dP(x)$ identically, and comparing coefficients kills every term except $x^d$.`,
         },
       ],
     },
@@ -199,12 +291,36 @@ for all real $x$, and prove that there are no others.`,
           difficulty: 3,
           answer: String.raw`$P(x) = c(x^3 - x)$ for any real constant $c$. **Proof.** Key idea: $x = 1, -2, 0$ give $P(1) = P(-1) = P(0) = 0$; writing $P(x) = x(x - 1)(x + 1)Q(x)$ leaves $Q(x + 1) = Q(x)$, so $Q - Q(0)$ has infinitely many roots and $Q$ is constant.`,
         },
+        {
+          stem: String.raw`A polynomial $P$ satisfies $P(x^2 + 1) = x^4 + 4x^2 + 5$ for all real $x$. Find $P(x^2 - 1)$.`,
+          difficulty: 1,
+          answer: String.raw`$x^4 + 1$`,
+        },
+        {
+          stem: String.raw`A polynomial $P$ of degree at most $3$ satisfies $P(k) = 3^k$ for $k = 0, 1, 2, 3$. Find $P(4)$.`,
+          difficulty: 2,
+          answer: String.raw`$65$`,
+        },
+        {
+          stem: String.raw`Find all polynomials $P$ with real coefficients such that
+$$P(P(x)) = P(x)^2 + 1$$
+for all real $x$, and prove that there are no others.`,
+          difficulty: 3,
+          answer: String.raw`$P(x) = x^2 + 1$. **Proof.** Key idea: a non-constant $P$ takes infinitely many values $y$, and $P(y) = y^2 + 1$ for each of them, so $P(y) - y^2 - 1$ has infinitely many roots; a constant $c$ would need $c = c^2 + 1$, which has no real solution.`,
+        },
+        {
+          stem: String.raw`Find all polynomials $P$ with real coefficients such that
+$$P(x)\,P(x + 2) = P(x + 1)^2 - 1$$
+for all real $x$, and prove that there are no others.`,
+          difficulty: 4,
+          answer: String.raw`$P(x) = x + c$ and $P(x) = -x + c$ for any real constant $c$. **Proof.** Key idea: if $\deg P = n \ge 2$ with leading coefficient $a$, the coefficient of $x^{2n-2}$ in $P(x)P(x + 2) - P(x + 1)^2$ is $-na^2 \ne 0$, so this difference is not constant; constants give $0 \ne -1$, and $P(x) = ax + b$ gives exactly $-a^2 = -1$.`,
+        },
       ],
     },
     {
       id: "A4-roots-of-unity",
       name: String.raw`Coefficient sums and roots-of-unity filters`,
-      tests: String.raw`Sums of selected coefficients of an expansion, sums of binomial coefficients in steps of $3$, or counting subsets by their sum modulo $3$. Evaluate the polynomial at $1$, $-1$, $\omega$, $\omega^2$ and average.`,
+      tests: String.raw`Sums of selected coefficients of an expansion, sums of binomial coefficients in steps of $3$, or counting subsets by their sum modulo $3$. Evaluate the polynomial at $1$, $-1$, $\omega$, $\omega^2$ and average; harder versions filter with fifth (or other) roots of unity.`,
       questions: [
         {
           stem: String.raw`Find the sum of the coefficients of the even powers of $x$ (including the constant term) in the expansion of $(2x - 1)^6$.`,
@@ -220,6 +336,26 @@ for all real $x$, and prove that there are no others.`,
           stem: String.raw`How many subsets of $\{1, 2, 3, \ldots, 10\}$ (including the empty set) have a sum of elements that is divisible by $3$?`,
           difficulty: 3,
           answer: String.raw`$344$`,
+        },
+        {
+          stem: String.raw`Find the sum of the coefficients of the odd powers of $x$ in the expansion of $(1 + 2x - x^2)^5$.`,
+          difficulty: 1,
+          answer: String.raw`$32$`,
+        },
+        {
+          stem: String.raw`Write $(1 + x + x^2)^6 = a_0 + a_1x + a_2x^2 + \cdots + a_{12}x^{12}$. Find $a_0 + a_3 + a_6 + a_9 + a_{12}$.`,
+          difficulty: 2,
+          answer: String.raw`$243$`,
+        },
+        {
+          stem: String.raw`How many six-digit numbers have every digit in $\{1, 2, 3, 4, 5\}$ and a digit sum divisible by $3$?`,
+          difficulty: 3,
+          answer: String.raw`$5209$`,
+        },
+        {
+          stem: String.raw`Let $m$ be a positive integer. Find, in terms of $m$, the number of subsets of $\{1^2, 2^2, 3^2, \ldots, (5m)^2\}$ (including the empty set) whose sum of elements is divisible by $5$.`,
+          difficulty: 4,
+          answer: String.raw`$\dfrac{32^m + 2(7 + 3\sqrt5)^m + 2(7 - 3\sqrt5)^m}{5}$. Key idea: filter $\prod_{k=1}^{5m}(1 + x^{k^2})$ with the fifth roots of unity $\zeta$; the squares in each block of five are $\equiv 0, 1, 4, 4, 1 \pmod 5$, so a block gives $2(1 + \zeta)^2(1 + \zeta^4)^2 = 2(2 + 2\cos\theta)^2$ with $\theta = 72^\circ$ or $144^\circ$, which is $7 + 3\sqrt5$ or $7 - 3\sqrt5$, each for two of the four $\zeta \ne 1$.`,
         },
       ],
     },

@@ -93,6 +93,18 @@ with $m > n > 0$ coprime and of opposite parity. All other triples are multiples
 - Example: $D = 2$ has $(3, 2)$; then $(3 + 2\sqrt{2})^{2} = 17 + 12\sqrt{2}$ gives $(17, 12)$, and the next is $(99, 70)$.
 - Many problems become Pell-type after completing the square, e.g. "$n + 1$ and $3n + 1$ are both squares" becomes $b^{2} - 3a^{2} = -2$. To show **infinitely many** solutions, it is enough to find one and a rule (a linear map) that turns any solution into a larger one.`,
     },
+    {
+      title: String.raw`Factor out the greatest common divisor`,
+      body: String.raw`- For an equation that is homogeneous apart from one term, write $x = da$, $y = db$ with $d = \gcd(x, y)$ and $\gcd(a, b) = 1$. Then use facts such as $\gcd(a, a + b) = 1$ and $\gcd(a + b, ab) = 1$ to show that some factor must be tiny.
+- Example: $x^{2} + xy = y^{3}$ becomes $a(a + b) = d\,b^{3}$. Since $b$ is coprime to $a$ and to $a + b$, we need $b = 1$, so $d = a(a + 1)$ and $(x, y) = (a^{2}(a + 1), a(a + 1))$ for every $a \ge 1$.`,
+    },
+    {
+      title: String.raw`Equations with factorials`,
+      body: String.raw`- If $m < n$ then $m! \mid n!$, so $m! + n! = m!\left(1 + \frac{n!}{m!}\right)$: pull out the smaller factorial.
+- A prime $p \le n$ divides $n!$. A prime that divides one side but cannot divide the other (for example a prime factor of $m - 1$, which does not divide $m$) gives strong restrictions.
+- Compare exponents of a prime: $v_{p}(a + b) = \min(v_{p}(a), v_{p}(b))$ when $v_{p}(a) \ne v_{p}(b)$. Example: $v_{2}(3! + 4!) = v_{2}(6 + 24) = \min(1, 3) = 1$.
+- Factorials grow faster than powers with a fixed base, so large cases are often ruled out by size.`,
+    },
   ],
   archetypes: [
     {
@@ -115,6 +127,26 @@ with $m > n > 0$ coprime and of opposite parity. All other triples are multiples
           difficulty: 3,
           answer: String.raw`**Proof.** Key idea: for $n \ge 60$ choose $b \in \{0, 1, \ldots, 6\}$ with $11b \equiv n \pmod 7$; then $n - 11b \ge -6$ is a multiple of $7$, hence $\ge 0$. For $59$, none of $59 - 11b$ ($b = 0, \ldots, 5$) is a multiple of $7$.`,
         },
+        {
+          stem: String.raw`How many pairs of integers $(x, y)$ with $-100 \le x \le 100$ satisfy $7x - 5y = 3$?`,
+          difficulty: 1,
+          answer: String.raw`$40$`,
+        },
+        {
+          stem: String.raw`A bag contains $30$ coins, each worth $2$, $5$ or $10$ cents, with at least one coin of each kind. Their total value is $150$ cents. How many possibilities are there for the numbers of $2$-cent, $5$-cent and $10$-cent coins?`,
+          difficulty: 2,
+          answer: String.raw`$3$`,
+        },
+        {
+          stem: String.raw`How many positive integers can be written as $5a + 8b$, with $a$ and $b$ non-negative integers, in **exactly one** way?`,
+          difficulty: 3,
+          answer: String.raw`$39$`,
+        },
+        {
+          stem: String.raw`Let $a$ and $b$ be coprime **odd** integers greater than $1$. Prove that, among the positive integers that can **not** be written as $ax + by$ with $x$ and $y$ non-negative integers, exactly half are even.`,
+          difficulty: 4,
+          answer: String.raw`**Proof.** Key idea: the non-representable integers are the exponents of the polynomial $\frac{1}{1 - t} - \frac{1 - t^{ab}}{(1 - t^{a})(1 - t^{b})}$, and since $a$, $b$, $ab$ are odd, putting $t = -1$ gives $\frac{1}{2} - \frac{2}{2 \cdot 2} = 0$, i.e. as many even as odd ones.`,
+        },
       ],
     },
     {
@@ -136,6 +168,26 @@ with $m > n > 0$ coprime and of opposite parity. All other triples are multiples
           stem: String.raw`Find all pairs of positive integers $(x, y)$ such that $x^{2} - 3xy + 2y^{2} + x - y = 13$.`,
           difficulty: 3,
           answer: String.raw`$(x, y) = (12, 13)$ and $(26, 13)$`,
+        },
+        {
+          stem: String.raw`How many pairs of positive integers $(x, y)$ satisfy $x^{2} - y^{2} = 2024$?`,
+          difficulty: 1,
+          answer: String.raw`$4$`,
+        },
+        {
+          stem: String.raw`Find the sum of all positive integers $n$ for which $n^{2} + 2n + 2026$ is a perfect square.`,
+          difficulty: 2,
+          answer: String.raw`$1761$`,
+        },
+        {
+          stem: String.raw`Find all pairs of positive integers $(x, y)$ such that $x^{2} + 5 \cdot 3^{x} = y^{2}$, and prove that there are no others.`,
+          difficulty: 3,
+          answer: String.raw`$(x, y) = (1, 4)$, $(2, 7)$ and $(3, 12)$. **Proof.** Key idea: put $u = y - x < v = y + x$, so $uv = 5 \cdot 3^{x}$ and $v - u = 2x$; if $u$ has fewer factors $3$ than $v$, then $3^{v_{3}(u)} \mid x$ gives $u \le 5x$ and $5 \cdot 3^{x} = u(u + 2x) \le 35x^{2}$, so $x \le 4$; otherwise $u = 3^{b+1}$, $v = 5 \cdot 3^{b}$ and $x = 3^{b} = 2b + 1$.`,
+        },
+        {
+          stem: String.raw`Find all pairs of positive integers $(x, y)$ such that $x^{2} + y^{2} = (x - y)^{3}$, and prove that there are no others.`,
+          difficulty: 4,
+          answer: String.raw`$(x, y) = \big(a(2a^{2} - 2a + 1),\ (a - 1)(2a^{2} - 2a + 1)\big)$ for $a = 2, 3, 4, \ldots$ **Proof.** Key idea: with $d = \gcd(x, y)$, $x = da$, $y = db$, the equation becomes $a^{2} + b^{2} = d(a - b)^{3}$; as $\gcd(a - b, a^{2} + b^{2}) \mid 2$, this forces $a - b \mid 2$, and $a - b = 2$ fails modulo $8$, so $b = a - 1$ and $d = a^{2} + (a - 1)^{2}$.`,
         },
       ],
     },
@@ -162,6 +214,26 @@ and prove that there are no others.`,
           difficulty: 3,
           answer: String.raw`$(1, 3, 8)$, $(1, 4, 5)$ and $(2, 2, 3)$. **Proof.** Key idea: $\left(1 + \frac{1}{a}\right)^{3} \ge 3$ forces $a \le 2$; then $a = 1$ gives $(b - 2)(c - 2) = 6$ and $a = 2$ gives $(b - 1)(c - 1) = 2$.`,
         },
+        {
+          stem: String.raw`How many triples of positive integers $(a, b, c)$ with $a \le b \le c$ satisfy $abc = 3(a + b + c)$?`,
+          difficulty: 1,
+          answer: String.raw`$6$`,
+        },
+        {
+          stem: String.raw`Find all triples of positive integers $(x, y, z)$ with $x \le y \le z$ such that $2(xy + yz + zx) = xyz + 1$.`,
+          difficulty: 2,
+          answer: String.raw`$(3, 7, 41)$ and $(3, 11, 13)$`,
+        },
+        {
+          stem: String.raw`Find all pairs of integers $(x, y)$ (positive, negative or zero) such that $x^{2} - xy + y^{2} = x + y + 11$.`,
+          difficulty: 3,
+          answer: String.raw`$(3, 5)$, $(5, 3)$, $(3, -1)$, $(-1, 3)$, $(-1, -3)$ and $(-3, -1)$`,
+        },
+        {
+          stem: String.raw`Find all pairs of positive integers $(m, n)$ such that $m! + n! = m^{n} + 1$, and prove that there are no others.`,
+          difficulty: 4,
+          answer: String.raw`$(m, n) = (1, 1)$, $(2, 1)$ and $(5, 3)$. **Proof.** Key idea: for $n \ge 2$, reducing modulo primes $p \le n$ shows $m > n$ and every prime factor of $m$ exceeds $n$, so $n! \mid m^{n} + 1$; even $n$ fail (modulo $4$, or directly for $n = 2$), and odd $n$ give $2^{v_{2}(n!)} \mid m + 1$, making $m$ far too large for $m! < m^{n}$ unless $n \le 5$, which are checked by hand.`,
+        },
       ],
     },
     {
@@ -185,6 +257,26 @@ and prove that there are no others.`,
           difficulty: 3,
           answer: String.raw`$(x, y) = (1, 1)$. **Proof.** Key idea: if $y \ge 2$, then mod $9$ forces $x \equiv 5 \pmod 6$, then mod $7$ forces $6 \mid y$, so $y$ is even; but then mod $4$ the left side is $\equiv 1 - 1 = 0$, not $2$.`,
         },
+        {
+          stem: String.raw`How many integers $n$ with $1 \le n \le 100$ can be written as $x^{2} - y^{2}$ with $x$ and $y$ integers?`,
+          difficulty: 1,
+          answer: String.raw`$75$`,
+        },
+        {
+          stem: String.raw`Prove that the equation $x^{2} + y^{2} + z^{2} = 7w^{2}$ has no solutions in positive integers.`,
+          difficulty: 2,
+          answer: String.raw`**Proof.** Key idea: a sum of three squares is never $\equiv 7 \pmod 8$, so $w$ is even; then $x^{2} + y^{2} + z^{2} \equiv 0 \pmod 4$ forces $x$, $y$, $z$ even, and halving everything gives a smaller solution (infinite descent).`,
+        },
+        {
+          stem: String.raw`Find all pairs of non-negative integers $(m, n)$ such that $3 \cdot 2^{m} + 1 = 7^{n}$, and prove that there are no others.`,
+          difficulty: 3,
+          answer: String.raw`$(m, n) = (1, 1)$ and $(4, 2)$. **Proof.** Key idea: in $7^{n} - 1 = 3 \cdot 2^{m}$, an odd $n$ makes $7^{n} - 1$ twice an odd number; if $4 \mid n$ then $5 \mid 7^{4} - 1 \mid 7^{n} - 1$; otherwise LTE gives exactly $2^{4} \parallel 7^{n} - 1$, so $7^{n} = 49$.`,
+        },
+        {
+          stem: String.raw`Find all triples of positive integers $(x, y, z)$ such that $2^{x} + 7^{y} = 3^{z}$, and prove that there are no others.`,
+          difficulty: 4,
+          answer: String.raw`$(x, y, z) = (1, 1, 2)$ and $(5, 2, 4)$. **Proof.** Key idea: modulo $3$, $x$ is odd. For $x \ge 3$, modulo $8$ makes $y$ and $z$ even, and factorising $3^{z} - 7^{y}$ as a difference of squares gives $(5, 2, 4)$. For $x = 1$ and $z \ge 3$, modulo $7$ gives $z \equiv 2 \pmod 6$, modulo $27$ gives $y \equiv 4 \pmod 9$, and then the two sides disagree modulo $37$.`,
+        },
       ],
     },
     {
@@ -207,6 +299,26 @@ and prove that there are no others.`,
           difficulty: 3,
           answer: String.raw`$6$`,
         },
+        {
+          stem: String.raw`How many non-congruent right-angled triangles with integer side lengths have perimeter $240$?`,
+          difficulty: 1,
+          answer: String.raw`$4$`,
+        },
+        {
+          stem: String.raw`How many **primitive** Pythagorean triples $(a, b, c)$ are there with $a < b < c \le 100$? (Primitive means $a^{2} + b^{2} = c^{2}$ and $\gcd(a, b) = 1$.)`,
+          difficulty: 2,
+          answer: String.raw`$16$`,
+        },
+        {
+          stem: String.raw`For how many positive integers $n \le 50$ is there **exactly one** right-angled triangle with integer side lengths having a leg of length $n$?`,
+          difficulty: 3,
+          answer: String.raw`$23$`,
+        },
+        {
+          stem: String.raw`A right-angled triangle has integer side lengths $a$, $b$, $c$ and perimeter $P$. Find the smallest possible value of $P$ for which $P^{2}$ divides $abc$.`,
+          difficulty: 4,
+          answer: String.raw`$144$`,
+        },
       ],
     },
     {
@@ -228,6 +340,26 @@ and prove that there are no others.`,
           stem: String.raw`Prove that there are infinitely many positive integers $n$ such that $n^{2} + (n + 1)^{2}$ is a perfect square.`,
           difficulty: 3,
           answer: String.raw`**Proof.** Key idea: if $n^{2} + (n + 1)^{2} = m^{2}$, then $n' = 3n + 2m + 1$, $m' = 4n + 3m + 2$ is again a solution (expand to check), and it is larger; start from $3^{2} + 4^{2} = 5^{2}$.`,
+        },
+        {
+          stem: String.raw`The equation $x^{2} - 2y^{2} = -1$ has the positive integer solutions $(1, 1)$ and $(7, 5)$. Find the next one.`,
+          difficulty: 1,
+          answer: String.raw`$(x, y) = (41, 29)$`,
+        },
+        {
+          stem: String.raw`For how many positive integers $n \le 100\,000$ is $3n^{2} + 1$ a perfect square?`,
+          difficulty: 2,
+          answer: String.raw`$9$`,
+        },
+        {
+          stem: String.raw`Prove that there are infinitely many perfect squares $n$ such that $1 + 2 + 3 + \cdots + n$ is also a perfect square.`,
+          difficulty: 3,
+          answer: String.raw`**Proof.** Key idea: if $x^{2} + 1 = 2y^{2}$, then $n = x^{2}$ gives $\frac{n(n + 1)}{2} = (xy)^{2}$; and $x^{2} - 2y^{2} = -1$ has infinitely many solutions, since $(x, y) \mapsto (3x + 4y, 2x + 3y)$ turns a solution into a larger one, starting from $(1, 1)$.`,
+        },
+        {
+          stem: String.raw`Let $k$ be a positive integer. Find, in terms of $k$, the smallest positive integer $n$ such that $kn + 1$ and $(k + 1)n + 1$ are both perfect squares, and prove that it is the smallest.`,
+          difficulty: 4,
+          answer: String.raw`$n = 16k + 8$. **Proof.** Key idea: with $kn + 1 = A^{2}$ and $(k + 1)n + 1 = B^{2}$ we get $(k + 1)A^{2} - kB^{2} = 1$; the map $(A, B) \mapsto \big((2k + 1)A - 2kB,\ (2k + 1)B - 2(k + 1)A\big)$ turns a solution with $A > 1$ into a smaller positive one, so every solution descends to $(1, 1)$, and the solution just above $(1, 1)$ is $(4k + 1, 4k + 3)$.`,
         },
       ],
     },
