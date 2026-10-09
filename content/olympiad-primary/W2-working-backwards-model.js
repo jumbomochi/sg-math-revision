@@ -233,8 +233,8 @@ Check every branch: an "add" branch only works if the number before it really is
         {
           stem: String.raw`Sam and Tina have $140$ cards altogether. After Sam gives Tina $15$ cards, Tina has $8$ more cards than Sam. How many cards did Sam have at first?`,
           difficulty: 2,
-          choices: [String.raw`(A) $59$`, String.raw`(B) $66$`, String.raw`(C) $74$`, String.raw`(D) $81$`, String.raw`(E) $89$`],
-          answer: String.raw`(D) $81$`,
+          choices: [String.raw`(A) $59$`, String.raw`(B) $66$`, String.raw`(C) $70$`, String.raw`(D) $74$`, String.raw`(E) $81$`],
+          answer: String.raw`(E) $81$`,
         },
         {
           stem: String.raw`Xin, Yuri and Zara have some marbles. First, Xin gives Yuri and Zara as many marbles as each of them already has. Next, Yuri gives Xin and Zara as many marbles as each of them now has. Finally, Zara gives Xin and Yuri as many marbles as each of them now has. In the end, each child has $32$ marbles. How many marbles did Xin have at first?`,
@@ -407,8 +407,8 @@ Check every branch: an "add" branch only works if the number before it really is
         {
           stem: String.raw`The average of $6$ numbers is $15$. When one of the numbers is removed, the average of the other $5$ numbers is $13$. Which number was removed?`,
           difficulty: 2,
-          choices: [String.raw`(A) $13$`, String.raw`(B) $25$`, String.raw`(C) $15$`, String.raw`(D) $2$`],
-          answer: String.raw`(B) $25$`,
+          choices: [String.raw`(A) $2$`, String.raw`(B) $13$`, String.raw`(C) $15$`, String.raw`(D) $25$`],
+          answer: String.raw`(D) $25$`,
         },
         {
           stem: String.raw`The average mark of a class in a test was $72$. A new pupil joined the class and scored $96$ in the same test. The average mark of the class then went up to $73$. How many pupils are in the class now?`,
@@ -418,8 +418,8 @@ Check every branch: an "add" branch only works if the number before it really is
         {
           stem: String.raw`The average of five numbers is $12$. Four of the numbers are $10$, $8$, $15$ and $11$. What is the fifth number?`,
           difficulty: 1,
-          choices: [String.raw`(A) $12$`, String.raw`(B) $14$`, String.raw`(C) $16$`, String.raw`(D) $44$`],
-          answer: String.raw`(C) $16$`,
+          choices: [String.raw`(A) $11$`, String.raw`(B) $12$`, String.raw`(C) $14$`, String.raw`(D) $16$`],
+          answer: String.raw`(D) $16$`,
         },
         {
           stem: String.raw`The average of $10$ numbers was worked out as $45$. Then it was found that one of the numbers had been copied wrongly as $72$ when it should have been $27$. What is the correct average of the $10$ numbers?`,

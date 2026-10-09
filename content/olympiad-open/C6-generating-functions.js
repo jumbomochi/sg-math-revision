@@ -335,8 +335,8 @@ $$\sum_{k=0}^{n} (-1)^{k} \, 4^{n-k} \binom{n}{k}\binom{2k}{k} = \binom{2n}{n}.$
         {
           stem: String.raw`A school has $15$ clubs, each with exactly $8$ members, and every student belongs to exactly $3$ clubs. How many students are there?`,
           difficulty: 1,
-          choices: [String.raw`$24$`, String.raw`$30$`, String.raw`$40$`, String.raw`$45$`, String.raw`$120$`],
-          answer: String.raw`(C) $40$`,
+          choices: [String.raw`$40$`, String.raw`$45$`, String.raw`$60$`, String.raw`$80$`, String.raw`$120$`],
+          answer: String.raw`(A) $40$`,
         },
         {
           stem: String.raw`For a positive integer $n$, let $d(n)$ be the number of positive divisors of $n$. Find $d(1) + d(2) + d(3) + \cdots + d(20)$.`,
@@ -378,8 +378,8 @@ $$\sum_{k=0}^{n} (-1)^{k} \, 4^{n-k} \binom{n}{k}\binom{2k}{k} = \binom{2n}{n}.$
         {
           stem: String.raw`Find $\displaystyle\sum_{k=0}^{4} \binom{6}{k}\binom{8}{4-k}$.`,
           difficulty: 1,
-          choices: [String.raw`$495$`, String.raw`$715$`, String.raw`$1001$`, String.raw`$1365$`, String.raw`$3003$`],
-          answer: String.raw`(C) $1001$`,
+          choices: [String.raw`$210$`, String.raw`$330$`, String.raw`$495$`, String.raw`$715$`, String.raw`$1001$`],
+          answer: String.raw`(E) $1001$`,
         },
         {
           stem: String.raw`Find $\dbinom{8}{0}^{2} + \dbinom{8}{1}^{2} + \dbinom{8}{2}^{2} + \cdots + \dbinom{8}{8}^{2}$.`,

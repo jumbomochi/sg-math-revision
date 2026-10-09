@@ -462,8 +462,8 @@ If the pipes are opened at **different times**, work out how much is filled in t
         {
           stem: String.raw`A train $150$ m long travels at $20$ m/s. How many seconds does it take to cross a bridge $250$ m long completely, from the moment its front reaches the bridge until its rear leaves the bridge?`,
           difficulty: 1,
-          choices: [String.raw`(A) $7.5$ s`, String.raw`(B) $12.5$ s`, String.raw`(C) $20$ s`, String.raw`(D) $25$ s`],
-          answer: String.raw`(C) $20$ s`,
+          choices: [String.raw`(A) $5$ s`, String.raw`(B) $7.5$ s`, String.raw`(C) $12.5$ s`, String.raw`(D) $20$ s`],
+          answer: String.raw`(D) $20$ s`,
         },
         {
           stem: String.raw`On parallel tracks, a train $200$ m long travelling at $25$ m/s overtakes a train $160$ m long travelling at $16$ m/s in the same direction. How many seconds pass from the moment the front of the faster train reaches the rear of the slower train until the faster train has completely passed it?`,

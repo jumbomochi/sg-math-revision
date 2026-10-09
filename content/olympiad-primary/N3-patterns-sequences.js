@@ -292,8 +292,8 @@ What is the $30$th number?`,
         {
           stem: String.raw`How many numbers are there in the list $7, 13, 19, 25, \dots, 601$?`,
           difficulty: 2,
-          choices: [String.raw`$98$`, String.raw`$99$`, String.raw`$100$`, String.raw`$101$`, String.raw`$102$`],
-          answer: String.raw`(C) $100$`,
+          choices: [String.raw`$97$`, String.raw`$98$`, String.raw`$99$`, String.raw`$100$`, String.raw`$101$`],
+          answer: String.raw`(D) $100$`,
         },
         {
           stem: String.raw`List A is $3, 10, 17, 24, \dots$ and List B is $5, 9, 13, 17, \dots$ Each list keeps going but contains only numbers up to $500$. How many numbers appear in both lists?`,
@@ -305,8 +305,8 @@ What is the $30$th number?`,
 $$100, \ 94, \ 88, \ 82, \ \dots$$
 What is the $15$th number?`,
           difficulty: 1,
-          choices: [String.raw`$10$`, String.raw`$16$`, String.raw`$22$`, String.raw`$28$`],
-          answer: String.raw`(B) $16$`,
+          choices: [String.raw`$16$`, String.raw`$22$`, String.raw`$84$`, String.raw`$90$`],
+          answer: String.raw`(A) $16$`,
         },
         {
           stem: String.raw`In an evenly spaced list of numbers, the $5$th number is $23$ and the $12$th number is $51$. What is the $1$st number?`,
@@ -751,8 +751,8 @@ In how many ways can $90$ be written as a sum of two or more consecutive whole n
         {
           stem: String.raw`What is the value of $1 + 3 + 5 + 7 + \dots + 77 + 79$?`,
           difficulty: 2,
-          choices: [String.raw`$800$`, String.raw`$1521$`, String.raw`$1600$`, String.raw`$1681$`, String.raw`$3200$`],
-          answer: String.raw`(C) $1600$`,
+          choices: [String.raw`$1600$`, String.raw`$1640$`, String.raw`$1681$`, String.raw`$3160$`, String.raw`$3200$`],
+          answer: String.raw`(A) $1600$`,
         },
         {
           stem: String.raw`A number is called *special* if it is a square number ($1, 4, 9, 16, \dots$) or a triangular number ($1, 3, 6, 10, \dots$), or both. How many special numbers are there from $1$ to $2026$?`,
@@ -836,8 +836,8 @@ In how many ways can $90$ be written as a sum of two or more consecutive whole n
         {
           stem: String.raw`Today is Saturday. What day of the week will it be $1000$ days from today?`,
           difficulty: 2,
-          choices: [String.raw`Thursday`, String.raw`Friday`, String.raw`Saturday`, String.raw`Sunday`, String.raw`Monday`],
-          answer: String.raw`(B) Friday`,
+          choices: [String.raw`Monday`, String.raw`Tuesday`, String.raw`Wednesday`, String.raw`Thursday`, String.raw`Friday`],
+          answer: String.raw`(E) Friday`,
         },
         {
           stem: String.raw`The numbers below continue in the same pattern:
@@ -1009,8 +1009,8 @@ $$2, \ 5, \ 10, \ 17, \ 26, \ \dots$$`,
         {
           stem: String.raw`In the pattern $1, 2, 4, 7, 11, 16, \dots$ the gaps are $1, 2, 3, 4, 5, \dots$ What is the $20$th number in the pattern?`,
           difficulty: 2,
-          choices: [String.raw`$172$`, String.raw`$190$`, String.raw`$191$`, String.raw`$210$`, String.raw`$211$`],
-          answer: String.raw`(C) $191$`,
+          choices: [String.raw`$190$`, String.raw`$191$`, String.raw`$200$`, String.raw`$210$`, String.raw`$211$`],
+          answer: String.raw`(B) $191$`,
         },
         {
           stem: String.raw`In a list of numbers, each number from the $3$rd one onwards is the sum of the two numbers just before it. The $1$st number is $3$ and the $6$th number is $54$. What is the $2$nd number?`,

@@ -212,9 +212,9 @@ Example: 3 Rs split into 2 runs: 1 + 2 or 2 + 1, so 2 ways.`,
       questions: [
         {
           stem: String.raw`Siti has plenty of 10-cent, 20-cent and 50-cent coins. In how many different ways can she pay exactly 60 cents? (The order of the coins does not matter.)`,
-          choices: [String.raw`$3$`, String.raw`$4$`, String.raw`$5$`, String.raw`$6$`],
+          choices: [String.raw`$5$`, String.raw`$6$`, String.raw`$7$`, String.raw`$8$`],
           difficulty: 1,
-          answer: String.raw`(C) $5$`,
+          answer: String.raw`(A) $5$`,
         },
         {
           stem: String.raw`In how many ways can $10$ be written as the sum of three **different** whole numbers, each at least $1$? The order does not matter, so $1 + 2 + 7$ and $7 + 2 + 1$ count as the same way.`,
@@ -256,9 +256,9 @@ Example: 3 Rs split into 2 runs: 1 + 2 or 2 + 1, so 2 ways.`,
       questions: [
         {
           stem: String.raw`Mei has $4$ T-shirts, $3$ skirts and $2$ pairs of shoes. An outfit is one T-shirt, one skirt and one pair of shoes. How many different outfits can she make?`,
-          choices: [String.raw`$9$`, String.raw`$12$`, String.raw`$24$`, String.raw`$36$`],
+          choices: [String.raw`$6$`, String.raw`$9$`, String.raw`$12$`, String.raw`$24$`],
           difficulty: 1,
-          answer: String.raw`(C) $24$`,
+          answer: String.raw`(D) $24$`,
         },
         {
           stem: String.raw`The diagram shows the roads joining three towns A, B and C. There are $3$ roads between A and B, $4$ roads between B and C, and $2$ roads that go straight from A to C. Jun travels from A to C without visiting any town twice. How many different routes can he take?`,
@@ -385,9 +385,9 @@ Example: 3 Rs split into 2 runs: 1 + 2 or 2 + 1, so 2 ways.`,
         },
         {
           stem: String.raw`How many 3-digit **even** numbers can be formed using the digits $0$, $1$, $2$, $3$ and $4$ if no digit may be repeated?`,
-          choices: [String.raw`$24$`, String.raw`$30$`, String.raw`$36$`, String.raw`$48$`],
+          choices: [String.raw`$30$`, String.raw`$36$`, String.raw`$48$`, String.raw`$60$`],
           difficulty: 2,
-          answer: String.raw`(B) $30$`,
+          answer: String.raw`(A) $30$`,
         },
         {
           stem: String.raw`How many 3-digit numbers (from $100$ to $999$) contain at least one digit $7$?`,
@@ -424,9 +424,9 @@ Example: 3 Rs split into 2 runs: 1 + 2 or 2 + 1, so 2 ways.`,
       questions: [
         {
           stem: String.raw`At a meeting, each of the $8$ people shakes hands once with every other person. How many handshakes are there?`,
-          choices: [String.raw`$16$`, String.raw`$28$`, String.raw`$56$`, String.raw`$64$`],
+          choices: [String.raw`$28$`, String.raw`$36$`, String.raw`$56$`, String.raw`$64$`],
           difficulty: 1,
-          answer: String.raw`(B) $28$`,
+          answer: String.raw`(A) $28$`,
         },
         {
           stem: String.raw`In a football league, every team plays every other team twice, once at home and once away. A total of $90$ matches were played. How many teams are in the league?`,
@@ -440,9 +440,9 @@ Example: 3 Rs split into 2 runs: 1 + 2 or 2 + 1, so 2 ways.`,
         },
         {
           stem: String.raw`Each of $6$ friends sends a New Year card to every one of the other friends. How many cards are sent altogether?`,
-          choices: [String.raw`$12$`, String.raw`$15$`, String.raw`$30$`, String.raw`$36$`],
+          choices: [String.raw`$6$`, String.raw`$12$`, String.raw`$15$`, String.raw`$30$`],
           difficulty: 1,
-          answer: String.raw`(C) $30$`,
+          answer: String.raw`(D) $30$`,
         },
         {
           stem: String.raw`At a party, every two guests shook hands exactly once, except for two guests who had quarrelled and did not shake hands with each other. There were $44$ handshakes in all. How many guests were at the party?`,

@@ -441,9 +441,9 @@ Who lives in house $1$, and which pet does that person own?`,
         },
         {
           stem: String.raw`In a certain year that is not a leap year, 1 January is a Wednesday. What day of the week is 1 March of that year?`,
-          choices: [String.raw`Friday`, String.raw`Saturday`, String.raw`Sunday`, String.raw`Monday`],
+          choices: [String.raw`Wednesday`, String.raw`Thursday`, String.raw`Friday`, String.raw`Saturday`],
           difficulty: 2,
-          answer: String.raw`(B) Saturday`,
+          answer: String.raw`(D) Saturday`,
         },
         {
           stem: String.raw`In a certain year that is not a leap year, 13 January is a Friday. In which other month of that year does the 13th fall on a Friday?`,
@@ -568,9 +568,9 @@ Who lives in house $1$, and which pet does that person own?`,
       questions: [
         {
           stem: String.raw`There are $8$ coins that look the same. One of them is a fake and is heavier than the others, which all have the same mass. Using only a balance (no weights), what is the smallest number of weighings that is sure to find the fake coin?`,
-          choices: [String.raw`$1$`, String.raw`$2$`, String.raw`$3$`, String.raw`$4$`],
+          choices: [String.raw`$2$`, String.raw`$3$`, String.raw`$4$`, String.raw`$7$`],
           difficulty: 1,
-          answer: String.raw`(B) $2$`,
+          answer: String.raw`(A) $2$`,
         },
         {
           stem: String.raw`There are $28$ coins that look the same. One of them is a fake and is heavier than the others, which all have the same mass. Using only a balance (no weights), what is the smallest number of weighings that is sure to find the fake coin?`,
@@ -584,9 +584,9 @@ Who lives in house $1$, and which pet does that person own?`,
         },
         {
           stem: String.raw`Siti has a balance and three weights of $1$ g, $2$ g and $5$ g. She puts an object on the left pan and some of the weights on the right pan. (The weights may only go on the right pan.) How many different whole-number masses can she measure in one weighing?`,
-          choices: [String.raw`$6$`, String.raw`$7$`, String.raw`$8$`, String.raw`$9$`],
+          choices: [String.raw`$4$`, String.raw`$5$`, String.raw`$6$`, String.raw`$7$`],
           difficulty: 1,
-          answer: String.raw`(B) $7$`,
+          answer: String.raw`(D) $7$`,
         },
         {
           stem: String.raw`All circles have the same mass, all squares have the same mass and all triangles have the same mass. On a balance, $2$ circles balance $3$ squares, and $1$ triangle balances $1$ circle and $1$ square together. How many squares balance $2$ triangles?`,

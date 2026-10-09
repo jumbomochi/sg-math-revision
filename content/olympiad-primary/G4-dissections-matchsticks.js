@@ -677,8 +677,8 @@ H2.addTopic({
         {
           stem: String.raw`In the tangram shown, the shaded small triangle has an area of $3$ cm$^2$. What is the area of the whole square?`,
           difficulty: 1,
-          choices: [String.raw`$24$ cm$^2$`, String.raw`$36$ cm$^2$`, String.raw`$48$ cm$^2$`, String.raw`$64$ cm$^2$`],
-          answer: String.raw`(C) $48$ cm$^2$`,
+          choices: [String.raw`$12$ cm$^2$`, String.raw`$24$ cm$^2$`, String.raw`$36$ cm$^2$`, String.raw`$48$ cm$^2$`],
+          answer: String.raw`(D) $48$ cm$^2$`,
           figure: {
             type: "plot",
             x: [-1.6, 5.6],
@@ -2090,8 +2090,8 @@ H2.addTopic({
         {
           stem: String.raw`A long strip of paper is folded in half, then in half again, then in half a third time, so that it lies on the shaded part. One straight cut is then made across the folded strip, as shown. How many pieces of paper are there?`,
           difficulty: 1,
-          choices: [String.raw`$6$`, String.raw`$8$`, String.raw`$9$`, String.raw`$16$`],
-          answer: String.raw`(C) $9$`,
+          choices: [String.raw`$9$`, String.raw`$10$`, String.raw`$16$`, String.raw`$17$`],
+          answer: String.raw`(A) $9$`,
           figure: {
             type: "plot",
             x: [-0.4, 8.4],

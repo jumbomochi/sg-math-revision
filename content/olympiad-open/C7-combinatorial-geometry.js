@@ -89,8 +89,8 @@ Then show that a counterexample would produce something even more extreme. Examp
         {
           stem: String.raw`Eight lines are drawn in the plane so that no two are parallel and no three pass through one point. Into how many regions do they divide the plane?`,
           difficulty: 1,
-          choices: [String.raw`$29$`, String.raw`$36$`, String.raw`$37$`, String.raw`$64$`, String.raw`$256$`],
-          answer: String.raw`(C) $37$`,
+          choices: [String.raw`$16$`, String.raw`$28$`, String.raw`$29$`, String.raw`$36$`, String.raw`$37$`],
+          answer: String.raw`(E) $37$`,
         },
         {
           stem: String.raw`Five circles are drawn in the plane so that every two of them meet in exactly two points and no three of them pass through one point. Into how many regions do they divide the plane?`,
@@ -227,8 +227,8 @@ Then show that a counterexample would produce something even more extreme. Examp
         {
           stem: String.raw`What is the smallest $n$ such that among any $n$ lattice points in the plane there are always two, $P$ and $Q$, for which both points that divide the segment $PQ$ into three equal parts are lattice points?`,
           difficulty: 1,
-          choices: [String.raw`$5$`, String.raw`$9$`, String.raw`$10$`, String.raw`$13$`, String.raw`$19$`],
-          answer: String.raw`(C) $10$`,
+          choices: [String.raw`$4$`, String.raw`$5$`, String.raw`$9$`, String.raw`$10$`, String.raw`$19$`],
+          answer: String.raw`(D) $10$`,
         },
         {
           stem: String.raw`How many lattice points lie strictly inside the triangle with vertices $(0, 0)$, $(24, 0)$ and $(9, 30)$?`,
@@ -273,8 +273,8 @@ Then show that a counterexample would produce something even more extreme. Examp
         {
           stem: String.raw`What is the largest number of discs of radius $1$ that can be placed inside a $4 \times 4$ square without overlapping (touching is allowed)?`,
           difficulty: 1,
-          choices: [String.raw`$3$`, String.raw`$4$`, String.raw`$5$`, String.raw`$6$`, String.raw`$8$`],
-          answer: String.raw`(B) $4$`,
+          choices: [String.raw`$4$`, String.raw`$5$`, String.raw`$6$`, String.raw`$7$`, String.raw`$8$`],
+          answer: String.raw`(A) $4$`,
         },
         {
           stem: String.raw`What is the largest number of $2 \times 3$ rectangles that can be cut from a $7 \times 7$ square of paper? (The rectangles may be placed in any position, but may not overlap.)`,
@@ -314,13 +314,13 @@ Then show that a counterexample would produce something even more extreme. Examp
           stem: String.raw`Every point of the plane is coloured red or blue. Which of the following must exist, whatever the colouring?`,
           difficulty: 1,
           choices: [
-            String.raw`two points at distance $1$ with the same colour`,
             String.raw`two red points at distance $1$`,
+            String.raw`two points at distance $1$ with the same colour`,
             String.raw`a red point and a blue point at distance $1$`,
             String.raw`three points of the same colour forming an equilateral triangle of side $1$`,
             String.raw`three red points forming an equilateral triangle of side $1$`,
           ],
-          answer: String.raw`(A) two points at distance $1$ with the same colour`,
+          answer: String.raw`(B) two points at distance $1$ with the same colour`,
         },
         {
           stem: String.raw`Each vertex of a regular hexagon is coloured red or blue. In how many of the $64$ colourings are there no three vertices of the same colour forming an equilateral triangle?`,

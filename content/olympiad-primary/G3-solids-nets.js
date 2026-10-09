@@ -1313,8 +1313,8 @@ $$\text{volume of object} = \text{length} \times \text{breadth of tank} \times \
             ],
             alt: "A cuboid 5 cubes long, 4 cubes wide and 3 cubes tall, made of 1 cm cubes.",
           },
-          choices: [String.raw`$12$`, String.raw`$18$`, String.raw`$22$`, String.raw`$24$`, String.raw`$36$`],
-          answer: String.raw`(C) $22$`,
+          choices: [String.raw`$22$`, String.raw`$24$`, String.raw`$28$`, String.raw`$36$`, String.raw`$60$`],
+          answer: String.raw`(A) $22$`,
         },
         {
           stem: String.raw`A big cube made of small cubes is painted on the outside and then taken apart. Exactly $96$ of the small cubes have paint on just one face. How many small cubes were there altogether?`,
@@ -1329,8 +1329,8 @@ $$\text{volume of object} = \text{length} \times \text{breadth of tank} \times \
         {
           stem: String.raw`A $4 \times 4 \times 4$ cube is made of $64$ small cubes. Its top and bottom faces are painted red and its four side faces are painted blue. It is then taken apart. How many small cubes have **both** red and blue paint on them?`,
           difficulty: 2,
-          choices: [String.raw`$8$`, String.raw`$16$`, String.raw`$24$`, String.raw`$32$`, String.raw`$48$`],
-          answer: String.raw`(C) $24$`,
+          choices: [String.raw`$8$`, String.raw`$12$`, String.raw`$16$`, String.raw`$20$`, String.raw`$24$`],
+          answer: String.raw`(E) $24$`,
         },
         {
           stem: String.raw`The solid is built from $14$ small cubes: a $3 \times 3$ layer, a $2 \times 2$ layer and $1$ cube, stacked in one corner as shown. The whole solid is dipped in paint, so every outside face is painted, including the bottom. It is then taken apart. How many of the small cubes have paint on exactly $3$ faces?`,

@@ -128,8 +128,8 @@ So the two symbols are equal unless $p \equiv q \equiv 3 \pmod 4$, in which case
         {
           stem: String.raw`Which of these primes divides $n^{2} + 1$ for some integer $n$?`,
           difficulty: 1,
-          choices: [String.raw`$7$`, String.raw`$11$`, String.raw`$19$`, String.raw`$29$`, String.raw`$43$`],
-          answer: String.raw`(D) $29$`,
+          choices: [String.raw`$29$`, String.raw`$31$`, String.raw`$43$`, String.raw`$47$`, String.raw`$59$`],
+          answer: String.raw`(A) $29$`,
         },
         {
           stem: String.raw`Find the smallest positive integer $n$ such that $n^{2} + 1$ is divisible by $61$.`,
@@ -257,8 +257,8 @@ is divided by $13$.`,
         {
           stem: String.raw`What is $\gcd(2^{36} - 1,\ 2^{60} - 1)$?`,
           difficulty: 1,
-          choices: [String.raw`$3$`, String.raw`$63$`, String.raw`$4095$`, String.raw`$2^{12} + 1$`, String.raw`$2^{24} - 1$`],
-          answer: String.raw`(C) $4095$`,
+          choices: [String.raw`$3$`, String.raw`$15$`, String.raw`$63$`, String.raw`$255$`, String.raw`$4095$`],
+          answer: String.raw`(E) $4095$`,
         },
         {
           stem: String.raw`Find all primes $p$ that divide $10^{5} - 1$ but do not divide $10^{k} - 1$ for any $k$ with $1 \le k \le 4$.`,
@@ -300,8 +300,8 @@ is divided by $13$.`,
         {
           stem: String.raw`Which of these numbers can **not** be written as $a^{2} + b^{2}$ with $a$ and $b$ integers?`,
           difficulty: 1,
-          choices: [String.raw`$245$`, String.raw`$325$`, String.raw`$338$`, String.raw`$378$`, String.raw`$450$`],
-          answer: String.raw`(D) $378$`,
+          choices: [String.raw`$245$`, String.raw`$378$`, String.raw`$425$`, String.raw`$450$`, String.raw`$468$`],
+          answer: String.raw`(B) $378$`,
         },
         {
           stem: String.raw`Find all pairs of positive integers $(a, b)$ with $a \le b$ such that $a^{2} + b^{2} = 221$.`,

@@ -148,8 +148,8 @@ Then use the other facts you are given (at least one of each kind, more of one k
         {
           stem: String.raw`In a pet shop there are $12$ more chickens than rabbits. The animals have $120$ legs altogether. How many rabbits are there?`,
           difficulty: 2,
-          choices: [String.raw`(A) $14$`, String.raw`(B) $16$`, String.raw`(C) $18$`, String.raw`(D) $20$`, String.raw`(E) $28$`],
-          answer: String.raw`(B) $16$`,
+          choices: [String.raw`(A) $16$`, String.raw`(B) $18$`, String.raw`(C) $20$`, String.raw`(D) $24$`, String.raw`(E) $28$`],
+          answer: String.raw`(A) $16$`,
         },
         {
           stem: String.raw`A nature display has $21$ creatures: spiders, dragonflies and cicadas. A spider has $8$ legs and no wings. A dragonfly has $6$ legs and $2$ pairs of wings. A cicada has $6$ legs and $1$ pair of wings. Altogether there are $140$ legs and $20$ pairs of wings. How many dragonflies are there?`,
@@ -229,8 +229,8 @@ Then use the other facts you are given (at least one of each kind, more of one k
         {
           stem: String.raw`A quiz has $20$ questions. Each correct answer scores $5$ marks and each wrong answer loses $2$ marks. Jia Hui answered all the questions and scored $72$ marks. How many questions did she answer correctly?`,
           difficulty: 1,
-          choices: [String.raw`(A) $4$`, String.raw`(B) $14$`, String.raw`(C) $15$`, String.raw`(D) $16$`, String.raw`(E) $18$`],
-          answer: String.raw`(D) $16$`,
+          choices: [String.raw`(A) $4$`, String.raw`(B) $12$`, String.raw`(C) $14$`, String.raw`(D) $15$`, String.raw`(E) $16$`],
+          answer: String.raw`(E) $16$`,
         },
         {
           stem: String.raw`A worker delivers $200$ glasses. He is paid \$$6$ for each glass that arrives safely, but he must pay \$$10$ for each glass that breaks. He receives \$$1104$ in total. How many glasses broke?`,
@@ -320,8 +320,8 @@ Then use the other facts you are given (at least one of each kind, more of one k
         {
           stem: String.raw`Pens cost \$$3$ each and notebooks cost \$$5$ each. Ravi planned to buy some pens and some notebooks for \$$68$. The cashier mixed up the two numbers, so Ravi got the planned number of notebooks as pens and the planned number of pens as notebooks. He paid \$$60$. How many notebooks did Ravi plan to buy?`,
           difficulty: 2,
-          choices: [String.raw`(A) $6$`, String.raw`(B) $8$`, String.raw`(C) $10$`, String.raw`(D) $12$`],
-          answer: String.raw`(C) $10$`,
+          choices: [String.raw`(A) $4$`, String.raw`(B) $6$`, String.raw`(C) $8$`, String.raw`(D) $10$`],
+          answer: String.raw`(D) $10$`,
         },
         {
           stem: String.raw`A group of $38$ pupils hires boats. A big boat holds $6$ people and costs \$$40$ to hire. A small boat holds $4$ people and costs \$$30$ to hire. A boat may carry fewer people than it holds. What is the least total cost so that every pupil has a seat?`,
@@ -331,8 +331,8 @@ Then use the other facts you are given (at least one of each kind, more of one k
         {
           stem: String.raw`$3$ pens and $2$ erasers cost \$$7.20$. $3$ pens and $5$ erasers cost \$$9$. How much does one pen cost?`,
           difficulty: 1,
-          choices: [String.raw`(A) \$$0.60$`, String.raw`(B) \$$1.80$`, String.raw`(C) \$$2$`, String.raw`(D) \$$2.40$`],
-          answer: String.raw`(C) \$$2$`,
+          choices: [String.raw`(A) \$$0.60$`, String.raw`(B) \$$2$`, String.raw`(C) \$$2.40$`, String.raw`(D) \$$6$`],
+          answer: String.raw`(B) \$$2$`,
         },
         {
           stem: String.raw`Last year a zoo charged \$$8$ for an adult ticket and \$$5$ for a child ticket, and a school group paid \$$245$. This year both prices went up by \$$2$. The same group, with the same numbers of adults and children, paid \$$325$. How many adults are in the group?`,

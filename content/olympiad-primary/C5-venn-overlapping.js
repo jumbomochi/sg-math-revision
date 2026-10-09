@@ -179,8 +179,8 @@ Example: $3$ people, each in exactly two of the clubs X, Y, Z. The club sizes ad
         {
           stem: String.raw`Each of the $30$ pupils in a class can swim or cycle, or both. $17$ can swim and $20$ can cycle. How many pupils can do both?`,
           difficulty: 1,
-          choices: [String.raw`$3$`, String.raw`$7$`, String.raw`$10$`, String.raw`$13$`],
-          answer: String.raw`(B) $7$`,
+          choices: [String.raw`$7$`, String.raw`$10$`, String.raw`$13$`, String.raw`$17$`],
+          answer: String.raw`(A) $7$`,
         },
         {
           stem: String.raw`Of $50$ children, $32$ have a cat or a dog or both. $20$ have a dog and $7$ have both a cat and a dog. How many children have a cat?`,
@@ -246,7 +246,7 @@ Example: $3$ people, each in exactly two of the clubs X, Y, Z. The club sizes ad
         {
           stem: String.raw`The Venn diagram shows how many children in a club play football (F), swim (S) and play chess (C). How many children play football but do not play chess?`,
           difficulty: 1,
-          choices: [String.raw`$8$`, String.raw`$11$`, String.raw`$13$`, String.raw`$16$`],
+          choices: [String.raw`$8$`, String.raw`$10$`, String.raw`$11$`, String.raw`$13$`],
           figure: {
             type: "plot",
             x: [0, 10],
@@ -271,7 +271,7 @@ Example: $3$ people, each in exactly two of the clubs X, Y, Z. The club sizes ad
             ],
             alt: "Three overlapping circles F, S, C in a box. F only 8, S only 6, C only 4, F and S only 5, F and C only 2, S and C only 3, all three 1, outside 3.",
           },
-          answer: String.raw`(C) $13$`,
+          answer: String.raw`(D) $13$`,
         },
         {
           stem: String.raw`In a class of $50$ pupils, $25$ play football, $20$ play badminton and $18$ play tennis. $8$ play football and badminton, $7$ play football and tennis, and $6$ play badminton and tennis. $3$ play all three. How many pupils play none of the three sports?`,
@@ -324,8 +324,8 @@ Example: $3$ people, each in exactly two of the clubs X, Y, Z. The club sizes ad
         {
           stem: String.raw`In a class of $35$ pupils, $25$ like art and $18$ like music. What is the greatest possible number of pupils who like both?`,
           difficulty: 1,
-          choices: [String.raw`$8$`, String.raw`$10$`, String.raw`$18$`, String.raw`$25$`],
-          answer: String.raw`(C) $18$`,
+          choices: [String.raw`$7$`, String.raw`$8$`, String.raw`$10$`, String.raw`$18$`],
+          answer: String.raw`(D) $18$`,
         },
         {
           stem: String.raw`In a class of $30$ pupils, $21$ brought a pen and $17$ brought a ruler. What is the least possible number of pupils who brought both?`,
@@ -434,8 +434,8 @@ Example: $3$ people, each in exactly two of the clubs X, Y, Z. The club sizes ad
         {
           stem: String.raw`Five paper strips, each $20$ cm long, are joined in a straight line. Each joint is an overlap of $3$ cm. How long is the joined strip?`,
           difficulty: 1,
-          choices: [String.raw`$85$ cm`, String.raw`$88$ cm`, String.raw`$91$ cm`, String.raw`$100$ cm`],
-          answer: String.raw`(B) $88$ cm`,
+          choices: [String.raw`$88$ cm`, String.raw`$91$ cm`, String.raw`$94$ cm`, String.raw`$100$ cm`],
+          answer: String.raw`(A) $88$ cm`,
         },
         {
           stem: String.raw`Three coloured strips are stuck on a metre ruler, as shown: red from $0$ cm to $45$ cm, blue from $30$ cm to $80$ cm, and green from $60$ cm to $100$ cm. What length of the ruler is covered by exactly two strips?`,

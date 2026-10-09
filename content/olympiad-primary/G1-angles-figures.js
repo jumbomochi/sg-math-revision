@@ -353,13 +353,13 @@ In a **regular** shape all angles are equal, so divide by the number of corners:
             alt: "Six rays from a point O, making six angles around O that get gradually bigger going clockwise.",
           },
           choices: [
+            String.raw`$40^\circ$`,
+            String.raw`$48^\circ$`,
             String.raw`$60^\circ$`,
             String.raw`$72^\circ$`,
             String.raw`$80^\circ$`,
-            String.raw`$88^\circ$`,
-            String.raw`$100^\circ$`,
           ],
-          answer: String.raw`(C) $80^\circ$`,
+          answer: String.raw`(E) $80^\circ$`,
         },
         {
           stem: String.raw`$AOB$ is a straight line and $OC$, $OD$, $OE$ are rays above it, in that order. $\angle AOD = 100^\circ$, $\angle COE = 110^\circ$ and $\angle AOC = \angle EOB$. Find $\angle COD$.`,
@@ -648,13 +648,13 @@ In a **regular** shape all angles are equal, so divide by the number of corners:
           stem: String.raw`The three angles of a triangle are in the ratio $2 : 3 : 7$. What is the size of the largest angle?`,
           difficulty: 1,
           choices: [
-            String.raw`$84^\circ$`,
-            String.raw`$90^\circ$`,
             String.raw`$105^\circ$`,
             String.raw`$112^\circ$`,
             String.raw`$120^\circ$`,
+            String.raw`$126^\circ$`,
+            String.raw`$140^\circ$`,
           ],
-          answer: String.raw`(C) $105^\circ$`,
+          answer: String.raw`(A) $105^\circ$`,
         },
         {
           stem: String.raw`The straight lines $AB$ and $CD$ cross at $O$. $\angle CAO = 48^\circ$, $\angle ACO = 67^\circ$ and $\angle OBD = 52^\circ$. Find $\angle ODB$.`,
@@ -1571,12 +1571,12 @@ In a **regular** shape all angles are equal, so divide by the number of corners:
           },
           choices: [
             String.raw`$126^\circ$`,
-            String.raw`$132^\circ$`,
             String.raw`$138^\circ$`,
             String.raw`$144^\circ$`,
             String.raw`$150^\circ$`,
+            String.raw`$156^\circ$`,
           ],
-          answer: String.raw`(C) $138^\circ$`,
+          answer: String.raw`(B) $138^\circ$`,
         },
         {
           stem: String.raw`Some time between 3 o'clock and 4 o'clock, the hour hand and the minute hand of a clock point in exactly opposite directions (they make a straight line through the centre). How many minutes after 3 o'clock does this happen?`,
@@ -1591,8 +1591,8 @@ In a **regular** shape all angles are equal, so divide by the number of corners:
         {
           stem: String.raw`At a certain time between 1 o'clock and 2 o'clock, the minute hand of a clock points exactly at one of the twelve numbers, and the smaller angle between the two hands is $107\tfrac12^\circ$. What time is it?`,
           difficulty: 2,
-          choices: [String.raw`1:20`, String.raw`1:25`, String.raw`1:30`, String.raw`1:35`, String.raw`1:40`],
-          answer: String.raw`(B) 1:25`,
+          choices: [String.raw`1:25`, String.raw`1:30`, String.raw`1:35`, String.raw`1:40`, String.raw`1:45`],
+          answer: String.raw`(A) 1:25`,
         },
         {
           stem: String.raw`At a certain moment between 2 o'clock and 3 o'clock, the hour hand and the minute hand are mirror images of each other in the line through $12$ and $6$, so the line to $12$ cuts the angle between the hands exactly in half. At what time does this happen?`,
@@ -1673,12 +1673,12 @@ In a **regular** shape all angles are equal, so divide by the number of corners:
           difficulty: 1,
           choices: [
             String.raw`a rectangle`,
-            String.raw`a square`,
-            String.raw`an equilateral triangle`,
-            String.raw`a regular pentagon`,
             String.raw`a rhombus (not a square)`,
+            String.raw`an equilateral triangle`,
+            String.raw`a square`,
+            String.raw`a regular pentagon`,
           ],
-          answer: String.raw`(D) a regular pentagon`,
+          answer: String.raw`(E) a regular pentagon`,
         },
         {
           stem: String.raw`Three squares of the $4 \times 4$ grid are shaded. Ken wants to shade **one** more square so that the whole figure (the grid together with its shading) has at least one line of symmetry. How many different squares could he choose?`,

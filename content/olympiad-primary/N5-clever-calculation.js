@@ -212,9 +212,9 @@ H2.addTopic({
         {
           stem: String.raw`The numbers $1$ to $6$ are placed in the circles of the triangle shown, one in each circle, so that the three numbers on each side add up to $12$. What is the sum of the three corner numbers?`,
           difficulty: 1,
-          choices: [String.raw`$9$`, String.raw`$12$`, String.raw`$15$`, String.raw`$18$`],
+          choices: [String.raw`$6$`, String.raw`$9$`, String.raw`$12$`, String.raw`$15$`],
           figure: { type:  "plot", x:  [-2.5, 8.5], y:  [-0.8, 5.9959999999999996], equal:  true, axes:  false, segments:  [{ from:  [0.5, 0.0], to:  [2.5, 0.0], tone:  "muted" }, { from:  [3.5, 0.0], to:  [5.5, 0.0], tone:  "muted" }, { from:  [5.75, 0.433], to:  [4.75, 2.165], tone:  "muted" }, { from:  [4.25, 3.031], to:  [3.25, 4.763], tone:  "muted" }, { from:  [2.75, 4.763], to:  [1.75, 3.031], tone:  "muted" }, { from:  [1.25, 2.165], to:  [0.25, 0.433], tone:  "muted" }], circles:  [{ c:  [0.0, 0.0], r:  0.5, tone:  "accent" }, { c:  [3.0, 0.0], r:  0.5, tone:  "accent" }, { c:  [6.0, 0.0], r:  0.5, tone:  "accent" }, { c:  [4.5, 2.598], r:  0.5, tone:  "accent" }, { c:  [3.0, 5.196], r:  0.5, tone:  "accent" }, { c:  [1.5, 2.598], r:  0.5, tone:  "accent" }], labels:  [], alt:  "A triangle of six empty circles: one at each corner and one in the middle of each side." },
-          answer: String.raw`(C) $15$`,
+          answer: String.raw`(D) $15$`,
         },
         {
           stem: String.raw`The numbers $1$ to $6$ are placed in the circles, one in each, so that the three numbers on each side have the same total. $1$, $2$ and $3$ are already in the corners. What number goes in the circle marked ?`,
@@ -316,8 +316,8 @@ H2.addTopic({
         {
           stem: String.raw`Which of these is the largest?`,
           difficulty: 1,
-          choices: [String.raw`$39 \times 41$`, String.raw`$38 \times 42$`, String.raw`$40 \times 40$`, String.raw`$37 \times 43$`],
-          answer: String.raw`(C) $40 \times 40$`,
+          choices: [String.raw`$37 \times 43$`, String.raw`$38 \times 42$`, String.raw`$39 \times 41$`, String.raw`$40 \times 40$`],
+          answer: String.raw`(D) $40 \times 40$`,
         },
         {
           stem: String.raw`Compare $33333 \times 66666$ and $22222 \times 99999$.`,

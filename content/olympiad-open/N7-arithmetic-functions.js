@@ -163,8 +163,8 @@ $$\tau(n) = \prod (a_{i} + 1), \quad \sigma(n) = \prod \frac{p_{i}^{a_{i}+1} - 1
         {
           stem: String.raw`A positive integer $n$ is perfect if the sum of its divisors other than $n$ itself is $n$; the two smallest are $6$ and $28$. What is the next one?`,
           difficulty: 1,
-          choices: [String.raw`$128$`, String.raw`$256$`, String.raw`$496$`, String.raw`$512$`, String.raw`$8128$`],
-          answer: String.raw`(C) $496$`,
+          choices: [String.raw`$120$`, String.raw`$128$`, String.raw`$256$`, String.raw`$496$`, String.raw`$8128$`],
+          answer: String.raw`(D) $496$`,
         },
         {
           stem: String.raw`A positive integer $n$ is abundant if $\sigma(n) > 2n$. How many abundant numbers are there among $1, 2, \ldots, 50$?`,
@@ -249,8 +249,8 @@ $$\sum_{k=1}^{n} \varphi(k) \left\lfloor \frac{n}{k} \right\rfloor = \frac{n(n +
         {
           stem: String.raw`Let $F_{1} = F_{2} = 1$ and $F_{n+1} = F_{n} + F_{n-1}$ be the Fibonacci numbers. What is $\gcd(F_{24}, F_{36})$?`,
           difficulty: 1,
-          choices: [String.raw`$8$`, String.raw`$21$`, String.raw`$144$`, String.raw`$233$`, String.raw`$46\,368$`],
-          answer: String.raw`(C) $144$`,
+          choices: [String.raw`$144$`, String.raw`$233$`, String.raw`$377$`, String.raw`$46\,368$`, String.raw`$14\,930\,352$`],
+          answer: String.raw`(A) $144$`,
         },
         {
           stem: String.raw`How many of the Fibonacci numbers $F_{1}, F_{2}, \ldots, F_{100}$ are even?`,
@@ -292,8 +292,8 @@ $$\sum_{k=1}^{n} \varphi(k) \left\lfloor \frac{n}{k} \right\rfloor = \frac{n(n +
         {
           stem: String.raw`A sequence has $a_{1} = a_{2} = 1$ and $a_{n+1} = \dfrac{a_{n}^{2} + 2}{a_{n-1}}$ for $n \ge 2$. What is $a_{6}$?`,
           difficulty: 1,
-          choices: [String.raw`$141$`, String.raw`$149$`, String.raw`$153$`, String.raw`$161$`, String.raw`$a_{6}$ is not an integer`],
-          answer: String.raw`(C) $153$`,
+          choices: [String.raw`$141$`, String.raw`$153$`, String.raw`$164$`, String.raw`$175$`, String.raw`$a_{6}$ is not an integer`],
+          answer: String.raw`(B) $153$`,
         },
         {
           stem: String.raw`Find the largest integer $k$ such that $2^{k}$ divides the Fibonacci number $F_{48}$.`,

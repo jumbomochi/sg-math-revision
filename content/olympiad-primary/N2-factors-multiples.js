@@ -183,8 +183,8 @@ H2.addTopic({
         {
           stem: String.raw`How many prime numbers are there between $30$ and $60$?`,
           difficulty: 1,
-          choices: [String.raw`$5$`, String.raw`$6$`, String.raw`$7$`, String.raw`$8$`],
-          answer: String.raw`(C) $7$`,
+          choices: [String.raw`$4$`, String.raw`$5$`, String.raw`$6$`, String.raw`$7$`],
+          answer: String.raw`(D) $7$`,
         },
         {
           stem: String.raw`The product of two prime numbers is $221$. What is their sum?`,
@@ -199,8 +199,8 @@ H2.addTopic({
         {
           stem: String.raw`Which of these numbers has exactly $3$ factors?`,
           difficulty: 1,
-          choices: [String.raw`$8$`, String.raw`$12$`, String.raw`$25$`, String.raw`$27$`, String.raw`$30$`],
-          answer: String.raw`(C) $25$`,
+          choices: [String.raw`$8$`, String.raw`$12$`, String.raw`$16$`, String.raw`$18$`, String.raw`$25$`],
+          answer: String.raw`(E) $25$`,
         },
         {
           stem: String.raw`$72$ pupils stand in equal rows for a photo. Each row must have at least $3$ and at most $20$ pupils. How many different numbers of pupils in each row are possible?`,
@@ -289,8 +289,8 @@ H2.addTopic({
         {
           stem: String.raw`Which of these numbers is divisible by $11$?`,
           difficulty: 2,
-          choices: [String.raw`$4352$`, String.raw`$5193$`, String.raw`$3718$`, String.raw`$2817$`, String.raw`$9087$`],
-          answer: String.raw`(C) $3718$`,
+          choices: [String.raw`$2817$`, String.raw`$3718$`, String.raw`$4352$`, String.raw`$5193$`, String.raw`$9087$`],
+          answer: String.raw`(B) $3718$`,
         },
         {
           stem: String.raw`The five-digit number $7\square36\square$ is divisible by $72$. The two boxes may hide different digits. What is the largest possible value of the number?`,
@@ -300,8 +300,8 @@ H2.addTopic({
         {
           stem: String.raw`Which of these numbers is divisible by $4$ but **not** by $8$?`,
           difficulty: 1,
-          choices: [String.raw`$3216$`, String.raw`$5124$`, String.raw`$7320$`, String.raw`$4816$`, String.raw`$6408$`],
-          answer: String.raw`(B) $5124$`,
+          choices: [String.raw`$3216$`, String.raw`$4816$`, String.raw`$5124$`, String.raw`$6408$`, String.raw`$7320$`],
+          answer: String.raw`(C) $5124$`,
         },
         {
           stem: String.raw`In the four-digit number $2\square\square6$, both boxes hide the same digit. The number is divisible by $12$. What is the number?`,
@@ -333,8 +333,8 @@ H2.addTopic({
         {
           stem: String.raw`What is the smallest whole number that leaves a remainder of $2$ when divided by $3$, a remainder of $3$ when divided by $4$, and a remainder of $4$ when divided by $5$?`,
           difficulty: 2,
-          choices: [String.raw`$23$`, String.raw`$59$`, String.raw`$61$`, String.raw`$119$`],
-          answer: String.raw`(B) $59$`,
+          choices: [String.raw`$59$`, String.raw`$60$`, String.raw`$61$`, String.raw`$119$`],
+          answer: String.raw`(A) $59$`,
         },
         {
           stem: String.raw`What is the smallest three-digit number that leaves a remainder of $2$ when divided by $5$ and a remainder of $3$ when divided by $7$?`,
@@ -349,8 +349,8 @@ H2.addTopic({
         {
           stem: String.raw`A whole number leaves a remainder of $4$ when divided by $9$. What is the remainder when $5$ times the number is divided by $9$?`,
           difficulty: 2,
-          choices: [String.raw`$0$`, String.raw`$2$`, String.raw`$4$`, String.raw`$5$`, String.raw`$8$`],
-          answer: String.raw`(B) $2$`,
+          choices: [String.raw`$2$`, String.raw`$4$`, String.raw`$5$`, String.raw`$8$`, String.raw`$20$`],
+          answer: String.raw`(A) $2$`,
         },
         {
           stem: String.raw`When $2026$ is divided by a certain two-digit number, the remainder is $16$. How many two-digit numbers could it be?`,
@@ -476,8 +476,8 @@ What is the remainder when this long number is divided by $9$?`,
         {
           stem: String.raw`Exactly one of these numbers is **not** a perfect square. Which one?`,
           difficulty: 1,
-          choices: [String.raw`$1369$`, String.raw`$2209$`, String.raw`$3427$`, String.raw`$4624$`, String.raw`$5776$`],
-          answer: String.raw`(C) $3427$`,
+          choices: [String.raw`$1369$`, String.raw`$2209$`, String.raw`$2601$`, String.raw`$3427$`, String.raw`$4624$`],
+          answer: String.raw`(D) $3427$`,
         },
         {
           stem: String.raw`How many of the factors of $144$ are perfect squares?`,

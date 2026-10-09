@@ -301,8 +301,8 @@ $$\frac{1}{1 \times 2 \times 3} = \frac12 \times \Big(\frac{1}{1 \times 2} - \fr
         {
           stem: String.raw`Box A and Box B have $240$ sweets altogether, in the ratio $7 : 5$. How many sweets must be moved from Box A to Box B so that the ratio becomes $3 : 5$?`,
           difficulty: 2,
-          choices: [String.raw`$30$`, String.raw`$40$`, String.raw`$50$`, String.raw`$60$`, String.raw`$90$`],
-          answer: String.raw`(C) $50$`,
+          choices: [String.raw`$50$`, String.raw`$60$`, String.raw`$80$`, String.raw`$90$`, String.raw`$150$`],
+          answer: String.raw`(A) $50$`,
         },
         {
           stem: String.raw`Jars P and Q contain beads in the ratio $4 : 1$. After $30$ beads are moved from P to Q, the ratio becomes $3 : 2$. Some beads are then moved from Q back to P so that the ratio becomes $7 : 3$. How many beads are moved back?`,
@@ -345,8 +345,8 @@ $$\frac{1}{1 \times 2 \times 3} = \frac12 \times \Big(\frac{1}{1 \times 2} - \fr
         {
           stem: String.raw`Two ribbons are $85$ cm and $45$ cm long. The same length is cut off from each ribbon. The longer ribbon is now $3$ times as long as the shorter one. How much was cut off from each ribbon?`,
           difficulty: 2,
-          choices: [String.raw`$15$ cm`, String.raw`$20$ cm`, String.raw`$25$ cm`, String.raw`$30$ cm`, String.raw`$35$ cm`],
-          answer: String.raw`(C) $25$ cm`,
+          choices: [String.raw`$5$ cm`, String.raw`$10$ cm`, String.raw`$15$ cm`, String.raw`$20$ cm`, String.raw`$25$ cm`],
+          answer: String.raw`(E) $25$ cm`,
         },
         {
           stem: String.raw`Mother is now $4$ times as old as Jia Hui. In $6$ years' time, Mother will be $3$ times as old as Jia Hui. How old will Jia Hui be when Mother is twice as old as her?`,
@@ -383,8 +383,8 @@ $$\frac{1}{1 \times 2 \times 3} = \frac12 \times \Big(\frac{1}{1 \times 2} - \fr
         {
           stem: String.raw`A fruit seller had apples and oranges in the ratio $3 : 5$. After he sold $40$ oranges, the ratio of apples to oranges became $3 : 1$. How many apples did he have?`,
           difficulty: 1,
-          choices: [String.raw`$10$`, String.raw`$24$`, String.raw`$30$`, String.raw`$40$`, String.raw`$50$`],
-          answer: String.raw`(C) $30$`,
+          choices: [String.raw`$30$`, String.raw`$40$`, String.raw`$50$`, String.raw`$60$`, String.raw`$80$`],
+          answer: String.raw`(A) $30$`,
         },
         {
           stem: String.raw`In a class, $\frac37$ of the pupils are boys. After $6$ more girls join the class, $\frac13$ of the pupils are boys. How many boys are in the class?`,
@@ -470,8 +470,8 @@ $$\frac{1}{1 \times 2 \times 3} = \frac12 \times \Big(\frac{1}{1 \times 2} - \fr
         {
           stem: String.raw`Which fraction is the smallest?`,
           difficulty: 1,
-          choices: [String.raw`$\frac37$`, String.raw`$\frac38$`, String.raw`$\frac35$`, String.raw`$\frac{3}{10}$`, String.raw`$\frac34$`],
-          answer: String.raw`(D) $\frac{3}{10}$`,
+          choices: [String.raw`$\frac34$`, String.raw`$\frac35$`, String.raw`$\frac37$`, String.raw`$\frac38$`, String.raw`$\frac{3}{10}$`],
+          answer: String.raw`(E) $\frac{3}{10}$`,
         },
         {
           stem: String.raw`Arrange these fractions from the smallest to the largest:

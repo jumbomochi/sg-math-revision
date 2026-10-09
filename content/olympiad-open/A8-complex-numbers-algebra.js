@@ -110,8 +110,8 @@ $$\sum_{k \equiv r} c_k = \frac1m\sum_{j=0}^{m-1}\omega^{-jr}P(\omega^j).$$
         {
           stem: String.raw`Let $\omega = e^{2\pi i/7}$. What is $\omega + \omega^2 + \omega^3 + \omega^4 + \omega^5 + \omega^6$?`,
           difficulty: 1,
-          choices: [String.raw`$-1$`, String.raw`$0$`, String.raw`$1$`, String.raw`$6$`, String.raw`$7$`],
-          answer: String.raw`(A) $-1$`,
+          choices: [String.raw`$-7$`, String.raw`$-6$`, String.raw`$-1$`, String.raw`$0$`, String.raw`$1$`],
+          answer: String.raw`(C) $-1$`,
         },
         {
           stem: String.raw`Let $\omega = e^{2\pi i/5}$. Find $(2 - \omega)(2 - \omega^2)(2 - \omega^3)(2 - \omega^4)$.`,
@@ -254,8 +254,8 @@ and prove that there are no others.`,
         {
           stem: String.raw`The cubic $x^3 + ax^2 + bx + 10$, where $a$ and $b$ are real, has $2 + i$ as a root. What is its real root?`,
           difficulty: 1,
-          choices: [String.raw`$-5$`, String.raw`$-2$`, String.raw`$2$`, String.raw`$5$`, String.raw`$10$`],
-          answer: String.raw`(B) $-2$`,
+          choices: [String.raw`$-10$`, String.raw`$-5$`, String.raw`$-4$`, String.raw`$-2$`, String.raw`$2$`],
+          answer: String.raw`(D) $-2$`,
         },
         {
           stem: String.raw`Find all complex numbers $z$ with $z^2 = -5 + 12i$.`,

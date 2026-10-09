@@ -179,8 +179,8 @@ Let $m$ be a positive integer. In terms of $k$ and $m$, find the least number of
         {
           stem: String.raw`Seven coins lie in a row, all showing tails. A step is: find the leftmost coin showing tails, turn it to heads, and turn every coin to its left (all of which show heads) to tails. How many steps are made before all seven coins show heads?`,
           difficulty: 1,
-          choices: [String.raw`$49$`, String.raw`$64$`, String.raw`$127$`, String.raw`$128$`, String.raw`$5040$`],
-          answer: String.raw`(C) $127$`,
+          choices: [String.raw`$7$`, String.raw`$49$`, String.raw`$63$`, String.raw`$64$`, String.raw`$127$`],
+          answer: String.raw`(E) $127$`,
         },
         {
           stem: String.raw`A pile of ten cards is numbered $1$ to $10$ from top to bottom. A shuffle is done as follows: deal the cards one at a time from the top, alternately onto a left pile and a right pile (left first), each card going on top of its pile; then put the left pile on top of the right pile. How many shuffles are needed before the cards are back in the order $1$ to $10$ for the first time?`,
@@ -309,8 +309,8 @@ Let $m$ be a positive integer. In terms of $k$ and $m$, find the least number of
         {
           stem: String.raw`There are $6$ locked suitcases and $3$ keys. Each key opens exactly two of the suitcases, and each suitcase is opened by exactly one key, but you do not know which. A trial consists of trying one key in one suitcase. What is the least number of trials that is always enough to find out which key opens which suitcase?`,
           difficulty: 1,
-          choices: [String.raw`$6$`, String.raw`$7$`, String.raw`$8$`, String.raw`$9$`, String.raw`$10$`],
-          answer: String.raw`(C) $8$`,
+          choices: [String.raw`$5$`, String.raw`$6$`, String.raw`$7$`, String.raw`$8$`, String.raw`$9$`],
+          answer: String.raw`(D) $8$`,
         },
         {
           stem: String.raw`A ship in the shape of a $2 \times 2$ square of cells is hidden on a $7 \times 7$ board. A shot is fired at one cell and hits if the ship covers that cell. What is the least number of shots, chosen in advance, that is sure to hit the ship wherever it is?`,

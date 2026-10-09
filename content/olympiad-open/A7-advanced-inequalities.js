@@ -127,8 +127,8 @@ $$a^2 + b^2 + c^2 = p^2 - 2q, \quad a^3 + b^3 + c^3 = p^3 - 3pq + 3r, \quad a^2b
         {
           stem: String.raw`Positive real numbers $a, b, c$ satisfy $abc = 1$. What is the largest possible value of $(a + b - c)(b + c - a)(c + a - b)$?`,
           difficulty: 1,
-          choices: [String.raw`$\tfrac18$`, String.raw`$\tfrac12$`, String.raw`$1$`, String.raw`$2$`, String.raw`$8$`],
-          answer: String.raw`(C) $1$`,
+          choices: [String.raw`$\tfrac18$`, String.raw`$\tfrac14$`, String.raw`$\tfrac13$`, String.raw`$\tfrac12$`, String.raw`$1$`],
+          answer: String.raw`(E) $1$`,
         },
         {
           stem: String.raw`Non-negative real numbers $a, b, c$ satisfy $a + b + c = 6$. Find the maximum value of $8(ab + bc + ca) - 3abc$.`,

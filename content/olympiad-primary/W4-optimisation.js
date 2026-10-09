@@ -196,8 +196,8 @@ H2.addTopic({
         {
           stem: String.raw`A rectangle has a perimeter of $36$ cm. Its sides are whole numbers of centimetres. What is the largest possible area of the rectangle?`,
           difficulty: 1,
-          choices: [String.raw`$72$ cm$^2$`, String.raw`$77$ cm$^2$`, String.raw`$80$ cm$^2$`, String.raw`$81$ cm$^2$`],
-          answer: String.raw`(D) $81$ cm$^2$`,
+          choices: [String.raw`$72$ cm$^2$`, String.raw`$80$ cm$^2$`, String.raw`$81$ cm$^2$`, String.raw`$324$ cm$^2$`],
+          answer: String.raw`(C) $81$ cm$^2$`,
         },
         {
           stem: String.raw`A rectangle has an area of $48$ cm$^2$. Its sides are whole numbers of centimetres. What is the smallest possible perimeter of the rectangle?`,
@@ -501,8 +501,8 @@ Mum and Dad start at the same time. What is the shortest time until all four chi
         {
           stem: String.raw`A bottle of juice costs \$$3$. A shop has an offer: for every $3$ bottles you pay for, you get $1$ more bottle free. What is the least amount you must pay to get at least $14$ bottles?`,
           difficulty: 1,
-          choices: [String.raw`\$$30$`, String.raw`\$$33$`, String.raw`\$$36$`, String.raw`\$$42$`],
-          answer: String.raw`(B) \$$33$`,
+          choices: [String.raw`\$$27$`, String.raw`\$$30$`, String.raw`\$$33$`, String.raw`\$$42$`],
+          answer: String.raw`(C) \$$33$`,
         },
         {
           stem: String.raw`A shop sells stickers in packs of $6$ for \$$10$, packs of $4$ for \$$7$, or singly for \$$2$ each. What is the least amount needed to buy at least $25$ stickers?`,

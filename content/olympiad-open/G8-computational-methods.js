@@ -464,12 +464,12 @@ $$\frac{\sin\angle BAD}{\sin\angle DAC}\cdot\frac{\sin\angle CBE}{\sin\angle EBA
           },
           choices: [
             String.raw`$10^\circ$`,
-            String.raw`$15^\circ$`,
             String.raw`$20^\circ$`,
-            String.raw`$25^\circ$`,
             String.raw`$30^\circ$`,
+            String.raw`$40^\circ$`,
+            String.raw`$50^\circ$`,
           ],
-          answer: String.raw`(C) $20^\circ$`,
+          answer: String.raw`(B) $20^\circ$`,
         },
         {
           stem: String.raw`A point $P$ inside triangle $ABC$ satisfies $\angle PBA = 20^\circ$, $\angle PBC = 10^\circ$, $\angle PCB = 30^\circ$ and $\angle PCA = 40^\circ$, as shown. Find $\angle PAB$.`,
@@ -1523,8 +1523,8 @@ $$\frac{\sin\angle BAD}{\sin\angle DAC}\cdot\frac{\sin\angle CBE}{\sin\angle EBA
             ],
             alt: "Equilateral triangle ABC inscribed in a circle, with P on the minor arc BC, PB = 3 and PC = 5; PA is dashed.",
           },
-          choices: [String.raw`$6$`, String.raw`$7$`, String.raw`$4\sqrt3$`, String.raw`$8$`, String.raw`$\sqrt{34}$`],
-          answer: String.raw`(D) $8$`,
+          choices: [String.raw`$\sqrt{34}$`, String.raw`$6$`, String.raw`$4\sqrt3$`, String.raw`$7$`, String.raw`$8$`],
+          answer: String.raw`(E) $8$`,
         },
         {
           stem: String.raw`In triangle $ABC$, $AB = 13$, $BC = 14$ and $CA = 15$. The bisector of $\angle BAC$ meets $BC$ at $D$ and the circumcircle again at $M$, as shown. Find $AM$.`,

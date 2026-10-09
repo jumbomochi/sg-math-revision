@@ -391,8 +391,8 @@ with signed lengths. It is unchanged by projection: if four lines through $O$ me
         {
           stem: String.raw`Circle $\omega$ has radius $4$ and passes through the point $O$. Under inversion in the circle with centre $O$ and radius $6$, the image of $\omega$ is a line. How far is this line from $O$?`,
           difficulty: 1,
-          choices: [String.raw`$\frac{9}{4}$`, String.raw`$3$`, String.raw`$4$`, String.raw`$\frac{9}{2}$`, String.raw`$9$`],
-          answer: String.raw`(D) $\frac{9}{2}$`,
+          choices: [String.raw`$\frac{9}{4}$`, String.raw`$4$`, String.raw`$\frac{9}{2}$`, String.raw`$6$`, String.raw`$9$`],
+          answer: String.raw`(C) $\frac{9}{2}$`,
         },
         {
           stem: String.raw`A circle has radius $3$ and its centre is $5$ units from $O$. Find the radius of its image under inversion in the circle with centre $O$ and radius $6$.`,
@@ -506,8 +506,8 @@ with signed lengths. It is unchanged by projection: if four lines through $O$ me
         {
           stem: String.raw`Two circles touch at a point $T$. An inversion with centre $T$ maps them to`,
           difficulty: 1,
-          choices: [String.raw`two concentric circles`, String.raw`two parallel lines`, String.raw`two perpendicular lines`, String.raw`a line and a circle touching it`, String.raw`two circles touching at a point`],
-          answer: String.raw`(B) two parallel lines`,
+          choices: [String.raw`two parallel lines`, String.raw`two perpendicular lines`, String.raw`a line and a circle touching it`, String.raw`two concentric circles`, String.raw`two circles touching at a point`],
+          answer: String.raw`(A) two parallel lines`,
         },
         {
           stem: String.raw`Points $A$, $C$, $B$ lie on a line in this order, with $AC = 4$ and $CB = 6$. Semicircles with diameters $AB$, $AC$ and $CB$ are drawn on the same side of the line. Find the radius of the circle that touches all three semicircles, as shown.`,
@@ -1079,8 +1079,8 @@ with signed lengths. It is unchanged by projection: if four lines through $O$ me
         {
           stem: String.raw`Six points lie on a circle. Joining them in a cyclic order gives a hexagon, and Pascal's theorem gives one line for each such hexagon. Hexagons that differ only in the starting point or the direction of travel count as the same. How many different hexagons are there?`,
           difficulty: 1,
-          choices: [String.raw`$6$`, String.raw`$20$`, String.raw`$60$`, String.raw`$120$`, String.raw`$720$`],
-          answer: String.raw`(C) $60$`,
+          choices: [String.raw`$30$`, String.raw`$60$`, String.raw`$120$`, String.raw`$360$`, String.raw`$720$`],
+          answer: String.raw`(B) $60$`,
         },
         {
           stem: String.raw`Quadrilateral $ABCD$ is circumscribed about a circle that touches $AB$ at $K$ and $CD$ at $M$, with $AK = 2$ and $CM = 3$. The diagonals $AC$ and $BD$ meet at $X$, as shown. Find $\frac{AX}{XC}$.`,

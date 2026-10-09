@@ -206,8 +206,8 @@ To count how often **one digit** appears (say the digit $3$), count it in the on
         {
           stem: String.raw`What is the smallest whole number whose digits add up to $30$?`,
           difficulty: 2,
-          choices: [String.raw`$6888$`, String.raw`$4899$`, String.raw`$3999$`, String.raw`$9993$`, String.raw`$5799$`],
-          answer: String.raw`(C) $3999$`,
+          choices: [String.raw`$3999$`, String.raw`$4899$`, String.raw`$5799$`, String.raw`$6888$`, String.raw`$9993$`],
+          answer: String.raw`(A) $3999$`,
         },
         {
           stem: String.raw`Mei writes down every whole number from $1$ to $200$. Then she adds up all the digits she has written. What total does she get?`,
@@ -369,8 +369,8 @@ To count how often **one digit** appears (say the digit $3$), count it in the on
         {
           stem: String.raw`A palindrome is a number that reads the same forwards and backwards, such as $3443$. What is the smallest whole number that must be added to $4297$ to make a palindrome?`,
           difficulty: 1,
-          choices: [String.raw`$7$`, String.raw`$27$`, String.raw`$37$`, String.raw`$47$`, String.raw`$127$`],
-          answer: String.raw`(C) $37$`,
+          choices: [String.raw`$37$`, String.raw`$47$`, String.raw`$77$`, String.raw`$107$`, String.raw`$127$`],
+          answer: String.raw`(A) $37$`,
         },
         {
           stem: String.raw`A palindrome is a number that reads the same forwards and backwards, such as $252$. How many three-digit palindromes are even numbers?`,
@@ -429,8 +429,8 @@ To count how often **one digit** appears (say the digit $3$), count it in the on
         {
           stem: String.raw`All the whole numbers from $1$ to $100$ are written down. How many times is the digit $0$ written?`,
           difficulty: 1,
-          choices: [String.raw`$9$`, String.raw`$10$`, String.raw`$11$`, String.raw`$12$`, String.raw`$20$`],
-          answer: String.raw`(C) $11$`,
+          choices: [String.raw`$10$`, String.raw`$11$`, String.raw`$12$`, String.raw`$20$`, String.raw`$21$`],
+          answer: String.raw`(B) $11$`,
         },
         {
           stem: String.raw`A chapter of a book starts on page $58$ and ends on page $132$. How many digits are used to print the page numbers of this chapter?`,
@@ -459,8 +459,8 @@ How many times does the block "$12$" (a $1$ followed straight away by a $2$) app
         {
           stem: String.raw`Jun adds a two-digit number to the number formed by reversing its digits. For example, $47 + 74 = 121$. Which of these could **not** be his answer?`,
           difficulty: 1,
-          choices: [String.raw`$55$`, String.raw`$99$`, String.raw`$121$`, String.raw`$150$`, String.raw`$165$`],
-          answer: String.raw`(D) $150$`,
+          choices: [String.raw`$55$`, String.raw`$99$`, String.raw`$121$`, String.raw`$143$`, String.raw`$150$`],
+          answer: String.raw`(E) $150$`,
         },
         {
           stem: String.raw`A two-digit number has no zero digits. When its digits are reversed, the new number is $54$ less than the original number. How many such two-digit numbers are there?`,
@@ -480,8 +480,8 @@ How many times does the block "$12$" (a $1$ followed straight away by a $2$) app
         {
           stem: String.raw`A three-digit number is added to the number formed by reversing its digits, and the total is $1251$. What is the middle digit of the number?`,
           difficulty: 2,
-          choices: [String.raw`$2$`, String.raw`$5$`, String.raw`$6$`, String.raw`$7$`, String.raw`$9$`],
-          answer: String.raw`(D) $7$`,
+          choices: [String.raw`$2$`, String.raw`$5$`, String.raw`$7$`, String.raw`$8$`, String.raw`$9$`],
+          answer: String.raw`(C) $7$`,
         },
         {
           stem: String.raw`A two-digit number is multiplied by the number formed by reversing its digits, and the product is $2296$. What is the larger of these two numbers?`,

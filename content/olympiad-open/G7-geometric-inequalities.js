@@ -243,8 +243,8 @@ and find all points $P$ for which equality holds.`,
         {
           stem: String.raw`A triangle has two sides of lengths $6$ and $10$. What is the largest possible area of the triangle?`,
           difficulty: 1,
-          choices: [String.raw`$15$`, String.raw`$24$`, String.raw`$30$`, String.raw`$32$`, String.raw`$60$`],
-          answer: String.raw`(C) $30$`,
+          choices: [String.raw`$15$`, String.raw`$20$`, String.raw`$24$`, String.raw`$30$`, String.raw`$60$`],
+          answer: String.raw`(D) $30$`,
         },
         {
           stem: String.raw`A triangle has one side of length $8$ and perimeter $18$. Find the largest possible area of the triangle.`,
@@ -336,8 +336,8 @@ $$\frac{R}{2r} \ge \frac{a^2 + b^2 + c^2}{ab + bc + ca}.$$`,
         {
           stem: String.raw`$P$ is a point inside a square $ABCD$ of side $4$. What is the smallest possible value of $PA^2 + PB^2 + PC^2 + PD^2$?`,
           difficulty: 1,
-          choices: [String.raw`$16$`, String.raw`$24$`, String.raw`$32$`, String.raw`$36$`, String.raw`$64$`],
-          answer: String.raw`(C) $32$`,
+          choices: [String.raw`$32$`, String.raw`$36$`, String.raw`$40$`, String.raw`$48$`, String.raw`$64$`],
+          answer: String.raw`(A) $32$`,
         },
         {
           stem: String.raw`A point $P$ inside an equilateral triangle is at distances $1$, $2$ and $3$ from the three sides, as shown. Find the side length of the triangle.`,

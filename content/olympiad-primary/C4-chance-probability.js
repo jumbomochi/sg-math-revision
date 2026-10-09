@@ -219,8 +219,8 @@ There are $3 \times 3 = 9$ boxes. A total of $4$ appears $3$ times, so P(total $
         {
           stem: String.raw`Two dice are rolled. What is the probability that the total is $7$?`,
           difficulty: 1,
-          choices: [String.raw`$\tfrac{1}{11}$`, String.raw`$\tfrac16$`, String.raw`$\tfrac{7}{36}$`, String.raw`$\tfrac{1}{12}$`],
-          answer: String.raw`(B) $\tfrac16$`,
+          choices: [String.raw`$\tfrac{1}{12}$`, String.raw`$\tfrac{1}{11}$`, String.raw`$\tfrac{5}{36}$`, String.raw`$\tfrac16$`],
+          answer: String.raw`(D) $\tfrac16$`,
         },
         {
           stem: String.raw`Spinner P has $4$ equal parts numbered $1$ to $4$. Spinner Q has $3$ equal parts numbered $1$ to $3$. Both are spun and the two numbers are multiplied. What is the probability that the product is even?`,
@@ -281,8 +281,8 @@ There are $3 \times 3 = 9$ boxes. A total of $4$ appears $3$ times, so P(total $
         {
           stem: String.raw`A bag has $4$ red balls and $6$ blue balls. Ali takes out a red ball and keeps it. Ben then takes a ball at random from the bag. What is the probability that Ben's ball is red?`,
           difficulty: 1,
-          choices: [String.raw`$\tfrac25$`, String.raw`$\tfrac13$`, String.raw`$\tfrac49$`, String.raw`$\tfrac{3}{10}$`],
-          answer: String.raw`(B) $\tfrac13$`,
+          choices: [String.raw`$\tfrac13$`, String.raw`$\tfrac25$`, String.raw`$\tfrac49$`, String.raw`$\tfrac23$`],
+          answer: String.raw`(A) $\tfrac13$`,
         },
         {
           stem: String.raw`A bag has $2$ red balls and $3$ white balls. Mei takes a ball at random, puts it back, and then takes a ball at random again. What is the probability that both balls are red?`,
@@ -374,8 +374,8 @@ There are $3 \times 3 = 9$ boxes. A total of $4$ appears $3$ times, so P(total $
         {
           stem: String.raw`A fair die is rolled $300$ times. About how many times would you expect it to show a $5$?`,
           difficulty: 1,
-          choices: [String.raw`$5$`, String.raw`$30$`, String.raw`$50$`, String.raw`$60$`],
-          answer: String.raw`(C) $50$`,
+          choices: [String.raw`$50$`, String.raw`$60$`, String.raw`$100$`, String.raw`$150$`],
+          answer: String.raw`(A) $50$`,
         },
         {
           stem: String.raw`The spinner shown has $4$ equal parts. It is spun $200$ times. About how many times would you expect it **not** to land on red?`,

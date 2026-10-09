@@ -278,9 +278,9 @@ Example: a $3 \times 3$ board has 5 dark squares (the corners and the centre) an
         },
         {
           stem: String.raw`Seven odd numbers are added together. Which of these could be the total?`,
-          choices: [String.raw`$40$`, String.raw`$52$`, String.raw`$63$`, String.raw`$88$`],
+          choices: [String.raw`$63$`, String.raw`$72$`, String.raw`$80$`, String.raw`$96$`],
           difficulty: 1,
-          answer: String.raw`(C) $63$`,
+          answer: String.raw`(A) $63$`,
         },
         {
           stem: String.raw`The numbers $1$ to $25$ are written in a $5 \times 5$ grid, one number in each square. Is it possible for all five row totals to be even? Answer yes or no.`,
@@ -423,9 +423,9 @@ Example: a $3 \times 3$ board has 5 dark squares (the corners and the centre) an
         },
         {
           stem: String.raw`Six cards numbered $1$ to $6$ lie in a row in the order $1, 2, 3, 4, 5, 6$. In each move, you may swap two cards that have exactly one card between them. Which of these orders can be reached after some moves?`,
-          choices: [String.raw`$2, 1, 4, 3, 6, 5$`, String.raw`$6, 5, 4, 3, 2, 1$`, String.raw`$5, 4, 3, 6, 1, 2$`, String.raw`$1, 3, 5, 2, 4, 6$`],
+          choices: [String.raw`$5, 4, 3, 6, 1, 2$`, String.raw`$2, 1, 4, 3, 6, 5$`, String.raw`$6, 5, 4, 3, 2, 1$`, String.raw`$1, 3, 5, 2, 4, 6$`],
           difficulty: 3,
-          answer: String.raw`(C) $5, 4, 3, 6, 1, 2$`,
+          answer: String.raw`(A) $5, 4, 3, 6, 1, 2$`,
         },
         {
           stem: String.raw`The numbers $2, 3, 4, 6$ and $12$ are written on a board. In each move, two of the numbers, $a$ and $b$, are rubbed out and the number $(a \times b) \div (a + b)$ is written instead. After four moves only one number is left. What is it?`,
@@ -967,9 +967,9 @@ Example: a $3 \times 3$ board has 5 dark squares (the corners and the centre) an
         },
         {
           stem: String.raw`Which of these boards can be covered exactly by dominoes ($1 \times 2$ tiles), with no overlaps and nothing sticking out?`,
-          choices: [String.raw`$3 \times 5$`, String.raw`$5 \times 5$`, String.raw`$4 \times 7$`, String.raw`$7 \times 7$`],
+          choices: [String.raw`$4 \times 7$`, String.raw`$5 \times 7$`, String.raw`$5 \times 9$`, String.raw`$7 \times 7$`],
           difficulty: 1,
-          answer: String.raw`(C) $4 \times 7$`,
+          answer: String.raw`(A) $4 \times 7$`,
         },
         {
           stem: String.raw`A bug sits on the bottom-left square S of the $4 \times 4$ board shown. Each minute it walks onto a square that shares a side with the square it is on. Can it visit every square of the board exactly once and finish on the top-right square F? Answer yes or no.`,
